@@ -1,9 +1,9 @@
-<?php 
-include_once '../../includes/config.php';
-include_once '../includes/protect.php';
-include_once '../includes/header.php';
+<?php
+include_once __DIR__ . '/../../includes/config.php';
+require_once __DIR__ . '/../../includes/protect.php';
+require_once __DIR__ . '/../../includes/header.php';
 
-// Adicionar ou atualizar tag (sem duplicidade)
+// Adicionar ou atualizar tag
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'] ?? null;
     $nome = trim($_POST['nome']);
@@ -53,16 +53,16 @@ if (isset($_GET['editar'])) {
 ?>
 
 <div class="container my-5">
-    <h2>🔖 Gerenciar Tags (Autores, Categorias, Editoras e Outros)</h2>
+    <h2 class="mb-4">🔖 Gerenciar Tags (Autores, Categorias, Editoras e Outros)</h2>
 
     <form method="POST" class="row g-3 my-4">
         <input type="hidden" name="id" value="<?= $tag_editar['id'] ?? '' ?>">
         <div class="col-md-6">
-            <label class="form-label">Nome da Tag</label>
+            <label class="form-label" style="color: var(--text-color);">Nome da Tag</label>
             <input type="text" name="nome" class="form-control" required value="<?= $tag_editar['nome'] ?? '' ?>">
         </div>
         <div class="col-md-4">
-            <label class="form-label">Tipo</label>
+            <label class="form-label" style="color: var(--text-color);">Tipo</label>
             <select name="tipo" class="form-control" required>
                 <option value="">Selecione...</option>
                 <?php foreach ($tipos as $tipo): ?>
@@ -77,11 +77,11 @@ if (isset($_GET['editar'])) {
 
     <?php foreach ($tipos as $tipo): ?>
         <div class="card mb-4">
-            <div class="card-header">
+            <div class="card-header" style="background-color: var(--card-color); color: var(--text-color); border-bottom: 1px solid var(--border-color);">
                 <strong><?= ucfirst($tipo) ?>s</strong>
             </div>
             <div class="card-body p-2">
-                <table class="table table-sm table-striped m-0">
+                <table class="table table-sm table-striped m-0" style="color: var(--text-color);">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -101,7 +101,7 @@ if (isset($_GET['editar'])) {
                             </tr>
                         <?php endforeach; ?>
                         <?php if (empty($tags[$tipo])): ?>
-                            <tr><td colspan="3">Nenhuma tag cadastrada.</td></tr>
+                            <tr><td colspan="3"><em>Nenhuma tag cadastrada.</em></td></tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
@@ -110,4 +110,4 @@ if (isset($_GET['editar'])) {
     <?php endforeach; ?>
 </div>
 
-<?php include_once '../includes/footer.php'; ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

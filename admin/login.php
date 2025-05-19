@@ -1,48 +1,30 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $erro = '';
+
+// Se for POST, processa o login antes de qualquer HTML
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
+
     if ($usuario === 'admin' && $senha === '1234') {
         $_SESSION['admin_logado'] = true;
-        header("Location: pages/cadastrar_livro.php");
+        header("Location: index.php");
         exit;
     } else {
         $erro = "Usuário ou senha inválidos!";
     }
 }
+
+// Inclui header somente se for GET ou erro após tentativa
+require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Login Admin - Biblioteca CNI</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/css/style.css" rel="stylesheet">
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .login-box {
-      width: 100%;
-      max-width: 400px;
-      padding: 30px;
-      background-color: var(--card-color);
-      color: var(--text-color);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-    }
-  </style>
-</head>
-<body class="<?= ($_COOKIE['modo_tema'] ?? 'dark') === 'light' ? 'light-mode' : '' ?>">
-
-  <div class="login-box">
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="login-box p-4 border rounded shadow-sm" style="max-width: 400px; width: 100%; background-color: var(--card-color, #2c2c2c); color: var(--text-color, #fff);">
     <h3 class="mb-4 text-center">🔐 Login Administrativo</h3>
     <form method="POST">
       <div class="mb-3">
@@ -51,12 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <div class="mb-3">
         <input type="password" name="senha" class="form-control" placeholder="Senha" required>
       </div>
-      <?php if ($erro): ?>
-        <div class="alert alert-danger"><?= $erro ?></div>
+      <?php if (!empty($erro)): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
       <?php endif; ?>
       <button type="submit" class="btn btn-primary w-100">Entrar</button>
     </form>
   </div>
+</div>
 
-</body>
-</html>
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>

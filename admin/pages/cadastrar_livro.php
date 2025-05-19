@@ -1,7 +1,13 @@
 <?php
-include_once '../../includes/config.php';
-include_once '../includes/protect.php';
-include_once '../includes/header.php';
+include_once __DIR__ . '/../../includes/config.php';
+require_once __DIR__ . '/../../includes/protect.php';
+require_once __DIR__ . '/../../includes/header.php';
+?>
+
+
+<?php
+
+
 
 $msg = '';
 
@@ -196,7 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </form>
 </div>
 
-<?php include_once '../includes/footer.php'; ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>
 
 <script>
 function buscarISBN() {

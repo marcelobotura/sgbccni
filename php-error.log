@@ -1,0 +1,24 @@
+[19-May-2025 16:49:17 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'u488847015_sgbccni'@'localhost' (using password: YES) in C:\xampp\htdocs\sgbccni\includes\config.php:23
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\includes\config.php(23): mysqli->__construct('localhost', 'u488847015_sgbc...', Object(SensitiveParameterValue), 'u488847015_sgbc...')
+#1 C:\xampp\htdocs\sgbccni\public\busca.php(2): include_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\sgbccni\includes\config.php on line 23
+[19-May-2025 16:49:21 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'u488847015_sgbccni'@'localhost' (using password: YES) in C:\xampp\htdocs\sgbccni\includes\config.php:23
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\includes\config.php(23): mysqli->__construct('localhost', 'u488847015_sgbc...', Object(SensitiveParameterValue), 'u488847015_sgbc...')
+#1 C:\xampp\htdocs\sgbccni\public\pesquisador.php(2): include_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\sgbccni\includes\config.php on line 23
+[19-May-2025 16:49:23 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'u488847015_sgbccni'@'localhost' (using password: YES) in C:\xampp\htdocs\sgbccni\includes\config.php:23
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\includes\config.php(23): mysqli->__construct('localhost', 'u488847015_sgbc...', Object(SensitiveParameterValue), 'u488847015_sgbc...')
+#1 C:\xampp\htdocs\sgbccni\public\busca.php(2): include_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\sgbccni\includes\config.php on line 23
+[19-May-2025 16:55:55 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'u488847015_sgbccni'@'localhost' (using password: YES) in C:\xampp\htdocs\sgbccni\includes\config.php:23
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\includes\config.php(23): mysqli->__construct('localhost', 'u488847015_sgbc...', Object(SensitiveParameterValue), 'u488847015_sgbc...')
+#1 C:\xampp\htdocs\sgbccni\admin\pages\cadastrar_livro.php(2): include_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\sgbccni\includes\config.php on line 23

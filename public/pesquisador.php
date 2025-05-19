@@ -16,9 +16,6 @@ include_once '../includes/header.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="<?= URL_BASE ?>assets/css/style.css" rel="stylesheet">
 </head>
-<body class="<?= $modo === 'light' ? 'light-mode' : '' ?>">
-  <button class="toggle-theme-btn" onclick="alternarTema()">🌓 Alternar Tema</button>
-
 
   <div class="container search-container">
   <form method="GET" action="busca.php" class="search-box">

@@ -1,4 +1,3 @@
-
 /* ==========================================
    TEMA PADRÃO (DARK E LIGHT VIA COOKIES)
    ========================================== */
@@ -328,55 +327,4 @@ input:focus, textarea:focus, select:focus {
 .logo-desc {
   font-size: 0.75rem;
   color: var(--text-color);
-}
-
-/* ==========================================
-   MENU TOPO MODERNO
-   ========================================== */
-header {
-  background-color: var(--card-color);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  z-index: 999;
-}
-
-header .nav-link {
-  color: var(--text-color) !important;
-  font-weight: 500;
-  padding: 10px 16px;
-  transition: 0.2s ease;
-  border-radius: 6px;
-}
-
-header .nav-link:hover {
-  background-color: var(--btn-bg);
-  color: var(--btn-text) !important;
-  text-decoration: none;
-}
-
-header .logo-bibli {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--logo-azul);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-header .logo-bibli i {
-  font-size: 1.2rem;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  header .nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  header .nav-link {
-    width: 100%;
-    text-align: left;
-    padding-left: 20px;
-  }
 }

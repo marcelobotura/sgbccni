@@ -1,10 +1,5 @@
 <?php
-
-
-
-
 define('URL_BASE', 'http://localhost/sgbccni/');
-
 // ⚙️ Ambiente
 define('ENV_DEV', true); // true: mostra erros; false: produção
 

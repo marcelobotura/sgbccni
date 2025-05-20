@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../includes/protect.php';
 require_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../admin/pages/protect_admin.php';
 ?>
 
 <div class="container py-4">

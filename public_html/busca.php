@@ -1,6 +1,7 @@
 <?php
-include_once '../includes/config.php';
-include_once '../includes/header.php';
+include_once(__DIR__ . '/../config/config.php'); // ✅ novo caminho
+include_once(__DIR__ . '/../includes/header.php');
+
 
 // Captura filtros
 $busca = trim($_GET['q'] ?? '');

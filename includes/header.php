@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/config.php';
+include_once(__DIR__ . '/../config/config.php');
 
 if (!defined('NOME_SISTEMA')) {
   define('NOME_SISTEMA', 'Biblioteca CNI');
@@ -21,7 +21,7 @@ $logado = isset($_SESSION['admin_logado']) && $_SESSION['admin_logado'] === true
 </head>
 <body class="<?= $modo === 'light' ? 'light-mode' : '' ?>">
 
-<!-- Botão de tema -->
+<!-- Botão de alternância de tema -->
 <button class="toggle-theme-btn btn btn-sm position-fixed top-0 end-0 m-3 z-3" onclick="alternarTema()" title="Alternar Tema">
   🌓
 </button>
@@ -35,12 +35,12 @@ $logado = isset($_SESSION['admin_logado']) && $_SESSION['admin_logado'] === true
     <nav>
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link px-3" style="color: var(--text-color);" href="<?= URL_BASE ?>public/index.php">
+          <a class="nav-link px-3" style="color: var(--text-color);" href="<?= URL_BASE ?>public_html/index.php">
             <i class="bi bi-house-door"></i> Home
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-3" style="color: var(--text-color);" href="<?= URL_BASE ?>public/pesquisador.php">
+          <a class="nav-link px-3" style="color: var(--text-color);" href="<?= URL_BASE ?>public_html/pesquisador.php">
             <i class="bi bi-search"></i> Buscar
           </a>
         </li>

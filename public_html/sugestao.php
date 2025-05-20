@@ -1,5 +1,7 @@
 <?php
-require_once '../includes/config.php';
+include_once(__DIR__ . '/../config/config.php'); // ✅ novo caminho
+
+
 
 $q = trim($_GET['q'] ?? '');
 

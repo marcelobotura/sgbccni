@@ -1,43 +1,40 @@
 <?php
 session_start();
-require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../../config/config.php';
 
-$erro = '';
-
-// Redireciona se já estiver logado
+// Se já estiver logado como admin
 if (isset($_SESSION['usuario_id']) && $_SESSION['usuario_tipo'] === 'admin') {
-    header("Location: ../admin/pages/index.php");
+    header("Location: index.php");
     exit;
 }
 
-// Processa login
+$erro = '';
+
+// Processa envio do formulário
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST['email']);
     $senha = $_POST['senha'];
 
-    $stmt = $conn->prepare("SELECT id, nome, senha, tipo FROM usuarios WHERE email = ?");
+    // Verifica se é admin
+    $stmt = $conn->prepare("SELECT id, nome, senha FROM usuarios WHERE email = ? AND tipo = 'admin'");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows === 1) {
-        $stmt->bind_result($id, $nome, $senha_hash, $tipo);
+        $stmt->bind_result($id, $nome, $senha_hash);
         $stmt->fetch();
 
-        if ($tipo === 'admin') {
-            if (password_verify($senha, $senha_hash)) {
-                $_SESSION['usuario_id']   = $id;
-                $_SESSION['usuario_nome'] = $nome;
-                $_SESSION['usuario_tipo'] = 'admin';
-                $_SESSION['admin_logado'] = true;
+        if (password_verify($senha, $senha_hash)) {
+            $_SESSION['usuario_id'] = $id;
+            $_SESSION['usuario_nome'] = $nome;
+            $_SESSION['usuario_tipo'] = 'admin';
+            $_SESSION['admin_logado'] = true;
 
-                header("Location: ../admin/pages/index.php");
-                exit;
-            } else {
-                $erro = "Senha incorreta.";
-            }
+            header("Location: index.php");
+            exit;
         } else {
-            $erro = "Este usuário não é um administrador.";
+            $erro = "Senha incorreta.";
         }
     } else {
         $erro = "Administrador não encontrado.";
@@ -52,7 +49,6 @@ require_once __DIR__ . '/../includes/header.php';
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
   <div class="login-box p-4 border rounded shadow-sm" style="max-width: 400px; width: 100%; background-color: var(--card-color, #2c2c2c); color: var(--text-color, #fff);">
     <h3 class="mb-4 text-center">🔐 Login Administrativo</h3>
-    
     <form method="POST">
       <div class="mb-3">
         <input type="email" name="email" class="form-control" placeholder="E-mail do administrador" required>
@@ -64,7 +60,6 @@ require_once __DIR__ . '/../includes/header.php';
         <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
       <?php endif; ?>
       <button type="submit" class="btn btn-primary w-100">Entrar</button>
-      <a href="register.php" class="btn btn-outline-light w-100 mt-2">Cadastrar novo administrador</a>
     </form>
   </div>
 </div>

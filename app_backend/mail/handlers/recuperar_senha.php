@@ -1,17 +1,18 @@
 <?php
-require_once __DIR__ . '/../../config/config.php';
+define('BASE_PATH', dirname(__DIR__, 2));
+require_once BASE_PATH . '/config/config.php';
+require_once BASE_PATH . '/vendor/PHPMailer/PHPMailer.php';
+require_once BASE_PATH . '/vendor/PHPMailer/SMTP.php';
+require_once BASE_PATH . '/vendor/PHPMailer/Exception.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require_once '../PHPMailer/PHPMailer.php';
-require_once '../PHPMailer/SMTP.php';
-require_once '../PHPMailer/Exception.php';
 
 $email = $_POST['email'] ?? '';
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die('E-mail inválido');
 }
 
-// Verifica se o e-mail está registrado
 $stmt = $conn->prepare("SELECT id, nome FROM usuarios WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
@@ -25,21 +26,24 @@ $usuario = $result->fetch_assoc();
 $token = bin2hex(random_bytes(32));
 $expira = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
-// Salva token no banco
+// Remove tokens antigos
 $conn->query("DELETE FROM tokens_recuperacao WHERE usuario_id = {$usuario['id']}");
+
+// Salva novo token
 $stmt = $conn->prepare("INSERT INTO tokens_recuperacao (usuario_id, token, expira_em) VALUES (?, ?, ?)");
 $stmt->bind_param("iss", $usuario['id'], $token, $expira);
 $stmt->execute();
 
-// Envia o e-mail
+// Envia e-mail
 $link = URL_BASE . "login/redefinir_senha.php?token=$token";
+
 $mail = new PHPMailer(true);
 try {
     $mail->isSMTP();
     $mail->Host = 'smtp.hostinger.com';
     $mail->SMTPAuth = true;
     $mail->Username = getenv('EMAIL_SUPORTE');
-    $mail->Password = 'SENHA_AQUI';
+    $mail->Password = 'SENHA_DO_EMAIL'; // Configure no .env ou substitua aqui
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
@@ -47,11 +51,11 @@ try {
     $mail->addAddress($email);
 
     $mail->isHTML(true);
-    $mail->Subject = 'Recuperação de senha - Biblioteca CNI';
-    $mail->Body    = "Olá {$usuario['nome']},<br>Para redefinir sua senha, clique no link abaixo:<br><a href='$link'>$link</a><br><br>Este link expira em 1 hora.";
+    $mail->Subject = '🔐 Recuperação de Senha - Biblioteca CNI';
+    $mail->Body = "Olá <strong>{$usuario['nome']}</strong>,<br>Use o link abaixo para redefinir sua senha:<br><a href='{$link}'>{$link}</a><br><br>O link expira em 1 hora.";
 
     $mail->send();
-    echo 'E-mail enviado com instruções.';
+    echo '✅ Um link de recuperação foi enviado para seu e-mail.';
 } catch (Exception $e) {
-    echo "Erro ao enviar: {$mail->ErrorInfo}";
+    echo "❌ Erro ao enviar e-mail: {$mail->ErrorInfo}";
 }

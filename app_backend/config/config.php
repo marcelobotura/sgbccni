@@ -1,49 +1,35 @@
 <?php
-// ✅ Define a URL base uma única vez
-if (!defined('URL_BASE')) {
-// ✅ Evita redefinições
-if (!defined('URL_BASE')) {
-    require_once __DIR__ . '/env.php';
-define('URL_BASE', getenv('URL_BASE'));
-}
-}
+// Carrega variáveis do .env
+require_once __DIR__ . '/env.php';
 
-// ⚙️ Ambiente de desenvolvimento (altere para false em produção)
+// Define URL base
+define('URL_BASE', getenv('URL_BASE') ?: 'http://localhost/');
+
+// Ambiente de desenvolvimento
 define('ENV_DEV', true);
 
-// 🛡️ Configurações de erros e logs
+// ⚠️ Exibição de erros (ativado se ENV_DEV = true)
 ini_set('display_errors', ENV_DEV ? '1' : '0');
+ini_set('display_startup_errors', ENV_DEV ? '1' : '0');
+error_reporting(ENV_DEV ? E_ALL : 0);
+
+// Log de erros
 ini_set('log_errors', '1');
 ini_set('error_log', __DIR__ . '/../logs/php-error.log');
 
-// 🔐 Configurações de banco de dados
-$host = getenv('DB_HOST');
-$usuario = getenv('DB_USER');
-$senha = getenv('DB_PASS');
-$banco = getenv('DB_NAME');
+// Variáveis de conexão
+$host = getenv('DB_HOST') ?: 'localhost';
+$usuario = getenv('DB_USER') ?: 'root';
+$senha = getenv('DB_PASS') ?: '';
+$banco = getenv('DB_NAME') ?: 'sgbccni';
 
-// 🔗 Conexão com o banco
+// Conexão com MySQL
 $conn = new mysqli($host, $usuario, $senha, $banco);
-$conn->set_charset('utf8');
+$conn->set_charset("utf8");
 
-// 🚨 Verifica erro de conexão
+// Verifica erro na conexão
 if ($conn->connect_error) {
     error_log("Erro de conexão: " . $conn->connect_error);
-    die("Erro interno de conexão com o banco de dados.");
+    die("<h3>❌ Erro ao conectar ao banco de dados. Verifique config.php e .env</h3>");
 }
-
-// ▶️ Inicia sessão, se necessário
-if (session_status() === PHP_SESSION_NONE) {
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-}
-
-// 🌐 Constantes do sistema
-define('NOME_SISTEMA', 'Sistema de Gestão Biblioteca Comunitária - CNI');
-define('VERSAO_SISTEMA', '1.0');
-define('EMAIL_SUPORTE', 'mbsfoz@gmail.com');
-
-// ⏰ Fuso horário
-date_default_timezone_set('America/Sao_Paulo');
 ?>

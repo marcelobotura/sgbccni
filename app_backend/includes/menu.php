@@ -6,7 +6,8 @@ $tipo = $_SESSION['usuario_tipo'] ?? null;
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
   <a class="navbar-brand fw-bold" href="<?= URL_BASE ?>">
-    <i class="bi bi-book-half"></i> <?= NOME_SISTEMA ?>
+    <i class="bi bi-book-half"></i>
+    <?= defined('NOME_SISTEMA') ? NOME_SISTEMA : 'Biblioteca CNI' ?>
   </a>
 
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">

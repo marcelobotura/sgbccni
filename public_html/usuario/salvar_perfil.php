@@ -21,6 +21,12 @@ exigir_login('usuario');
             <div class="alert alert-danger"><?= $_SESSION['erro']; unset($_SESSION['erro']); ?></div>
           <?php endif; ?>
 
+          <?php if (!empty($_SESSION['usuario_foto'])): ?>
+            <div class="text-center mb-3">
+              <img src="<?= URL_BASE ?>uploads/<?= htmlspecialchars($_SESSION['usuario_foto']) ?>" class="rounded-circle" width="120" height="120" alt="Foto de perfil">
+            </div>
+          <?php endif; ?>
+
           <form method="POST" action="salvar_perfil.php" enctype="multipart/form-data">
             <div class="mb-3">
               <label>Nome:</label>
@@ -36,7 +42,8 @@ exigir_login('usuario');
             </div>
             <div class="mb-3">
               <label>Foto de perfil (opcional):</label>
-              <input type="file" name="foto" class="form-control">
+              <input type="file" name="foto" class="form-control" onchange="previewImagem(this)">
+              <img id="preview" src="#" class="mt-3 d-none rounded-circle" width="100" alt="Preview">
             </div>
             <button type="submit" class="btn btn-primary">Salvar alterações</button>
             <a href="excluir_conta.php" class="btn btn-outline-danger float-end" onclick="return confirm('Tem certeza que deseja excluir sua conta?');">Excluir conta</a>
@@ -46,5 +53,16 @@ exigir_login('usuario');
     </div>
   </div>
 </div>
+
+<script>
+  function previewImagem(input) {
+    const file = input.files[0];
+    if (file) {
+      const preview = document.getElementById('preview');
+      preview.src = URL.createObjectURL(file);
+      preview.classList.remove('d-none');
+    }
+  }
+</script>
 
 <?php include_once BASE_PATH . '/includes/footer.php'; ?>

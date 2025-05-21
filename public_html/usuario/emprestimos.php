@@ -1,5 +1,5 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/app_backend');
+define('BASE_PATH', dirname(__DIR__) . '/../app_backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 include_once BASE_PATH . '/includes/header.php';

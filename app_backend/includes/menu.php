@@ -1,5 +1,11 @@
 <?php
-// Garante que sessão já esteja ativa via session.php
+// A sessão já é iniciada em session.php, que é incluído por header.php.
+// Remover a chamada redundante de session_start() aqui para evitar avisos.
+// if (session_status() === PHP_SESSION_NONE) {
+//   session_start();
+// }
+
+// As variáveis de sessão já devem estar disponíveis.
 $nome = $_SESSION['usuario_nome'] ?? 'Visitante';
 $tipo = $_SESSION['usuario_tipo'] ?? null;
 ?>
@@ -36,14 +42,26 @@ $tipo = $_SESSION['usuario_tipo'] ?? null;
         <li class="nav-item">
           <a class="nav-link" href="<?= URL_BASE ?>usuario/livros.php">Meus Livros</a>
         </li>
+      <?php else: ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= URL_BASE ?>login/index.php">Entrar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= URL_BASE ?>login/register.php">Cadastrar</a>
+        </li>
       <?php endif; ?>
     </ul>
 
     <div class="d-flex align-items-center text-white">
-      <span class="me-3"><i class="bi bi-person-circle"></i> <?= htmlspecialchars($nome) ?></span>
-      <a href="<?= URL_BASE ?>login/logout.php" class="btn btn-sm btn-outline-light">
-        <i class="bi bi-box-arrow-right"></i> Sair
-      </a>
+      <span class="me-3">
+        <i class="bi bi-person-circle"></i> <?= htmlspecialchars($nome) ?>
+      </span>
+
+      <?php if ($tipo): ?>
+        <a href="<?= URL_BASE ?>login/logout.php" class="btn btn-sm btn-outline-light">
+          <i class="bi bi-box-arrow-right"></i> Sair
+        </a>
+      <?php endif; ?>
     </div>
   </div>
 </nav>

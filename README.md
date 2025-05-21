@@ -1,78 +1,108 @@
-# Sistema de Gestão da Biblioteca Comunitária - CNI
 
-## Projeto: sgbccni
+# 📘 Projeto: Sistema de Gestão da Biblioteca Comunitária - CNI
 
-Este é um sistema completo de gerenciamento para uma biblioteca comunitária. Ele oferece controle de usuários, empréstimos, cadastro de livros, temas claro/escuro, painel administrativo e muito mais.
+**Versão Atual:** `v1.0 - Produção com E-mail`
 
 ---
 
 ## 📁 Estrutura de Pastas
 
-sgbccni/
-├── public_html/ # Pasta pública acessível via navegador
-│ ├── index.php # Página inicial protegida (usuário logado)
-│ ├── login/
-│ │ ├── index.php # Página de login
-│ │ ├── register.php # Página de cadastro
-│ │ └── logout.php # Logout de sessão
-│ ├── assets/
-│ │ ├── css/ # Estilos base e tema dark
-│ │ ├── js/ # Scripts como toggle de senha e CEP
-│ └── uploads/
-│ ├── capas/ # Capas de livros (upload futuro)
-│ └── perfis/ # Imagens de perfil dos usuários
-│
-├── admin/ # Painel administrativo
-│ ├── index.php # Painel principal do admin
-│ └── pages/ # Módulos de gerenciamento
-│
+### 1. `public_html/` *(acesso público na Hostinger)*
+Contém toda a parte acessível ao navegador:
+
+```
+public_html/
+├── index.php                # Página inicial (painel do usuário)
+├── login/                   # Tela de login, registro, esqueci senha
+├── usuario/                 # Área do usuário logado
+├── assets/                  # CSS, JS e imagens públicas
+├── .htaccess                # URLs amigáveis, cache e segurança
+```
+
+### 2. `app_backend/` *(fora do public_html, seguro)*
+Responsável pela lógica, conexão com banco e funcionalidades sensíveis:
+
+```
+app_backend/
 ├── config/
-│ ├── config.php # Conexão com banco e sessão
-│ └── constantes.php # Constantes globais (nome do sistema, URL base)
-│
-├── controllers/
-│ └── auth.php # Processa login, cadastro e logout
-│
-├── includes/
-│ ├── header.php # Cabeçalho padrão (com Bootstrap e temas)
-│ ├── footer.php # Rodapé padrão com scripts e ativador de tema
-│ └── menu.php # Menu superior com botão de alternância de tema
-│
-├── uploads/ # Diretório raiz para arquivos enviados
-│
-├── logs/ # Logs de erros PHP
-│
-└── sgbccni.sql # Dump do banco de dados MySQL (opcional)
-
-
----
-
-## 🔧 Requisitos
-
-- PHP 7.4+
-- MySQL/MariaDB
-- Servidor local (XAMPP, Laragon ou semelhante)
+│   ├── config.php           # Conexões, constantes e segurança
+│   ├── env.php              # Leitura das variáveis .env
+├── .env                     # Variáveis de ambiente (produção)
+├── .env.example             # Exemplo para configurar localmente
+├── controllers/             # Lógica de controle de funcionalidades
+├── includes/                # Includes reutilizáveis como header, footer, session
+├── admin/                   # Painel administrativo (protegido por IP)
+│   └── .htaccess            # Restrição de acesso por IP
+├── uploads/                 # Armazenamento de imagens, capas, PDFs
+├── mail/
+│   ├── PHPMailer/           # Biblioteca PHPMailer
+│   ├── handlers/            # Scripts de envio de e-mail
+│   │   └── recuperar_senha.php
+├── sgbccni.sql              # Backup do banco de dados
+├── tokens_recuperacao.sql  # Script para criação da tabela de recuperação de senha
+```
 
 ---
 
-## 🚀 Como rodar o projeto
+## 🔐 Segurança
 
-1. Importe o arquivo `sgbccni.sql` no seu banco de dados.
-2. Ajuste as credenciais no arquivo:  
-   `config/config.php`
-3. Acesse via navegador:  
-   `http://localhost/sgbccni/public_html/`
+- A pasta `admin/` está protegida por `.htaccess` com IP fixo.
+- Toda configuração sensível está fora da `public_html/`.
+- Conexões e credenciais estão centralizadas no `.env`.
 
 ---
 
-## 🌗 Tema claro/escuro
+## 📧 Funcionalidades com E-mail
 
-- Alternância de tema no botão "🌙 Tema"
-- Preferência salva com `localStorage`
-- Estilo leve e moderno com Bootstrap 5 e Bootstrap Icons
+### 1. Recuperação de senha
+- Via `recuperar_senha.php` em `mail/handlers`
+- Link único com token (expira em 1 hora)
+
+### 2. PHPMailer integrado
+- SMTP Hostinger com segurança TLS
+- Configurado via `.env`
 
 ---
 
-Se quiser, posso salvar esse novo `README.md` no seu projeto agora.
+## ⚙️ Banco de Dados
 
-Deseja que eu atualize o arquivo real? ​:contentReference[oaicite:0]{index=0}​
+### Tabela adicional:
+```sql
+CREATE TABLE tokens_recuperacao (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  token VARCHAR(64) NOT NULL UNIQUE,
+  expira_em DATETIME NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+```
+
+### Arquivos SQL:
+- `sgbccni.sql` → Banco completo
+- `tokens_recuperacao.sql` → Tabela de recuperação de senha
+
+---
+
+## 🚀 Deploy Hostinger
+
+**Passos para subir:**
+1. Envie a pasta `public_html/` para a raiz do site (diretório público).
+2. Envie a pasta `app_backend/` fora da `public_html`.
+3. Configure o `.env` com:
+```env
+DB_NAME=...
+DB_USER=...
+DB_PASS=...
+EMAIL_SUPORTE=seuemail@seudominio.com
+```
+4. Importe os arquivos SQL no phpMyAdmin.
+5. Teste login, recuperação de senha e funcionalidades.
+
+---
+
+## 📌 Observações finais
+
+- Código modular e pronto para expansão.
+- Planejado para ambiente profissional com segurança, desempenho e manutenibilidade.
+- Atualizações futuras podem incluir: QR Code, favoritos, tags inteligentes, histórico de leitura, etc.

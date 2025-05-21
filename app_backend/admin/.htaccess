@@ -1,0 +1,7 @@
+# Bloqueia o acesso ao painel admin por IP não autorizado
+Order Deny,Allow
+Deny from all
+Allow from 191.191.191.191  # 🔁 Substitua com seu IP real
+
+# Protege contra listagem
+Options -Indexes

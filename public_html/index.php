@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/../../config/config.php';
-require_once __DIR__ . '/../../includes/session.php';
-include_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../includes/session.php';
+include_once __DIR__ . '/../includes/header.php';
 echo realpath(__DIR__ . '/../config/config.php');
 
 exigir_login('usuario'); // Verifica se é usuário comum

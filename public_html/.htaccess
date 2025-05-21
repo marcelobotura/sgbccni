@@ -1,0 +1,18 @@
+# Ativar URL amigável
+RewriteEngine On
+
+# Definir o diretório base (ajuste se necessário)
+RewriteBase /sgbccni/public_html/
+
+# Redirecionar todas as requisições para index.php, exceto arquivos e pastas existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+# Proteção contra listagem de diretório
+Options -Indexes
+
+# Definir charset e segurança básica
+AddDefaultCharset UTF-8
+Header set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"

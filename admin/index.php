@@ -1,51 +1,38 @@
 <?php
-require_once __DIR__ . '/../includes/protect.php';
-require_once __DIR__ . '/../includes/header.php';
-require_once __DIR__ . '/../admin/pages/protect_admin.php';
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../includes/session.php';
+include_once __DIR__ . '/../includes/header.php';
+
+exigir_login('admin'); // ✅ exige que seja administrador
 ?>
 
-<div class="container py-4">
-  <h2 class="mb-4 text-center">
-    <i class="bi bi-speedometer2"></i> Painel Administrativo
-  </h2>
+<div class="text-end mb-3">
+  <a href="<?= URL_BASE ?>login/logout.php" class="btn btn-outline-danger btn-sm">
+    <i class="bi bi-box-arrow-right"></i> Sair
+  </a>
+</div>
 
-  <div class="row g-4">
-    <!-- Cadastrar Livro -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body text-center">
-          <i class="bi bi-plus-circle display-4 text-primary"></i>
-          <h5 class="card-title mt-3">Cadastrar Livro</h5>
-          <p class="text-card">Adicione novos livros ao sistema.</p>
-          <a href="pages/cadastrar_livro.php" class="btn btn-outline-primary w-100">Acessar</a>
-        </div>
-      </div>
-    </div>
+<div class="text-center mb-4">
+  <h2 class="fw-bold"><i class="bi bi-shield-lock-fill text-purple"></i> Painel Administrativo</h2>
+  <p class="lead">Bem-vindo(a), <strong><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong></p>
+</div>
 
-    <!-- Gerenciar Tags -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body text-center">
-          <i class="bi bi-tags display-4 text-success"></i>
-          <h5 class="card-title mt-3">Gerenciar Tags</h5>
-          <p class="text-card">Autores, categorias e editoras.</p>
-          <a href="pages/gerenciar_tags.php" class="btn btn-outline-success w-100">Acessar</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sair -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body text-center">
-          <i class="bi bi-box-arrow-right display-4 text-danger"></i>
-          <h5 class="card-title mt-3">Sair</h5>
-          <p class="text-card">Encerrar a sessão administrativa.</p>
-          <a href="logout.php" class="btn btn-outline-danger w-100">Desconectar</a>
-        </div>
-      </div>
-    </div>
+<div class="row g-4 justify-content-center">
+  <div class="col-md-3">
+    <a href="<?= URL_BASE ?>admin/pages/cadastrar_livro.php" class="btn btn-lg w-100 btn-outline-primary shadow">
+      <i class="bi bi-journal-plus fs-4"></i><br>Cadastrar Livro
+    </a>
+  </div>
+  <div class="col-md-3">
+    <a href="<?= URL_BASE ?>admin/pages/usuarios.php" class="btn btn-lg w-100 btn-outline-info shadow">
+      <i class="bi bi-people-fill fs-4"></i><br>Gerenciar Usuários
+    </a>
+  </div>
+  <div class="col-md-3">
+    <a href="<?= URL_BASE ?>admin/pages/emprestimos.php" class="btn btn-lg w-100 btn-outline-warning shadow">
+      <i class="bi bi-book-half fs-4"></i><br>Controle de Empréstimos
+    </a>
   </div>
 </div>
 
-<?php require_once __DIR__ . '/../includes/footer.php'; ?>
+<?php include_once __DIR__ . '/../includes/footer.php'; ?>

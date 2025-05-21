@@ -1,0 +1,12 @@
+
+/* estilo-dark.css */
+body {
+  background-color: #121212;
+  color: #ffffff;
+}
+.navbar {
+  background-color: #1f1f1f !important;
+}
+.btn {
+  border-radius: 0.375rem;
+}

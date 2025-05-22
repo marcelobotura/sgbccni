@@ -1,9 +1,7 @@
 <?php
-include_once __DIR__ . '/../../config/config.php';
-require_once __DIR__ . '/../../includes/protect.php';
-require_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../../../backend/config/auth.php';
+exigir_login('admin'); // ✅ Correção aplicada
 ?>
-
 
 <?php
 

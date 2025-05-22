@@ -1,0 +1,62 @@
+/* admin.css - Estilos modernos para o painel administrativo */
+
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2, h3, h4, .card-title {
+  font-weight: 600;
+}
+
+/* Botões */
+.btn {
+  transition: 0.2s ease-in-out;
+}
+.btn:hover {
+  transform: scale(1.03);
+}
+
+/* Cartões */
+.card {
+  border-radius: 0.75rem;
+}
+.card .card-title {
+  font-size: 1.1rem;
+}
+
+/* Tabelas */
+.table {
+  font-size: 0.95rem;
+}
+.table th {
+  background-color: #343a40;
+  color: #fff;
+}
+.table td,
+.table th {
+  vertical-align: middle !important;
+}
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Alertas */
+.alert {
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Inputs */
+.form-control,
+.form-select {
+  border-radius: 0.5rem;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

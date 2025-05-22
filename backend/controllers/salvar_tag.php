@@ -1,41 +1,46 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../includes/session.php';
+require_once __DIR__ . '/auth.php';
+
 header('Content-Type: application/json');
-// ...
 
+// 🔐 Apenas admin pode salvar tag
+exigir_login('admin');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = trim($_POST['nome'] ?? '');
-    $tipo = trim($_POST['tipo'] ?? '');
+// 🧼 Coleta e limpa dados
+$nome = trim($_POST['nome'] ?? '');
+$tipo = $_POST['tipo'] ?? '';
 
-    if ($nome === '' || !in_array($tipo, ['autor', 'categoria', 'editora', 'outro'])) {
-        echo json_encode(['status' => 'erro', 'mensagem' => 'Dados inválidos']);
-        exit;
-    }
+if (empty($nome) || empty($tipo)) {
+    echo json_encode(['status' => 'erro', 'mensagem' => 'Campos obrigatórios ausentes.']);
+    exit;
+}
 
-    // Verifica se a tag já existe
-    $stmt = $conn->prepare("SELECT id FROM tags WHERE nome = ? AND tipo = ?");
-    $stmt->bind_param("ss", $nome, $tipo);
-    $stmt->execute();
-    $stmt->store_result();
+// Verifica se já existe
+$stmt = $conn->prepare("SELECT id FROM tags WHERE nome = ? AND tipo = ?");
+$stmt->bind_param("ss", $nome, $tipo);
+$stmt->execute();
+$stmt->store_result();
 
-    if ($stmt->num_rows === 0) {
-        $stmt->close();
+if ($stmt->num_rows > 0) {
+    echo json_encode(['status' => 'existe', 'mensagem' => 'Tag já cadastrada.']);
+    exit;
+}
+$stmt->close();
 
-        $stmtInsert = $conn->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
-        $stmtInsert->bind_param("ss", $nome, $tipo);
+// Insere nova tag
+$stmt = $conn->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
+$stmt->bind_param("ss", $nome, $tipo);
 
-        if ($stmtInsert->execute()) {
-            echo json_encode(['status' => 'ok', 'mensagem' => '✅ Tag adicionada com sucesso.']);
-        } else {
-            echo json_encode(['status' => 'erro', 'mensagem' => 'Erro ao salvar tag.']);
-        }
-
-        $stmtInsert->close();
-    } else {
-        echo json_encode(['status' => 'existe', 'mensagem' => '⚠️ Tag já cadastrada.']);
-        $stmt->close();
-    }
+if ($stmt->execute()) {
+    echo json_encode([
+        'status' => 'sucesso',
+        'mensagem' => 'Tag cadastrada com sucesso!',
+        'id' => $stmt->insert_id,
+        'nome' => $nome,
+        'tipo' => $tipo
+    ]);
 } else {
-    echo json_encode(['status' => 'erro', 'mensagem' => 'Requisição inválida']);
+    echo json_encode(['status' => 'erro', 'mensagem' => 'Erro ao salvar: ' . $stmt->error]);
 }

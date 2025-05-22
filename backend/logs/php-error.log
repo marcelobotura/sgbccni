@@ -30,3 +30,11 @@
 [22-May-2025 14:51:46 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8
 [22-May-2025 14:54:42 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8
 [22-May-2025 14:54:43 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8
+[22-May-2025 15:16:40 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8
+[22-May-2025 15:16:40 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8
+[22-May-2025 15:16:41 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8
+[22-May-2025 15:20:43 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8
+[22-May-2025 15:20:43 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8
+[22-May-2025 15:21:36 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8
+[22-May-2025 15:21:43 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\public_html\admin\index.php on line 5
+[22-May-2025 15:22:19 America/Sao_Paulo] PHP Warning:  Constant NOME_SISTEMA already defined in C:\xampp\htdocs\sgbccni\backend\includes\header.php on line 8

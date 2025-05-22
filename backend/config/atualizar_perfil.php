@@ -5,9 +5,9 @@ require_once __DIR__ . '/../../includes/session.php';
 // 🔒 Protege contra acesso não autorizado
 exigir_login('usuario');
 
-// 🔄 Dados do formulário
+// 🔄 Dados do formulário com filtros
 $id = $_POST['id'] ?? null;
-$nome = trim($_POST['nome'] ?? '');
+$nome = trim(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
 $data_nascimento = $_POST['data_nascimento'] ?? null;
 $genero = $_POST['genero'] ?? null;
 $cep = $_POST['cep'] ?? null;
@@ -15,16 +15,25 @@ $endereco = $_POST['endereco'] ?? null;
 $cidade = $_POST['cidade'] ?? null;
 $estado = $_POST['estado'] ?? null;
 
-// Validação básica
+// ✅ Validação mínima
 if (!$id || !$nome) {
     $_SESSION['erro'] = "Preencha os campos obrigatórios.";
     header("Location: " . URL_BASE . "usuario/perfil.php");
     exit;
 }
 
-// 📸 Upload de imagem (se houver)
+// 📸 Upload de imagem com validação de tipo
 $imagem_perfil = $_SESSION['usuario_foto'] ?? '';
 if (!empty($_FILES['foto_perfil']['name'])) {
+    $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
+    $tipo = mime_content_type($_FILES['foto_perfil']['tmp_name']);
+
+    if (!in_array($tipo, $permitidos)) {
+        $_SESSION['erro'] = "Formato de imagem inválido.";
+        header("Location: " . URL_BASE . "usuario/perfil.php");
+        exit;
+    }
+
     $ext = pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION);
     $novo_nome = uniqid('perfil_', true) . '.' . $ext;
     $destino = __DIR__ . '/../../uploads/perfis/' . $novo_nome;
@@ -32,6 +41,10 @@ if (!empty($_FILES['foto_perfil']['name'])) {
     if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $destino)) {
         $imagem_perfil = 'uploads/perfis/' . $novo_nome;
         $_SESSION['usuario_foto'] = $imagem_perfil;
+    } else {
+        $_SESSION['erro'] = "Erro ao salvar a imagem.";
+        header("Location: " . URL_BASE . "usuario/perfil.php");
+        exit;
     }
 }
 
@@ -48,7 +61,7 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    $_SESSION['usuario_nome'] = $nome;
+    $_SESSION['usuario_nome'] = htmlspecialchars($nome); // proteção na exibição futura
     $_SESSION['sucesso'] = "Perfil atualizado com sucesso!";
 } else {
     $_SESSION['erro'] = "Erro ao atualizar perfil: " . $stmt->error;

@@ -1,9 +1,8 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
+require_once __DIR__ . '/../../backend/config/config.php';
+session_start();
+session_unset();
 session_destroy();
-header("Location: login.php"); // volta para o login
+
+header("Location: ../../public_html/login/login_admin.php");
 exit;
-?>

@@ -47,7 +47,7 @@ exigir_login('admin');
         </select>
       </div>
       <div class="col-md-4">
-        <label for="link_digital" class="form-label">Link de Leitura (se digital)</label>
+        <label for="link_digital" class="form-label">Link para leitura (se digital)</label>
         <input type="url" name="link_digital" id="link_digital" class="form-control">
       </div>
     </div>
@@ -81,44 +81,26 @@ exigir_login('admin');
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
-function configurarTag(id, tipo) {
-  $('#' + id).select2({
-    theme: 'bootstrap-5',
-    tags: true,
-    ajax: {
-      url: '<?= URL_BASE ?>backend/services/buscar_tags.php',
-      dataType: 'json',
-      delay: 250,
-      data: params => ({ tipo: tipo, q: params.term }),
-      processResults: data => data
-    },
-    createTag: function (params) {
-      const nome = $.trim(params.term);
-      if (nome === '') return null;
-      return { id: nome, text: nome, newOption: true };
-    },
-    insertTag: function (data, tag) {
-      $.post('<?= URL_BASE ?>frontend/admin/ajax/salvar_tag.php', {
-        nome: tag.text,
-        tipo: tipo
-      }, function (resp) {
-        if (resp.status === 'ok' || resp.status === 'existe') {
-          const newOption = new Option(resp.text, resp.id, true, true);
-          $('#' + id).append(newOption).trigger('change');
-        } else {
-          alert(resp.mensagem);
-        }
-      }, 'json');
-    },
-    placeholder: 'Digite para buscar ou adicionar...'
-  });
-}
+  document.addEventListener('DOMContentLoaded', function () {
+    function configurarSelect(id, tipo) {
+      $('#' + id).select2({
+        theme: 'bootstrap-5',
+        ajax: {
+          url: '<?= URL_BASE ?>backend/services/buscar_tags.php',
+          dataType: 'json',
+          delay: 250,
+          data: params => ({ tipo: tipo, q: params.term }),
+          processResults: data => data
+        },
+        placeholder: 'Digite para buscar...',
+        minimumInputLength: 2
+      });
+    }
 
-document.addEventListener('DOMContentLoaded', function () {
-  configurarTag('autor_id', 'autor');
-  configurarTag('editora_id', 'editora');
-  configurarTag('categoria_id', 'categoria');
-});
+    configurarSelect('autor_id', 'autor');
+    configurarSelect('editora_id', 'editora');
+    configurarSelect('categoria_id', 'categoria');
+  });
 </script>
 
 <?php require_once __DIR__ . '/../../../backend/includes/footer.php'; ?>

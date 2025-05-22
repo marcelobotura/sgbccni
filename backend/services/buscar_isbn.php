@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
-$isbn = $_GET['isbn'] ?? '';
 
+$isbn = $_GET['isbn'] ?? '';
 if (!$isbn) {
   echo json_encode(['erro' => 'ISBN não fornecido']);
   exit;
@@ -9,9 +9,14 @@ if (!$isbn) {
 
 function buscarGoogleBooks($isbn) {
   $url = "https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn";
-  $json = file_get_contents($url);
-  $dados = json_decode($json, true);
+  $context = stream_context_create([
+    'http' => ['timeout' => 5]
+  ]);
 
+  $json = @file_get_contents($url, false, $context);
+  if (!$json) return null;
+
+  $dados = json_decode($json, true);
   if (!empty($dados['items'][0])) {
     $info = $dados['items'][0]['volumeInfo'];
     return [
@@ -32,7 +37,13 @@ function buscarGoogleBooks($isbn) {
 
 function buscarOpenLibrary($isbn) {
   $url = "https://openlibrary.org/api/books?bibkeys=ISBN:$isbn&format=json&jscmd=data";
-  $json = file_get_contents($url);
+  $context = stream_context_create([
+    'http' => ['timeout' => 5]
+  ]);
+
+  $json = @file_get_contents($url, false, $context);
+  if (!$json) return null;
+
   $dados = json_decode($json, true);
   $chave = "ISBN:$isbn";
 
@@ -54,14 +65,12 @@ function buscarOpenLibrary($isbn) {
   return null;
 }
 
-$resultado = buscarGoogleBooks($isbn);
+// 🔁 Consulta as APIs
+$resultado = buscarGoogleBooks($isbn) ?? buscarOpenLibrary($isbn);
 
-if (!$resultado) {
-  $resultado = buscarOpenLibrary($isbn);
-}
-
+// 📦 Retorno final
 if ($resultado) {
-  echo json_encode($resultado);
+  echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 } else {
   echo json_encode(['erro' => 'Livro não encontrado']);
 }

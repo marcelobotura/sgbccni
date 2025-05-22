@@ -1,16 +1,6 @@
 <?php
-// Inicia a sessão se ainda não tiver sido iniciada
-if (session_status() !== PHP_SESSION_ACTIVE) {
-  session_start();
-}
+require_once __DIR__ . '/../../../backend/config/config.php';
+require_once __DIR__ . '/../../../backend/includes/session.php';
 
-// Verifica se o usuário está logado e se é do tipo admin
-if (
-  !isset($_SESSION['usuario_id']) ||
-  !isset($_SESSION['usuario_tipo']) ||
-  $_SESSION['usuario_tipo'] !== 'admin'
-) {
-  // Redireciona para login de admin se não for admin autenticado
-  header("Location: ../pages/login_admin.php");
-  exit;
-}
+// 🔐 Protege acesso apenas para administradores
+exigir_login('admin');

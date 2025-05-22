@@ -1,87 +1,83 @@
 <?php
-require_once dirname(__DIR__) . '/config/config.php';
-require_once dirname(__DIR__) . '/includes/session.php';
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../includes/session.php';
+require_once __DIR__ . '/auth.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../../public_html/admin/cadastrar_livro.php');
-    exit;
-}
+// 🔐 Apenas administradores podem cadastrar
+exigir_login('admin');
 
-// Função auxiliar para buscar ou criar tag
-function obterOuCriarTag($conn, $nome, $tipo) {
-    $stmt = $conn->prepare("SELECT id FROM tags WHERE nome = ? AND tipo = ?");
-    $stmt->bind_param("ss", $nome, $tipo);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id);
-        $stmt->fetch();
-        return $id;
-    } else {
-        $stmt->close();
-        $stmt = $conn->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
-        $stmt->bind_param("ss", $nome, $tipo);
-        $stmt->execute();
-        return $stmt->insert_id;
-    }
-}
-
-// Dados do formulário
-$titulo      = $_POST['titulo'] ?? '';
-$autor_nome  = $_POST['autor_nome'] ?? '';
-$editora_nome = $_POST['editora_nome'] ?? '';
-$categoria_nome = $_POST['categoria_nome'] ?? '';
-$ano         = $_POST['ano'] ?? null;
-$paginas     = $_POST['paginas'] ?? null;
-$idioma      = $_POST['idioma'] ?? '';
-$isbn        = $_POST['isbn'] ?? '';
-$descricao   = $_POST['descricao'] ?? '';
-$formato     = $_POST['formato'] ?? 'físico';
-$link_leitura = $_POST['link_leitura'] ?? null;
-$capa_url    = $_POST['capa_url'] ?? '';
+// 🧼 Coleta e sanitiza os dados
+$titulo         = trim($_POST['titulo'] ?? '');
+$isbn           = trim($_POST['isbn'] ?? '');
+$descricao      = trim($_POST['descricao'] ?? '');
+$tipo           = $_POST['tipo'] ?? 'físico';
+$formato        = $_POST['formato'] ?? 'PDF';
+$link_digital   = trim($_POST['link_digital'] ?? '');
+$autor_id       = $_POST['autor_id'] ?? null;
+$editora_id     = $_POST['editora_id'] ?? null;
+$categoria_id   = $_POST['categoria_id'] ?? null;
 
 // Validação básica
-if (empty($titulo) || empty($autor_nome)) {
-    $_SESSION['erro'] = 'Título e autor são obrigatórios.';
-    header('Location: ../../public_html/admin/cadastrar_livro.php');
+if (!$titulo || !$isbn) {
+    $_SESSION['erro'] = "Preencha os campos obrigatórios.";
+    header("Location: " . URL_BASE . "admin/pages/cadastrar_livro.php");
     exit;
 }
 
 // Verifica se ISBN já existe
-if (!empty($isbn)) {
-    $stmt = $conn->prepare("SELECT id FROM livros WHERE isbn = ?");
-    $stmt->bind_param("s", $isbn);
-    $stmt->execute();
-    $stmt->store_result();
-    if ($stmt->num_rows > 0) {
-        $_SESSION['erro'] = 'Já existe um livro cadastrado com esse ISBN.';
-        header('Location: ../../public_html/admin/cadastrar_livro.php');
+$stmt_check = $conn->prepare("SELECT id FROM livros WHERE isbn = ?");
+$stmt_check->bind_param("s", $isbn);
+$stmt_check->execute();
+$stmt_check->store_result();
+
+if ($stmt_check->num_rows > 0) {
+    $_SESSION['erro'] = "Este ISBN já está cadastrado.";
+    header("Location: " . URL_BASE . "admin/pages/cadastrar_livro.php");
+    exit;
+}
+$stmt_check->close();
+
+// 📸 Upload da capa
+$capa_local = '';
+if (!empty($_FILES['capa']['name'])) {
+    $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
+    $tipo = mime_content_type($_FILES['capa']['tmp_name']);
+
+    if (!in_array($tipo, $permitidos)) {
+        $_SESSION['erro'] = "Formato de imagem não permitido.";
+        header("Location: " . URL_BASE . "admin/pages/cadastrar_livro.php");
+        exit;
+    }
+
+    $ext = pathinfo($_FILES['capa']['name'], PATHINFO_EXTENSION);
+    $novo_nome = uniqid('capa_', true) . '.' . $ext;
+    $destino = __DIR__ . '/../uploads/capas/' . $novo_nome;
+
+    if (move_uploaded_file($_FILES['capa']['tmp_name'], $destino)) {
+        $capa_local = 'uploads/capas/' . $novo_nome;
+    } else {
+        $_SESSION['erro'] = "Erro ao fazer upload da capa.";
+        header("Location: " . URL_BASE . "admin/pages/cadastrar_livro.php");
         exit;
     }
 }
 
-// Inserir ou obter tags
-$autor_id    = obterOuCriarTag($conn, $autor_nome, 'autor');
-$editora_id  = obterOuCriarTag($conn, $editora_nome, 'editora');
-$categoria_id = obterOuCriarTag($conn, $categoria_nome, 'categoria');
-
-// Inserção final do livro
-$stmt = $conn->prepare("INSERT INTO livros 
-    (titulo, autor_id, editora_id, categoria_id, ano, isbn, paginas, idioma, descricao, tipo, formato, link_digital, capa_url, criado_em)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+// 💾 Inserção no banco
+$stmt = $conn->prepare("INSERT INTO livros (
+    titulo, isbn, descricao, tipo, formato, link_digital, capa_local, autor_id, editora_id, categoria_id
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 $stmt->bind_param(
-    "siiiisssssss",
-    $titulo, $autor_id, $editora_id, $categoria_id, $ano, $isbn, $paginas,
-    $idioma, $descricao, $formato, $formato, $link_leitura, $capa_url
+    "sssssssiii",
+    $titulo, $isbn, $descricao, $tipo, $formato,
+    $link_digital, $capa_local, $autor_id, $editora_id, $categoria_id
 );
 
 if ($stmt->execute()) {
-    $_SESSION['sucesso'] = 'Livro cadastrado com sucesso!';
+    $_SESSION['sucesso'] = "Livro cadastrado com sucesso.";
 } else {
-    $_SESSION['erro'] = 'Erro ao salvar o livro.';
+    $_SESSION['erro'] = "Erro ao salvar: " . $stmt->error;
 }
 
-header('Location: ../../public_html/admin/cadastrar_livro.php');
+header("Location: " . URL_BASE . "admin/pages/cadastrar_livro.php");
 exit;

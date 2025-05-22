@@ -1,52 +1,12 @@
 <?php
-define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
-require_once BASE_PATH . '/includes/session.php';
-require_once BASE_PATH . '/includes/header.php';
-require_once __DIR__ . '/protect_admin.php'; // Proteção específica do painel admin
-?>
+require_once __DIR__ . '/../../backend/config/config.php';
+require_once __DIR__ . '/../../backend/includes/session.php';
 
-<div class="container py-4">
-  <h2 class="mb-4 text-center">
-    <i class="bi bi-speedometer2"></i> Painel Administrativo
-  </h2>
-
-  <div class="row g-4">
-    <!-- Cadastrar Livro -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body text-center">
-          <i class="bi bi-plus-circle display-4 text-primary"></i>
-          <h5 class="card-title mt-3">Cadastrar Livro</h5>
-          <p class="text-card">Adicione novos livros ao sistema.</p>
-          <a href="cadastrar_livro.php" class="btn btn-outline-primary w-100">Acessar</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gerenciar Tags -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body text-center">
-          <i class="bi bi-tags display-4 text-success"></i>
-          <h5 class="card-title mt-3">Gerenciar Tags</h5>
-          <p class="text-card">Autores, categorias e editoras.</p>
-          <a href="gerenciar_tags.php" class="btn btn-outline-success w-100">Acessar</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sair -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body text-center">
-          <i class="bi bi-box-arrow-right display-4 text-danger"></i>
-          <h5 class="card-title mt-3">Sair</h5>
-          <p class="text-card">Encerrar a sessão administrativa.</p>
-          <a href="../../login/logout.php" class="btn btn-outline-danger w-100">Desconectar</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<?php require_once BASE_PATH . '/includes/footer.php'; ?>
+// Redireciona conforme o tipo de usuário logado
+if (isset($_SESSION['usuario_id']) && $_SESSION['usuario_tipo'] === 'admin') {
+    header("Location: dashboard.php");
+    exit;
+} else {
+    header("Location: ../../public_html/login/login_admin.php");
+    exit;
+}

@@ -32,4 +32,21 @@ if ($conn->connect_error) {
     error_log("Erro de conexão: " . $conn->connect_error);
     die("<h3>❌ Erro ao conectar ao banco de dados. Verifique config.php e .env</h3>");
 }
+
+// Função para exibir mensagens da sessão
+function exibir_mensagens_sessao() {
+    // Inicia a sessão se ainda não estiver iniciada
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (isset($_SESSION['sucesso'])) {
+        echo '<div class="alert alert-success mt-3">' . htmlspecialchars($_SESSION['sucesso']) . '</div>';
+        unset($_SESSION['sucesso']); // Limpa a mensagem após exibição
+    }
+    if (isset($_SESSION['erro'])) {
+        echo '<div class="alert alert-danger mt-3">' . htmlspecialchars($_SESSION['erro']) . '</div>';
+        unset($_SESSION['erro']); // Limpa a mensagem após exibição
+    }
+}
 ?>

@@ -1,13 +1,13 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/../app_backend');
+define('BASE_PATH', dirname(__DIR__, 2) . '/app_backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
-include_once BASE_PATH . '/includes/header.php';
+include_once BASE_PATH . '/includes/header.php'; // Inclua seu cabeçalho HTML aqui
 
 exigir_login('admin');
 
 $filtro = $_GET['filtro'] ?? '';
-$sql = "SELECT l.*, 
+$sql = "SELECT l.*,
            (SELECT nome FROM tags WHERE id = l.autor_id) AS autor,
            (SELECT nome FROM tags WHERE id = l.editora_id) AS editora,
            (SELECT nome FROM tags WHERE id = l.categoria_id) AS categoria
@@ -22,6 +22,7 @@ $result = $stmt->get_result();
 ?>
 
 <div class="container py-4">
+  <?php exibir_mensagens_sessao(); // Chamada para exibir as mensagens ?>
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>📚 Livros Cadastrados</h2>
     <form class="d-flex" method="GET">
@@ -49,7 +50,7 @@ $result = $stmt->get_result();
           <tr>
             <td>
               <?php if ($livro['capa_url']): ?>
-                <img src="<?= $livro['capa_url'] ?>" alt="Capa" style="height: 80px;">
+                <img src="<?= htmlspecialchars($livro['capa_url']) ?>" alt="Capa" style="height: 80px;">
               <?php endif; ?>
             </td>
             <td><?= htmlspecialchars($livro['titulo']) ?></td>
@@ -62,7 +63,7 @@ $result = $stmt->get_result();
               <a href="editar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-outline-warning">✏️ Editar</a>
               <a href="excluir_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Deseja realmente excluir?')">🗑️ Excluir</a>
               <?php if ($livro['qr_code']): ?>
-                <a href="<?= $livro['qr_code'] ?>" target="_blank" class="btn btn-sm btn-outline-dark">📱 QR</a>
+                <a href="<?= htmlspecialchars($livro['qr_code']) ?>" target="_blank" class="btn btn-sm btn-outline-dark">📱 QR</a>
               <?php endif; ?>
             </td>
           </tr>

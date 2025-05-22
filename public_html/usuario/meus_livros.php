@@ -7,7 +7,20 @@ include_once BASE_PATH . '/includes/header.php';
 exigir_login('usuario');
 $usuario_id = $_SESSION['usuario_id'];
 
-$sql = "SELECT l.titulo, l.capa_url, lu.data_leitura, lu.observacao
+// Salva observação
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['livro_id'])) {
+  $observacao = trim($_POST['observacao'] ?? '');
+  $livro_id = (int)$_POST['livro_id'];
+
+  $stmt = $conn->prepare("UPDATE livros_usuarios SET observacao = ? WHERE usuario_id = ? AND livro_id = ?");
+  $stmt->bind_param("sii", $observacao, $usuario_id, $livro_id);
+  $stmt->execute();
+  $_SESSION['sucesso'] = "✅ Observação atualizada!";
+  header("Location: meus_livros.php");
+  exit;
+}
+
+$sql = "SELECT l.id, l.titulo, l.capa_url, lu.data_leitura, lu.observacao
         FROM livros_usuarios lu
         JOIN livros l ON l.id = lu.livro_id
         WHERE lu.usuario_id = ? AND lu.lido = 1";
@@ -19,7 +32,11 @@ $result = $stmt->get_result();
 ?>
 
 <div class="container py-4">
-  <h2>🕓 Histórico de Leituras</h2>
+  <h2>📖 Meus Livros Lidos</h2>
+  <?php if (isset($_SESSION['sucesso'])): ?>
+    <div class="alert alert-success"><?= $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></div>
+  <?php endif; ?>
+
   <?php if ($result->num_rows): ?>
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <?php while($livro = $result->fetch_assoc()): ?>
@@ -31,14 +48,21 @@ $result = $stmt->get_result();
             <div class="card-body">
               <h5 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h5>
               <p class="card-text"><strong>Lido em:</strong> <?= htmlspecialchars($livro['data_leitura']) ?: '—' ?></p>
-              <p class="card-text"><strong>Observação:</strong><br><?= nl2br(htmlspecialchars($livro['observacao'])) ?></p>
+
+              <form method="POST" class="mt-2">
+                <input type="hidden" name="livro_id" value="<?= $livro['id'] ?>">
+                <label for="obs_<?= $livro['id'] ?>"><strong>Observação:</strong></label>
+                <textarea name="observacao" id="obs_<?= $livro['id'] ?>" class="form-control mb-2" rows="3"><?= htmlspecialchars($livro['observacao']) ?></textarea>
+                <button type="submit" class="btn btn-sm btn-outline-primary">💾 Salvar</button>
+              </form>
+
             </div>
           </div>
         </div>
       <?php endwhile; ?>
     </div>
   <?php else: ?>
-    <div class="alert alert-info">Nenhum histórico de leitura disponível ainda.</div>
+    <div class="alert alert-info">Você ainda não marcou livros como lidos.</div>
   <?php endif; ?>
 </div>
 

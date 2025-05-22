@@ -22,17 +22,17 @@ exigir_login('usuario');
 
   <div class="row g-4">
     <div class="col-md-4">
-      <a href="livros.php" class="text-decoration-none">
+      <a href="meus_livros.php" class="text-decoration-none">
         <div class="card shadow-sm border-0 text-center p-3">
-          <h5>📚 Meus Livros</h5>
-          <p class="text-muted">Estante de leitura atual</p>
+          <h5>📖 Meus Livros</h5>
+          <p class="text-muted">Leituras concluídas</p>
         </div>
       </a>
     </div>
     <div class="col-md-4">
-      <a href="favoritos.php" class="text-decoration-none">
+      <a href="meus_favoritos.php" class="text-decoration-none">
         <div class="card shadow-sm border-0 text-center p-3">
-          <h5>⭐ Favoritos</h5>
+          <h5>⭐ Meus Favoritos</h5>
           <p class="text-muted">Livros que você marcou</p>
         </div>
       </a>
@@ -41,7 +41,7 @@ exigir_login('usuario');
       <a href="historico.php" class="text-decoration-none">
         <div class="card shadow-sm border-0 text-center p-3">
           <h5>🕓 Histórico</h5>
-          <p class="text-muted">Leituras anteriores</p>
+          <p class="text-muted">Visualização de leitura</p>
         </div>
       </a>
     </div>

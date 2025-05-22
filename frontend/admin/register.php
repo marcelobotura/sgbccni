@@ -1,9 +1,15 @@
 <?php
 session_start();
-require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../../../backend/config/config.php';
 
 $erro = '';
 $sucesso = '';
+// ... (restante igual)
+
+require_once __DIR__ . '/../../../backend/includes/header.php';
+?>
+<!-- ... HTML ... -->
+<?php require_once __DIR__ . '/../../../backend/includes/footer.php'; 
 
 // Verifica envio do formulário
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

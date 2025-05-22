@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../includes/session.php';
+require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../includes/session.php';
 
 // 🔒 Protege contra acesso não autorizado
 exigir_login('usuario');
@@ -27,7 +27,7 @@ $imagem_perfil = $_SESSION['usuario_foto'] ?? '';
 if (!empty($_FILES['foto_perfil']['name'])) {
     $ext = pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION);
     $novo_nome = uniqid('perfil_', true) . '.' . $ext;
-    $destino = __DIR__ . '/../uploads/perfis/' . $novo_nome;
+    $destino = __DIR__ . '/../../uploads/perfis/' . $novo_nome;
 
     if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $destino)) {
         $imagem_perfil = 'uploads/perfis/' . $novo_nome;

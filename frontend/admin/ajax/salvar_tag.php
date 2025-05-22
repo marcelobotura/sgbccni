@@ -1,5 +1,5 @@
 <?php
-require_once '../../includes/config.php';
+require_once __DIR__ . '/../../../backend/config/config.php';
 
 // Força o retorno como JSON
 header('Content-Type: application/json');

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/config.php';
+require_once __DIR__ . '/../../config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
   $acao  = $_POST['acao'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
 
     if (empty($nome) || empty($email) || empty($senha)) {
       $_SESSION['erro'] = "Preencha todos os campos.";
-      header("Location: ../login/register.php");
+      header("Location: " . URL_BASE . "login/register.php");
       exit;
     }
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     if ($stmt->num_rows > 0) {
       $_SESSION['erro'] = "Este e-mail já está cadastrado.";
       $stmt->close();
-      header("Location: ../login/register.php");
+      header("Location: " . URL_BASE . "login/register.php");
       exit;
     }
 
@@ -37,15 +37,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     $stmt->bind_param("ssss", $nome, $email, $senha_hash, $tipo);
 
     if ($stmt->execute()) {
-      $_SESSION['usuario_id'] = $stmt->insert_id;
+      $_SESSION['usuario_id']   = $stmt->insert_id;
       $_SESSION['usuario_nome'] = $nome;
       $_SESSION['usuario_tipo'] = $tipo;
       $stmt->close();
-      header("Location: ../public/meus_livros.php");
+      header("Location: " . URL_BASE . "usuario/meus_livros.php");
       exit;
     } else {
       $_SESSION['erro'] = "Erro ao cadastrar.";
-      header("Location: ../login/register.php");
+      header("Location: " . URL_BASE . "login/register.php");
       exit;
     }
 
@@ -63,16 +63,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
       $stmt->fetch();
 
       if (password_verify($senha, $senha_hash)) {
-        $_SESSION['usuario_id'] = $id;
+        $_SESSION['usuario_id']   = $id;
         $_SESSION['usuario_nome'] = $nome;
         $_SESSION['usuario_tipo'] = $tipo;
         $stmt->close();
 
         // Redireciona conforme tipo
         if ($tipo === 'admin') {
-          header("Location: ../admin/pages/index.php");
+          header("Location: " . URL_BASE . "admin/index.php");
         } else {
-          header("Location: ../public/meus_livros.php");
+          header("Location: " . URL_BASE . "usuario/meus_livros.php");
         }
         exit;
       } else {
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     }
 
     $stmt->close();
-    header("Location: ../login/login.php");
+    header("Location: " . URL_BASE . "login/login.php");
     exit;
   }
 }

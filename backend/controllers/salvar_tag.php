@@ -1,8 +1,8 @@
 <?php
-require_once '../../includes/config.php';
-
-// Força o retorno como JSON
+require_once __DIR__ . '/../config/config.php';
 header('Content-Type: application/json');
+// ...
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');

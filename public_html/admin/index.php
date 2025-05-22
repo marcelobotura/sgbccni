@@ -1,6 +1,7 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/../app_backend');
+define('BASE_PATH', dirname(__DIR__) . '/../backend'); // Caminho atualizado
 require_once BASE_PATH . '/config/config.php';
+require_once BASE_PATH . '/includes/session.php';
 session_start();
 
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
@@ -30,7 +31,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div>
         <h3 class="fw-bold">📊 Painel Administrativo</h3>
-        <p class="text-muted">Bem-vindo, <?= htmlspecialchars($_SESSION['usuario_nome']) ?>!</p>
+        <p class="text-muted">Bem-vindo, <?= htmlspecialchars($_SESSION['usuario_nome'] ?? 'Administrador') ?>!</p>
       </div>
       <a href="../login/logout.php" class="btn btn-outline-danger">
         <i class="bi bi-box-arrow-right"></i> Sair

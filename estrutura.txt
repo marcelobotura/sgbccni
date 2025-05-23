@@ -1,134 +1,362 @@
 C:.
-�   .gitattributes
-�   .gitignore
-�   estrutura.txt
-�   README.md
-�
-+---backend
-�   +---config
-�   �       atualizar_perfil.php
-�   �       auth.php
-�   �       config.php
-�   �       env.php
-�   �
-�   +---controllers
-�   �   �   atualizar_perfil.php
-�   �   �   auth.php
-�   �   �   salvar_livro.php
-�   �   �   salvar_tag.php
-�   �   �
-�   �   +---auth
-�   �   �       login.php
-�   �   �       logout.php
-�   �   �
-�   �   +---livros
-�   �   �       salvar_livro.php
-�   �   �
-�   �   +---usuarios
-�   �           atualizar_perfil.php
-�   �           salvar_usuario.php
-�   �
-�   +---includes
-�   �       footer.php
-�   �       header.php
-�   �       menu.php
-�   �       session.php
-�   �
-�   +---logs
-�   +---services
-�           buscar_isbn.php
-�           buscar_tags.php
-�
-+---frontend
-�   +---admin
-�   �   �   dashboard.php
-�   �   �   index.php
-�   �   �   logout.php
-�   �   �   register.php
-�   �   �
-�   �   +---ajax
-�   �   �       salvar_tag.php
-�   �   �
-�   �   +---components
-�   �   +---pages
-�   �           cadastrar_livro.php
-�   �           gerenciar_tags.php
-�   �           listar_livros.php
-�   �           protect_admin.php
-�   �           register_admin.php
-�   �
-�   +---assets
-�   �   +---css
-�   �   �       estilo-base.css
-�   �   �       estilo-dark.css
-�   �   �       estilo-medio.css
-�   �   �       style.css
-�   �   �
-�   �   +---js
-�   �           tema.js
-�   �
-�   +---views
-+---public_html
-    �   .htaccess
-    �   contato.php
-    �   enviar_contato.php
-    �   exportar_pdf_livro.php
-    �   index.php
-    �   livro.php
-    �   teste_admin.php
-    �
-    +---admin
-    �       index.php
-    �
-    +---login
-    �       index.php
-    �       login.php
-    �       login_admin.php
-    �       login_valida.php
-    �       logout.php
-    �       processa_login.php
-    �       redefinir_senha.php
-    �       register.php
-    �       register_valida.php
-    �       salvar_nova_senha.php
-    �       salvar_usuario.php
-    �
-    +---uploads
-    �   +---capas
-    �   �       .gitignore
-    �   �       682a890eeb10e_dom-casmurro.jpg
-    �   �       682a8970c173c_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a9030b0b09_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a90a92e85b_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a90c2bc887_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a912a0e80a_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a91f82f6db_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a928bdf825_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a96c1b8c55_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a9819cfd37_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a9876e6845_graciliamos-ramos-vidas-secas.jpg
-    �   �       682a99c4a9290_graciliamos-ramos-vidas-secas.jpg
-    �   �
-    �   +---perfis
-    �           .gitkeep
-    �           682d32ef9c86e.jpg
-    �
-    +---usuario
-            busca.php
-            detalhes.php
-            emprestimos.php
-            excluir_conta.php
-            favoritos.php
-            historico.php
-            index.php
-            livros.php
-            meus_favoritos.php
-            meus_livros.php
-            perfil.php
-            pesquisador.php
-            salvar_perfil.php
-            sugestao.php
-            teste_admin.php
-
-
-C:\xampp\htdocs\sgbccni>
+│   .gitattributes
+│   .gitignore
+│   composer.json
+│   composer.lock
+│   estrutura.txt
+│   README.md
+│
+├───backend
+│   ├───config
+│   │       atualizar_perfil.php
+│   │       auth.php
+│   │       config.php
+│   │       env.php
+│   │
+│   ├───controllers
+│   │   │   atualizar_perfil.php
+│   │   │   auth.php
+│   │   │   salvar_livro.php
+│   │   │   salvar_tag.php
+│   │   │
+│   │   ├───auth
+│   │   │       login.php
+│   │   │       logout.php
+│   │   │       nova_senha.php
+│   │   │       redefinir_senha.php
+│   │   │
+│   │   ├───livros
+│   │   │       atualizar_livro.php
+│   │   │       editar_livro.php
+│   │   │       salvar_livro.php
+│   │   │
+│   │   └───usuarios
+│   │           atualizar_perfil.php
+│   │           excluir_conta.php
+│   │           salvar_usuario.php
+│   │
+│   ├───includes
+│   │       alerta.php
+│   │       footer.php
+│   │       header.php
+│   │       menu.php
+│   │       session.php
+│   │
+│   ├───logs
+│   │       php-error.log
+│   │
+│   └───services
+│           buscar_isbn.php
+│           buscar_tags.php
+│
+├───frontend
+│   ├───admin
+│   │   │   dashboard.php
+│   │   │   excluir_usuario.php
+│   │   │   logout.php
+│   │   │   register.php
+│   │   │
+│   │   ├───ajax
+│   │   │       salvar_tag.php
+│   │   │
+│   │   └───pages
+│   │           cadastrar_livro.php
+│   │           editar_usuario.php
+│   │           excluir_mensagem.php
+│   │           gerenciar_tags.php
+│   │           index.php
+│   │           listar_livros.php
+│   │           logs_redefinicao.php
+│   │           mensagens.php
+│   │           protect_admin.php
+│   │           register_admin.php
+│   │           salvar_admin.php
+│   │           usuarios.php
+│   │
+│   ├───assets
+│   │   ├───css
+│   │   │       admin.css
+│   │   │       estilo-base.css
+│   │   │       estilo-dark.css
+│   │   │       estilo-medio.css
+│   │   │       login.css
+│   │   │
+│   │   └───js
+│   │           tema.js
+│   │
+│   ├───login
+│   │       index.php
+│   │       login.php
+│   │       login_admin.php
+│   │       login_valida.php
+│   │       logout.php
+│   │       processa_login.php
+│   │       redefinir_senha.php
+│   │       register.php
+│   │       register_valida.php
+│   │       salvar_nova_senha.php
+│   │       salvar_usuario.php
+│   │
+│   └───usuario
+│           .htaccess
+│           busca.php
+│           detalhes.php
+│           emprestimos.php
+│           excluir_conta.php
+│           favoritos.php
+│           historico.php
+│           index.php
+│           livros.php
+│           meus_favoritos.php
+│           meus_livros.php
+│           perfil.php
+│           pesquisador.php
+│           salvar_perfil.php
+│           sugestao.php
+│
+├───public_html
+│       contato.php
+│       enviar_contato.php
+│       index.php
+│       livro.php
+│
+├───uploads
+│   ├───capas
+│   │       .gitignore
+│   │       682a890eeb10e_dom-casmurro.jpg
+│   │       682a8970c173c_graciliamos-ramos-vidas-secas.jpg
+│   │       682a9030b0b09_graciliamos-ramos-vidas-secas.jpg
+│   │       682a90a92e85b_graciliamos-ramos-vidas-secas.jpg
+│   │       682a90c2bc887_graciliamos-ramos-vidas-secas.jpg
+│   │       682a912a0e80a_graciliamos-ramos-vidas-secas.jpg
+│   │       682a91f82f6db_graciliamos-ramos-vidas-secas.jpg
+│   │       682a928bdf825_graciliamos-ramos-vidas-secas.jpg
+│   │       682a96c1b8c55_graciliamos-ramos-vidas-secas.jpg
+│   │       682a9819cfd37_graciliamos-ramos-vidas-secas.jpg
+│   │       682a9876e6845_graciliamos-ramos-vidas-secas.jpg
+│   │       682a99c4a9290_graciliamos-ramos-vidas-secas.jpg
+│   │
+│   ├───perfis
+│   │       .gitkeep
+│   │       682d32ef9c86e.jpg
+│   │
+│   └───qrcodes
+└───vendor
+    │   autoload.php
+    │
+    ├───bacon
+    │   └───bacon-qr-code
+    │       │   composer.json
+    │       │   LICENSE
+    │       │   README.md
+    │       │
+    │       └───src
+    │           │   Writer.php
+    │           │
+    │           ├───Common
+    │           │       BitArray.php
+    │           │       BitMatrix.php
+    │           │       BitUtils.php
+    │           │       CharacterSetEci.php
+    │           │       EcBlock.php
+    │           │       EcBlocks.php
+    │           │       ErrorCorrectionLevel.php
+    │           │       FormatInformation.php
+    │           │       Mode.php
+    │           │       ReedSolomonCodec.php
+    │           │       Version.php
+    │           │
+    │           ├───Encoder
+    │           │       BlockPair.php
+    │           │       ByteMatrix.php
+    │           │       Encoder.php
+    │           │       MaskUtil.php
+    │           │       MatrixUtil.php
+    │           │       QrCode.php
+    │           │
+    │           ├───Exception
+    │           │       ExceptionInterface.php
+    │           │       InvalidArgumentException.php
+    │           │       OutOfBoundsException.php
+    │           │       RuntimeException.php
+    │           │       UnexpectedValueException.php
+    │           │       WriterException.php
+    │           │
+    │           └───Renderer
+    │               │   GDLibRenderer.php
+    │               │   ImageRenderer.php
+    │               │   PlainTextRenderer.php
+    │               │   RendererInterface.php
+    │               │
+    │               ├───Color
+    │               │       Alpha.php
+    │               │       Cmyk.php
+    │               │       ColorInterface.php
+    │               │       Gray.php
+    │               │       Rgb.php
+    │               │
+    │               ├───Eye
+    │               │       CompositeEye.php
+    │               │       EyeInterface.php
+    │               │       ModuleEye.php
+    │               │       PointyEye.php
+    │               │       SimpleCircleEye.php
+    │               │       SquareEye.php
+    │               │
+    │               ├───Image
+    │               │       EpsImageBackEnd.php
+    │               │       ImageBackEndInterface.php
+    │               │       ImagickImageBackEnd.php
+    │               │       SvgImageBackEnd.php
+    │               │       TransformationMatrix.php
+    │               │
+    │               ├───Module
+    │               │   │   DotsModule.php
+    │               │   │   ModuleInterface.php
+    │               │   │   RoundnessModule.php
+    │               │   │   SquareModule.php
+    │               │   │
+    │               │   └───EdgeIterator
+    │               │           Edge.php
+    │               │           EdgeIterator.php
+    │               │
+    │               ├───Path
+    │               │       Close.php
+    │               │       Curve.php
+    │               │       EllipticArc.php
+    │               │       Line.php
+    │               │       Move.php
+    │               │       OperationInterface.php
+    │               │       Path.php
+    │               │
+    │               └───RendererStyle
+    │                       EyeFill.php
+    │                       Fill.php
+    │                       Gradient.php
+    │                       GradientType.php
+    │                       RendererStyle.php
+    │
+    ├───composer
+    │       autoload_classmap.php
+    │       autoload_namespaces.php
+    │       autoload_psr4.php
+    │       autoload_real.php
+    │       autoload_static.php
+    │       ClassLoader.php
+    │       installed.json
+    │       installed.php
+    │       InstalledVersions.php
+    │       LICENSE
+    │       platform_check.php
+    │
+    ├───dasprid
+    │   └───enum
+    │       │   composer.json
+    │       │   LICENSE
+    │       │   README.md
+    │       │
+    │       └───src
+    │           │   AbstractEnum.php
+    │           │   EnumMap.php
+    │           │   NullValue.php
+    │           │
+    │           └───Exception
+    │                   CloneNotSupportedException.php
+    │                   ExceptionInterface.php
+    │                   ExpectationException.php
+    │                   IllegalArgumentException.php
+    │                   MismatchException.php
+    │                   SerializeNotSupportedException.php
+    │                   UnserializeNotSupportedException.php
+    │
+    └───endroid
+        └───qr-code
+            │   composer.json
+            │   LICENSE
+            │   README.md
+            │
+            ├───assets
+            │       open_sans.ttf
+            │
+            └───src
+                │   ErrorCorrectionLevel.php
+                │   QrCode.php
+                │   QrCodeInterface.php
+                │   RoundBlockSizeMode.php
+                │
+                ├───Bacon
+                │       ErrorCorrectionLevelConverter.php
+                │       MatrixFactory.php
+                │
+                ├───Builder
+                │       Builder.php
+                │       BuilderInterface.php
+                │       BuilderRegistry.php
+                │       BuilderRegistryInterface.php
+                │
+                ├───Color
+                │       Color.php
+                │       ColorInterface.php
+                │
+                ├───Encoding
+                │       Encoding.php
+                │       EncodingInterface.php
+                │
+                ├───Exception
+                │       BlockSizeTooSmallException.php
+                │       ValidationException.php
+                │
+                ├───ImageData
+                │       LabelImageData.php
+                │       LogoImageData.php
+                │
+                ├───Label
+                │   │   Label.php
+                │   │   LabelAlignment.php
+                │   │   LabelInterface.php
+                │   │
+                │   ├───Font
+                │   │       Font.php
+                │   │       FontInterface.php
+                │   │       OpenSans.php
+                │   │
+                │   └───Margin
+                │           Margin.php
+                │           MarginInterface.php
+                │
+                ├───Logo
+                │       Logo.php
+                │       LogoInterface.php
+                │
+                ├───Matrix
+                │       Matrix.php
+                │       MatrixFactoryInterface.php
+                │       MatrixInterface.php
+                │
+                └───Writer
+                    │   AbstractGdWriter.php
+                    │   BinaryWriter.php
+                    │   ConsoleWriter.php
+                    │   DebugWriter.php
+                    │   EpsWriter.php
+                    │   GifWriter.php
+                    │   PdfWriter.php
+                    │   PngWriter.php
+                    │   SvgWriter.php
+                    │   ValidatingWriterInterface.php
+                    │   WebPWriter.php
+                    │   WriterInterface.php
+                    │
+                    └───Result
+                            AbstractResult.php
+                            BinaryResult.php
+                            ConsoleResult.php
+                            DebugResult.php
+                            EpsResult.php
+                            GdResult.php
+                            GifResult.php
+                            PdfResult.php
+                            PngResult.php
+                            ResultInterface.php
+                            SvgResult.php
+                            WebPResult.php

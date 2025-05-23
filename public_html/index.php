@@ -2,27 +2,56 @@
 define('BASE_PATH', dirname(__DIR__) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
-include_once BASE_PATH . '/includes/header.php';
+require_once BASE_PATH . '/includes/header.php';
 
-// Verifica se usuário já está logado
-if (isset($_SESSION['usuario_id'])) {
-  if ($_SESSION['usuario_tipo'] === 'admin') {
-    header("Location: " . URL_BASE . "admin/index.php");
-    exit;
-  } else {
-    header("Location: " . URL_BASE . "usuario/index.php");
-    exit;
-  }
-}
+// 🔒 Garante que o usuário esteja logado
+exigir_login('usuario');
 ?>
 
-<div class="container py-5 text-center">
-  <h1 class="display-5 fw-bold">Bem-vindo à Biblioteca Comunitária CNI</h1>
-  <p class="lead">Faça login ou explore o sistema.</p>
-  <div class="d-flex justify-content-center gap-3 mt-4">
-    <a href="<?= URL_BASE ?>login/login.php" class="btn btn-primary">🔐 Login</a>
-    <a href="<?= URL_BASE ?>login/register.php" class="btn btn-outline-success">📝 Criar Conta</a>
+<div class="container py-5">
+  <div class="row justify-content-between align-items-center mb-4">
+    <div class="col-md-8">
+      <h2 class="fw-bold">👋 Olá, <?= htmlspecialchars($_SESSION['usuario_nome']) ?></h2>
+      <p class="text-muted">Bem-vindo à sua área da <strong>Biblioteca Comunitária CNI</strong>.</p>
+    </div>
+    <div class="col-md-4 text-end">
+      <a href="<?= URL_BASE ?>login/logout.php" class="btn btn-outline-danger">
+        <i class="bi bi-box-arrow-right"></i> Sair
+      </a>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">📖 Meus Livros</h5>
+          <p class="card-text">Veja seu histórico de leitura, favoritos e livros lidos.</p>
+          <a href="livros.php" class="btn btn-primary w-100">Acessar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">👤 Meu Perfil</h5>
+          <p class="card-text">Edite seus dados pessoais, foto e informações de contato.</p>
+          <a href="perfil.php" class="btn btn-secondary w-100">Acessar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">💡 Sugestões</h5>
+          <p class="card-text">Envie ideias de novos livros, melhorias ou projetos.</p>
+          <a href="sugestao.php" class="btn btn-outline-success w-100">Enviar</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<?php include_once BASE_PATH . '/includes/footer.php'; ?>
+<?php require_once BASE_PATH . '/includes/footer.php'; ?>

@@ -14,6 +14,7 @@ exigir_login('admin');
   <?php endif; ?>
 
   <form action="<?= URL_BASE ?>backend/controllers/livros/salvar_livro.php" method="POST" enctype="multipart/form-data">
+
     <div class="row mb-3">
       <div class="col-md-8">
         <label for="titulo" class="form-label">Título *</label>
@@ -22,6 +23,21 @@ exigir_login('admin');
       <div class="col-md-4">
         <label for="isbn" class="form-label">ISBN *</label>
         <input type="text" name="isbn" id="isbn" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="volume" class="form-label">Volume</label>
+        <input type="text" name="volume" id="volume" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label for="edicao" class="form-label">Edição</label>
+        <input type="text" name="edicao" id="edicao" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label for="codigo_interno" class="form-label">Código Interno *</label>
+        <input type="text" name="codigo_interno" id="codigo_interno" class="form-control" required>
       </div>
     </div>
 

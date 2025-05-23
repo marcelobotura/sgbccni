@@ -22,7 +22,10 @@ if (!defined('NOME_SISTEMA')) {
 
   <!-- Ícones Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/admin.css">
 
+<link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/estilo-base.css">
+<link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/admin.css">
   <!-- Estilos principais -->
   <link href="<?= URL_BASE ?>assets/css/estilo-base.css" rel="stylesheet">
 

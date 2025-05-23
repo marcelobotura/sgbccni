@@ -13,5 +13,14 @@
     <!-- Scripts adicionais (opcional) -->
     <?php if (!empty($extraScripts)) echo $extraScripts; ?>
 
+    <!-- Fade-out automático de alertas -->
+    <script>
+      setTimeout(() => {
+        const alertas = document.querySelectorAll('.alert');
+        alertas.forEach(alerta => alerta.classList.add('fade', 'show'));
+        setTimeout(() => alertas.forEach(a => a.remove()), 5000);
+      }, 300);
+    </script>
+
   </body>
 </html>

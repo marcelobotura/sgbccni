@@ -1,51 +1,39 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/../app_backend');
-require_once BASE_PATH . '/config/config.php';
-require_once BASE_PATH . '/includes/session.php';
-include_once BASE_PATH . '/includes/header.php';
+require_once __DIR__ . '/../../backend/config/config.php';
+require_once __DIR__ . '/../../backend/includes/session.php';
+require_once __DIR__ . '/../../backend/includes/header.php';
+require_once __DIR__ . '/../../backend/includes/menu.php';
 
 exigir_login('usuario');
 ?>
 
-<div class="container py-5">
-  <div class="row justify-content-between align-items-center mb-4">
-    <div class="col-md-8">
-      <h2 class="fw-bold">👋 Olá, <?= htmlspecialchars($_SESSION['usuario_nome']) ?></h2>
-      <p class="text-muted">Bem-vindo à sua área de leitura da <strong>Biblioteca CNI</strong>.</p>
-    </div>
-    <div class="col-md-4 text-end">
-      <a href="<?= URL_BASE ?>login/logout.php" class="btn btn-outline-danger">
-        <i class="bi bi-box-arrow-right"></i> Sair
-      </a>
-    </div>
+<div class="container py-4">
+  <div class="text-center">
+    <h2 class="fw-bold">👋 Olá, <?= htmlspecialchars($_SESSION['usuario_nome']) ?>!</h2>
+    <p class="text-muted">Bem-vindo à sua área de leitura da <strong>Biblioteca CNI</strong>.</p>
   </div>
 
-  <div class="row g-4">
-    <div class="col-md-4">
-      <a href="meus_livros.php" class="text-decoration-none">
-        <div class="card shadow-sm border-0 text-center p-3">
-          <h5>📖 Meus Livros</h5>
-          <p class="text-muted">Leituras concluídas</p>
+  <div class="row mt-4 g-3">
+    <div class="col-md-6">
+      <div class="card border-info shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">📖 Meus Livros</h5>
+          <p class="card-text">Veja os livros que você já leu ou está lendo.</p>
+          <a href="meus_livros.php" class="btn btn-outline-info btn-sm">Acessar</a>
         </div>
-      </a>
+      </div>
     </div>
-    <div class="col-md-4">
-      <a href="meus_favoritos.php" class="text-decoration-none">
-        <div class="card shadow-sm border-0 text-center p-3">
-          <h5>⭐ Meus Favoritos</h5>
-          <p class="text-muted">Livros que você marcou</p>
+
+    <div class="col-md-6">
+      <div class="card border-secondary shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">⭐ Favoritos</h5>
+          <p class="card-text">Visualize sua lista de livros favoritos.</p>
+          <a href="favoritos.php" class="btn btn-outline-secondary btn-sm">Ver Favoritos</a>
         </div>
-      </a>
-    </div>
-    <div class="col-md-4">
-      <a href="historico.php" class="text-decoration-none">
-        <div class="card shadow-sm border-0 text-center p-3">
-          <h5>🕓 Histórico</h5>
-          <p class="text-muted">Visualização de leitura</p>
-        </div>
-      </a>
+      </div>
     </div>
   </div>
 </div>
 
-<?php include_once BASE_PATH . '/includes/footer.php'; ?>
+<?php require_once __DIR__ . '/../../backend/includes/footer.php'; ?>

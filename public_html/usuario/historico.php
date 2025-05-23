@@ -1,45 +1,69 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/../app_backend');
+define('BASE_PATH', dirname(__DIR__) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
-include_once BASE_PATH . '/includes/header.php';
+require_once BASE_PATH . '/includes/header.php';
 
 exigir_login('usuario');
+
 $usuario_id = $_SESSION['usuario_id'];
 
-$sql = "SELECT l.titulo, l.capa_url, lu.data_leitura, lu.observacao
+// Consulta todos os livros lidos ou registrados pelo usuário
+$sql = "SELECT l.id, l.titulo, l.autor, l.capa, lu.status, lu.data_leitura
         FROM livros_usuarios lu
-        JOIN livros l ON l.id = lu.livro_id
-        WHERE lu.usuario_id = ? AND lu.lido = 1";
+        JOIN livros l ON lu.livro_id = l.id
+        WHERE lu.usuario_id = ?
+        ORDER BY lu.data_leitura DESC";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $usuario_id);
 $stmt->execute();
-$result = $stmt->get_result();
+$resultado = $stmt->get_result();
 ?>
 
 <div class="container py-4">
-  <h2>🕓 Histórico de Leituras</h2>
-  <?php if ($result->num_rows): ?>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <?php while($livro = $result->fetch_assoc()): ?>
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <?php if ($livro['capa_url']): ?>
-              <img src="<?= $livro['capa_url'] ?>" class="card-img-top" style="height: 250px; object-fit: cover;">
-            <?php endif; ?>
-            <div class="card-body">
-              <h5 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h5>
-              <p class="card-text"><strong>Lido em:</strong> <?= htmlspecialchars($livro['data_leitura']) ?: '—' ?></p>
-              <p class="card-text"><strong>Observação:</strong><br><?= nl2br(htmlspecialchars($livro['observacao'])) ?></p>
-            </div>
-          </div>
-        </div>
-      <?php endwhile; ?>
-    </div>
+  <h3 class="mb-4">📖 Histórico de Leitura</h3>
+
+  <?php if ($resultado->num_rows === 0): ?>
+    <div class="alert alert-secondary text-center">Nenhum livro registrado ainda.</div>
   <?php else: ?>
-    <div class="alert alert-info">Nenhum histórico de leitura disponível ainda.</div>
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Capa</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Status</th>
+            <th>Data de Leitura</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php while ($livro = $resultado->fetch_assoc()): ?>
+            <tr>
+              <td style="width: 80px;">
+                <img src="<?= URL_BASE . $livro['capa'] ?>" alt="Capa" class="img-thumbnail" style="height: 60px; object-fit: cover;">
+              </td>
+              <td><?= htmlspecialchars($livro['titulo']) ?></td>
+              <td><?= htmlspecialchars($livro['autor']) ?></td>
+              <td>
+                <?php
+                  $badgeClass = match ($livro['status']) {
+                    'lido' => 'success',
+                    'em_leitura' => 'primary',
+                    'favorito' => 'warning',
+                    default => 'secondary'
+                  };
+                ?>
+                <span class="badge bg-<?= $badgeClass ?>"><?= ucfirst($livro['status']) ?></span>
+              </td>
+              <td><?= $livro['data_leitura'] ? date('d/m/Y', strtotime($livro['data_leitura'])) : '-' ?></td>
+            </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+    </div>
   <?php endif; ?>
 </div>
 
-<?php include_once BASE_PATH . '/includes/footer.php'; ?>
+<?php require_once BASE_PATH . '/includes/footer.php'; ?>

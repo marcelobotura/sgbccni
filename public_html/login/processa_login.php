@@ -1,35 +1,40 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/../app_backend');
-require_once BASE_PATH . '/config/config.php';
-require_once BASE_PATH . '/includes/session.php';
+session_start();
+require_once __DIR__ . '/../../backend/config/config.php';
 
+// Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['usuario']) ?? '';
+    $email = trim($_POST['usuario'] ?? '');
     $senha = $_POST['senha'] ?? '';
 
+    // Validação básica
     if (empty($email) || empty($senha)) {
         $_SESSION['erro'] = 'Preencha todos os campos.';
-        header('Location: index.php');
+        header("Location: " . URL_BASE . "login/index.php");
         exit;
     }
 
+    // Busca o usuário
     $stmt = $conn->prepare("SELECT id, nome, senha, tipo FROM usuarios WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $resultado = $stmt->get_result();
+    $stmt->store_result();
 
-    if ($resultado->num_rows === 1) {
-        $usuario = $resultado->fetch_assoc();
+    if ($stmt->num_rows === 1) {
+        $stmt->bind_result($id, $nome, $senha_hash, $tipo);
+        $stmt->fetch();
 
-        if (password_verify($senha, $usuario['senha'])) {
-            $_SESSION['usuario_id'] = $usuario['id'];
-            $_SESSION['usuario_nome'] = $usuario['nome'];
-            $_SESSION['usuario_tipo'] = $usuario['tipo'];
+        if (password_verify($senha, $senha_hash)) {
+            $_SESSION['usuario_id']   = $id;
+            $_SESSION['usuario_nome'] = $nome;
+            $_SESSION['usuario_tipo'] = $tipo;
 
-            if ($usuario['tipo'] === 'admin') {
-                header('Location: ' . URL_BASE . 'admin/');
+            // Redireciona de acordo com o tipo
+            if ($tipo === 'admin') {
+                $_SESSION['admin_logado'] = true;
+                header("Location: " . URL_BASE . "admin/index.php");
             } else {
-                header('Location: ' . URL_BASE . 'usuario/');
+                header("Location: " . URL_BASE . "usuario/index.php");
             }
             exit;
         } else {
@@ -39,10 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['erro'] = 'Usuário não encontrado.';
     }
 
-    header('Location: index.php');
+    $stmt->close();
+    header("Location: " . URL_BASE . "login/index.php");
     exit;
 } else {
-    header('Location: index.php');
+    // Acesso direto ao script sem POST
+    $_SESSION['erro'] = 'Acesso inválido.';
+    header("Location: " . URL_BASE . "login/index.php");
     exit;
 }
-?>

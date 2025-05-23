@@ -1,42 +1,29 @@
 <?php
-// ✅ Garante que a sessão seja iniciada apenas uma vez
+// Inicia sessão apenas se ainda não estiver iniciada
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// ✅ Garante que URL_BASE esteja definida
+// Define fallback se URL_BASE não estiver definida (evita erro)
 if (!defined('URL_BASE')) {
-    error_log('[⚠️ AVISO] URL_BASE não está definida. Verifique config.php.');
-    define('URL_BASE', '/'); // Fallback mínimo
+    define('URL_BASE', '/');
 }
 
-/**
- * ✅ Verifica se há usuário logado
- */
-function usuario_logado(): bool {
+// Verifica se usuário está logado
+function usuario_logado() {
     return isset($_SESSION['usuario_id']);
 }
 
-/**
- * ✅ Retorna o tipo de usuário logado
- */
-function tipo_usuario(): ?string {
+// Retorna tipo do usuário (admin ou usuario)
+function tipo_usuario() {
     return $_SESSION['usuario_tipo'] ?? null;
 }
 
-/**
- * 🔐 Exige login, com tipo opcional (ex: admin, usuario)
- * Redireciona para URL de login, se necessário
- */
-function exigir_login(?string $tipo_esperado = null, ?string $redirecionar_para = null): void {
-    if (!usuario_logado()) {
-        header("Location: " . ($redirecionar_para ?? URL_BASE . 'login/index.php'));
-        exit;
-    }
-
-    if ($tipo_esperado && tipo_usuario() !== $tipo_esperado) {
-        error_log("[🔒 BLOQUEADO] Tentativa de acesso por tipo errado. Esperado: $tipo_esperado | Atual: " . tipo_usuario());
-        header("Location: " . ($redirecionar_para ?? URL_BASE . 'login/index.php'));
+// Protege rota com base no tipo
+function exigir_login($tipo_esperado = null, $redirecionar_para = null) {
+    if (!usuario_logado() || ($tipo_esperado && tipo_usuario() !== $tipo_esperado)) {
+        $destino = $redirecionar_para ?: URL_BASE . 'login/';
+        header("Location: $destino");
         exit;
     }
 }

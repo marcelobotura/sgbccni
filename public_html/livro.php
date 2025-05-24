@@ -1,4 +1,6 @@
 <?php
+// ✅ Página: livro.php
+
 define('BASE_PATH', __DIR__ . '/../app_backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
@@ -46,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuario_id) {
 }
 
 // Livros relacionados (mesmo autor ou editora)
-$relacionados = $conn->prepare("SELECT id, titulo, capa_url FROM livros 
+$relacionados = $conn->prepare("SELECT id, isbn, titulo, capa_url FROM livros 
   WHERE id != ? AND (autor = ? OR editora = ?) LIMIT 4");
 $relacionados->bind_param("iss", $livro_id, $livro['autor'], $livro['editora']);
 $relacionados->execute();
@@ -75,11 +77,13 @@ $rel_res = $relacionados->get_result();
       <p><strong>ISBN:</strong> <?= htmlspecialchars($livro['isbn']) ?></p>
       <p><strong>Descrição:</strong><br><?= nl2br(htmlspecialchars($livro['descricao'])) ?></p>
 
+      <?php if ($usuario_id): ?>
       <form method="POST" class="mt-3 d-flex gap-2">
         <button name="acao" value="lido" class="btn btn-outline-success">📖 Marcar como Lido</button>
         <button name="acao" value="favorito" class="btn btn-outline-warning">⭐ Adicionar aos Favoritos</button>
         <a href="exportar_pdf_livro.php?isbn=<?= urlencode($livro['isbn']) ?>" class="btn btn-outline-danger">📄 Exportar PDF</a>
       </form>
+      <?php endif; ?>
     </div>
   </div>
 
@@ -91,11 +95,11 @@ $rel_res = $relacionados->get_result();
         <div class="col">
           <div class="card h-100 shadow-sm">
             <?php if ($r['capa_url']): ?>
-              <img src="<?= $r['capa_url'] ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
+              <img src="<?= htmlspecialchars($r['capa_url']) ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
             <?php endif; ?>
             <div class="card-body">
-              <h6 class="card-title"><?= $r['titulo'] ?></h6>
-              <a href="livro.php?isbn=<?= $r['id'] ?>" class="btn btn-sm btn-primary">Ver</a>
+              <h6 class="card-title"><?= htmlspecialchars($r['titulo']) ?></h6>
+              <a href="livro.php?isbn=<?= urlencode($r['isbn']) ?>" class="btn btn-sm btn-primary">Ver</a>
             </div>
           </div>
         </div>

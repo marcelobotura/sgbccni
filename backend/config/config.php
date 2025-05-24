@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/backend/config/config.php';
-require_once __DIR__ . '/backend/includes/session.php';
+require_once __DIR__ . '/../backend/config/config.php';
+require_once __DIR__ . '/../backend/includes/session.php';
 
 $erros = [];
 $avisos = [];

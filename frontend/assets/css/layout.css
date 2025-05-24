@@ -1,0 +1,36 @@
+/* 📐 Container centralizado */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* 🎯 Sistema de colunas flexíveis */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.5rem;
+}
+
+.col {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* 📱 Responsivo */
+@media (max-width: 768px) {
+  .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

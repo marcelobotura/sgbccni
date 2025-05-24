@@ -1,0 +1,6 @@
+# Ativar URLs amigáveis
+RewriteEngine On
+RewriteBase /sgbccni/public_html/
+
+# Redirecionar /logout para backend/controllers/auth/logout.php
+RewriteRule ^logout$ ../backend/controllers/auth/logout.php [L]

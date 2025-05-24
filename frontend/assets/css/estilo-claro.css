@@ -1,0 +1,15 @@
+/* 🌞 Tema claro: sobrescreve variáveis */
+body.tema-claro,
+.tema-claro :root {
+  --cor-primaria: #007bff;
+  --cor-secundaria: #6c757d;
+  --cor-sucesso: #28a745;
+  --cor-erro: #dc3545;
+  --cor-alerta: #ffc107;
+  --cor-info: #17a2b8;
+
+  --cor-fundo: #f8f9fa;
+  --cor-texto: #212529;
+  --cor-card: #ffffff;
+  --cor-borda: #dee2e6;
+}

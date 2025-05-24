@@ -2,10 +2,10 @@
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../includes/session.php';
 
-// 🔒 Protege contra acesso não autorizado
+// 🔐 Garante que apenas usuários comuns acessem
 exigir_login('usuario');
 
-// 🔄 Dados do formulário com validação e sanitização
+// 🔄 Coleta e sanitiza dados do formulário
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 $nome = trim(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
 $data_nascimento = $_POST['data_nascimento'] ?? null;
@@ -22,7 +22,7 @@ if (!$id || !$nome) {
     exit;
 }
 
-// 📸 Upload de imagem com validação de tipo
+// 📸 Upload e substituição de imagem de perfil
 $imagem_perfil = $_SESSION['usuario_foto'] ?? '';
 if (!empty($_FILES['foto_perfil']['name'])) {
     $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
@@ -38,7 +38,7 @@ if (!empty($_FILES['foto_perfil']['name'])) {
     $novo_nome = uniqid('perfil_', true) . '.' . $ext;
     $destino = __DIR__ . '/../../uploads/perfis/' . $novo_nome;
 
-    // Exclui a imagem anterior, se existir
+    // 🧹 Remove imagem anterior, se houver
     if (!empty($imagem_perfil) && file_exists(__DIR__ . '/../../' . $imagem_perfil)) {
         unlink(__DIR__ . '/../../' . $imagem_perfil);
     }
@@ -53,7 +53,7 @@ if (!empty($_FILES['foto_perfil']['name'])) {
     }
 }
 
-// 💾 Atualiza no banco
+// 💾 Atualização no banco de dados
 $stmt = $conn->prepare("UPDATE usuarios SET 
     nome = ?, imagem_perfil = ?, data_nascimento = ?, genero = ?, 
     cep = ?, endereco = ?, cidade = ?, estado = ? 
@@ -66,7 +66,7 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    $_SESSION['usuario_nome'] = htmlspecialchars($nome); // segurança para exibição
+    $_SESSION['usuario_nome'] = htmlspecialchars($nome); // segurança de exibição
     $_SESSION['sucesso'] = "Perfil atualizado com sucesso!";
 } else {
     $_SESSION['erro'] = "Erro ao atualizar perfil. Tente novamente.";

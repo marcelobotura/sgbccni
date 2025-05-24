@@ -1,26 +1,17 @@
-    </div> <!-- Fim do conteúdo principal -->
+  </div> <!-- fim da container -->
 
-    <footer class="text-center py-3 small text-muted bg-light mt-auto">
-        <span>&copy; <?= date('Y') ?> Biblioteca Comunitária CNI</span>
-    </footer>
+  <!-- 🌗 Botão de alternância de tema -->
+  <div class="text-center py-3">
+    <button onclick="alternarTema()" class="btn btn-secundario">
+      <i class="bi bi-moon-stars-fill me-1"></i> Alternar tema
+    </button>
+  </div>
 
-    <!-- Bootstrap Bundle com Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap Bundle JS (inclui Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- JS de tema (modo escuro/claro) -->
-    <script src="<?= URL_BASE ?>assets/js/tema.js"></script>
+  <!-- Scripts adicionais por página (opcional) -->
+  <?php if (!empty($extraScripts)) echo $extraScripts; ?>
 
-    <!-- Scripts adicionais (opcional) -->
-    <?php if (!empty($extraScripts)) echo $extraScripts; ?>
-
-    <!-- Fade-out automático de alertas -->
-    <script>
-      setTimeout(() => {
-        const alertas = document.querySelectorAll('.alert');
-        alertas.forEach(alerta => alerta.classList.add('fade', 'show'));
-        setTimeout(() => alertas.forEach(a => a.remove()), 5000);
-      }, 300);
-    </script>
-
-  </body>
+</body>
 </html>

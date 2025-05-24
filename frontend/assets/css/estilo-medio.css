@@ -1,12 +1,37 @@
+/* 🌅 Tema médio: tons neutros e suaves */
+body.tema-medio,
+.tema-medio :root {
+  --cor-primaria: #5c7cfa;
+  --cor-secundaria: #868e96;
+  --cor-sucesso: #40c057;
+  --cor-erro: #fa5252;
+  --cor-alerta: #fcc419;
+  --cor-info: #15aabf;
 
-/* estilo-medio.css */
-body {
-  background-color: #2d2d2d;
-  color: #f1f1f1;
+  --cor-fundo: #e9ecef;
+  --cor-texto: #343a40;
+  --cor-card: #f8f9fa;
+  --cor-borda: #ced4da;
 }
-.navbar {
-  background-color: #3a3a3a !important;
+
+/* Estilo para campos */
+.tema-medio input,
+.tema-medio textarea,
+.tema-medio select {
+  background-color: #f1f3f5;
+  color: #212529;
+  border: 1px solid var(--cor-borda);
 }
-.btn {
-  border-radius: 0.375rem;
+
+.tema-medio .card {
+  background-color: var(--cor-card);
+  border-color: var(--cor-borda);
+}
+
+.tema-medio .tabela th {
+  background-color: #dee2e6;
+}
+
+.tema-medio .tabela td {
+  background-color: #f1f3f5;
 }

@@ -7,13 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
     $senha = $_POST['senha'];
 
+    // 📧 Validação de e-mail
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['erro'] = "E-mail inválido.";
         header("Location: " . URL_BASE . "login/" . ($acao === 'register' ? "register.php" : "login.php"));
         exit;
     }
 
-    // 📝 REGISTRO
+    // 📝 REGISTRO DE USUÁRIO
     if ($acao === 'register') {
         $nome = trim(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
         $tipo = 'usuario'; // padrão
@@ -24,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
             exit;
         }
 
-        // Verifica se e-mail já está cadastrado
+        // 🔁 Verifica se já existe o e-mail
         $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -38,13 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
         }
         $stmt->close();
 
-        // Insere novo usuário
+        // ✅ Cria novo usuário
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $nome, $email, $senha_hash, $tipo);
 
         if ($stmt->execute()) {
-            session_regenerate_id(true); // 🔐 segurança
+            session_regenerate_id(true);
             $_SESSION['usuario_id']   = $stmt->insert_id;
             $_SESSION['usuario_nome'] = htmlspecialchars($nome);
             $_SESSION['usuario_tipo'] = $tipo;
@@ -53,13 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
             header("Location: " . URL_BASE . "usuario/meus_livros.php");
             exit;
         } else {
-            $_SESSION['erro'] = "Erro ao cadastrar.";
+            $_SESSION['erro'] = "Erro ao cadastrar usuário.";
             header("Location: " . URL_BASE . "login/register.php");
             exit;
         }
     }
 
-    // 🔐 LOGIN
+    // 🔐 LOGIN DE USUÁRIO OU ADMIN
     elseif ($acao === 'login') {
         $stmt = $conn->prepare("SELECT id, nome, senha, tipo FROM usuarios WHERE email = ?");
         $stmt->bind_param("s", $email);
@@ -71,14 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
             $stmt->fetch();
 
             if (password_verify($senha, $senha_hash)) {
-                session_regenerate_id(true); // 🛡️ protege contra fixation
+                session_regenerate_id(true);
                 $_SESSION['usuario_id']   = $id;
                 $_SESSION['usuario_nome'] = htmlspecialchars($nome);
                 $_SESSION['usuario_tipo'] = $tipo;
                 $stmt->close();
 
-                // Redireciona conforme o tipo
-                header("Location: " . URL_BASE . ($tipo === 'admin' ? "admin/index.php" : "usuario/meus_livros.php"));
+                // 👥 Redireciona conforme tipo de usuário
+                header("Location: " . URL_BASE . ($tipo === 'admin' ? "admin/pages/index.php" : "usuario/meus_livros.php"));
                 exit;
             } else {
                 $_SESSION['erro'] = "Senha incorreta.";

@@ -5,15 +5,15 @@ require_once __DIR__ . '/../../includes/session.php';
 // 🔒 Protege contra acesso não autorizado
 exigir_login('usuario');
 
-// 🔄 Dados do formulário com filtros
-$id = $_POST['id'] ?? null;
+// 🔄 Dados do formulário com validação e sanitização
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 $nome = trim(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
 $data_nascimento = $_POST['data_nascimento'] ?? null;
 $genero = $_POST['genero'] ?? null;
 $cep = $_POST['cep'] ?? null;
-$endereco = $_POST['endereco'] ?? null;
-$cidade = $_POST['cidade'] ?? null;
-$estado = $_POST['estado'] ?? null;
+$endereco = trim(filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_SPECIAL_CHARS));
+$cidade = trim(filter_input(INPUT_POST, 'cidade', FILTER_SANITIZE_SPECIAL_CHARS));
+$estado = trim(filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_SPECIAL_CHARS));
 
 // ✅ Validação mínima
 if (!$id || !$nome) {
@@ -38,6 +38,11 @@ if (!empty($_FILES['foto_perfil']['name'])) {
     $novo_nome = uniqid('perfil_', true) . '.' . $ext;
     $destino = __DIR__ . '/../../uploads/perfis/' . $novo_nome;
 
+    // Exclui a imagem anterior, se existir
+    if (!empty($imagem_perfil) && file_exists(__DIR__ . '/../../' . $imagem_perfil)) {
+        unlink(__DIR__ . '/../../' . $imagem_perfil);
+    }
+
     if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $destino)) {
         $imagem_perfil = 'uploads/perfis/' . $novo_nome;
         $_SESSION['usuario_foto'] = $imagem_perfil;
@@ -61,10 +66,11 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    $_SESSION['usuario_nome'] = htmlspecialchars($nome); // proteção na exibição futura
+    $_SESSION['usuario_nome'] = htmlspecialchars($nome); // segurança para exibição
     $_SESSION['sucesso'] = "Perfil atualizado com sucesso!";
 } else {
-    $_SESSION['erro'] = "Erro ao atualizar perfil: " . $stmt->error;
+    $_SESSION['erro'] = "Erro ao atualizar perfil. Tente novamente.";
+    error_log("Erro MySQL: " . $stmt->error);
 }
 
 header("Location: " . URL_BASE . "usuario/perfil.php");

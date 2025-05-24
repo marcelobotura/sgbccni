@@ -68,3 +68,17 @@ Stack trace:
 #0 C:\xampp\htdocs\sgbccni\public_html\usuario\favoritos.php(10): mysqli->query('SELECT titulo, ...')
 #1 {main}
   thrown in C:\xampp\htdocs\sgbccni\public_html\usuario\favoritos.php on line 10
+[23-May-2025 22:56:08 America/Sao_Paulo] PHP Warning:  Constant ENV_DEV already defined in C:\xampp\htdocs\sgbccni\backend\config\env.php on line 11
+[23-May-2025 22:56:08 America/Sao_Paulo] Erro ao conectar: Access denied for user ''@'localhost' (using password: NO)
+[23-May-2025 22:58:09 America/Sao_Paulo] PHP Warning:  Constant ENV_DEV already defined in C:\xampp\htdocs\sgbccni\backend\config\env.php on line 11
+[23-May-2025 22:58:09 America/Sao_Paulo] Erro ao conectar: Access denied for user ''@'localhost' (using password: NO)
+[23-May-2025 22:58:10 America/Sao_Paulo] PHP Warning:  Constant ENV_DEV already defined in C:\xampp\htdocs\sgbccni\backend\config\env.php on line 11
+[23-May-2025 22:58:10 America/Sao_Paulo] Erro ao conectar: Access denied for user ''@'localhost' (using password: NO)
+[23-May-2025 23:05:42 America/Sao_Paulo] PHP Warning:  Constant ENV_DEV already defined in C:\xampp\htdocs\sgbccni\backend\config\env.php on line 11
+[23-May-2025 23:05:42 America/Sao_Paulo] Erro ao conectar: Access denied for user ''@'localhost' (using password: NO)
+[23-May-2025 23:05:42 America/Sao_Paulo] PHP Warning:  Constant ENV_DEV already defined in C:\xampp\htdocs\sgbccni\backend\config\env.php on line 11
+[23-May-2025 23:05:42 America/Sao_Paulo] Erro ao conectar: Access denied for user ''@'localhost' (using password: NO)
+[23-May-2025 23:05:43 America/Sao_Paulo] PHP Warning:  Constant ENV_DEV already defined in C:\xampp\htdocs\sgbccni\backend\config\env.php on line 11
+[23-May-2025 23:05:43 America/Sao_Paulo] Erro ao conectar: Access denied for user ''@'localhost' (using password: NO)
+[23-May-2025 23:05:43 America/Sao_Paulo] PHP Warning:  Constant ENV_DEV already defined in C:\xampp\htdocs\sgbccni\backend\config\env.php on line 11
+[23-May-2025 23:05:43 America/Sao_Paulo] Erro ao conectar: Access denied for user ''@'localhost' (using password: NO)

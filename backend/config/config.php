@@ -1,13 +1,13 @@
 <?php
-// 🌐 URL base para links absolutos
+// 🌐 Define a URL base apenas se ainda não estiver definida
 if (!defined('URL_BASE')) {
-    define('URL_BASE', 'http://localhost/sgbccni/public_html/'); // 🛠️ Altere para o domínio real em produção
+    define('URL_BASE', 'http://localhost/sgbccni/public_html/'); // 🛠️ Altere para seu domínio em produção
 }
 
 // ⚙️ Ambiente: true = desenvolvimento | false = produção
 define('ENV_DEV', true);
 
-// ⏰ Fuso horário padrão
+// ⏰ Define o fuso horário padrão
 date_default_timezone_set('America/Sao_Paulo');
 
 // 📁 Diretório de logs (cria se não existir)
@@ -16,16 +16,17 @@ if (!is_dir($logDir)) {
     mkdir($logDir, 0777, true);
 }
 
-// 🔧 Configuração de erros e log
+// 🔧 Configuração de exibição e log de erros
 ini_set('display_errors', ENV_DEV ? '1' : '0');
 ini_set('log_errors', '1');
 ini_set('error_log', $logDir . '/php-error.log');
 
-// 🔐 Dados de conexão com o banco
-$host    = 'localhost';
-$usuario = 'root';
-$senha   = ''; // 🛡️ Adicione senha real em produção
-$banco   = 'sgbccni';
+// 🔐 Dados sensíveis via env.php
+$env = require_once __DIR__ . '/env.php';
+$host    = $env['host'];
+$usuario = $env['usuario'];
+$senha   = $env['senha'];
+$banco   = $env['banco'];
 
 // 🔌 Conexão com o banco usando mysqli com tratamento de erros
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -38,11 +39,17 @@ try {
     if (ENV_DEV) {
         die("Erro ao conectar: " . $e->getMessage());
     } else {
-        die("Erro ao conectar ao banco de dados. Tente mais tarde.");
+        die("Erro ao conectar ao banco de dados. Tente novamente mais tarde.");
     }
 }
 
-// 📌 Informações do sistema
-define('NOME_SISTEMA', 'Sistema de Gestão Biblioteca CNI');
-define('VERSAO_SISTEMA', '1.0');
-define('EMAIL_SUPORTE', 'suporte@cni.com.br');
+// 📌 Constantes do sistema
+if (!defined('NOME_SISTEMA')) {
+    define('NOME_SISTEMA', 'Sistema de Gestão Biblioteca CNI');
+}
+if (!defined('VERSAO_SISTEMA')) {
+    define('VERSAO_SISTEMA', '1.0');
+}
+if (!defined('EMAIL_SUPORTE')) {
+    define('EMAIL_SUPORTE', 'suporte@cni.com.br');
+}

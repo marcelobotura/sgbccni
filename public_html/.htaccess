@@ -1,0 +1,22 @@
+# Ativa o mecanismo de reescrita
+RewriteEngine On
+
+# Define a base da URL (ajuste conforme necessário)
+RewriteBase /sgbccni/public_html/
+
+# 🔁 Remove .php da URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.+)$ $1.php [L]
+
+# 🔒 Redirecionamento amigável para logout
+RewriteRule ^logout$ ../backend/controllers/auth/logout.php [L]
+
+# 💡 Segurança opcional: bloquear acesso direto a arquivos sensíveis
+<FilesMatch "\.(env|sql|bak|ini|log|sh|md|yml|json)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Evita listagem de diretórios (caso o index não exista)
+Options -Indexes

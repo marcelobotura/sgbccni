@@ -1,18 +1,27 @@
 <?php
+// Define o caminho base para a pasta 'backend', um nível acima da 'public_html'
+// O dirname(__DIR__) garante que ele volte para a pasta 'sgbccni' antes de ir para 'backend'.
 define('BASE_PATH', dirname(__DIR__) . '/backend');
+
+// Inclui os arquivos de configuração e sessão essenciais
+// O config.php deve definir URL_BASE e outras constantes globais.
 require_once BASE_PATH . '/config/config.php';
+// O session.php deve iniciar a sessão (session_start()) e conter funções de sessão.
 require_once BASE_PATH . '/includes/session.php';
-require_once BASE_PATH . '/includes/header.php';
 
 // 🔒 Garante que o usuário esteja logado
+// A função exigir_login() deve redirecionar o usuário caso não esteja logado.
 exigir_login('usuario');
+
+// O arquivo header.php deve conter o DOCTYPE, <html>, <head> (com meta, title, links CSS) e o <body> de abertura.
+// Se seu header.php já inclui tudo isso, você pode remover as tags HTML abaixo que foram comentadas.
+require_once BASE_PATH . '/includes/header.php';
 ?>
 
 <div class="container py-5">
-  <!-- 👋 Saudação -->
   <div class="row justify-content-between align-items-center mb-4">
     <div class="col-md-8">
-      <h2 class="fw-bold">👋 Olá, <?= htmlspecialchars($_SESSION['usuario_nome']) ?></h2>
+      <h2 class="fw-bold">👋 Olá, <?= htmlspecialchars($_SESSION['usuario_nome'] ?? 'Visitante') ?></h2>
       <p class="text-muted">Bem-vindo à sua área da <strong>Biblioteca Comunitária CNI</strong>.</p>
     </div>
     <div class="col-md-4 text-end">
@@ -22,9 +31,7 @@ exigir_login('usuario');
     </div>
   </div>
 
-  <!-- 🔗 Links rápidos -->
   <div class="row g-4">
-    <!-- 📚 Acesso aos livros -->
     <div class="col-md-4">
       <div class="card shadow-sm border-0 h-100">
         <div class="card-body text-center">
@@ -35,7 +42,6 @@ exigir_login('usuario');
       </div>
     </div>
 
-    <!-- 👤 Perfil do usuário -->
     <div class="col-md-4">
       <div class="card shadow-sm border-0 h-100">
         <div class="card-body text-center">
@@ -46,7 +52,6 @@ exigir_login('usuario');
       </div>
     </div>
 
-    <!-- 💡 Sugestões -->
     <div class="col-md-4">
       <div class="card shadow-sm border-0 h-100">
         <div class="card-body text-center">
@@ -59,4 +64,7 @@ exigir_login('usuario');
   </div>
 </div>
 
-<?php require_once BASE_PATH . '/includes/footer.php'; ?>
+<?php 
+// O arquivo footer.php deve conter o fechamento do <body> e <html>, além de scripts JS.
+require_once BASE_PATH . '/includes/footer.php'; 
+?>

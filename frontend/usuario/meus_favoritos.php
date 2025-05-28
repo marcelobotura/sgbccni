@@ -7,7 +7,7 @@ include_once BASE_PATH . '/includes/header.php';
 exigir_login('usuario');
 $usuario_id = $_SESSION['usuario_id'];
 
-// 🔁 Se houve pedido para remover
+// 🔁 Remoção de favorito
 if (isset($_GET['remover'])) {
   $isbn = $_GET['remover'];
   $stmt = $conn->prepare("UPDATE livros_usuarios lu 
@@ -21,8 +21,8 @@ if (isset($_GET['remover'])) {
   exit;
 }
 
-// 📄 Carrega favoritos
-$sql = "SELECT l.titulo, l.capa_url, l.isbn
+// 📄 Consulta favoritos
+$sql = "SELECT l.titulo, l.capa_local, l.capa_url, l.isbn
         FROM livros_usuarios lu
         JOIN livros l ON l.id = lu.livro_id
         WHERE lu.usuario_id = ? AND lu.favorito = 1";
@@ -35,8 +35,9 @@ $result = $stmt->get_result();
 
 <div class="container py-4">
   <h2>⭐ Meus Favoritos</h2>
+
   <?php if (isset($_SESSION['sucesso'])): ?>
-    <div class="alert alert-success"><?= $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></div>
+    <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
   <?php endif; ?>
 
   <?php if ($result->num_rows): ?>
@@ -44,9 +45,14 @@ $result = $stmt->get_result();
       <?php while($livro = $result->fetch_assoc()): ?>
         <div class="col">
           <div class="card h-100 shadow-sm">
-            <?php if ($livro['capa_url']): ?>
-              <img src="<?= $livro['capa_url'] ?>" class="card-img-top" style="height: 250px; object-fit: cover;">
+            <?php if (!empty($livro['capa_local'])): ?>
+              <img src="<?= URL_BASE . htmlspecialchars($livro['capa_local']) ?>" class="card-img-top" style="height: 250px; object-fit: cover;">
+            <?php elseif (!empty($livro['capa_url'])): ?>
+              <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="card-img-top" style="height: 250px; object-fit: cover;">
+            <?php else: ?>
+              <div class="bg-light text-muted text-center p-5" style="height: 250px;">Sem capa</div>
             <?php endif; ?>
+
             <div class="card-body">
               <h5 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h5>
               <a href="livro.php?isbn=<?= urlencode($livro['isbn']) ?>" class="btn btn-sm btn-primary mb-1">📘 Ver Livro</a>

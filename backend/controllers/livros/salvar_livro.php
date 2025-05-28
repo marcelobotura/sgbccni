@@ -2,28 +2,27 @@
 require_once __DIR__ . '/../../../config/config.php';
 require_once __DIR__ . '/../../../includes/session.php';
 
-// Proteção para admin
 exigir_login('admin');
 
-// 🔄 Coleta e sanitiza os dados do formulário
-$titulo         = trim($_POST['titulo'] ?? '');
-$isbn           = trim($_POST['isbn'] ?? '');
-$descricao      = trim($_POST['descricao'] ?? '');
-$tipo           = $_POST['tipo'] ?? 'físico';
-$formato        = $_POST['formato'] ?? 'PDF';
-$link_digital   = trim($_POST['link_digital'] ?? null);
-$autor_id       = $_POST['autor_id'] ?? null;
-$editora_id     = $_POST['editora_id'] ?? null;
-$categoria_id   = $_POST['categoria_id'] ?? null;
+// 🔄 Coleta e sanitiza os dados
+$titulo       = trim($_POST['titulo'] ?? '');
+$isbn         = trim($_POST['isbn'] ?? '');
+$descricao    = trim($_POST['descricao'] ?? '');
+$tipo         = $_POST['tipo'] ?? 'físico';
+$formato      = $_POST['formato'] ?? 'PDF';
+$link_digital = trim($_POST['link_digital'] ?? null);
+$autor_id     = is_numeric($_POST['autor_id'] ?? null) ? (int)$_POST['autor_id'] : null;
+$editora_id   = is_numeric($_POST['editora_id'] ?? null) ? (int)$_POST['editora_id'] : null;
+$categoria_id = is_numeric($_POST['categoria_id'] ?? null) ? (int)$_POST['categoria_id'] : null;
 
-// Validação básica
+// 🛡️ Validação
 if (empty($titulo) || empty($isbn)) {
     $_SESSION['erro'] = "Título e ISBN são obrigatórios.";
     header("Location: " . URL_BASE . "admin/pages/cadastrar_livro.php");
     exit;
 }
 
-// Verifica duplicidade de ISBN
+// 🚫 ISBN duplicado
 $stmt_check = $conn->prepare("SELECT id FROM livros WHERE isbn = ?");
 $stmt_check->bind_param("s", $isbn);
 $stmt_check->execute();
@@ -36,9 +35,9 @@ if ($stmt_check->num_rows > 0) {
 }
 $stmt_check->close();
 
-// 📸 Upload da capa (opcional)
+// 🖼️ Upload da capa
 $capa_local = null;
-if (!empty($_FILES['capa']['name'])) {
+if (isset($_FILES['capa']) && $_FILES['capa']['error'] === UPLOAD_ERR_OK) {
     $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
     $tipo = mime_content_type($_FILES['capa']['tmp_name']);
 
@@ -55,6 +54,7 @@ if (!empty($_FILES['capa']['name'])) {
     if (move_uploaded_file($_FILES['capa']['tmp_name'], $destino)) {
         $capa_local = 'uploads/capas/' . $novo_nome;
     } else {
+        error_log("Falha no upload da imagem.");
         $_SESSION['erro'] = "Erro ao salvar a imagem.";
         header("Location: " . URL_BASE . "admin/pages/cadastrar_livro.php");
         exit;
@@ -75,7 +75,8 @@ $stmt->bind_param(
 if ($stmt->execute()) {
     $_SESSION['sucesso'] = "Livro cadastrado com sucesso!";
 } else {
-    $_SESSION['erro'] = "Erro ao cadastrar livro: " . $stmt->error;
+    error_log("Erro MySQL: " . $stmt->error);
+    $_SESSION['erro'] = "Erro ao cadastrar livro.";
 }
 
 header("Location: " . URL_BASE . "admin/pages/cadastrar_livro.php");

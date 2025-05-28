@@ -1,13 +1,28 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/../backend');
+// Caminho seguro
+define('BASE_PATH', realpath(__DIR__ . '/../../backend'));
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
-include_once BASE_PATH . '/includes/header.php';
+
+// Header correto (provavelmente em frontend/includes/)
+include_once __DIR__ . '/../includes/header.php';
 
 exigir_login('usuario');
-$id = $_SESSION['usuario_id'];
 
-$res = $conn->query("SELECT titulo, autor FROM livros_usuarios WHERE usuario_id = $id AND favorito = 1");
+$id = $_SESSION['usuario_id'] ?? 0;
+
+// Verifica ID válido
+if ($id <= 0) {
+    echo "<div class='alert alert-danger'>Usuário inválido.</div>";
+    include_once __DIR__ . '/../includes/footer.php';
+    exit;
+}
+
+// Consulta segura com prepared statement
+$stmt = $conn->prepare("SELECT titulo, autor FROM livros_usuarios WHERE usuario_id = ? AND favorito = 1");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$res = $stmt->get_result();
 ?>
 
 <div class="container py-4">
@@ -23,4 +38,4 @@ $res = $conn->query("SELECT titulo, autor FROM livros_usuarios WHERE usuario_id 
   <?php endif; ?>
 </div>
 
-<?php include_once BASE_PATH . '/includes/footer.php'; ?>
+<?php include_once __DIR__ . '/../includes/footer.php'; ?>

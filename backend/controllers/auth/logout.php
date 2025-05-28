@@ -1,12 +1,16 @@
 <?php
 // 🔐 Encerra a sessão de forma segura
 
+require_once __DIR__ . '/../../config/env.php';
 session_start();
 
-// Remove todos os dados da sessão
+// Salva o tipo antes de destruir a sessão
+$tipo_usuario = $_SESSION['usuario_tipo'] ?? null;
+
+// Limpa os dados da sessão
 $_SESSION = [];
 
-// Destroi o cookie da sessão, se existir
+// Remove o cookie de sessão, se existir
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(
@@ -23,6 +27,14 @@ if (ini_get("session.use_cookies")) {
 // Destroi a sessão
 session_destroy();
 
-// Redireciona para a página de login
-header("Location: " . (defined('URL_BASE') ? URL_BASE : '/sgbccni/public_html/') . "login/login.php");
+// Gera novo ID de sessão para segurança
+session_start();
+session_regenerate_id(true);
+
+// Redireciona conforme o tipo de usuário
+if ($tipo_usuario === 'admin') {
+    header("Location: " . URL_BASE . "frontend/login/login_admin.php");
+} else {
+    header("Location: " . URL_BASE . "frontend/login/login.php");
+}
 exit;

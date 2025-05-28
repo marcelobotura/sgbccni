@@ -1,23 +1,22 @@
 <?php
-include_once(__DIR__ . '/../config/config.php'); // ✅ novo caminho
+include_once(__DIR__ . '/../../config/config.php'); // caminho corrigido
 include_once(__DIR__ . '/../includes/header.php');
 
-
-// Captura filtros
+// Filtros
 $busca = trim($_GET['q'] ?? '');
 $status = $_GET['status'] ?? '';
 $categoria = $_GET['categoria'] ?? '';
 
-// Buscar categorias salvas do tipo 'categoria'
+// Buscar categorias
 $cat_stmt = $conn->prepare("SELECT nome FROM tags WHERE tipo = 'categoria' ORDER BY nome ASC");
 $cat_stmt->execute();
 $categorias_disponiveis = $cat_stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
+// Montar consulta dinâmica
 $where = [];
 $params = [];
 $types = "";
 
-// Filtro: busca por título, autor, editora ou tags
 if ($busca !== "") {
   $where[] = "(titulo LIKE ? OR autor LIKE ? OR editora LIKE ? OR tags LIKE ?)";
   for ($i = 0; $i < 4; $i++) {
@@ -26,14 +25,12 @@ if ($busca !== "") {
   }
 }
 
-// Filtro: status
 if ($status !== "") {
   $where[] = "status = ?";
   $params[] = $status;
   $types .= "s";
 }
 
-// Filtro: categoria
 if ($categoria !== "") {
   $where[] = "categoria_padrao LIKE ?";
   $params[] = "%$categoria%";
@@ -59,7 +56,7 @@ $result = $stmt->get_result();
     <?= $busca ? "📚 Resultados para: <em>" . htmlspecialchars($busca) . "</em>" : "📚 Todos os livros cadastrados" ?>
   </h3>
 
-  <!-- Filtros -->
+  <!-- 🔍 Formulário de Filtro -->
   <form method="GET" class="row g-2 mb-4">
     <div class="col-md-4">
       <input type="text" name="q" value="<?= htmlspecialchars($busca) ?>" class="form-control" placeholder="Título, autor, editora ou tag">
@@ -87,16 +84,18 @@ $result = $stmt->get_result();
     </div>
   </form>
 
-  <!-- Resultados -->
+  <!-- 📚 Resultados -->
   <div class="row">
     <?php if ($result->num_rows > 0): ?>
       <?php while ($livro = $result->fetch_assoc()): ?>
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
             <?php if (!empty($livro['capa'])): ?>
-              <img src="../uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="card-img-top" alt="Capa do livro">
+              <img src="../../uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="card-img-top" alt="Capa do livro">
             <?php elseif (!empty($livro['capa_url'])): ?>
               <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="card-img-top" alt="Capa do livro">
+            <?php else: ?>
+              <img src="../../assets/img/sem_capa.png" class="card-img-top" alt="Sem capa">
             <?php endif; ?>
             <div class="card-body d-flex flex-column">
               <h5 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h5>
@@ -105,9 +104,14 @@ $result = $stmt->get_result();
               <p class="card-text mb-1"><strong>Categoria:</strong> <?= htmlspecialchars($livro['categoria_padrao'] ?? '-') ?></p>
               <p class="card-text mb-1"><strong>Tags:</strong> <?= htmlspecialchars($livro['tags'] ?? '-') ?></p>
               <p class="card-text mb-2"><strong>Status:</strong>
-                <span class="badge bg-<?= $livro['status'] === 'disponivel' ? 'success' : ($livro['status'] === 'reservado' ? 'warning' : 'danger') ?>">
-                  <?= ucfirst($livro['status']) ?>
-                </span>
+                <?php
+                  $badge = match ($livro['status']) {
+                    'disponivel' => 'success',
+                    'reservado' => 'warning',
+                    default => 'danger',
+                  };
+                ?>
+                <span class="badge bg-<?= $badge ?>"><?= ucfirst($livro['status']) ?></span>
               </p>
               <a href="detalhes.php?id=<?= $livro['id'] ?>" class="btn btn-outline-primary mt-auto">Ver detalhes</a>
             </div>
@@ -122,19 +126,21 @@ $result = $stmt->get_result();
   </div>
 </div>
 
-<?php include_once '../includes/footer.php'; ?>
+<?php include_once(__DIR__ . '/../includes/footer.php'); ?>
 
-<!-- ✅ Select2 CSS & JS CDN -->
+<!-- 📦 Select2 CDN -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
-  // Aplica Select2 na categoria
-  $(document).ready(function () {
-    $('#categoria').select2({
-      placeholder: "Todas as categorias",
-      allowClear: true,
-      width: '100%'
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoria = document.getElementById('categoria');
+    if (categoria) {
+      $(categoria).select2({
+        placeholder: "Todas as categorias",
+        allowClear: true,
+        width: '100%'
+      });
+    }
   });
 </script>

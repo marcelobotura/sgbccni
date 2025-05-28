@@ -1,7 +1,6 @@
 <?php
 // ✅ Página: livro.php
-
-define('BASE_PATH', __DIR__ . '/../app_backend');
+define('BASE_PATH', dirname(__DIR__) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 include_once BASE_PATH . '/includes/header.php';
@@ -13,6 +12,7 @@ if (!$isbn) {
   exit;
 }
 
+// 🔍 Busca livro pelo ISBN
 $stmt = $conn->prepare("SELECT * FROM livros WHERE isbn = ?");
 $stmt->bind_param("s", $isbn);
 $stmt->execute();
@@ -28,6 +28,7 @@ if (!$livro) {
 $livro_id = $livro['id'];
 $usuario_id = $_SESSION['usuario_id'] ?? null;
 
+// 📌 Ações: Marcar como Lido ou Favorito
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuario_id) {
   if ($_POST['acao'] === 'lido') {
     $stmt = $conn->prepare("INSERT INTO livros_usuarios (usuario_id, livro_id, lido) 
@@ -47,9 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuario_id) {
   }
 }
 
-// Livros relacionados (mesmo autor ou editora)
-$relacionados = $conn->prepare("SELECT id, isbn, titulo, capa_url FROM livros 
-  WHERE id != ? AND (autor = ? OR editora = ?) LIMIT 4");
+// 📚 Livros relacionados (mesmo autor ou editora)
+$relacionados = $conn->prepare("SELECT id, isbn, titulo, capa_url 
+                                FROM livros 
+                                WHERE id != ? AND (autor = ? OR editora = ?) 
+                                LIMIT 4");
 $relacionados->bind_param("iss", $livro_id, $livro['autor'], $livro['editora']);
 $relacionados->execute();
 $rel_res = $relacionados->get_result();
@@ -57,8 +60,10 @@ $rel_res = $relacionados->get_result();
 
 <div class="container py-5">
   <?php if (isset($_SESSION['sucesso'])): ?>
-    <div class="alert alert-success"><?= $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></div>
+    <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
   <?php endif; ?>
+
+  <!-- 📘 Detalhes do Livro -->
   <div class="row">
     <div class="col-md-4">
       <?php if (!empty($livro['capa_url'])): ?>
@@ -78,28 +83,31 @@ $rel_res = $relacionados->get_result();
       <p><strong>Descrição:</strong><br><?= nl2br(htmlspecialchars($livro['descricao'])) ?></p>
 
       <?php if ($usuario_id): ?>
-      <form method="POST" class="mt-3 d-flex gap-2">
-        <button name="acao" value="lido" class="btn btn-outline-success">📖 Marcar como Lido</button>
-        <button name="acao" value="favorito" class="btn btn-outline-warning">⭐ Adicionar aos Favoritos</button>
-        <a href="exportar_pdf_livro.php?isbn=<?= urlencode($livro['isbn']) ?>" class="btn btn-outline-danger">📄 Exportar PDF</a>
-      </form>
+        <form method="POST" class="mt-3 d-flex gap-2 flex-wrap">
+          <button name="acao" value="lido" class="btn btn-outline-success">📖 Marcar como Lido</button>
+          <button name="acao" value="favorito" class="btn btn-outline-warning">⭐ Adicionar aos Favoritos</button>
+          <a href="exportar_pdf_livro.php?isbn=<?= urlencode($livro['isbn']) ?>" class="btn btn-outline-danger">📄 Exportar PDF</a>
+        </form>
+      <?php else: ?>
+        <div class="alert alert-info mt-3">Faça login para marcar como lido ou favorito.</div>
       <?php endif; ?>
     </div>
   </div>
 
-  <?php if ($rel_res->num_rows): ?>
+  <!-- 📚 Livros Relacionados -->
+  <?php if ($rel_res->num_rows > 0): ?>
     <hr>
     <h4>📚 Livros Relacionados</h4>
     <div class="row row-cols-1 row-cols-md-4 g-4 mt-2">
       <?php while($r = $rel_res->fetch_assoc()): ?>
         <div class="col">
           <div class="card h-100 shadow-sm">
-            <?php if ($r['capa_url']): ?>
-              <img src="<?= htmlspecialchars($r['capa_url']) ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
+            <?php if (!empty($r['capa_url'])): ?>
+              <img src="<?= htmlspecialchars($r['capa_url']) ?>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Capa">
             <?php endif; ?>
             <div class="card-body">
-              <h6 class="card-title"><?= htmlspecialchars($r['titulo']) ?></h6>
-              <a href="livro.php?isbn=<?= urlencode($r['isbn']) ?>" class="btn btn-sm btn-primary">Ver</a>
+              <h6 class="card-title text-truncate"><?= htmlspecialchars($r['titulo']) ?></h6>
+              <a href="livro.php?isbn=<?= urlencode($r['isbn']) ?>" class="btn btn-sm btn-primary">Ver Detalhes</a>
             </div>
           </div>
         </div>

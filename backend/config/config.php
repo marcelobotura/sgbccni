@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__ . '/../backend/config/config.php';
-require_once __DIR__ . '/../backend/includes/session.php';
+// ✅ Carrega variáveis de ambiente e sessão
+require_once __DIR__ . '/env.php';
+require_once __DIR__ . '/../includes/session.php';
 
 $erros = [];
 $avisos = [];
@@ -22,7 +23,7 @@ if (session_status() === PHP_SESSION_ACTIVE) {
 }
 
 // 🧾 Teste escrita em logs/
-$logTest = __DIR__ . '/backend/logs/teste_log.txt';
+$logTest = dirname(__DIR__) . '/logs/teste_log.txt';
 if (@file_put_contents($logTest, 'Teste de escrita em ' . date('Y-m-d H:i:s'))) {
     $sucessos[] = "✅ Permissão de escrita em /logs.";
     unlink($logTest);
@@ -31,7 +32,7 @@ if (@file_put_contents($logTest, 'Teste de escrita em ' . date('Y-m-d H:i:s'))) 
 }
 
 // 🖼️ Teste permissão em uploads/
-$uploadPath = __DIR__ . '/uploads/teste.txt';
+$uploadPath = dirname(__DIR__) . '/../public_html/uploads/teste.txt';
 if (@file_put_contents($uploadPath, 'teste')) {
     $sucessos[] = "✅ Permissão de escrita em /uploads.";
     unlink($uploadPath);
@@ -59,8 +60,7 @@ $tema = $_COOKIE['modo_tema'] ?? 'claro';
 $sucessos[] = "🎨 Tema atual (via cookie): $tema";
 
 // 🌍 Ambiente
-$sucessos[] = "🌎 Ambiente atual: " . (ENV_DEV ? "Desenvolvimento (DEV)" : "Produção");
-
+$sucessos[] = "🌎 Ambiente atual: " . (defined('ENV_DEV') && ENV_DEV ? "Desenvolvimento (DEV)" : "Produção");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

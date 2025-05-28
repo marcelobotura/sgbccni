@@ -2,17 +2,15 @@
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/session.php';
 
-// Define o modo de tema via cookie ou padrão
 $modo = $_COOKIE['modo_tema'] ?? 'claro';
 
-// Define título se não estiver definido
 if (!defined('NOME_SISTEMA')) {
     define('NOME_SISTEMA', 'Biblioteca CNI');
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br" data-tema="<?= htmlspecialchars($modo) ?>">
+<html lang="pt-br" data-bs-theme="<?= htmlspecialchars($modo) ?>">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +28,7 @@ if (!defined('NOME_SISTEMA')) {
   <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/componentes.css">
   <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/estilo-claro.css"> <!-- sempre carrega claro -->
 
-  <!-- 🎛️ Tema médio ou escuro (opcional, sobrepõe o claro) -->
+  <!-- 🎛️ Tema médio ou escuro (condicional) -->
   <?php if ($modo === 'medio'): ?>
     <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/estilo-medio.css">
   <?php elseif ($modo === 'escuro' || $modo === 'dark'): ?>
@@ -40,11 +38,11 @@ if (!defined('NOME_SISTEMA')) {
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Tema alternável via JS -->
+  <!-- JS de alternância de tema -->
   <script src="<?= URL_BASE ?>assets/js/tema.js" defer></script>
 
-  <!-- Estilos extras por página -->
-  <?php if (!empty($extraStyles)) echo $extraStyles; ?>
+  <!-- Estilos extras (por página) -->
+  <?php if (isset($extraStyles) && !empty($extraStyles)) echo $extraStyles; ?>
 </head>
 
 <body class="d-flex flex-column min-vh-100">

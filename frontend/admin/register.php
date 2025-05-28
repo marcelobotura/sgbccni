@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../../backend/includes/header.php';
 require_once __DIR__ . '/../../backend/includes/menu.php';
 require_once __DIR__ . '/../../backend/config/config.php';
@@ -12,15 +13,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($nome === '' || $email === '' || $senha === '') {
     $_SESSION['erro'] = 'Preencha todos os campos obrigatórios.';
   } else {
-    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, 'admin')");
-    $stmt->bind_param("sss", $nome, $email, $senha_hash);
+    // Verifica se e-mail já existe
+    $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if ($stmt->execute()) {
-      $_SESSION['sucesso'] = 'Administrador cadastrado com sucesso!';
+    if ($stmt->num_rows > 0) {
+      $_SESSION['erro'] = 'Este e-mail já está em uso.';
     } else {
-      $_SESSION['erro'] = 'Erro ao cadastrar administrador.';
+      $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+      $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, 'admin')");
+      $stmt->bind_param("sss", $nome, $email, $senha_hash);
+
+      if ($stmt->execute()) {
+        $_SESSION['sucesso'] = 'Administrador cadastrado com sucesso!';
+        header("Location: cadastrar_admin.php");
+        exit;
+      } else {
+        $_SESSION['erro'] = 'Erro ao cadastrar administrador.';
+      }
     }
+    $stmt->close();
   }
 }
 ?>

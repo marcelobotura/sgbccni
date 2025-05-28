@@ -2,6 +2,7 @@
 define('BASE_PATH', dirname(__FILE__) . '/../backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
+include_once BASE_PATH . '/includes/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,37 +18,45 @@ require_once BASE_PATH . '/includes/session.php';
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h3 class="mb-4 text-center">📬 Entre em Contato</h3>
-
-      <?php if (isset($_SESSION['sucesso'])): ?>
-        <div class="alert alert-success text-center"><?= htmlspecialchars($_SESSION['sucesso']) ?></div>
-        <?php unset($_SESSION['sucesso']); ?>
-      <?php elseif (isset($_SESSION['erro'])): ?>
-        <div class="alert alert-danger text-center"><?= htmlspecialchars($_SESSION['erro']) ?></div>
-        <?php unset($_SESSION['erro']); ?>
-      <?php endif; ?>
-
-      <form method="POST" action="enviar_contato.php">
-        <div class="mb-3">
-          <label for="nome" class="form-label">Nome:</label>
-          <input type="text" name="nome" id="nome" class="form-control" required>
+      <div class="card shadow border-0">
+        <div class="card-header bg-primary text-white text-center">
+          <h4 class="mb-0">📬 Entre em Contato</h4>
         </div>
+        <div class="card-body">
 
-        <div class="mb-3">
-          <label for="email" class="form-label">E-mail:</label>
-          <input type="email" name="email" id="email" class="form-control" required>
+          <?php if (isset($_SESSION['sucesso'])): ?>
+            <div class="alert alert-success text-center"><?= htmlspecialchars($_SESSION['sucesso']) ?></div>
+            <?php unset($_SESSION['sucesso']); ?>
+          <?php elseif (isset($_SESSION['erro'])): ?>
+            <div class="alert alert-danger text-center"><?= htmlspecialchars($_SESSION['erro']) ?></div>
+            <?php unset($_SESSION['erro']); ?>
+          <?php endif; ?>
+
+          <form method="POST" action="enviar_contato.php">
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome:</label>
+              <input type="text" name="nome" id="nome" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">E-mail:</label>
+              <input type="email" name="email" id="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="mensagem" class="form-label">Mensagem:</label>
+              <textarea name="mensagem" id="mensagem" rows="5" class="form-control" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">📤 Enviar Mensagem</button>
+          </form>
+
         </div>
-
-        <div class="mb-3">
-          <label for="mensagem" class="form-label">Mensagem:</label>
-          <textarea name="mensagem" id="mensagem" rows="5" class="form-control" required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary w-100">Enviar Mensagem</button>
-      </form>
+      </div>
     </div>
   </div>
 </div>
 
+<?php include_once BASE_PATH . '/includes/footer.php'; ?>
 </body>
 </html>

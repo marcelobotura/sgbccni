@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../../backend/includes/verifica_admin.php';
 require_once __DIR__ . '/../../../backend/includes/header.php';
 require_once __DIR__ . '/../../../backend/includes/menu.php';
 exigir_login('admin');
@@ -97,6 +98,7 @@ exigir_login('admin');
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
+// 🔁 Configura campos de tags com autocomplete
 function configurarTag(id, tipo) {
   $('#' + id).select2({
     theme: 'bootstrap-5',
@@ -134,6 +136,52 @@ document.addEventListener('DOMContentLoaded', function () {
   configurarTag('autor_id', 'autor');
   configurarTag('editora_id', 'editora');
   configurarTag('categoria_id', 'categoria');
+});
+
+// 🔍 Busca ISBN automaticamente e preenche os campos
+document.getElementById('isbn').addEventListener('blur', function () {
+  const isbn = this.value.trim();
+  if (!isbn) return;
+
+  fetch('<?= URL_BASE ?>backend/services/buscar_isbn.php?isbn=' + isbn)
+    .then(res => res.json())
+    .then(data => {
+      if (data.erro) {
+        alert(data.erro);
+        return;
+      }
+
+      document.getElementById('titulo').value = data.titulo || '';
+      document.getElementById('descricao').value = data.descricao || '';
+
+      if (data.autor) {
+        const opt = new Option(data.autor, data.autor, true, true);
+        $('#autor_id').append(opt).trigger('change');
+      }
+
+      if (data.editora) {
+        const opt = new Option(data.editora, data.editora, true, true);
+        $('#editora_id').append(opt).trigger('change');
+      }
+
+      if (data.categoria) {
+        const opt = new Option(data.categoria, data.categoria, true, true);
+        $('#categoria_id').append(opt).trigger('change');
+      }
+
+      if (data.capa) {
+        let preview = document.getElementById('preview_capa');
+        if (!preview) {
+          preview = document.createElement('img');
+          preview.id = 'preview_capa';
+          preview.classList.add('img-thumbnail', 'mt-3');
+          preview.style.maxHeight = '200px';
+          document.getElementById('capa').insertAdjacentElement('afterend', preview);
+        }
+        preview.src = data.capa;
+      }
+    })
+    .catch(() => alert('Erro ao buscar informações do ISBN'));
 });
 </script>
 

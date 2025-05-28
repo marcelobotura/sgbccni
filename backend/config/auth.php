@@ -1,6 +1,10 @@
 <?php
 session_start();
-require_once __DIR__ . '/../../config/config.php';
+
+// ✅ Inclui corretamente a config e sessão
+require_once __DIR__ . '/../env.php';              // Define URL_BASE e ENV_DEV
+require_once __DIR__ . '/../includes/session.php'; // Garante sessão ativa
+require_once __DIR__ . '/../config/database.php';  // (Sugestão: isolar DB futuramente)
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     $acao  = $_POST['acao'];
@@ -14,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
         exit;
     }
 
-    // 📝 REGISTRO DE USUÁRIO
+    // ✅ REGISTRO
     if ($acao === 'register') {
         $nome = trim(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
-        $tipo = 'usuario'; // padrão
+        $tipo = 'usuario';
 
         if (empty($nome) || empty($email) || empty($senha)) {
             $_SESSION['erro'] = "Preencha todos os campos.";
@@ -25,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
             exit;
         }
 
-        // 🔁 Verifica se já existe o e-mail
         $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -39,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
         }
         $stmt->close();
 
-        // ✅ Cria novo usuário
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $nome, $email, $senha_hash, $tipo);
@@ -60,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
         }
     }
 
-    // 🔐 LOGIN DE USUÁRIO OU ADMIN
+    // ✅ LOGIN
     elseif ($acao === 'login') {
         $stmt = $conn->prepare("SELECT id, nome, senha, tipo FROM usuarios WHERE email = ?");
         $stmt->bind_param("s", $email);
@@ -78,7 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
                 $_SESSION['usuario_tipo'] = $tipo;
                 $stmt->close();
 
-                // 👥 Redireciona conforme tipo de usuário
                 header("Location: " . URL_BASE . ($tipo === 'admin' ? "admin/pages/index.php" : "usuario/meus_livros.php"));
                 exit;
             } else {

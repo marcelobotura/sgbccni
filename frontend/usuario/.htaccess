@@ -1,27 +1,35 @@
-# Ativar URL amigável
+# ✅ Ativar reescrita de URLs
 RewriteEngine On
 
-# Definir o diretório base
+# ✅ Definir o diretório base (ajuste se necessário)
 RewriteBase /sgbccni/
 
-# Redirecionar todas as requisições para index.php, exceto arquivos e pastas existentes
+# 🔁 Redirecionar todas as requisições para index.php (exceto arquivos/pastas existentes)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
 
-# Proteção contra listagem de diretório
+# 🚫 Bloquear listagem de diretórios
 Options -Indexes
 
-# Definir charset e segurança
+# 🔐 Segurança de headers
 AddDefaultCharset UTF-8
-Header set X-Content-Type-Options "nosniff"
-Header always set X-Frame-Options "SAMEORIGIN"
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
 
-
-# Cache básico
+# 🚀 Cache de arquivos estáticos
 <IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType image/jpg "access plus 30 days"
-    ExpiresByType text/css "access plus 7 days"
-    ExpiresByType application/javascript "access plus 7 days"
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType font/woff2 "access plus 90 days"
 </IfModule>

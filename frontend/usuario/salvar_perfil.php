@@ -1,68 +1,81 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/../app_backend');
+define('BASE_PATH', dirname(__DIR__) . '/../backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
-include_once BASE_PATH . '/includes/header.php';
 
 exigir_login('usuario');
-?>
 
-<div class="container py-4">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="card shadow">
-        <div class="card-header bg-info text-white">
-          <h4 class="mb-0"><i class="bi bi-person-lines-fill"></i> Meu Perfil</h4>
-        </div>
-        <div class="card-body">
-          <?php if (isset($_SESSION['sucesso'])): ?>
-            <div class="alert alert-success"><?= $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></div>
-          <?php elseif (isset($_SESSION['erro'])): ?>
-            <div class="alert alert-danger"><?= $_SESSION['erro']; unset($_SESSION['erro']); ?></div>
-          <?php endif; ?>
+$id = $_SESSION['usuario_id'];
+$nome = trim($_POST['nome'] ?? '');
+$email = trim($_POST['email'] ?? '');
+$nova_senha = $_POST['nova_senha'] ?? '';
+$foto_nome = $_FILES['foto']['name'] ?? null;
 
-          <?php if (!empty($_SESSION['usuario_foto'])): ?>
-            <div class="text-center mb-3">
-              <img src="<?= URL_BASE ?>uploads/<?= htmlspecialchars($_SESSION['usuario_foto']) ?>" class="rounded-circle" width="120" height="120" alt="Foto de perfil">
-            </div>
-          <?php endif; ?>
+if (empty($nome) || empty($email)) {
+    $_SESSION['erro'] = "Nome e e-mail são obrigatórios.";
+    header("Location: perfil.php");
+    exit;
+}
 
-          <form method="POST" action="salvar_perfil.php" enctype="multipart/form-data">
-            <div class="mb-3">
-              <label>Nome:</label>
-              <input type="text" name="nome" class="form-control" value="<?= htmlspecialchars($_SESSION['usuario_nome']) ?>" required>
-            </div>
-            <div class="mb-3">
-              <label>Email:</label>
-              <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($_SESSION['usuario_email'] ?? '') ?>" required>
-            </div>
-            <div class="mb-3">
-              <label>Nova senha (opcional):</label>
-              <input type="password" name="nova_senha" class="form-control">
-            </div>
-            <div class="mb-3">
-              <label>Foto de perfil (opcional):</label>
-              <input type="file" name="foto" class="form-control" onchange="previewImagem(this)">
-              <img id="preview" src="#" class="mt-3 d-none rounded-circle" width="100" alt="Preview">
-            </div>
-            <button type="submit" class="btn btn-primary">Salvar alterações</button>
-            <a href="excluir_conta.php" class="btn btn-outline-danger float-end" onclick="return confirm('Tem certeza que deseja excluir sua conta?');">Excluir conta</a>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+// Verifica se o e-mail já está em uso por outro usuário
+$stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ? AND id != ?");
+$stmt->bind_param("si", $email, $id);
+$stmt->execute();
+$stmt->store_result();
 
-<script>
-  function previewImagem(input) {
-    const file = input.files[0];
-    if (file) {
-      const preview = document.getElementById('preview');
-      preview.src = URL.createObjectURL(file);
-      preview.classList.remove('d-none');
+if ($stmt->num_rows > 0) {
+    $_SESSION['erro'] = "Este e-mail já está sendo usado.";
+    header("Location: perfil.php");
+    exit;
+}
+$stmt->close();
+
+// Atualização da senha (se fornecida)
+$senha_sql = "";
+$params = [$nome, $email];
+$types = "ss";
+
+if (!empty($nova_senha)) {
+    $senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
+    $senha_sql = ", senha = ?";
+    $params[] = $senha_hash;
+    $types .= "s";
+}
+
+// Upload da foto (opcional)
+if (!empty($foto_nome)) {
+    $ext = strtolower(pathinfo($foto_nome, PATHINFO_EXTENSION));
+    $novo_nome = uniqid() . "." . $ext;
+    $caminho = BASE_PATH . "/uploads/" . $novo_nome;
+
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $caminho)) {
+        $foto_sql = ", foto = ?";
+        $params[] = $novo_nome;
+        $types .= "s";
+        $_SESSION['usuario_foto'] = $novo_nome;
+    } else {
+        $_SESSION['erro'] = "Erro ao enviar a foto.";
+        header("Location: perfil.php");
+        exit;
     }
-  }
-</script>
+} else {
+    $foto_sql = "";
+}
 
-<?php include_once BASE_PATH . '/includes/footer.php'; ?>
+// Monta e executa o update
+$sql = "UPDATE usuarios SET nome = ?, email = ?$senha_sql$foto_sql WHERE id = ?";
+$params[] = $id;
+$types .= "i";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param($types, ...$params);
+if ($stmt->execute()) {
+    $_SESSION['usuario_nome'] = $nome;
+    $_SESSION['usuario_email'] = $email;
+    $_SESSION['sucesso'] = "✅ Perfil atualizado com sucesso!";
+} else {
+    $_SESSION['erro'] = "Erro ao atualizar perfil: " . $conn->error;
+}
+
+header("Location: perfil.php");
+exit;

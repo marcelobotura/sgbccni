@@ -8,6 +8,8 @@ $iconeTema = match ($modo) {
     default => 'bi bi-brightness-high'
 };
 $iconeLogout = in_array($modo, ['dark', 'medio']) ? 'text-light' : 'text-dark';
+
+$tipoUsuario = $_SESSION['usuario_tipo'] ?? '';
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
@@ -24,21 +26,21 @@ $iconeLogout = in_array($modo, ['dark', 'medio']) ? 'text-light' : 'text-dark';
 
     <div class="collapse navbar-collapse" id="menuNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <?php if ($_SESSION['usuario_tipo'] === 'usuario'): ?>
+        <?php if ($tipoUsuario === 'usuario'): ?>
           <li class="nav-item"><a class="nav-link" href="<?= URL_BASE ?>usuario/meus_livros.php"><i class="bi bi-journal-check me-1"></i>Meus Livros</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= URL_BASE ?>usuario/favoritos.php"><i class="bi bi-star me-1"></i>Favoritos</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= URL_BASE ?>usuario/perfil.php"><i class="bi bi-person-circle me-1"></i>Perfil</a></li>
-        <?php elseif ($_SESSION['usuario_tipo'] === 'admin'): ?>
+        <?php elseif ($tipoUsuario === 'admin'): ?>
           <li class="nav-item"><a class="nav-link" href="<?= URL_BASE ?>admin/pages/index.php"><i class="bi bi-speedometer2 me-1"></i>Painel Admin</a></li>
         <?php endif; ?>
       </ul>
 
       <!-- 🌗 Botão de tema + 🔓 Logout -->
       <div class="d-flex gap-2">
-        <button onclick="alternarTema()" class="btn btn-light btn-sm" title="Alternar tema">
+        <button onclick="alternarTema()" class="btn btn-light btn-sm" title="Alternar tema" aria-label="Alternar tema">
           <i class="<?= $iconeTema ?>"></i>
         </button>
-        <a href="<?= URL_BASE ?>logout" class="btn btn-outline-light btn-sm">
+        <a href="<?= URL_BASE ?>logout.php" class="btn btn-outline-light btn-sm">
           <i class="bi bi-box-arrow-right me-1 <?= $iconeLogout ?>"></i>Sair
         </a>
       </div>

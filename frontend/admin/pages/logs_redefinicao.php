@@ -1,24 +1,16 @@
 <?php
-session_start();
-define('BASE_PATH', dirname(__DIR__) . '/backend');
-require_once BASE_PATH . '/config/config.php';
-require_once BASE_PATH . '/includes/session.php';
-require_once BASE_PATH . '/includes/header.php';
+require_once __DIR__ . '/../../../backend/includes/verifica_admin.php';
+require_once __DIR__ . '/../../../backend/includes/header.php';
 
-// Protege para acesso apenas de administradores
-exigir_login('admin');
-
-// Filtros
 $filtro_email = trim($_GET['email'] ?? '');
-$filtro_ip = trim($_GET['ip'] ?? '');
-$filtro_data = trim($_GET['data'] ?? '');
+$filtro_ip    = trim($_GET['ip'] ?? '');
+$filtro_data  = trim($_GET['data'] ?? '');
 
-// Query base
 $sql = "SELECT * FROM log_redefinicao_senha WHERE 1=1";
 $params = [];
 $tipos = "";
 
-// Adiciona filtros dinamicamente
+// Filtros dinâmicos
 if (!empty($filtro_email)) {
     $sql .= " AND email LIKE ?";
     $params[] = "%$filtro_email%";
@@ -37,11 +29,9 @@ if (!empty($filtro_data)) {
 
 $sql .= " ORDER BY data_redefinicao DESC";
 $stmt = $conn->prepare($sql);
-
 if ($params) {
     $stmt->bind_param($tipos, ...$params);
 }
-
 $stmt->execute();
 $resultado = $stmt->get_result();
 ?>
@@ -97,4 +87,4 @@ $resultado = $stmt->get_result();
   </div>
 </div>
 
-<?php require_once BASE_PATH . '/includes/footer.php'; ?>
+<?php require_once __DIR__ . '/../../../backend/includes/footer.php'; ?>

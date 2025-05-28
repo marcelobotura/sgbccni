@@ -1,18 +1,16 @@
 <?php
 header('Content-Type: application/json');
 
-define('BASE_PATH', dirname(__DIR__) . '/../backend');
-require_once BASE_PATH . '/config/config.php';
+require_once __DIR__ . '/../config/config.php';
 
 $tipo  = trim($_GET['tipo'] ?? '');
 $termo = trim($_GET['q'] ?? '');
 
 if (empty($tipo)) {
-    echo json_encode(['results' => []]);
+    echo json_encode([]);
     exit;
 }
 
-// 🔍 Busca por nome com LIKE
 $termo_completo = "%$termo%";
 
 $stmt = $conn->prepare("
@@ -34,7 +32,6 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
-// 🔄 Adiciona termo digitado como opção "nova", se ainda não estiver na lista
 $nomes_existentes = array_column($dados, 'text');
 if ($termo !== '' && !in_array($termo, $nomes_existentes)) {
     $dados[] = [
@@ -44,4 +41,4 @@ if ($termo !== '' && !in_array($termo, $nomes_existentes)) {
     ];
 }
 
-echo json_encode(['results' => $dados], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+echo json_encode($dados, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

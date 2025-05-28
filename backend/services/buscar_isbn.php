@@ -1,4 +1,5 @@
 <?php
+// ✅ Arquivo: backend/services/buscar_isbn.php
 header('Content-Type: application/json');
 
 $isbn = $_GET['isbn'] ?? '';
@@ -7,16 +8,24 @@ if (!$isbn) {
   exit;
 }
 
+// 📁 Diretório de cache
+$cacheDir = __DIR__ . '/../../cache_isbn';
+@mkdir($cacheDir);
+$cacheFile = "$cacheDir/$isbn.json";
+
+// 🔄 Usa cache se existir e for recente (24h)
+if (file_exists($cacheFile) && time() - filemtime($cacheFile) < 86400) {
+  echo file_get_contents($cacheFile);
+  exit;
+}
+
+// 🔍 Busca na API do Google Books
 function buscarGoogleBooks($isbn) {
   $url = "https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn";
-  $context = stream_context_create([
-    'http' => ['timeout' => 5]
-  ]);
+  $resposta = @file_get_contents($url);
+  if (!$resposta) return null;
 
-  $json = @file_get_contents($url, false, $context);
-  if (!$json) return null;
-
-  $dados = json_decode($json, true);
+  $dados = json_decode($resposta, true);
   if (!empty($dados['items'][0])) {
     $info = $dados['items'][0]['volumeInfo'];
     return [
@@ -35,20 +44,15 @@ function buscarGoogleBooks($isbn) {
   return null;
 }
 
+// 🔍 Busca na OpenLibrary (fallback)
 function buscarOpenLibrary($isbn) {
   $url = "https://openlibrary.org/api/books?bibkeys=ISBN:$isbn&format=json&jscmd=data";
-  $context = stream_context_create([
-    'http' => ['timeout' => 5]
-  ]);
+  $resposta = @file_get_contents($url);
+  if (!$resposta) return null;
 
-  $json = @file_get_contents($url, false, $context);
-  if (!$json) return null;
-
-  $dados = json_decode($json, true);
-  $chave = "ISBN:$isbn";
-
-  if (!empty($dados[$chave])) {
-    $info = $dados[$chave];
+  $dados = json_decode($resposta, true);
+  $info = $dados["ISBN:$isbn"] ?? null;
+  if ($info) {
     return [
       'titulo'     => $info['title'] ?? '',
       'autor'      => $info['authors'][0]['name'] ?? '',
@@ -65,11 +69,11 @@ function buscarOpenLibrary($isbn) {
   return null;
 }
 
-// 🔁 Consulta as APIs
+// 📚 Tenta buscar na API
 $resultado = buscarGoogleBooks($isbn) ?? buscarOpenLibrary($isbn);
 
-// 📦 Retorno final
 if ($resultado) {
+  @file_put_contents($cacheFile, json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
   echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 } else {
   echo json_encode(['erro' => 'Livro não encontrado']);

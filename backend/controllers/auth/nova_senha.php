@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../config/env.php'; // ✅ Garante que URL_BASE e constantes estão carregadas
 
 $token = $_GET['token'] ?? '';
 if (!$token) {
@@ -25,12 +25,23 @@ if (!$token) {
         <div class="card-body">
           <h4 class="mb-4 text-center">🔐 Definir Nova Senha</h4>
 
+          <!-- 🔔 Exibe erros da sessão, se houver -->
+          <?php session_start(); if (!empty($_SESSION['erro'])): ?>
+            <div class="alert alert-danger"><?= $_SESSION['erro']; unset($_SESSION['erro']); ?></div>
+          <?php endif; ?>
+
           <form action="salvar_nova_senha.php?token=<?= urlencode($token) ?>" method="POST" autocomplete="off">
             <div class="mb-3">
               <label for="senha" class="form-label">Nova Senha</label>
               <input type="password" name="senha" id="senha" class="form-control" required minlength="6" autofocus>
               <div class="form-text">A senha deve conter pelo menos 6 caracteres.</div>
             </div>
+
+            <!-- ✅ Sugestão futura: incluir um campo de confirmação -->
+            <!-- <div class="mb-3">
+              <label for="senha2" class="form-label">Confirmar Senha</label>
+              <input type="password" name="senha2" id="senha2" class="form-control" required minlength="6">
+            </div> -->
 
             <button type="submit" class="btn btn-primary w-100">Salvar Nova Senha</button>
           </form>

@@ -1,16 +1,15 @@
-
-// ✅ Arquivo: backend/controllers/livros/atualizar_livro.php
 <?php
 require_once __DIR__ . '/../../../config/config.php';
 require_once __DIR__ . '/../../../includes/session.php';
 
 exigir_login('admin');
 
+// 🔎 Recebe e sanitiza os dados
 $id           = $_POST['id'] ?? null;
 $titulo       = trim($_POST['titulo'] ?? '');
-isbn          = trim($_POST['isbn'] ?? '');
-descricao     = trim($_POST['descricao'] ?? '');
-tipo          = $_POST['tipo'] ?? 'físico';
+$isbn         = trim($_POST['isbn'] ?? '');
+$descricao    = trim($_POST['descricao'] ?? '');
+$tipo         = $_POST['tipo'] ?? 'físico';
 $formato      = $_POST['formato'] ?? 'PDF';
 $link_digital = trim($_POST['link_digital'] ?? '');
 
@@ -20,9 +19,9 @@ if (!$id || !$titulo || !$isbn) {
     exit;
 }
 
-// Upload de nova capa, se houver
+// 📷 Upload de nova capa (opcional)
 $capa_local = null;
-if (!empty($_FILES['capa']['name'])) {
+if (!empty($_FILES['capa']['name']) && is_uploaded_file($_FILES['capa']['tmp_name'])) {
     $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
     $tipo_img = mime_content_type($_FILES['capa']['tmp_name']);
 
@@ -33,7 +32,7 @@ if (!empty($_FILES['capa']['name'])) {
     }
 
     $ext = pathinfo($_FILES['capa']['name'], PATHINFO_EXTENSION);
-    $novo_nome = uniqid('capa_', true) . '.' . $ext;
+    $novo_nome = uniqid('capa_', true) . '.' . strtolower($ext);
     $destino = __DIR__ . '/../../../uploads/capas/' . $novo_nome;
 
     if (move_uploaded_file($_FILES['capa']['tmp_name'], $destino)) {
@@ -45,6 +44,7 @@ if (!empty($_FILES['capa']['name'])) {
     }
 }
 
+// 🛠️ Monta a query com ou sem capa
 $query = "UPDATE livros SET titulo=?, isbn=?, descricao=?, tipo=?, formato=?, link_digital=?";
 $params = [$titulo, $isbn, $descricao, $tipo, $formato, $link_digital];
 $types  = "ssssss";
@@ -59,6 +59,7 @@ $query .= " WHERE id=?";
 $params[] = $id;
 $types .= "i";
 
+// 💾 Executa o UPDATE
 $stmt = $conn->prepare($query);
 $stmt->bind_param($types, ...$params);
 
@@ -70,4 +71,3 @@ if ($stmt->execute()) {
 
 header("Location: " . URL_BASE . "admin/pages/editar_livro.php?id=$id");
 exit;
-

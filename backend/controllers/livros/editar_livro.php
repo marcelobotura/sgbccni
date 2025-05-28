@@ -1,9 +1,13 @@
 <?php
+require_once __DIR__ . '/../../../backend/includes/verifica_admin.php';
+require_once __DIR__ . '/../../../backend/config/config.php';
+require_once __DIR__ . '/../../../backend/includes/session.php';
 require_once __DIR__ . '/../../../backend/includes/header.php';
 require_once __DIR__ . '/../../../backend/includes/menu.php';
-require_once __DIR__ . '/../../../backend/config/config.php';
+
 exigir_login('admin');
 
+// 🆔 Valida ID
 $id = $_GET['id'] ?? null;
 if (!$id) {
   $_SESSION['erro'] = 'Livro não especificado.';
@@ -11,7 +15,7 @@ if (!$id) {
   exit;
 }
 
-// Busca dados do livro
+// 🔍 Busca livro
 $stmt = $conn->prepare("SELECT * FROM livros WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -82,11 +86,15 @@ if (!$livro) {
         <div class="mt-2">
           <img src="<?= URL_BASE . $livro['capa_local'] ?>" alt="Capa atual" class="img-thumbnail" style="max-height: 150px;">
         </div>
+      <?php else: ?>
+        <div class="form-text text-muted">Nenhuma capa cadastrada.</div>
       <?php endif; ?>
     </div>
 
-    <button type="submit" class="btn btn-primary">Atualizar Livro</button>
-    <a href="listar_livros.php" class="btn btn-secondary">Cancelar</a>
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-primary">💾 Atualizar Livro</button>
+      <a href="listar_livros.php" class="btn btn-secondary">Cancelar</a>
+    </div>
   </form>
 </div>
 

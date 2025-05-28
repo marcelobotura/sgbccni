@@ -5,10 +5,8 @@ require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 require_once BASE_PATH . '/includes/header.php';
 
-// Protege para apenas administradores
 exigir_login('admin');
 
-// Busca todos os usuários
 $sql = "SELECT id, nome, email, tipo FROM usuarios ORDER BY tipo DESC, nome ASC";
 $resultado = $conn->query($sql);
 ?>
@@ -18,6 +16,12 @@ $resultado = $conn->query($sql);
     <h3 class="mb-0">👥 Usuários do Sistema</h3>
     <a href="register_admin.php" class="btn btn-success">➕ Novo Admin</a>
   </div>
+
+  <?php if (!empty($_SESSION['sucesso'])): ?>
+    <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
+  <?php elseif (!empty($_SESSION['erro'])): ?>
+    <div class="alert alert-danger"><?= htmlspecialchars($_SESSION['erro']); unset($_SESSION['erro']); ?></div>
+  <?php endif; ?>
 
   <?php if ($resultado->num_rows === 0): ?>
     <div class="alert alert-warning text-center">Nenhum usuário cadastrado ainda.</div>
@@ -46,7 +50,11 @@ $resultado = $conn->query($sql);
               </td>
               <td class="text-center">
                 <a href="editar_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-warning">✏️ Editar</a>
-                <a href="excluir_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?')">🗑️ Excluir</a>
+                <?php if ($_SESSION['usuario_id'] != $usuario['id']): ?>
+                  <a href="excluir_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?')">🗑️ Excluir</a>
+                <?php else: ?>
+                  <span class="text-muted">🔒</span>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endwhile; ?>

@@ -1,4 +1,33 @@
 // 🛠️ Ativa log de erros no PHP
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/../../logs/php-error.log'); // ou outro caminho desejado
-error_reporting(E_ALL);
+error_reporting(E_ALL);[29-May-2025 23:31:21 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\public_html\index.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:24 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:24 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\public_html\index.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:25 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:25 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\public_html\index.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:25 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:25 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\public_html\index.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:40 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:40 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\public_html\index.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:41 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3
+[29-May-2025 23:31:41 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\public_html/../../backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\public_html\index.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 3

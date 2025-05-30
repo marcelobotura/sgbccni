@@ -1,6 +1,6 @@
 <?php
 session_start();
-define('BASE_PATH', dirname(__DIR__) . '/backend');
+define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 ?>
@@ -42,7 +42,7 @@ require_once BASE_PATH . '/includes/session.php';
             <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
           <?php endif; ?>
 
-          <form method="POST" action="<?= URL_BASE ?>login/register_valida.php">
+          <form method="POST" action="register_valida.php">
             <div class="mb-3">
               <label for="nome" class="form-label">Nome completo:</label>
               <input type="text" name="nome" id="nome" class="form-control" required>

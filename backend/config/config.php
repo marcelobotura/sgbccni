@@ -32,7 +32,7 @@ if (@file_put_contents($logTest, 'Teste de escrita em ' . date('Y-m-d H:i:s'))) 
 }
 
 // 🖼️ Teste permissão em uploads/
-$uploadPath = dirname(__DIR__) . '/../public_html/uploads/teste.txt';
+$uploadPath = dirname(__DIR__) . '/../uploads/teste.txt';
 if (@file_put_contents($uploadPath, 'teste')) {
     $sucessos[] = "✅ Permissão de escrita em /uploads.";
     unlink($uploadPath);

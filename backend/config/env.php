@@ -42,6 +42,6 @@ try {
 }
 
 // 📌 Informações globais do sistema
-define('NOME_SISTEMA', getenv('APP_NAME') ?: 'Sistema Biblioteca CNI');
-define('VERSAO_SISTEMA', getenv('APP_VERSION') ?: '1.0');
-define('EMAIL_SUPORTE', getenv('APP_EMAIL') ?: 'suporte@exemplo.com');
+define('NOME_SISTEMA', getenv('APP_NAME') ?: 'SGBCCNI');
+define('VERSAO_SISTEMA', getenv('APP_VERSION') ?: '2.6');
+define('EMAIL_SUPORTE', getenv('APP_EMAIL') ?: 'mbsfoz@gmail.com');

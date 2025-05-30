@@ -1,6 +1,8 @@
-// ✅ C:\xampp\htdocs\sgbccni\public_html\login.php
 <?php
 require_once __DIR__ . '/../backend/config/config.php';
+require_once __DIR__ . '/../backend/includes/session.php';
+require_once __DIR__ . '/../backend/includes/header.php';
+require_once __DIR__ . '/../backend/includes/menu.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,7 +44,7 @@ require_once __DIR__ . '/../backend/config/config.php';
     </form>
 
     <div class="text-center mt-3">
-      <a href="register.php">Criar uma conta</a>
+      <a href="/../../../frontend/login/register.php">Criar uma conta</a>
     </div>
   </div>
 </div>
@@ -80,6 +82,6 @@ document.querySelector('#formLogin').addEventListener('submit', function(e) {
   });
 });
 </script>
-
+<?php require_once __DIR__ . '/../backend/includes/footer.php'; ?>
 </body>
 </html>

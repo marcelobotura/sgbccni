@@ -13,15 +13,7 @@ require_once BASE_PATH . '/includes/session.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <style>
-    .toggle-password {
-      position: absolute;
-      top: 38px;
-      right: 10px;
-      cursor: pointer;
-      color: #6c757d;
-    }
-  </style>
+  
 </head>
 <body class="bg-light">
 
@@ -64,6 +56,7 @@ require_once BASE_PATH . '/includes/session.php';
 
           <div class="mt-3 text-center">
             <a href="login.php">Já tenho uma conta</a>
+            <a href="/../public_html/login.php">testnado</a>
           </div>
 
         </div>

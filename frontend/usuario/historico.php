@@ -1,8 +1,9 @@
 <?php
-define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
-require_once BASE_PATH . '/config/config.php';
-require_once BASE_PATH . '/includes/session.php';
-include_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../../backend/config/config.php';
+require_once __DIR__ . '/../../backend/includes/session.php';
+require_once __DIR__ . '/../../backend/includes/header.php';
+require_once __DIR__ . '/../../backend/includes/menu.php';
+
 
 exigir_login('usuario');
 
@@ -82,4 +83,4 @@ $resultado = $stmt->get_result();
   <?php endif; ?>
 </div>
 
-<?php include_once __DIR__ . '/../includes/footer.php'; ?>
+<?php require_once __DIR__ . '/../../backend/includes/footer.php'; ?>

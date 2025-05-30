@@ -36,7 +36,7 @@ $stmt->store_result();
 if ($stmt->num_rows > 0) {
     $_SESSION['erro'] = "Este e-mail já está cadastrado.";
     $stmt->close();
-    header("Location: " . URL_BASE . "frontend/login/register.php");
+    header("Location: " . URL_BASE . "/../frontend/login/register.php");
     exit;
 }
 $stmt->close();
@@ -59,7 +59,7 @@ if ($stmt->execute()) {
     header("Location: " . URL_BASE . "frontend/usuario/meus_livros.php");
 } else {
     $_SESSION['erro'] = "Erro ao cadastrar. Tente novamente.";
-    header("Location: " . URL_BASE . "frontend/login/register.php");
+    header("Location: " . URL_BASE . "/../frontend/login/register.php");
 }
 $stmt->close();
 exit;

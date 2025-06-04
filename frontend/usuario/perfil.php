@@ -3,6 +3,7 @@ define('BASE_PATH', dirname(__DIR__) . '/../backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 include_once BASE_PATH . '/includes/header.php';
+require_once 'protect_usuario.php'; 
 
 exigir_login('usuario');
 

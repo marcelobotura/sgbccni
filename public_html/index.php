@@ -22,7 +22,7 @@ require_once __DIR__ . '/../backend/includes/menu.php';
   <p class="lead">Sistema de leitura, empréstimos e comunidade.</p>
   <div class="mb-4">
     <a href="<?= URL_BASE ?>login.php" class="btn btn-primary px-4">Entrar</a>
-    <a href="<?= URL_BASE ?>/../../frontend/login/register.php" class="btn btn-outline-success px-4 ms-2">Criar Conta</a>
+    <a href="<?= URL_BASE ?>/../../frontend/login/register_usuario.php" class="btn btn-outline-success px-4 ms-2">Criar Conta</a>
   </div>
 
   <div class="my-5">

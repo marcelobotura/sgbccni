@@ -1,9 +1,8 @@
-<?php
-// 🔐 Inclusão padrão para páginas protegidas do painel administrativo
+<?php 
+session_start();
+require_once __DIR__ . '/../../../backend/config/config.php'; // garante que URL_BASE está disponível
 
-// Caminho raiz para acesso aos arquivos globais
-require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/session.php';
-
-// Acesso restrito a administradores
-exigir_login('admin');
+if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
+    header("Location: " . URL_BASE . "login/login_admin.php");
+    exit;
+}

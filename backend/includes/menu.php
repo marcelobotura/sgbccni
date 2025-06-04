@@ -23,11 +23,27 @@ $tipoUsuario = $_SESSION['usuario_tipo'] ?? '';
     <div class="collapse navbar-collapse" id="menuNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <?php if ($tipoUsuario === 'usuario'): ?>
-          <li class="nav-item"><a class="nav-link" href="<?= URL_BASE ?>/../../frontend/usuario/meus_livros.php"><i class="bi bi-journal-check me-1"></i>Meus Livros</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= URL_BASE ?>/../../frontend/usuario/meus_favoritos.php"><i class="bi bi-star me-1"></i>Favoritos</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= URL_BASE ?>/../../frontend/usuario/perfil.php"><i class="bi bi-person-circle me-1"></i>Perfil</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= URL_BASE ?>frontend/usuario/meus_livros.php">
+              <i class="bi bi-journal-check me-1"></i>Meus Livros
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= URL_BASE ?>frontend/usuario/meus_favoritos.php">
+              <i class="bi bi-star me-1"></i>Favoritos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= URL_BASE ?>frontend/usuario/perfil.php">
+              <i class="bi bi-person-circle me-1"></i>Perfil
+            </a>
+          </li>
         <?php elseif ($tipoUsuario === 'admin'): ?>
-          <li class="nav-item"><a class="nav-link" href="<?= URL_BASE ?>admin/pages/index.php"><i class="bi bi-speedometer2 me-1"></i>Painel Admin</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= URL_BASE ?>frontend/admin/index.php">
+              <i class="bi bi-speedometer2 me-1"></i>Painel Admin
+            </a>
+          </li>
         <?php endif; ?>
       </ul>
       <div class="d-flex gap-2">

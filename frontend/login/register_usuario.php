@@ -1,26 +1,34 @@
-<?php
+<?php 
 session_start();
 define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 ?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-tema="<?= htmlspecialchars($_COOKIE['modo_tema'] ?? 'claro') ?>">
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro - Biblioteca CNI</title>
+  <title>Cadastro - <?= NOME_SISTEMA ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/login.css">
+  <style>
+    .toggle-password {
+      position: absolute;
+      right: 1rem;
+      top: 2.8rem;
+      cursor: pointer;
+      z-index: 2;
+    }
+  </style>
 </head>
 <body class="bg-light">
 
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-md-5">
-      <div class="card shadow">
+      <div class="card shadow-sm">
         <div class="card-header bg-success text-white text-center">
           <h4 class="mb-0">📝 Criar Conta</h4>
         </div>
@@ -55,8 +63,7 @@ require_once BASE_PATH . '/includes/session.php';
           </form>
 
           <div class="mt-3 text-center">
-            <a href="login.php">Já tenho uma conta</a>
-            <a href="/../public_html/login.php">testnado</a>
+            <a href="<?= URL_BASE ?>login.php">🔐 Já tenho uma conta</a>
           </div>
 
         </div>

@@ -4,6 +4,7 @@ session_start();
 define('BASE_PATH', dirname(__DIR__, 3) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
+require_once __DIR__ . 'protect_admin.php';
 
 // 🔒 Protege a rota para apenas admins
 exigir_login('admin');

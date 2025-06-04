@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../backend/includes/session.php';
 
 // Redireciona se já estiver logado
 if (isset($_SESSION['usuario_id']) && $_SESSION['usuario_tipo'] === 'admin') {
-    header("Location: ../../frontend/admin/dashboard.php");
+    header("Location: ../../frontend/admin/index.php");
     exit;
 }
 ?>
@@ -24,11 +24,9 @@ if (isset($_SESSION['usuario_id']) && $_SESSION['usuario_tipo'] === 'admin') {
 <div class="login-box">
   <h2 class="text-center mb-4">🔐 Login Administrativo</h2>
 
-  <?php if (!empty($_SESSION['erro'])): ?>
-    <div class="alert alert-danger"><?= htmlspecialchars($_SESSION['erro']); unset($_SESSION['erro']); ?></div>
-  <?php endif; ?>
+  <div id="mensagem" class="alert d-none"></div>
 
-  <form action="login_valida.php" method="POST">
+  <form id="formLogin">
     <input type="hidden" name="acao" value="login">
 
     <div class="mb-3">
@@ -58,6 +56,40 @@ function toggleSenha(icon) {
   icon.classList.toggle('bi-eye');
   icon.classList.toggle('bi-eye-slash');
 }
+
+document.getElementById('formLogin').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = new FormData(this);
+  const mensagem = document.getElementById('mensagem');
+
+  fetch("<?= URL_BASE ?>backend/controllers/auth/login_valida.php", {
+    method: 'POST',
+    body: form
+  })
+  .then(response => response.json())
+  .then(data => {
+    mensagem.classList.remove('d-none', 'alert-success', 'alert-danger');
+
+    if (data.status === 'sucesso') {
+      mensagem.classList.add('alert-success');
+      mensagem.textContent = data.mensagem;
+
+      setTimeout(() => {
+        window.location.href = data.tipo === 'admin'
+          ? "<?= URL_BASE ?>frontend/admin/index.php"
+          : "<?= URL_BASE ?>frontend/usuario/index.php";
+      }, 800);
+    } else {
+      mensagem.classList.add('alert-danger');
+      mensagem.textContent = data.mensagem;
+    }
+  })
+  .catch(() => {
+    mensagem.classList.remove('d-none');
+    mensagem.classList.add('alert-danger');
+    mensagem.textContent = 'Erro ao processar login.';
+  });
+});
 </script>
 
 </body>

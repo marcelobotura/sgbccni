@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../../backend/includes/verifica_admin.php';
 require_once __DIR__ . '/../../../backend/includes/header.php';
 require_once __DIR__ . '/../../../backend/includes/menu.php';
+require_once __DIR__ . 'protect_admin.php';
 exigir_login('admin');
 ?>
 

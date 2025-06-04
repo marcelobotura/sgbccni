@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../../backend/includes/verifica_admin.php';
 require_once __DIR__ . '/../../../backend/includes/header.php';
+require_once __DIR__ . 'protect_admin.php';
 
 $filtro_email = trim($_GET['email'] ?? '');
 $filtro_ip    = trim($_GET['ip'] ?? '');

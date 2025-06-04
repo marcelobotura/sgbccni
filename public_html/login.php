@@ -1,8 +1,7 @@
 <?php
 require_once __DIR__ . '/../backend/config/config.php';
 require_once __DIR__ . '/../backend/includes/session.php';
-require_once __DIR__ . '/../backend/includes/header.php';
-require_once __DIR__ . '/../backend/includes/menu.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -44,7 +43,7 @@ require_once __DIR__ . '/../backend/includes/menu.php';
     </form>
 
     <div class="text-center mt-3">
-      <a href="/../../../frontend/login/register.php">Criar uma conta</a>
+      <a href="<?= URL_BASE ?>/../../frontend/login/register_usuario.php" class="btn btn-outline-success px-4 ms-2">Criar Conta</a>
     </div>
   </div>
 </div>

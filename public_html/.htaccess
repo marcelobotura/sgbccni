@@ -1,7 +1,7 @@
 # Ativa o mecanismo de reescrita
 RewriteEngine On
 
-# Define a base da URL (ajuste conforme necessário)
+# Define a base da URL (ajuste conforme seu ambiente)
 RewriteBase /sgbccni/public_html/
 
 # 🔁 Remove .php da URL
@@ -18,5 +18,10 @@ RewriteRule ^logout$ ../backend/controllers/auth/logout.php [L]
   Deny from all
 </FilesMatch>
 
-# Evita listagem de diretórios (caso o index não exista)
+# 🚫 Evita listagem de diretórios
 Options -Indexes
+
+# ✅ Redireciona URLs não encontradas para index.php (roteamento amigável)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

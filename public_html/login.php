@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../backend/config/config.php';
 require_once __DIR__ . '/../backend/includes/session.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,11 +13,20 @@ require_once __DIR__ . '/../backend/includes/session.php';
   <link href="<?= URL_BASE ?>frontend/assets/css/estilo-base.css" rel="stylesheet">
   <link href="<?= URL_BASE ?>frontend/assets/css/estilo-<?= $_COOKIE['modo_tema'] ?? 'claro' ?>.css" rel="stylesheet">
   <script src="<?= URL_BASE ?>frontend/assets/js/tema.js"></script>
+  <style>
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body class="bg-body-secondary">
 
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
-  <div class="card shadow p-4" style="max-width: 420px; width: 100%">
+  <div class="card shadow p-4" style="max-width: 420px; width: 100%; position: relative;">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h4 class="fw-bold m-0">🔐 Login</h4>
       <button onclick="alternarTema()" class="btn btn-sm btn-outline-secondary" title="Tema">
@@ -34,21 +42,34 @@ require_once __DIR__ . '/../backend/includes/session.php';
         <input type="email" name="email" id="email" class="form-control" required>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3 position-relative">
         <label for="senha" class="form-label">Senha</label>
         <input type="password" name="senha" id="senha" class="form-control" required>
+        <i class="bi bi-eye toggle-password" onclick="togglePassword()"></i>
       </div>
 
       <button type="submit" class="btn btn-primary w-100">Entrar</button>
     </form>
 
     <div class="text-center mt-3">
-      <a href="<?= URL_BASE ?>/../../frontend/login/register_usuario.php" class="btn btn-outline-success px-4 ms-2">Criar Conta</a>
+      <a href="<?= URL_BASE ?>frontend/login/register_usuario.php" class="btn btn-outline-success px-4 ms-2">Criar Conta</a>
     </div>
   </div>
 </div>
 
 <script>
+function togglePassword() {
+  const senha = document.getElementById('senha');
+  const icone = document.querySelector('.toggle-password');
+  if (senha.type === 'password') {
+    senha.type = 'text';
+    icone.classList.replace('bi-eye', 'bi-eye-slash');
+  } else {
+    senha.type = 'password';
+    icone.classList.replace('bi-eye-slash', 'bi-eye');
+  }
+}
+
 document.querySelector('#formLogin').addEventListener('submit', function(e) {
   e.preventDefault();
   const form = new FormData(this);
@@ -66,8 +87,8 @@ document.querySelector('#formLogin').addEventListener('submit', function(e) {
       mensagem.textContent = data.mensagem;
       setTimeout(() => {
         window.location.href = data.tipo === 'admin'
-          ? "<?= URL_BASE ?>admin/pages/index.php"
-          : "<?= URL_BASE ?>usuario/index.php";
+          ? "<?= URL_BASE ?>frontend/admin/pages/index.php"
+          : "<?= URL_BASE ?>frontend/usuario/index.php";
       }, 800);
     } else {
       mensagem.classList.add('alert-danger');

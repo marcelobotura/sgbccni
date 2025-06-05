@@ -1,4 +1,6 @@
 <?php
-// Arquivo público que apenas encaminha para a lógica real de logout
-
-require_once __DIR__ . '/../backend/controllers/auth/logout.php';
+session_start();
+session_unset();
+session_destroy();
+header("Location: login.php");
+exit;

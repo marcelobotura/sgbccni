@@ -10,12 +10,9 @@ require_once __DIR__ . '/../backend/includes/session.php';
   <title>Login - <?= NOME_SISTEMA ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
   <link href="<?= URL_BASE ?>frontend/assets/css/estilo-base.css" rel="stylesheet">
   <link href="<?= URL_BASE ?>frontend/assets/css/estilo-<?= $_COOKIE['modo_tema'] ?? 'claro' ?>.css" rel="stylesheet">
-
   <link href="<?= URL_BASE ?>frontend/assets/css/auth-forms.css" rel="stylesheet">
-
   <script src="<?= URL_BASE ?>frontend/assets/js/tema.js"></script>
 </head>
 <body class="bg-body-secondary">
@@ -38,7 +35,7 @@ require_once __DIR__ . '/../backend/includes/session.php';
             <div class="mb-3 position-relative">
               <label for="senha" class="form-label">Senha:</label>
               <input type="password" name="senha" id="senha" class="form-control" required placeholder="••••••••">
-              <i class="bi bi-eye toggle-password" onclick="toggleSenha(this)"></i>
+              <i class="bi bi-eye toggle-password position-absolute end-0 top-50 translate-middle-y me-3" style="cursor:pointer;" onclick="toggleSenha(this)"></i>
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Entrar</button>
@@ -60,13 +57,10 @@ require_once __DIR__ . '/../backend/includes/session.php';
 <script>
 function toggleSenha(icon) {
   const senha = document.getElementById('senha');
-  if (senha.type === 'password') {
-    senha.type = 'text';
-    icon.classList.replace('bi-eye', 'bi-eye-slash');
-  } else {
-    senha.type = 'password';
-    icon.classList.replace('bi-eye-slash', 'bi-eye');
-  }
+  const isPassword = senha.type === 'password';
+  senha.type = isPassword ? 'text' : 'password';
+  icon.classList.toggle('bi-eye');
+  icon.classList.toggle('bi-eye-slash');
 }
 
 document.querySelector('#formLogin').addEventListener('submit', function(e) {
@@ -74,7 +68,7 @@ document.querySelector('#formLogin').addEventListener('submit', function(e) {
   const form = new FormData(this);
   const mensagem = document.getElementById('mensagem');
 
-  fetch("<?= URL_BASE ?>backend/controllers/auth/login_valida.php", {
+  fetch("<?= URL_BASE ?>../backend/controllers/auth/login_valida.php", {
     method: 'POST',
     body: form
   })
@@ -86,14 +80,13 @@ document.querySelector('#formLogin').addEventListener('submit', function(e) {
       mensagem.textContent = data.mensagem;
       setTimeout(() => {
         window.location.href = data.tipo === 'admin'
-          ? "<?= URL_BASE ?>frontend/admin/dashboard.php" // Ajuste para dashboard.php
-          : "<?= URL_BASE ?>frontend/usuario/index.php"; // Ou outro diretório padrão de usuário
+          ? "<?= URL_BASE ?>frontend/admin/dashboard.php"
+          : "<?= URL_BASE ?>frontend/usuario/dashboard.php";
       }, 800);
     } else {
       mensagem.classList.add('alert-danger');
       mensagem.textContent = data.mensagem;
     }
-    mensagem.classList.remove('d-none'); // Garante que a mensagem seja visível
   })
   .catch(error => {
     console.error('Erro na requisição:', error);

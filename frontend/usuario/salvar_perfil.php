@@ -9,7 +9,7 @@ $id = $_SESSION['usuario_id'];
 $nome = trim($_POST['nome'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $nova_senha = $_POST['nova_senha'] ?? '';
-$foto_nome = $_FILES['foto']['name'] ?? null;
+$foto_atual = $_SESSION['usuario_foto'] ?? null;
 
 if (empty($nome) || empty($email)) {
     $_SESSION['erro'] = "Nome e e-mail são obrigatórios.";
@@ -42,33 +42,38 @@ if (!empty($nova_senha)) {
     $types .= "s";
 }
 
-// Upload da foto (opcional)
-if (!empty($foto_nome)) {
-    $ext = strtolower(pathinfo($foto_nome, PATHINFO_EXTENSION));
+// Upload da nova foto (opcional)
+$foto_sql = "";
+if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+    $ext = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
     $novo_nome = uniqid() . "." . $ext;
-    $caminho = BASE_PATH . "/uploads/" . $novo_nome;
+    $caminho_destino = BASE_PATH . "/../uploads/perfis/" . $novo_nome;
 
-    if (move_uploaded_file($_FILES['foto']['tmp_name'], $caminho)) {
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $caminho_destino)) {
+        // Apaga a foto antiga, se existir
+        if ($foto_atual && file_exists(BASE_PATH . "/../uploads/perfis/" . $foto_atual)) {
+            unlink(BASE_PATH . "/../uploads/perfis/" . $foto_atual);
+        }
+
         $foto_sql = ", foto = ?";
         $params[] = $novo_nome;
         $types .= "s";
         $_SESSION['usuario_foto'] = $novo_nome;
     } else {
-        $_SESSION['erro'] = "Erro ao enviar a foto.";
+        $_SESSION['erro'] = "Erro ao enviar a nova foto.";
         header("Location: perfil.php");
         exit;
     }
-} else {
-    $foto_sql = "";
 }
 
-// Monta e executa o update
-$sql = "UPDATE usuarios SET nome = ?, email = ?$senha_sql$foto_sql WHERE id = ?";
+// Executa o UPDATE
+$sql = "UPDATE usuarios SET nome = ?, email = ?{$senha_sql}{$foto_sql} WHERE id = ?";
 $params[] = $id;
 $types .= "i";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param($types, ...$params);
+
 if ($stmt->execute()) {
     $_SESSION['usuario_nome'] = $nome;
     $_SESSION['usuario_email'] = $email;
@@ -77,5 +82,6 @@ if ($stmt->execute()) {
     $_SESSION['erro'] = "Erro ao atualizar perfil: " . $conn->error;
 }
 
+$stmt->close();
 header("Location: perfil.php");
 exit;

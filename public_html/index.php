@@ -1,8 +1,17 @@
 <?php
 require_once __DIR__ . '/../backend/config/config.php';
 require_once __DIR__ . '/../backend/includes/session.php';
-require_once __DIR__ . '/../backend/includes/header.php';
-require_once __DIR__ . '/../backend/includes/menu.php';
+
+if (usuario_logado()) {
+    if (tipo_usuario() === 'admin') {
+        header('Location: ' . URL_BASE . 'frontend/admin/dashboard.php');
+        exit;
+    } elseif (tipo_usuario() === 'usuario') {
+        header('Location: ' . URL_BASE . 'frontend/usuario/dashboard.php');
+        exit;
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" data-tema="<?= htmlspecialchars($_COOKIE['modo_tema'] ?? 'claro') ?>">

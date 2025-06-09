@@ -17,7 +17,7 @@ require_once BASE_PATH . '/includes/session.php';
     .toggle-password {
       position: absolute;
       right: 1rem;
-      top: 2.8rem;
+      top: 2.8rem; /* Ajuste conforme necessário */
       cursor: pointer;
       z-index: 2;
     }
@@ -28,38 +28,35 @@ require_once BASE_PATH . '/includes/session.php';
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-md-5">
-      <div class="card shadow-sm">
-        <div class="card-header bg-success text-white text-center">
-          <h4 class="mb-0">📝 Criar Conta</h4>
-        </div>
-        <div class="card-body">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h4 class="mb-4 text-center">👋 Crie sua Conta Grátis</h4>
 
-          <?php if (!empty($_SESSION['erro'])): ?>
-            <div class="alert alert-danger"><?= htmlspecialchars($_SESSION['erro']); unset($_SESSION['erro']); ?></div>
-          <?php endif; ?>
-
-          <?php if (!empty($_SESSION['sucesso'])): ?>
-            <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
-          <?php endif; ?>
+          <?php include_once BASE_PATH . '/includes/alerta.php'; // Inclui o sistema de alertas ?>
 
           <form method="POST" action="register_valida.php">
             <div class="mb-3">
               <label for="nome" class="form-label">Nome completo:</label>
-              <input type="text" name="nome" id="nome" class="form-control" required>
+              <input type="text" name="nome" id="nome" class="form-control" required value="<?= htmlspecialchars($_SESSION['form_data']['nome'] ?? '') ?>">
             </div>
 
             <div class="mb-3">
               <label for="email" class="form-label">E-mail:</label>
-              <input type="email" name="email" id="email" class="form-control" required>
+              <input type="email" name="email" id="email" class="form-control" required value="<?= htmlspecialchars($_SESSION['form_data']['email'] ?? '') ?>">
             </div>
 
             <div class="mb-3 position-relative">
               <label for="senha" class="form-label">Senha:</label>
               <input type="password" name="senha" id="senha" class="form-control" required>
-              <i class="bi bi-eye toggle-password" onclick="toggleSenha(this)"></i>
+              <i class="bi bi-eye toggle-password" onclick="toggleSenha(this, 'senha')"></i>
             </div>
 
-            <button type="submit" class="btn btn-success w-100">Cadastrar</button>
+            <div class="mb-3 position-relative"> <label for="senha2" class="form-label">Confirmar Senha:</label>
+              <input type="password" name="senha2" id="senha2" class="form-control" required>
+              <i class="bi bi-eye toggle-password" onclick="toggleSenha(this, 'senha2')"></i>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 mt-3">Cadastrar</button>
           </form>
 
           <div class="mt-3 text-center">
@@ -73,14 +70,20 @@ require_once BASE_PATH . '/includes/session.php';
 </div>
 
 <script>
-  function toggleSenha(icon) {
-    const input = document.getElementById('senha');
+  function toggleSenha(icon, inputId) {
+    const input = document.getElementById(inputId);
     const isPassword = input.type === 'password';
     input.type = isPassword ? 'text' : 'password';
     icon.classList.toggle('bi-eye');
     icon.classList.toggle('bi-eye-slash');
   }
+
+  // Limpar dados do formulário da sessão após exibição (opcional, se quiser persistir erro mas não dados)
+  <?php unset($_SESSION['form_data']); ?>
 </script>
 
-</body>
-</html>
+<?php 
+// Inclui o rodapé da página
+// Nota: O footer.php deve estar na pasta 'backend/includes'
+include_once BASE_PATH . '/includes/footer.php'; 
+?>

@@ -1,54 +1,64 @@
-<?php
-session_start();
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Novo Admin</title>
 
-define('BASE_PATH', dirname(__DIR__, 3) . '/backend');
-require_once BASE_PATH . '/config/config.php';
-require_once BASE_PATH . '/includes/session.php';
-require_once __DIR__ . 'protect_admin.php';
+  <!-- Estilo padronizado -->
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/utilities.css">
+  <link rel="stylesheet" href="../../assets/css/pages/login.css">
+  <link rel="stylesheet" href="../../assets/css/themes/light.css" id="theme-style">
+</head>
+<body>
 
-// 🔒 Protege a rota para apenas admins
-exigir_login('admin');
+  <div class="login-box">
+    <h2>Criar Novo Administrador</h2>
 
-// 📥 Coleta os dados
-$nome  = trim($_POST['nome'] ?? '');
-$email = trim($_POST['email'] ?? '');
-$senha = $_POST['senha'] ?? '';
+    <?php if (isset($_SESSION['erro'])): ?>
+      <div class="alerta-erro"><?= $_SESSION['erro']; unset($_SESSION['erro']); ?></div>
+    <?php endif; ?>
 
-// 🔍 Validações básicas
-if ($nome === '' || $email === '' || $senha === '') {
-    $_SESSION['erro'] = "Preencha todos os campos obrigatórios.";
-    header("Location: cadastrar_admin.php");
-    exit;
-}
+    <?php if (isset($_SESSION['sucesso'])): ?>
+      <div class="alerta-sucesso"><?= $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></div>
+    <?php endif; ?>
 
-// 🔁 Verifica se e-mail já está cadastrado
-$stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$stmt->store_result();
+    <form action="/sgbccni/frontend/admin/ajax/salvar_admin.php" method="POST">
+      <div class="form-group">
+        <input type="text" name="nome" class="form-control" placeholder="Nome completo" required>
+      </div>
 
-if ($stmt->num_rows > 0) {
-    $_SESSION['erro'] = "Este e-mail já está em uso.";
-    $stmt->close();
-    header("Location: cadastrar_admin.php");
-    exit;
-}
-$stmt->close();
+      <div class="form-group">
+        <input type="email" name="email" class="form-control" placeholder="Email" required>
+      </div>
 
-// 🔐 Criptografa senha
-$senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+      <div class="form-group">
+        <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha" required>
+        <button type="button" class="toggle-password" onclick="toggleSenha(this)">👁️</button>
+      </div>
 
-// 💾 Insere novo admin
-$stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, 'admin')");
-$stmt->bind_param("sss", $nome, $email, $senha_hash);
+      <button type="submit" class="btn">Cadastrar</button>
+    </form>
 
-if ($stmt->execute()) {
-    $_SESSION['sucesso'] = "Administrador criado com sucesso!";
-} else {
-    $_SESSION['erro'] = "Erro ao criar administrador.";
-}
-$stmt->close();
+    <div class="link-cadastro">
+      <p><a href="../../login/login_admin.php">← Voltar para o login</a></p>
+    </div>
+  </div>
 
-// 🔁 Redireciona
-header("Location: cadastrar_admin.php");
-exit;
+  <script>
+    function toggleSenha(el) {
+      const senhaInput = document.getElementById('senha');
+      if (senhaInput.type === 'password') {
+        senhaInput.type = 'text';
+        el.textContent = '🙈';
+      } else {
+        senhaInput.type = 'password';
+        el.textContent = '👁️';
+      }
+    }
+  </script>
+</body>
+</html>

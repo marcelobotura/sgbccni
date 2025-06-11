@@ -3,9 +3,9 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Login Administrativo</title>
+  <title>Login do Usuário</title>
 
-  <!-- Estilos principais -->
+  <!-- Estilos profissionais -->
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/components.css">
@@ -15,16 +15,15 @@
 </head>
 <body>
 
-  <div class="login-box admin">
-    <h2>Login Administrativo</h2>
+  <div class="login-box usuario">
+    <h2>Login Usuário</h2>
 
     <?php if (isset($_GET['erro'])): ?>
       <div class="alerta-erro">Usuário ou senha inválidos.</div>
     <?php endif; ?>
 
     <form action="../../backend/controllers/auth/login_valida.php" method="POST">
-      <!-- Origem oculta para validação -->
-      <input type="hidden" name="origem" value="admin">
+      <input type="hidden" name="origem" value="usuario">
 
       <div class="form-group">
         <input type="email" name="email" class="form-control" placeholder="Email" required>
@@ -39,12 +38,11 @@
     </form>
 
     <div class="link-cadastro">
-      <p>Não tem uma conta de administrador?</p>
-      <a href="../admin/pages/register_admin.php">Criar novo cadastro</a>
+      <p>Não tem uma conta?</p>
+      <a href="register_user.php">Cadastre-se</a>
     </div>
   </div>
 
-  <!-- Script para alternar visibilidade da senha -->
   <script>
     function toggleSenha(el) {
       const senhaInput = document.getElementById('senha');
@@ -57,6 +55,5 @@
       }
     }
   </script>
-
 </body>
 </html>

@@ -1,11 +1,38 @@
 <?php
-require_once __DIR__ . '/../../config/env.php'; // ✅ Garante que URL_BASE e constantes estão carregadas
+require_once __DIR__ . '/../../config/env.php';
+require_once __DIR__ . '/../../backend/config/config.php';
+require_once __DIR__ . '/../../backend/includes/session.php';
 
 $token = $_GET['token'] ?? '';
+$tipo_usuario = 'usuario'; // valor padrão de fallback
+
 if (!$token) {
-    echo "<p style='color: red;'>Token de redefinição ausente.</p>";
+    $_SESSION['erro'] = "Token de redefinição ausente.";
+    header("Location: " . URL_BASE . "login/redefinir_senha.php");
     exit;
 }
+
+// Verifica se token é válido e busca tipo de usuário
+$stmt_token = $conn->prepare("
+    SELECT u.tipo 
+    FROM tokens_recuperacao tr
+    INNER JOIN usuarios u ON tr.usuario_id = u.id
+    WHERE tr.token = ? AND tr.expira_em > NOW()
+");
+$stmt_token->bind_param("s", $token);
+$stmt_token->execute();
+$stmt_token->store_result();
+
+if ($stmt_token->num_rows === 0) {
+    $_SESSION['erro'] = "Token de redefinição inválido ou expirado.";
+    $stmt_token->close();
+    header("Location: " . URL_BASE . "login/redefinir_senha.php");
+    exit;
+}
+
+$stmt_token->bind_result($tipo_usuario);
+$stmt_token->fetch();
+$stmt_token->close();
 ?>
 
 <!DOCTYPE html>
@@ -14,42 +41,60 @@ if (!$token) {
   <meta charset="UTF-8">
   <title>Nova Senha - <?= NOME_SISTEMA ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Estilos padrão -->
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/utilities.css">
+  <link rel="stylesheet" href="../../assets/css/pages/login.css">
+  <link rel="stylesheet" href="../../assets/css/themes/light.css" id="theme-style">
 </head>
-<body class="bg-light">
+<body>
 
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-5">
-      <div class="card shadow-sm border-0">
-        <div class="card-body">
-          <h4 class="mb-4 text-center">🔐 Definir Nova Senha</h4>
+  <div class="login-box">
+    <h2>🔒 Redefinir Senha</h2>
 
-          <!-- 🔔 Exibe erros da sessão, se houver -->
-          <?php session_start(); if (!empty($_SESSION['erro'])): ?>
-            <div class="alert alert-danger"><?= $_SESSION['erro']; unset($_SESSION['erro']); ?></div>
-          <?php endif; ?>
+    <?php if (isset($_SESSION['erro'])): ?>
+      <div class="alerta-erro"><?= $_SESSION['erro']; unset($_SESSION['erro']); ?></div>
+    <?php endif; ?>
 
-          <form action="salvar_nova_senha.php?token=<?= urlencode($token) ?>" method="POST" autocomplete="off">
-            <div class="mb-3">
-              <label for="senha" class="form-label">Nova Senha</label>
-              <input type="password" name="senha" id="senha" class="form-control" required minlength="6" autofocus>
-              <div class="form-text">A senha deve conter pelo menos 6 caracteres.</div>
-            </div>
+    <?php if (isset($_SESSION['sucesso'])): ?>
+      <div class="alerta-sucesso"><?= $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></div>
+    <?php endif; ?>
 
-            <!-- ✅ Sugestão futura: incluir um campo de confirmação -->
-            <!-- <div class="mb-3">
-              <label for="senha2" class="form-label">Confirmar Senha</label>
-              <input type="password" name="senha2" id="senha2" class="form-control" required minlength="6">
-            </div> -->
+    <form action="<?= URL_BASE ?>backend/controllers/auth/salvar_nova_senha.php?token=<?= urlencode($token) ?>" method="POST" autocomplete="off">
+      <input type="hidden" name="tipo" value="<?= htmlspecialchars($tipo_usuario) ?>">
 
-            <button type="submit" class="btn btn-primary w-100">Salvar Nova Senha</button>
-          </form>
-        </div>
+      <div class="form-group">
+        <input type="password" name="senha" id="senha" class="form-control" placeholder="Nova Senha" required minlength="6">
+        <button type="button" class="toggle-password" onclick="toggleSenha(this, 'senha')">👁️</button>
       </div>
+
+      <div class="form-group">
+        <input type="password" name="senha2" id="senha2" class="form-control" placeholder="Confirmar Senha" required minlength="6">
+        <button type="button" class="toggle-password" onclick="toggleSenha(this, 'senha2')">👁️</button>
+      </div>
+
+      <button type="submit" class="btn">Redefinir Senha</button>
+    </form>
+
+    <div class="link-cadastro">
+      <?php if ($tipo_usuario === 'admin'): ?>
+        <a href="<?= URL_BASE ?>login/login_admin.php">← Voltar ao login de admin</a>
+      <?php else: ?>
+        <a href="<?= URL_BASE ?>login/login_user.php">← Voltar ao login do usuário</a>
+      <?php endif; ?>
     </div>
   </div>
-</div>
+
+  <script>
+    function toggleSenha(el, id) {
+      const input = document.getElementById(id);
+      input.type = input.type === 'password' ? 'text' : 'password';
+      el.textContent = input.type === 'password' ? '👁️' : '🙈';
+    }
+  </script>
 
 </body>
 </html>

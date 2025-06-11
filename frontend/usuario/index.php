@@ -1,57 +1,70 @@
 <?php
-require_once __DIR__ . '/../../backend/config/config.php';
-require_once __DIR__ . '/../../backend/includes/session.php';
-require_once __DIR__ . '/../../backend/includes/header.php';
-require_once __DIR__ . '/../../backend/includes/menu.php';
+session_start();
 
-exigir_login('usuario');
+// Redireciona se não estiver logado como usuário
+if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'usuario') {
+    header('Location: ../login/login_user.php');
+    exit;
+}
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel do Usuário</title>
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/componentes.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <style>
+    .painel {
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+    .header-painel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="painel">
+    <div class="header-painel">
+      <h2>Olá, <?php echo $_SESSION['usuario_nome']; ?> 👋</h2>
+      <a href="/sgbccni/backend/controllers/auth/logout.php" class="btn btn-erro">Sair</a>
+    </div>
 
-<div class="container py-4">
-  <div class="text-center">
-    <h2 class="fw-bold">👋 Olá, <?= htmlspecialchars($_SESSION['usuario_nome']) ?>!</h2>
-    <p class="text-muted">Bem-vindo à sua área de leitura da <strong>Biblioteca CNI</strong>.</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3 class="card-title">Pesquisar Livros</h3>
+        <p>Explore o acervo da biblioteca.</p>
+        <a href="busca.php" class="btn btn-primario">Buscar</a>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Meus Empréstimos</h3>
+        <p>Veja os livros que você retirou.</p>
+        <a href="emprestimos.php" class="btn btn-primario">Visualizar</a>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Histórico</h3>
+        <p>Confira os livros que já leu.</p>
+        <a href="historico.php" class="btn btn-primario">Acessar</a>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Conta</h3>
+        <p>Gerencie seus dados pessoais.</p>
+        <a href="excluir_conta.php" class="btn btn-secundario">Excluir Conta</a>
+      </div>
+    </div>
   </div>
-
-  <div class="row mt-4 g-3">
-    <div class="col-md-6 col-lg-4">
-      <div class="card border-info shadow-sm h-100">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">📚 Meus Livros</h5>
-          <p class="card-text">Veja os livros que você já leu ou está lendo.</p>
-          <a href="meus_livros.php" class="btn btn-outline-info mt-auto">
-            <i class="bi bi-journal-check"></i> Acessar
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 col-lg-4">
-      <div class="card border-secondary shadow-sm h-100">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">⭐ Favoritos</h5>
-          <p class="card-text">Visualize sua lista de livros favoritos.</p>
-          <a href="favoritos.php" class="btn btn-outline-secondary mt-auto">
-            <i class="bi bi-star"></i> Ver Favoritos
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Exemplo de card futuro: Histórico -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card border-success shadow-sm h-100">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">🕓 Histórico</h5>
-          <p class="card-text">Veja todos os livros que você já registrou como lidos.</p>
-          <a href="historico.php" class="btn btn-outline-success mt-auto">
-            <i class="bi bi-clock-history"></i> Ver Histórico
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<?php require_once __DIR__ . '/../../backend/includes/footer.php'; ?>
+</body>
+</html>

@@ -1,48 +1,56 @@
 <?php
+session_start();
+
+require_once __DIR__ . '/../../config/env.php';
 require_once __DIR__ . '/../../config/config.php';
-require_once __DIR__ . '/../../includes/session.php';
 
+// 📥 Coleta segura dos dados do formulário
+$email  = trim($_POST['email'] ?? '');
+$senha  = $_POST['senha'] ?? '';
+$origem = $_POST['origem'] ?? 'admin'; // Pode ser 'admin' ou 'usuario'
 
+// 🔁 Página de login para redirecionamento em caso de erro
+$loginPage = ($origem === 'usuario') ? '/frontend/login/login_user.php' : '/frontend/login/login_admin.php';
 
-header('Content-Type: application/json');
-
-$email = trim($_POST['email'] ?? '');
-$senha = trim($_POST['senha'] ?? '');
-
+// 🧱 Validação básica
 if (empty($email) || empty($senha)) {
-    echo json_encode(['status' => 'erro', 'mensagem' => 'Preencha todos os campos.']);
+    $_SESSION['erro'] = "Preencha todos os campos.";
+    header('Location: ' . URL_BASE . $loginPage);
     exit;
 }
 
 try {
-    $stmt = $conn->prepare("SELECT id, nome, email, senha, tipo, foto FROM usuarios WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    // 📌 Usando PDO com prepared statement (já está ok aqui)
+    $stmt = $conn->prepare("SELECT id, nome, senha, tipo FROM usuarios WHERE email = :email LIMIT 1");
+    $stmt->bindParam(':email', $email);
     $stmt->execute();
-    $resultado = $stmt->get_result();
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($resultado->num_rows === 1) {
-        $usuario = $resultado->fetch_assoc();
+    if ($usuario && password_verify($senha, $usuario['senha'])) {
+        // 🔐 Login bem-sucedido
+        $_SESSION['usuario_id']   = $usuario['id'];
+        $_SESSION['usuario_nome'] = $usuario['nome'];
+        $_SESSION['usuario_tipo'] = $usuario['tipo'];
 
-        if (password_verify($senha, $usuario['senha'])) {
-            session_regenerate_id(true);
-            $_SESSION['usuario_id'] = $usuario['id'];
-            $_SESSION['usuario_nome'] = $usuario['nome'];
-            $_SESSION['usuario_email'] = $usuario['email'];
-            $_SESSION['usuario_tipo'] = $usuario['tipo'];
-            $_SESSION['usuario_foto'] = $usuario['foto'] ?? null;
-
-            echo json_encode([
-                'status' => 'sucesso',
-                'mensagem' => 'Login realizado com sucesso!',
-                'tipo' => $usuario['tipo']
-            ]);
-            exit;
+        // Redireciona para área correta
+        if ($usuario['tipo'] === 'admin') {
+            header('Location: ' . URL_BASE . '/frontend/admin/pages/index.php');
+        } else {
+            header('Location: ' . URL_BASE . '/frontend/usuario/index.php');
         }
+        exit;
+
+    } else {
+        // ❌ Erro de autenticação
+        $_SESSION['erro'] = "E-mail ou senha incorretos.";
+        header('Location: ' . URL_BASE . $loginPage);
+        exit;
     }
 
-    echo json_encode(['status' => 'erro', 'mensagem' => 'E-mail ou senha incorretos.']);
-} catch (Exception $e) {
-    error_log("Erro no login: " . $e->getMessage());
-    echo json_encode(['status' => 'erro', 'mensagem' => 'Erro interno. Tente novamente mais tarde.']);
+} catch (PDOException $e) {
+    // ❗ Logar erro em produção (não exibir)
+    error_log("Erro ao fazer login: " . $e->getMessage());
+    $_SESSION['erro'] = "Erro interno. Tente novamente.";
+    header('Location: ' . URL_BASE . $loginPage);
+    exit;
 }
-exit;

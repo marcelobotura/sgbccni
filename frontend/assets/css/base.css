@@ -1,78 +1,23 @@
-/* 🌐 Reset moderno e base responsiva */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  --font-base: 'Segoe UI', sans-serif;
+  --color-text: #212529;
+  --color-bg: #f8f9fa;
+  --color-primary: #0d6efd;
+  --color-secondary: #6c757d;
+  --color-success: #198754;
+  --color-danger: #dc3545;
+  --color-white: #fff;
+  --color-border: #dee2e6;
 }
 
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--cor-fundo);
-  color: var(--cor-texto);
-  line-height: 1.6;
-  min-height: 100vh;
-  padding: 1rem;
-}
-
-/* 🎨 Variáveis de cor (modo claro como padrão) */
-:root {
-  --cor-primaria: #007bff;
-  --cor-secundaria: #6c757d;
-  --cor-sucesso: #28a745;
-  --cor-erro: #dc3545;
-  --cor-alerta: #ffc107;
-  --cor-info: #17a2b8;
-
-  --cor-fundo: #f8f9fa;
-  --cor-texto: #212529;
-  --cor-card: #ffffff;
-  --cor-borda: #dee2e6;
-}
-
-/* 📱 Layout adaptável */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.responsivo {
-  width: 100%;
-  overflow-x: auto;
-}
-
-/* 📦 Cards */
-.card {
-  background-color: var(--cor-card);
-  border: 1px solid var(--cor-borda);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  margin-bottom: 1rem;
-}
-
-/* ✍️ Tipografia */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-p {
-  margin-bottom: 1rem;
-}
-
-a {
-  color: var(--cor-primaria);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+  font-family: var(--font-base);
+  background: var(--color-bg);
+  color: var(--color-text);
 }

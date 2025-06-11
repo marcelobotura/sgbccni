@@ -1,56 +1,47 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
+require_once '../../config/env.php';
+require_once '../../config/config.php';
 
-require_once __DIR__ . '/../../config/env.php';
-require_once __DIR__ . '/../../config/config.php';
+define('URL_BASE', '/sgbccni');
 
-// 📥 Coleta segura dos dados do formulário
-$email  = trim($_POST['email'] ?? '');
-$senha  = $_POST['senha'] ?? '';
-$origem = $_POST['origem'] ?? 'admin'; // Pode ser 'admin' ou 'usuario'
+$email = $_POST['email'] ?? '';
+$senha = $_POST['senha'] ?? '';
+$origem = $_POST['origem'] ?? 'admin'; // <- Captura se veio do login de usuário
 
-// 🔁 Página de login para redirecionamento em caso de erro
+// Decide qual página de login mostrar em caso de erro
 $loginPage = ($origem === 'usuario') ? '/frontend/login/login_user.php' : '/frontend/login/login_admin.php';
 
-// 🧱 Validação básica
 if (empty($email) || empty($senha)) {
-    $_SESSION['erro'] = "Preencha todos os campos.";
-    header('Location: ' . URL_BASE . $loginPage);
+    header('Location: ' . URL_BASE . $loginPage . '?erro=1');
     exit;
 }
 
 try {
-    // 📌 Usando PDO com prepared statement (já está ok aqui)
-    $stmt = $conn->prepare("SELECT id, nome, senha, tipo FROM usuarios WHERE email = :email LIMIT 1");
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = :email LIMIT 1");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario && password_verify($senha, $usuario['senha'])) {
-        // 🔐 Login bem-sucedido
-        $_SESSION['usuario_id']   = $usuario['id'];
+        $_SESSION['usuario_id'] = $usuario['id'];
         $_SESSION['usuario_nome'] = $usuario['nome'];
         $_SESSION['usuario_tipo'] = $usuario['tipo'];
 
-        // Redireciona para área correta
         if ($usuario['tipo'] === 'admin') {
             header('Location: ' . URL_BASE . '/frontend/admin/pages/index.php');
         } else {
             header('Location: ' . URL_BASE . '/frontend/usuario/index.php');
         }
         exit;
-
     } else {
-        // ❌ Erro de autenticação
-        $_SESSION['erro'] = "E-mail ou senha incorretos.";
-        header('Location: ' . URL_BASE . $loginPage);
+        header('Location: ' . URL_BASE . $loginPage . '?erro=1');
         exit;
     }
-
 } catch (PDOException $e) {
-    // ❗ Logar erro em produção (não exibir)
-    error_log("Erro ao fazer login: " . $e->getMessage());
-    $_SESSION['erro'] = "Erro interno. Tente novamente.";
-    header('Location: ' . URL_BASE . $loginPage);
-    exit;
+    echo 'Erro no login: ' . $e->getMessage();
 }

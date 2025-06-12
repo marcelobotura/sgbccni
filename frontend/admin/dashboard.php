@@ -1,18 +1,35 @@
 <?php
+// 🛠️ Ativa exibição de erros (somente em desenvolvimento)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// 🔄 Includes essenciais
 session_start();
-define('BASE_PATH', dirname(__DIR__) . '/backend');
+define('BASE_PATH', dirname(__DIR__) . '/../backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 require_once BASE_PATH . '/includes/header.php';
 
 exigir_login('admin');
 
-// 🔢 Coleta estatísticas básicas
-$total_usuarios = $conn->query("SELECT COUNT(*) FROM usuarios")->fetch_row()[0];
-$total_livros   = $conn->query("SELECT COUNT(*) FROM livros")->fetch_row()[0];
-$total_msgs     = $conn->query("SELECT COUNT(*) FROM mensagens_contato")->fetch_row()[0];
-$total_leituras = $conn->query("SELECT COUNT(*) FROM livros_usuarios")->fetch_row()[0];
+// 🔢 Coleta estatísticas básicas (PDO)
+$total_usuarios = $conn->query("SELECT COUNT(*) FROM usuarios")->fetchColumn();
+$total_livros   = $conn->query("SELECT COUNT(*) FROM livros")->fetchColumn();
+$total_msgs     = $conn->query("SELECT COUNT(*) FROM mensagens_contato")->fetchColumn();
+$total_leituras = $conn->query("SELECT COUNT(*) FROM livros_usuarios")->fetchColumn();
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-br" data-tema="<?= htmlspecialchars($_COOKIE['modo_tema'] ?? 'claro') ?>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo - <?= NOME_SISTEMA ?? 'Biblioteca CNI' ?></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="bg-light">
 
 <div class="container py-4">
   <h2 class="mb-4">📊 Painel Administrativo</h2>
@@ -70,8 +87,12 @@ $total_leituras = $conn->query("SELECT COUNT(*) FROM livros_usuarios")->fetch_ro
   <hr class="my-5">
 
   <div class="text-center">
-    <a href="<?= URL_BASE ?>" class="btn btn-outline-secondary">🔙 Voltar ao site</a>
-  </div>
+  <a href="<?= URL_BASE ?>/index.php" class="btn btn-outline-secondary">
+    🔙 Voltar ao site
+  </a>
 </div>
 
+
 <?php require_once BASE_PATH . '/includes/footer.php'; ?>
+</body>
+</html>

@@ -10,7 +10,9 @@ if (!$isbn) {
 
 // 📁 Diretório de cache
 $cacheDir = __DIR__ . '/../../cache_isbn';
-@mkdir($cacheDir);
+if (!is_dir($cacheDir)) {
+  mkdir($cacheDir, 0777, true);
+}
 $cacheFile = "$cacheDir/$isbn.json";
 
 // 🔄 Usa cache se existir e for recente (24h)
@@ -19,10 +21,20 @@ if (file_exists($cacheFile) && time() - filemtime($cacheFile) < 86400) {
   exit;
 }
 
+// 🔧 Função para buscar conteúdo externo via cURL (mais confiável)
+function getUrl($url) {
+  $ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Opcional: desativa verificação SSL
+  $data = curl_exec($ch);
+  curl_close($ch);
+  return $data;
+}
+
 // 🔍 Busca na API do Google Books
 function buscarGoogleBooks($isbn) {
   $url = "https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn";
-  $resposta = @file_get_contents($url);
+  $resposta = getUrl($url);
   if (!$resposta) return null;
 
   $dados = json_decode($resposta, true);
@@ -47,7 +59,7 @@ function buscarGoogleBooks($isbn) {
 // 🔍 Busca na OpenLibrary (fallback)
 function buscarOpenLibrary($isbn) {
   $url = "https://openlibrary.org/api/books?bibkeys=ISBN:$isbn&format=json&jscmd=data";
-  $resposta = @file_get_contents($url);
+  $resposta = getUrl($url);
   if (!$resposta) return null;
 
   $dados = json_decode($resposta, true);
@@ -69,12 +81,12 @@ function buscarOpenLibrary($isbn) {
   return null;
 }
 
-// 📚 Tenta buscar na API
+// 📚 Tenta buscar na API (Google primeiro, depois OpenLibrary)
 $resultado = buscarGoogleBooks($isbn) ?? buscarOpenLibrary($isbn);
 
 if ($resultado) {
-  @file_put_contents($cacheFile, json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+  file_put_contents($cacheFile, json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
   echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 } else {
-  echo json_encode(['erro' => 'Livro não encontrado']);
+  echo json_encode(['erro' => 'Livro não encontrado para o ISBN informado.']);
 }

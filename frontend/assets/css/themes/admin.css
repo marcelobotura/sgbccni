@@ -1,0 +1,23 @@
+:root {
+  --cor-bg-principal: #1e272e;
+  --cor-bg-secundaria: #2f3640;
+
+  --cor-texto: #ecf0f1;
+  --cor-titulo: #ffffff;
+  --cor-borda: #3d3d3d;
+
+  --cor-primaria: #3498db;
+  --cor-primaria-hover: #2980b9;
+
+  --cor-secundaria: #2ecc71;
+  --cor-secundaria-hover: #27ae60;
+
+  --cor-erro: #e84118;
+  --cor-erro-hover: #c23616;
+}
+
+/* background e texto base */
+body {
+  background-color: var(--cor-bg-principal);
+  color: var(--cor-texto);
+}

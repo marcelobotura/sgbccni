@@ -1,11 +1,16 @@
 <?php
+// ✅ Inicia a sessão corretamente antes de qualquer verificação
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once __DIR__ . '/../backend/config/config.php';
 
 $erros = [];
 $avisos = [];
 $sucessos = [];
 
-// Banco de dados
+// ✅ Banco de dados
 try {
     $conn->query("SELECT 1");
     $sucessos[] = "✅ Conexão com o banco de dados funcionando.";
@@ -13,14 +18,14 @@ try {
     $erros[] = "❌ Falha na conexão com o banco: " . $e->getMessage();
 }
 
-// Sessão
+// ✅ Sessão
 if (session_status() === PHP_SESSION_ACTIVE) {
     $sucessos[] = "✅ Sessão ativa.";
 } else {
     $erros[] = "❌ Sessão não está ativa.";
 }
 
-// Escrita logs/
+// ✅ Escrita em /logs
 $logTest = __DIR__ . '/../backend/logs/teste_log.txt';
 if (@file_put_contents($logTest, 'Teste de escrita em ' . date('Y-m-d H:i:s'))) {
     $sucessos[] = "✅ Permissão de escrita em /logs.";
@@ -29,7 +34,7 @@ if (@file_put_contents($logTest, 'Teste de escrita em ' . date('Y-m-d H:i:s'))) 
     $erros[] = "❌ Sem permissão de escrita em /logs.";
 }
 
-// Escrita uploads/
+// ✅ Escrita em /uploads
 $uploadTest = __DIR__ . '/../uploads/teste.txt';
 if (@file_put_contents($uploadTest, 'teste')) {
     $sucessos[] = "✅ Permissão de escrita em /uploads.";
@@ -38,7 +43,7 @@ if (@file_put_contents($uploadTest, 'teste')) {
     $erros[] = "❌ Sem permissão de escrita em /uploads.";
 }
 
-// Constantes
+// ✅ Constantes
 if (defined('URL_BASE')) {
     $sucessos[] = "✅ URL_BASE definida como: " . URL_BASE;
 } else {
@@ -53,11 +58,11 @@ if (defined('VERSAO_SISTEMA')) {
     $sucessos[] = "✅ VERSAO_SISTEMA: " . VERSAO_SISTEMA;
 }
 
-// Tema
+// ✅ Tema
 $tema = $_COOKIE['modo_tema'] ?? 'claro';
 $sucessos[] = "🎨 Tema atual (via cookie): $tema";
 
-// Ambiente
+// ✅ Ambiente
 $sucessos[] = "🌎 Ambiente atual: " . (defined('ENV_DEV') && ENV_DEV ? "Desenvolvimento (DEV)" : "Produção");
 ?>
 <!DOCTYPE html>
@@ -66,7 +71,11 @@ $sucessos[] = "🌎 Ambiente atual: " . (defined('ENV_DEV') && ENV_DEV ? "Desenv
   <meta charset="UTF-8">
   <title>Diagnóstico do Sistema</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>body { padding: 2rem; }</style>
+  <style>
+    body {
+      padding: 2rem;
+    }
+  </style>
 </head>
 <body>
   <h2 class="mb-4">🔍 Diagnóstico do Sistema - Biblioteca CNI</h2>

@@ -1,6 +1,6 @@
 <?php
 // Correção: BASE_PATH deve apontar para o diretório 'backend'
-define('BASE_PATH', __DIR__ . '/../backend');
+define('BASE_PATH', realpath(__DIR__ . '/../../backend'));
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 include_once BASE_PATH . '/includes/header.php';

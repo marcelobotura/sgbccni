@@ -1,101 +1,96 @@
 <?php
-require_once __DIR__ . '/../backend/config/config.php';
-require_once __DIR__ . '/../backend/includes/session.php';
+session_start();
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 <!DOCTYPE html>
-<html lang="pt-br" data-tema="<?= htmlspecialchars($_COOKIE['modo_tema'] ?? 'claro') ?>">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <title>Login Provisório - Biblioteca CNI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - <?= NOME_SISTEMA ?></title>
+
+  <!-- Bootstrap + Google Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= URL_BASE ?>frontend/assets/css/estilo-base.css" rel="stylesheet">
-  <link href="<?= URL_BASE ?>frontend/assets/css/estilo-<?= $_COOKIE['modo_tema'] ?? 'claro' ?>.css" rel="stylesheet">
-  <link href="<?= URL_BASE ?>frontend/assets/css/auth-forms.css" rel="stylesheet">
-  <script src="<?= URL_BASE ?>frontend/assets/js/tema.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #cfe2ff, #f8f9fa);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container-login {
+      background: white;
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out forwards;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .container-login h2 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .container-login p {
+      font-size: 0.95rem;
+      color: #6c757d;
+      margin-bottom: 2rem;
+    }
+
+    .btn-login {
+      width: 180px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      margin: 0.5rem;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-login:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-msg {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
-<body class="bg-body-secondary">
+<body>
+  <div class="container-login">
+    <h2>🎓 Biblioteca CNI</h2>
+    <p>Escolha abaixo como deseja acessar o sistema:</p>
 
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-5">
-      <div class="card shadow border-0">
-        <div class="card-body">
-          <h4 class="mb-4 text-center">👋 Bem-vindo(a) de volta!</h4>
+    <div>
+      <a href="../frontend/login/login_user.php" class="btn btn-primary btn-login">👤 Acesso Usuário</a>
+      <a href="../frontend/login/login_admin.php" class="btn btn-dark btn-login">🛡️ Acesso Admin</a>
+    </div>
 
-          <div id="mensagem" class="alert d-none" role="alert"></div>
-
-          <form id="formLogin" method="POST" autocomplete="off">
-            <div class="mb-3">
-              <label for="email" class="form-label">E-mail:</label>
-              <input type="email" name="email" id="email" class="form-control" required autofocus placeholder="seu.email@exemplo.com">
-            </div>
-
-            <div class="mb-3 position-relative">
-              <label for="senha" class="form-label">Senha:</label>
-              <input type="password" name="senha" id="senha" class="form-control" required placeholder="••••••••">
-              <i class="bi bi-eye toggle-password position-absolute end-0 top-50 translate-middle-y me-3" style="cursor:pointer;" onclick="toggleSenha(this)"></i>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Entrar</button>
-          </form>
-
-          <div class="mt-3 text-center">
-            <a href="<?= URL_BASE ?>frontend/login/register_usuario.php">✍️ Criar uma conta</a>
-          </div>
-          <div class="mt-2 text-center">
-            <a href="<?= URL_BASE ?>frontend/login/redefinir_senha.php">❓ Esqueceu a senha?</a>
-          </div>
-
-        </div>
-      </div>
+    <div class="footer-msg">
+      🔧 Esta tela de login é <strong>provisória</strong> e será substituída pela versão oficial em breve.
     </div>
   </div>
-</div>
-
-<script>
-function toggleSenha(icon) {
-  const senha = document.getElementById('senha');
-  const isPassword = senha.type === 'password';
-  senha.type = isPassword ? 'text' : 'password';
-  icon.classList.toggle('bi-eye');
-  icon.classList.toggle('bi-eye-slash');
-}
-
-document.querySelector('#formLogin').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = new FormData(this);
-  const mensagem = document.getElementById('mensagem');
-
-  fetch("<?= URL_BASE ?>../backend/controllers/auth/login_valida.php", {
-    method: 'POST',
-    body: form
-  })
-  .then(r => r.json())
-  .then(data => {
-    mensagem.classList.remove('d-none', 'alert-success', 'alert-danger');
-    if (data.status === 'sucesso') {
-      mensagem.classList.add('alert-success');
-      mensagem.textContent = data.mensagem;
-      setTimeout(() => {
-        window.location.href = data.tipo === 'admin'
-          ? "<?= URL_BASE ?>frontend/admin/dashboard.php"
-          : "<?= URL_BASE ?>frontend/usuario/dashboard.php";
-      }, 800);
-    } else {
-      mensagem.classList.add('alert-danger');
-      mensagem.textContent = data.mensagem;
-    }
-  })
-  .catch(error => {
-    console.error('Erro na requisição:', error);
-    mensagem.classList.remove('d-none', 'alert-success');
-    mensagem.classList.add('alert-danger');
-    mensagem.textContent = 'Ocorreu um erro inesperado. Tente novamente.';
-  });
-});
-</script>
-
 </body>
 </html>

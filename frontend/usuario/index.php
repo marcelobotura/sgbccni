@@ -11,60 +11,61 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'usuario') 
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Painel do Usuário</title>
+  <title>Painel do Usuário - Biblioteca CNI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS Modular -->
   <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/componentes.css">
-  <link rel="stylesheet" href="../assets/css/admin.css">
-  <style>
-    .painel {
-      max-width: 1000px;
-      margin: 2rem auto;
-    }
-    .header-painel {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages/painel_usuario.css">
+  <link rel="stylesheet" href="../assets/css/themes/light.css" id="theme-style">
 </head>
 <body>
-  <div class="painel">
-    <div class="header-painel">
-      <h2>Olá, <?php echo $_SESSION['usuario_nome']; ?> 👋</h2>
-      <a href="/sgbccni/backend/controllers/auth/logout.php" class="btn btn-erro">Sair</a>
-    </div>
 
-    <div class="card-grid">
-      <div class="card">
-        <h3 class="card-title">Pesquisar Livros</h3>
+  <main class="painel-usuario container">
+    <header class="painel-header d-flex justify-content-between align-items-center my-4">
+      <h2>Olá, <?= htmlspecialchars($_SESSION['usuario_nome']); ?> 👋</h2>
+      <a href="../../backend/controllers/auth/logout.php" class="btn btn-erro">Sair</a>
+
+
+    </header>
+
+    <section class="painel-cards grid gap-4">
+      <article class="card">
+        <h3 class="card-title">📚 Pesquisar Livros</h3>
         <p>Explore o acervo da biblioteca.</p>
         <a href="busca.php" class="btn btn-primario">Buscar</a>
-      </div>
+      </article>
 
-      <div class="card">
-        <h3 class="card-title">Meus Empréstimos</h3>
-        <p>Veja os livros que você retirou.</p>
+      <article class="card">
+        <h3 class="card-title">📖 Meus Empréstimos</h3>
+        <p>Acompanhe os livros emprestados.</p>
         <a href="emprestimos.php" class="btn btn-primario">Visualizar</a>
-      </div>
+      </article>
 
-      <div class="card">
-        <h3 class="card-title">Histórico</h3>
-        <p>Confira os livros que já leu.</p>
+      <article class="card">
+        <h3 class="card-title">📅 Histórico</h3>
+        <p>Veja os livros já lidos.</p>
         <a href="historico.php" class="btn btn-primario">Acessar</a>
-      </div>
+      </article>
 
-      <div class="card">
-        <h3 class="card-title">Conta</h3>
-        <p>Gerencie seus dados pessoais.</p>
-        <a href="excluir_conta.php" class="btn btn-secundario">Excluir Conta</a>
-      </div>
-    </div>
-  </div>
+      <article class="card">
+        <h3 class="card-title">⭐ Favoritos</h3>
+        <p>Seus livros favoritos em um só lugar.</p>
+        <a href="meus_favoritos.php" class="btn btn-primario">Ver Favoritos</a>
+      </article>
+
+      <article class="card">
+        <h3 class="card-title">⚙️ Conta</h3>
+        <p>Atualize seus dados de perfil.</p>
+        <div class="d-flex flex-column gap-2 mt-2">
+          <a href="editar_conta.php" class="btn btn-secundario">✏️ Editar Conta</a>
+          <a href="excluir_conta.php" class="btn btn-erro">🗑️ Excluir Conta</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
 </body>
 </html>

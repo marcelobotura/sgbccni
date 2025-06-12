@@ -1,0 +1,120 @@
+/* === PAINEL DO USUÁRIO === */
+
+.painel-usuario {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.painel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.painel-header h2 {
+  font-size: 1.8rem;
+  color: var(--color-text);
+}
+
+.painel-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* === CARD === */
+.card {
+  background-color: #f7f4f4;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-size: 1.3rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  flex-grow: 1;
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* === BOTÕES === */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  border: none;
+}
+
+.btn-primario {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primario:hover {
+  background-color: #0069d9;
+}
+
+.btn-secundario {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secundario:hover {
+  background-color: #5a6268;
+}
+
+.btn-erro {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-erro:hover {
+  background-color: #c82333;
+}
+
+/* === UTILITÁRIOS === */
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.gap-2 {
+  gap: 0.75rem;
+}
+
+.mt-2 {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .painel-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}

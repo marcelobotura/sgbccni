@@ -37,7 +37,9 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
   <div class="painel">
     <div class="header-painel">
       <h2>Bem-vindo, <?php echo $_SESSION['usuario_nome']; ?> 👋</h2>
-      <a href="/sgbccni/backend/controllers/auth/logout.php" class="btn btn-erro">Sair</a>
+     <a href="../../../backend/controllers/auth/logout.php" class="btn btn-erro">Sair</a>
+
+
     </div>
 
     <div class="card-grid">

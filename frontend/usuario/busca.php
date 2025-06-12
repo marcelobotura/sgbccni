@@ -1,40 +1,32 @@
 <?php
-include_once(__DIR__ . '/../../config/config.php'); // caminho corrigido
-include_once(__DIR__ . '/../includes/header.php');
+require_once __DIR__ . '/../../backend/config/config.php';
+require_once __DIR__ . '/../includes/header.php';
 
 // Filtros
 $busca = trim($_GET['q'] ?? '');
 $status = $_GET['status'] ?? '';
 $categoria = $_GET['categoria'] ?? '';
 
-// Buscar categorias
+// Buscar categorias com PDO
 $cat_stmt = $conn->prepare("SELECT nome FROM tags WHERE tipo = 'categoria' ORDER BY nome ASC");
 $cat_stmt->execute();
-$categorias_disponiveis = $cat_stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+$categorias_disponiveis = $cat_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Montar consulta dinâmica
 $where = [];
 $params = [];
-$types = "";
 
 if ($busca !== "") {
-  $where[] = "(titulo LIKE ? OR autor LIKE ? OR editora LIKE ? OR tags LIKE ?)";
-  for ($i = 0; $i < 4; $i++) {
-    $params[] = "%$busca%";
-    $types .= "s";
-  }
+  $where[] = "(titulo LIKE :busca OR autor LIKE :busca OR editora LIKE :busca OR tags LIKE :busca)";
+  $params[':busca'] = "%$busca%";
 }
-
 if ($status !== "") {
-  $where[] = "status = ?";
-  $params[] = $status;
-  $types .= "s";
+  $where[] = "status = :status";
+  $params[':status'] = $status;
 }
-
 if ($categoria !== "") {
-  $where[] = "categoria_padrao LIKE ?";
-  $params[] = "%$categoria%";
-  $types .= "s";
+  $where[] = "categoria_padrao LIKE :categoria";
+  $params[':categoria'] = "%$categoria%";
 }
 
 $sql = "SELECT * FROM livros";
@@ -44,11 +36,8 @@ if (!empty($where)) {
 $sql .= " ORDER BY criado_em DESC";
 
 $stmt = $conn->prepare($sql);
-if (!empty($params)) {
-  $stmt->bind_param($types, ...$params);
-}
-$stmt->execute();
-$result = $stmt->get_result();
+$stmt->execute($params);
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="container resultado-container py-4">
@@ -86,8 +75,8 @@ $result = $stmt->get_result();
 
   <!-- 📚 Resultados -->
   <div class="row">
-    <?php if ($result->num_rows > 0): ?>
-      <?php while ($livro = $result->fetch_assoc()): ?>
+    <?php if ($result): ?>
+      <?php foreach ($result as $livro): ?>
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
             <?php if (!empty($livro['capa'])): ?>
@@ -117,7 +106,7 @@ $result = $stmt->get_result();
             </div>
           </div>
         </div>
-      <?php endwhile; ?>
+      <?php endforeach; ?>
     <?php else: ?>
       <div class="col-12">
         <div class="alert alert-warning">⚠️ Nenhum livro encontrado com os filtros aplicados.</div>
@@ -126,7 +115,7 @@ $result = $stmt->get_result();
   </div>
 </div>
 
-<?php include_once(__DIR__ . '/../includes/footer.php'); ?>
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>
 
 <!-- 📦 Select2 CDN -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />

@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../backend/config/config.php';
+require_once __DIR__ . '/../../backend/config/env.php';
 require_once __DIR__ . '/../../backend/includes/session.php';
 require_once __DIR__ . '/../../backend/includes/header.php';
 require_once __DIR__ . '/../../backend/includes/menu.php';
@@ -13,9 +14,11 @@ if (isset($_GET['remover'])) {
   $stmt = $conn->prepare("UPDATE livros_usuarios lu 
                           JOIN livros l ON l.id = lu.livro_id 
                           SET lu.favorito = 0 
-                          WHERE lu.usuario_id = ? AND l.isbn = ?");
-  $stmt->bind_param("is", $usuario_id, $isbn);
+                          WHERE lu.usuario_id = :usuario_id AND l.isbn = :isbn");
+  $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+  $stmt->bindParam(':isbn', $isbn, PDO::PARAM_STR);
   $stmt->execute();
+
   $_SESSION['sucesso'] = "⭐ Livro removido dos favoritos.";
   header("Location: meus_favoritos.php");
   exit;
@@ -25,24 +28,24 @@ if (isset($_GET['remover'])) {
 $sql = "SELECT l.titulo, l.capa_local, l.capa_url, l.isbn
         FROM livros_usuarios lu
         JOIN livros l ON l.id = lu.livro_id
-        WHERE lu.usuario_id = ? AND lu.favorito = 1";
+        WHERE lu.usuario_id = :usuario_id AND lu.favorito = 1";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $usuario_id);
+$stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
 $stmt->execute();
-$result = $stmt->get_result();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="container py-4">
-  <h2>⭐ Meus Favoritos</h2>
+  <h2 class="mb-4">⭐ Meus Favoritos</h2>
 
   <?php if (isset($_SESSION['sucesso'])): ?>
     <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
   <?php endif; ?>
 
-  <?php if ($result->num_rows): ?>
+  <?php if (count($result)): ?>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      <?php while($livro = $result->fetch_assoc()): ?>
+      <?php foreach($result as $livro): ?>
         <div class="col">
           <div class="card h-100 shadow-sm">
             <?php if (!empty($livro['capa_local'])): ?>
@@ -60,7 +63,7 @@ $result = $stmt->get_result();
             </div>
           </div>
         </div>
-      <?php endwhile; ?>
+      <?php endforeach; ?>
     </div>
   <?php else: ?>
     <div class="alert alert-info">Você ainda não adicionou livros aos favoritos.</div>

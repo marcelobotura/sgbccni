@@ -9,11 +9,19 @@ $usuario_id = $_SESSION['usuario_id'];
 $livro_id = intval($_POST['livro_id'] ?? 0);
 
 if ($livro_id > 0) {
-    $stmt = $conn->prepare("UPDATE livros_usuarios SET status = 'lido', data_leitura = NOW() WHERE usuario_id = ? AND livro_id = ?");
-    $stmt->bind_param("ii", $usuario_id, $livro_id);
-    $stmt->execute();
-    $stmt->close();
+    try {
+        $stmt = $conn->prepare("UPDATE livros_usuarios 
+                                SET status = 'lido', data_leitura = NOW() 
+                                WHERE usuario_id = :usuario_id AND livro_id = :livro_id");
+        $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindParam(':livro_id', $livro_id, PDO::PARAM_INT);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Opcional: registrar erro para debug
+        $_SESSION['erro'] = "Erro ao marcar como lido: " . $e->getMessage();
+    }
 }
 
+// Redireciona para o histórico de leitura
 header("Location: historico.php");
 exit;

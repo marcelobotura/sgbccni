@@ -12,18 +12,33 @@ if ($livro_id <= 0 || !in_array($acao, ['lido', 'favorito', 'remover'])) {
   exit;
 }
 
-switch ($acao) {
-  case 'remover':
+try {
+  if ($acao === 'remover') {
+    // Remover completamente o relacionamento (ex: excluir da tabela)
     $stmt = $conn->prepare("DELETE FROM livros_usuarios WHERE usuario_id = ? AND livro_id = ?");
-    $stmt->bind_param("ii", $usuario_id, $livro_id);
-    break;
-  default:
-    $stmt = $conn->prepare("UPDATE livros_usuarios SET status = ?, data_leitura = NOW() WHERE usuario_id = ? AND livro_id = ?");
-    $stmt->bind_param("sii", $acao, $usuario_id, $livro_id);
-    break;
+    $stmt->execute([$usuario_id, $livro_id]);
+
+  } elseif ($acao === 'favorito') {
+    // Marca como favorito (ou insere se não existir)
+    $stmt = $conn->prepare("INSERT INTO livros_usuarios (usuario_id, livro_id, favorito) 
+                            VALUES (?, ?, 1)
+                            ON DUPLICATE KEY UPDATE favorito = 1");
+    $stmt->execute([$usuario_id, $livro_id]);
+
+  } elseif ($acao === 'lido') {
+    // Marca como lido (ou atualiza a leitura se já existir)
+    $stmt = $conn->prepare("INSERT INTO livros_usuarios (usuario_id, livro_id, status, data_leitura)
+                            VALUES (?, ?, 'lido', NOW())
+                            ON DUPLICATE KEY UPDATE status = 'lido', data_leitura = NOW()");
+    $stmt->execute([$usuario_id, $livro_id]);
+  }
+
+  $_SESSION['sucesso'] = "Ação realizada com sucesso.";
+} catch (PDOException $e) {
+  $_SESSION['erro'] = "Erro ao executar ação: " . $e->getMessage();
 }
 
-$stmt->execute();
-$stmt->close();
-header("Location: historico.php");
+// Redireciona de forma inteligente
+$origem = $_POST['origem'] ?? 'historico';
+header("Location: {$origem}.php");
 exit;

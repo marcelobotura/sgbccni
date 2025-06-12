@@ -1,13 +1,17 @@
 <?php
 session_start();
+
+// Captura o tipo de usuário antes de destruir a sessão
+$tipo = $_SESSION['usuario_tipo'] ?? null;
+
+// Destroi a sessão
 session_unset();
 session_destroy();
 
-// Redirecionar com base no tipo anterior (opcional)
-$loginPage = 'login_admin.php';
-if (isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'usuario') {
-    $loginPage = 'login_user.php';
+// Redireciona para o login apropriado
+if ($tipo === 'admin') {
+    header("Location: /sgbccni/frontend/login/login_admin.php");
+} else {
+    header("Location: /sgbccni/frontend/login/login_user.php");
 }
-
-header("Location: ../../frontend/login/$loginPage");
 exit;

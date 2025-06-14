@@ -40,7 +40,7 @@ $tipoUsuario = $_SESSION['usuario_tipo'] ?? '';
           </li>
         <?php elseif ($tipoUsuario === 'admin'): ?>
           <li class="nav-item">
-            <a class="nav-link" href="<?= URL_BASE ?>frontend/admin/index.php">
+            <a class="nav-link" href="<?= URL_BASE ?>frontend/admin/pages/index.php">
               <i class="bi bi-speedometer2 me-1"></i>Painel Admin
             </a>
           </li>

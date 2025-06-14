@@ -61,7 +61,7 @@ try {
                 <a href="<?= URL_BASE ?>backend/controllers/livros/excluir_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-danger mb-1" title="Excluir Livro" onclick="return confirm('Tem certeza que deseja excluir este livro?');">
                   <i class="bi bi-trash"></i> Excluir
                 </a>
-                <a href="<?= URL_BASE ?>livro.php?id=<?= $livro['id'] ?>" target="_blank" class="btn btn-sm btn-outline-secondary" title="Visualizar Livro">
+                <a href="<?= URL_BASE ?>frontend/admin/pages/visualizar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-outline-secondary" title="Visualizar Livro">
                   <i class="bi bi-eye"></i> Ver
                 </a>
               </td>

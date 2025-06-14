@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+// 🔧 Configuração e conexão PDO
 require_once __DIR__ . '/../backend/config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -20,19 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // 💾 Inserção no banco de dados
+    // 💾 Inserção no banco de dados com PDO
     try {
         $stmt = $conn->prepare("INSERT INTO mensagens_contato (nome, email, mensagem) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $nome, $email, $mensagem);
+        $resultado = $stmt->execute([$nome, $email, $mensagem]);
 
-        if ($stmt->execute()) {
+        if ($resultado) {
             $_SESSION['sucesso'] = "✅ Mensagem enviada com sucesso! Agradecemos o contato.";
         } else {
             $_SESSION['erro'] = "❌ Erro ao salvar mensagem. Tente novamente.";
         }
 
-        $stmt->close();
-    } catch (Exception $e) {
+    } catch (PDOException $e) {
         $_SESSION['erro'] = "❌ Erro ao processar a mensagem.";
         error_log("Erro ao salvar contato: " . $e->getMessage());
     }

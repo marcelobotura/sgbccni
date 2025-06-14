@@ -43,8 +43,10 @@ if (!isset($conn)) {
   <h4 class="mb-4">📚 Livros em Destaque</h4>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
     <?php
-    $destaques = $conn->query("SELECT titulo, capa_url, isbn FROM livros ORDER BY RAND() LIMIT 4");
-    while ($livro = $destaques->fetch_assoc()):
+    try {
+        $destaques = $conn->query("SELECT titulo, capa_url, isbn FROM livros ORDER BY RAND() LIMIT 4");
+
+        while ($livro = $destaques->fetch(PDO::FETCH_ASSOC)):
     ?>
     <div class="col">
       <div class="card h-100 shadow-sm">
@@ -55,13 +57,19 @@ if (!isset($conn)) {
         <?php endif; ?>
         <div class="card-body text-center">
           <h6 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h6>
-          <a href="<?= URL_BASE ?>livro.php?isbn=<?= urlencode($livro['isbn']) ?>" class="btn btn-sm btn-primary">
+          <a href="<?= URL_BASE ?>frontend/usuario/livro.php?isbn=<?= urlencode($livro['isbn']) ?>" class="btn btn-sm btn-primary">
             <i class="bi bi-eye"></i> Ver
           </a>
         </div>
       </div>
     </div>
-    <?php endwhile; ?>
+    <?php
+        endwhile;
+    } catch (PDOException $e) {
+        echo '<div class="alert alert-danger">Erro ao carregar os livros em destaque.</div>';
+        error_log('Erro SQL: ' . $e->getMessage());
+    }
+    ?>
   </div>
 </div>
 

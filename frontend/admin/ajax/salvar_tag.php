@@ -2,67 +2,63 @@
 require_once __DIR__ . '/../../../backend/config/config.php';
 header('Content-Type: application/json');
 
-// ✅ Verifica método
+// ✅ Verifica se o método é POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405); // Método não permitido
+    http_response_code(405);
     echo json_encode([
         'status' => 'erro',
-        'mensagem' => 'Método não permitido.'
+        'mensagem' => 'Método não permitido. Use POST.'
     ]);
     exit;
 }
 
-// ✅ Recebe e valida dados
+// ✅ Recebe e valida os dados
 $nome = trim($_POST['nome'] ?? '');
 $tipo = trim($_POST['tipo'] ?? '');
 
 $tipos_validos = ['autor', 'categoria', 'editora', 'outro'];
+
 if ($nome === '' || !in_array($tipo, $tipos_validos)) {
     http_response_code(400);
     echo json_encode([
         'status' => 'erro',
-        'mensagem' => 'Dados inválidos.'
+        'mensagem' => 'Dados inválidos. Informe nome e tipo válido.'
     ]);
     exit;
 }
 
-// 🔍 Verifica se já existe
-$stmt = $conn->prepare("SELECT id FROM tags WHERE nome = ? AND tipo = ?");
-$stmt->bind_param("ss", $nome, $tipo);
-$stmt->execute();
-$stmt->store_result();
+try {
+    // 🔍 Verifica se a tag já existe
+    $stmt = $conn->prepare("SELECT id FROM tags WHERE nome = ? AND tipo = ?");
+    $stmt->execute([$nome, $tipo]);
+    $tagExistente = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($stmt->num_rows > 0) {
-    $stmt->bind_result($id_existente);
-    $stmt->fetch();
-    $stmt->close();
+    if ($tagExistente) {
+        echo json_encode([
+            'status'   => 'existe',
+            'mensagem' => '⚠️ Tag já cadastrada.',
+            'id'       => $tagExistente['id'],
+            'text'     => $nome
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        exit;
+    }
 
-    echo json_encode([
-        'status'   => 'existe',
-        'mensagem' => '⚠️ Tag já cadastrada.',
-        'id'       => $id_existente,
-        'text'     => $nome
-    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    exit;
-}
-$stmt->close();
+    // ✅ Insere nova tag
+    $stmtInsert = $conn->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
+    $stmtInsert->execute([$nome, $tipo]);
 
-// ✅ Insere nova tag
-$stmtInsert = $conn->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
-$stmtInsert->bind_param("ss", $nome, $tipo);
-
-if ($stmtInsert->execute()) {
     echo json_encode([
         'status'   => 'ok',
         'mensagem' => '✅ Tag adicionada com sucesso.',
-        'id'       => $stmtInsert->insert_id,
+        'id'       => $conn->lastInsertId(),
         'text'     => $nome
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-} else {
+
+} catch (PDOException $e) {
     http_response_code(500);
     echo json_encode([
-        'status' => 'erro',
-        'mensagem' => 'Erro ao salvar tag.'
+        'status'   => 'erro',
+        'mensagem' => 'Erro no servidor: ' . $e->getMessage()
     ]);
 }
-$stmtInsert->close();
+?>

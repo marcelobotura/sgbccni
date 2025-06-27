@@ -4,6 +4,10 @@ define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/config/env.php';
 require_once BASE_PATH . '/includes/session.php';
+
+if (!defined('URL_BASE')) {
+  define('URL_BASE', '/sgbccni/'); // ajuste conforme sua pasta
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,7 +37,9 @@ require_once BASE_PATH . '/includes/session.php';
       <div class="alerta-sucesso"><?= $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></div>
     <?php endif; ?>
 
-    <form action="../../backend/controllers/auth/register_valida.php" method="POST">
+    <form action="<?= URL_BASE ?>backend/controllers/auth/register_valida.php" method="POST">
+      <input type="hidden" name="origem" value="usuario">
+
       <div class="form-group">
         <input type="text" name="nome" class="form-control" placeholder="Nome completo" required value="<?= htmlspecialchars($_SESSION['form_data']['nome'] ?? '') ?>">
       </div>

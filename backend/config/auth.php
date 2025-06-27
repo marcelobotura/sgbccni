@@ -10,11 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     $acao  = $_POST['acao'];
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
     $senha = $_POST['senha'];
+    $origem = isset($_POST['origem']) ? $_POST['origem'] : 'usuario';
+    $loginPage = $origem === 'admin' ? 'login_admin.php' : 'login_user.php';
+    $registerPage = $origem === 'admin' ? 'register_admin.php' : 'register_user.php';
 
     // 📧 Validação de e-mail
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['erro'] = "E-mail inválido.";
-        header("Location: " . URL_BASE . "login/" . ($acao === 'register' ? "register.php" : "login.php"));
+        header("Location: " . URL_BASE . "login/" . ($acao === 'register' ? $registerPage : $loginPage));
         exit;
     }
 
@@ -25,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
 
         if (empty($nome) || empty($email) || empty($senha)) {
             $_SESSION['erro'] = "Preencha todos os campos.";
-            header("Location: " . URL_BASE . "login/register.php");
+            header("Location: " . URL_BASE . "login/" . $registerPage);
             exit;
         }
 
@@ -37,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
         if ($stmt->num_rows > 0) {
             $_SESSION['erro'] = "Este e-mail já está cadastrado.";
             $stmt->close();
-            header("Location: " . URL_BASE . "login/register.php");
+            header("Location: " . URL_BASE . "login/" . $registerPage);
             exit;
         }
         $stmt->close();
@@ -57,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
             exit;
         } else {
             $_SESSION['erro'] = "Erro ao cadastrar usuário.";
-            header("Location: " . URL_BASE . "login/register.php");
+            header("Location: " . URL_BASE . "login/" . $registerPage);
             exit;
         }
     }
@@ -90,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
         }
 
         $stmt->close();
-        header("Location: " . URL_BASE . "login/login.php");
+        header("Location: " . URL_BASE . "login/" . $loginPage);
         exit;
     }
 }

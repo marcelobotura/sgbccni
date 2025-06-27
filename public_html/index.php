@@ -5,11 +5,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // 🔄 Includes essenciais
-require_once __DIR__ . '/../backend/config/config.php';
+require_once __DIR__ . '/../backend/includes/db.php';
 require_once __DIR__ . '/../backend/includes/session.php';
 
-// ✅ Verifica conexão com banco
-if (!isset($conn)) {
+// Debug: Verifica se a conexão foi criada
+if (!isset($conn) || !$conn) {
     die('<div class="alert alert-danger">Erro: conexão com o banco não estabelecida.</div>');
 }
 ?>
@@ -18,12 +18,12 @@ if (!isset($conn)) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= NOME_SISTEMA ?? 'Biblioteca CNI' ?> - Início</title>
+  <title><?= defined('NOME_SISTEMA') ? NOME_SISTEMA : 'Biblioteca CNI' ?> - Início</title>
 
   <!-- CSS externo -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/layout.css">
+  <link rel="stylesheet" href="<?= defined('URL_BASE') ? URL_BASE : '' ?>frontend/assets/css/layout.css">
 </head>
 <body class="bg-light">
 
@@ -32,10 +32,10 @@ if (!isset($conn)) {
   <p class="lead mb-4">Sistema de leitura, empréstimos e comunidade.</p>
 
   <div class="mb-5">
-    <a href="<?= URL_BASE ?>frontend/login/login_user.php" class="btn btn-primary px-4 me-2">
+    <a href="<?= defined('URL_BASE') ? URL_BASE : '/' ?>sgbccni/frontend/login/login_user.php" class="btn btn-primary px-4 me-2">
       <i class="bi bi-person"></i> Entrar
     </a>
-    <a href="<?= URL_BASE ?>frontend/login/register_user.php" class="btn btn-outline-success px-4">
+    <a href="<?= defined('URL_BASE') ? URL_BASE : '/' ?>sgbccni/frontend/login/register_user.php" class="btn btn-outline-success px-4">
       <i class="bi bi-person-plus"></i> Criar Conta
     </a>
   </div>
@@ -57,7 +57,7 @@ if (!isset($conn)) {
         <?php endif; ?>
         <div class="card-body text-center">
           <h6 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h6>
-          <a href="<?= URL_BASE ?>frontend/usuario/livro.php?isbn=<?= urlencode($livro['isbn']) ?>" class="btn btn-sm btn-primary">
+          <a href="<?= defined('URL_BASE') ? URL_BASE : '' ?>frontend/usuario/livro.php?isbn=<?= urlencode($livro['isbn']) ?>" class="btn btn-sm btn-primary">
             <i class="bi bi-eye"></i> Ver
           </a>
         </div>
@@ -74,5 +74,6 @@ if (!isset($conn)) {
 </div>
 
 <?php require_once __DIR__ . '/../backend/includes/footer.php'; ?>
+
 </body>
 </html>

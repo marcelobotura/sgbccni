@@ -1,9 +1,11 @@
 <?php
-session_start();
-require_once __DIR__ . '/../../../backend/config/env.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . '/env.php';
 
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
-    header('Location: ../login/login_admin.php');
+    header('Location: ../../frontend/login/login_admin.php');
     exit;
 }
 
@@ -19,7 +21,7 @@ if (!file_exists($mysqldump)) {
 }
 
 // 🏗️ Monta o comando mysqldump
-$comando = "\"$mysqldump\" --user=$user --password=$pass --host=$host $db";
+$comando = "\"$mysqldump\" --user=\"$user\" --password=\"$pass\" --host=\"$host\" \"$db\"";
 
 // 🔥 Headers para download
 header('Content-Type: application/octet-stream');
@@ -29,6 +31,9 @@ header('Expires: 0');
 
 // 🚀 Executa o comando e envia o conteúdo como download
 $process = popen($comando, 'r');
+if ($process === false) {
+    die("<div style='color:red;'>❌ Erro ao executar o comando de backup.</div>");
+}
 while (!feof($process)) {
     echo fread($process, 4096);
 }

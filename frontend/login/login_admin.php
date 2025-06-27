@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+if (!defined('URL_BASE')) {
+  define('URL_BASE', '/sgbccni/'); // ajuste conforme sua pasta
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,7 +27,8 @@
       <div class="alerta-erro">Usuário ou senha inválidos.</div>
     <?php endif; ?>
 
-    <form action="../../backend/controllers/auth/login_valida.php" method="POST">
+    <form action="<?= URL_BASE ?>backend/controllers/auth/login_valida.php" method="POST">
+      <input type="hidden" name="acao" value="login">
       <!-- Origem oculta para validação -->
       <input type="hidden" name="origem" value="admin">
 
@@ -40,7 +46,7 @@
 
     <div class="link-cadastro">
       <p>Não tem uma conta de administrador?</p>
-      <a href="../admin/pages/register_admin.php">Criar novo cadastro</a>
+      <a href="<?= URL_BASE ?>frontend/admin/pages/register_admin.php">Criar novo cadastro</a>
     </div>
   </div>
 

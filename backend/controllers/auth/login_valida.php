@@ -28,6 +28,11 @@ try {
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario && password_verify($senha, $usuario['senha'])) {
+        // Impede cruzamento: só permite admin no login_admin e só usuario no login_user
+        if (($origem === 'admin' && $usuario['tipo'] !== 'admin') || ($origem === 'usuario' && $usuario['tipo'] === 'admin')) {
+            header('Location: ' . URL_BASE . $loginPage . '?erro=1');
+            exit;
+        }
         $_SESSION['usuario_id'] = $usuario['id'];
         $_SESSION['usuario_nome'] = $usuario['nome'];
         $_SESSION['usuario_tipo'] = $usuario['tipo'];

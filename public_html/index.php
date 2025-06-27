@@ -32,6 +32,7 @@ if (!isset($conn) || !$conn) {
   <p class="lead mb-4">Sistema de leitura, empréstimos e comunidade.</p>
 
   <div class="mb-5">
+    
     <a href="<?= defined('URL_BASE') ? URL_BASE : '/' ?>sgbccni/frontend/login/login_user.php" class="btn btn-primary px-4 me-2">
       <i class="bi bi-person"></i> Entrar
     </a>

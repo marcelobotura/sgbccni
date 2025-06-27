@@ -11,7 +11,7 @@ define('URL_BASE', '/sgbccni');
 
 $email = $_POST['email'] ?? '';
 $senha = $_POST['senha'] ?? '';
-$origem = $_POST['origem'] ?? 'admin'; // <- Captura se veio do login de usuário
+$origem = $_POST['origem'] ?? 'usuario'; // Valor padrão agora é 'usuario'
 
 // Decide qual página de login mostrar em caso de erro
 $loginPage = ($origem === 'usuario') ? '/frontend/login/login_user.php' : '/frontend/login/login_admin.php';

@@ -38,7 +38,8 @@ if (!defined('URL_BASE')) {
     <?php endif; ?>
 
     <form action="<?= URL_BASE ?>backend/controllers/auth/register_valida.php" method="POST">
-      <input type="hidden" name="origem" value="usuario">
+      <!-- ✅ Campo obrigatório para redirecionamento correto -->
+      <input type="hidden" name="tipo" value="usuario">
 
       <div class="form-group">
         <input type="text" name="nome" class="form-control" placeholder="Nome completo" required value="<?= htmlspecialchars($_SESSION['form_data']['nome'] ?? '') ?>">

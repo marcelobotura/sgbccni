@@ -133,3 +133,16 @@ Stack trace:
 [09-Jun-2025 12:07:17 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
 [09-Jun-2025 12:07:41 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
 [09-Jun-2025 12:17:10 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[20-Jun-2025 19:43:51 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 19:44:02 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 19:44:14 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 19:44:35 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 19:45:05 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 19:45:17 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 19:54:13 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 19:54:21 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 19:54:59 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 21:35:53 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 21:36:11 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[20-Jun-2025 21:36:28 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[16-Jul-2025 16:50:26 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2

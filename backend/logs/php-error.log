@@ -146,3 +146,27 @@ Stack trace:
 [20-Jun-2025 21:36:11 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
 [20-Jun-2025 21:36:28 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
 [16-Jul-2025 16:50:26 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 2
+[16-Jul-2025 17:10:52 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:10:52 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:10:52 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:10:52 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:24 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:24 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:24 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:24 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:25 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:25 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:25 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:25 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:26 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:26 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:26 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:26 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:58 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:58 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:58 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:58 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:59 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:59 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:59 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4
+[16-Jul-2025 17:11:59 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\backend\includes\db.php on line 4

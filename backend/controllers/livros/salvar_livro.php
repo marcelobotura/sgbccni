@@ -1,103 +1,121 @@
 <?php
-require_once __DIR__ . '/../../config/config.php';
-require_once __DIR__ . '/../../includes/session.php';
-
+require_once __DIR__ . '/../../../config/config.php';
+require_once __DIR__ . '/../../../includes/session.php';
+require_once __DIR__ . '/../../../includes/atividade_logger.php';
 exigir_login('admin');
 
-// 🔄 Coleta e sanitiza os dados
-$titulo         = trim($_POST['titulo'] ?? '');
-$isbn           = trim($_POST['isbn'] ?? '');
-$descricao      = trim($_POST['descricao'] ?? '');
-$tipo           = $_POST['tipo'] ?? 'físico';
-$formato        = $_POST['formato'] ?? 'PDF';
-$link_digital   = trim($_POST['link_digital'] ?? null);
-$volume         = trim($_POST['volume'] ?? '');
-$edicao         = trim($_POST['edicao'] ?? '');
-$codigo_interno = trim($_POST['codigo_interno'] ?? '');
+// Função para criar tag se não existir
+function definirTagID($pdo, $tipo, $nome) {
+    if (!$nome) return null;
+    
+    // Verifica se já existe
+    $stmt = $pdo->prepare("SELECT id FROM tags WHERE nome = ? AND tipo = ?");
+    $stmt->execute([$nome, $tipo]);
+    $tag = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if ($tag) return $tag['id'];
 
-$autor_id       = is_numeric($_POST['autor_id'] ?? null) ? (int)$_POST['autor_id'] : null;
-$editora_id     = is_numeric($_POST['editora_id'] ?? null) ? (int)$_POST['editora_id'] : null;
-$categoria_id   = is_numeric($_POST['categoria_id'] ?? null) ? (int)$_POST['categoria_id'] : null;
+    // Cria nova tag
+    $stmt = $pdo->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
+    $stmt->execute([$nome, $tipo]);
+    return $pdo->lastInsertId();
+}
 
-// 🛡️ Validação
-if (empty($titulo) || empty($isbn) || empty($codigo_interno)) {
-    $_SESSION['erro'] = "Título, ISBN e Código Interno são obrigatórios.";
-    header("Location: " . URL_BASE . "frontend/admin/pages/cadastrar_livro.php");
+// Dados obrigatórios
+$titulo          = trim($_POST['titulo'] ?? '');
+$isbn            = trim($_POST['isbn'] ?? '');
+$codigoInterno   = trim($_POST['codigo_interno'] ?? '');
+
+if (empty($titulo) || empty($isbn) || empty($codigoInterno)) {
+    $_SESSION['erro'] = 'Preencha todos os campos obrigatórios';
+    header('Location: ' . URL_BASE . 'frontend/admin/pages/cadastrar_livro.php');
     exit;
 }
 
-// 🚫 Verifica se ISBN já existe
-$stmt_check = $conn->prepare("SELECT id FROM livros WHERE isbn = :isbn");
-$stmt_check->bindValue(':isbn', $isbn);
-$stmt_check->execute();
-if ($stmt_check->rowCount() > 0) {
-    $_SESSION['erro'] = "Este ISBN já está cadastrado.";
-    header("Location: " . URL_BASE . "frontend/admin/pages/cadastrar_livro.php");
-    exit;
-}
+// Demais dados
+$subtitulo       = trim($_POST['subtitulo'] ?? '');
+$descricao       = trim($_POST['descricao'] ?? '');
+$volume          = trim($_POST['volume'] ?? '');
+$edicao          = trim($_POST['edicao'] ?? '');
+$ano             = trim($_POST['ano'] ?? '');
+$idioma          = trim($_POST['idioma'] ?? '');
+$tipo            = $_POST['tipo'] ?? 'físico';
+$formato         = $_POST['formato'] ?? '';
+$linkDigital     = trim($_POST['link_digital'] ?? '');
+$isbn10          = trim($_POST['isbn10'] ?? '');
+$codigoBarras    = trim($_POST['codigo_barras'] ?? '');
+$fonte           = trim($_POST['fonte'] ?? 'Manual');
 
-// 🖼️ Upload da capa
-$capa_url = null;
-if (isset($_FILES['capa']) && $_FILES['capa']['error'] === UPLOAD_ERR_OK) {
-    $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
-    $tipo_arquivo = mime_content_type($_FILES['capa']['tmp_name']);
+// Tags (podem vir como texto novo)
+$autor           = trim($_POST['autor_id'] ?? '');
+$editora         = trim($_POST['editora_id'] ?? '');
+$categoria       = trim($_POST['categoria_id'] ?? '');
 
-    if (!in_array($tipo_arquivo, $permitidos)) {
-        $_SESSION['erro'] = "Formato de imagem não permitido.";
-        header("Location: " . URL_BASE . "frontend/admin/pages/cadastrar_livro.php");
+$autorID = definirTagID($pdo, 'autor', $autor);
+$editoraID = definirTagID($pdo, 'editora', $editora);
+$categoriaID = definirTagID($pdo, 'categoria', $categoria);
+
+// Upload da capa
+$capaArquivo = $_FILES['capa'] ?? null;
+$capaNome = null;
+if ($capaArquivo && $capaArquivo['error'] === UPLOAD_ERR_OK) {
+    $ext = pathinfo($capaArquivo['name'], PATHINFO_EXTENSION);
+    $capaNome = uniqid('capa_', true) . '.' . strtolower($ext);
+    $destino = __DIR__ . '/../../../uploads/capas/' . $capaNome;
+    if (!move_uploaded_file($capaArquivo['tmp_name'], $destino)) {
+        $_SESSION['erro'] = 'Erro ao salvar a capa do livro.';
+        header('Location: ' . URL_BASE . 'frontend/admin/pages/cadastrar_livro.php');
         exit;
     }
-
-    $ext = pathinfo($_FILES['capa']['name'], PATHINFO_EXTENSION);
-    $novo_nome = uniqid('capa_', true) . '.' . $ext;
-    $destino = __DIR__ . '/../../../uploads/capas/' . $novo_nome;
-
-    if (!is_dir(dirname($destino))) {
-        mkdir(dirname($destino), 0755, true);
-    }
-
-    if (move_uploaded_file($_FILES['capa']['tmp_name'], $destino)) {
-        $capa_url = 'uploads/capas/' . $novo_nome;
-    } else {
-        $_SESSION['erro'] = "Erro ao salvar a imagem.";
-        header("Location: " . URL_BASE . "frontend/admin/pages/cadastrar_livro.php");
-        exit;
-    }
 }
 
-// 💾 Inserção no banco (PDO)
-$stmt = $conn->prepare("INSERT INTO livros (
-    titulo, isbn, volume, edicao, codigo_interno,
-    descricao, tipo, formato, link_digital, capa_url,
-    autor_id, editora_id, categoria_id, disponivel
-) VALUES (
-    :titulo, :isbn, :volume, :edicao, :codigo_interno,
-    :descricao, :tipo, :formato, :link_digital, :capa_url,
-    :autor_id, :editora_id, :categoria_id, 1
-)");
+// Inserir no banco
+try {
+    $stmt = $pdo->prepare("INSERT INTO livros (
+        titulo, subtitulo, descricao, volume, edicao, ano, idioma,
+        isbn, isbn10, codigo_barras, codigo_interno,
+        tipo, formato, link_digital, fonte,
+        autor_id, editora_id, categoria_id, capa
+    ) VALUES (
+        :titulo, :subtitulo, :descricao, :volume, :edicao, :ano, :idioma,
+        :isbn, :isbn10, :codigo_barras, :codigo_interno,
+        :tipo, :formato, :link_digital, :fonte,
+        :autor_id, :editora_id, :categoria_id, :capa
+    )");
 
-$sucesso = $stmt->execute([
-    ':titulo'         => $titulo,
-    ':isbn'           => $isbn,
-    ':volume'         => $volume,
-    ':edicao'         => $edicao,
-    ':codigo_interno' => $codigo_interno,
-    ':descricao'      => $descricao,
-    ':tipo'           => $tipo,
-    ':formato'        => $formato,
-    ':link_digital'   => $link_digital,
-    ':capa_url'       => $capa_url,
-    ':autor_id'       => $autor_id,
-    ':editora_id'     => $editora_id,
-    ':categoria_id'   => $categoria_id
-]);
+    $stmt->execute([
+        ':titulo' => $titulo,
+        ':subtitulo' => $subtitulo,
+        ':descricao' => $descricao,
+        ':volume' => $volume,
+        ':edicao' => $edicao,
+        ':ano' => $ano,
+        ':idioma' => $idioma,
+        ':isbn' => $isbn,
+        ':isbn10' => $isbn10,
+        ':codigo_barras' => $codigoBarras,
+        ':codigo_interno' => $codigoInterno,
+        ':tipo' => $tipo,
+        ':formato' => $formato,
+        ':link_digital' => $linkDigital,
+        ':fonte' => $fonte,
+        ':autor_id' => $autorID,
+        ':editora_id' => $editoraID,
+        ':categoria_id' => $categoriaID,
+        ':capa' => $capaNome
+    ]);
 
-if ($sucesso) {
-    $_SESSION['sucesso'] = "Livro cadastrado com sucesso!";
-} else {
-    error_log("Erro ao cadastrar livro: " . implode(" | ", $stmt->errorInfo()));
-    $_SESSION['erro'] = "Erro ao cadastrar livro.";
+
+        // Registra atividade se a função existir
+    if (function_exists('registrar_atividade')) {
+        registrar_atividade($pdo, $_SESSION['usuario_id'], "Livro cadastrado: $titulo (ISBN: $isbn)");
+    }
+
+    $_SESSION['sucesso'] = 'Livro cadastrado com sucesso!';
+} catch (PDOException $e) {
+    $_SESSION['erro'] = 'Erro ao salvar o livro: ' . $e->getMessage();
 }
 
-header("Location: " . URL_BASE . "frontend/admin/pages/cadastrar_livro.php");
+// Redireciona de volta para o formulário
+header('Location: ' . URL_BASE . 'frontend/admin/pages/cadastrar_livro.php');
 exit;

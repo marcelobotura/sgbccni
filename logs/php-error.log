@@ -931,3 +931,53 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:48:53 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\controllers\livros\salvar_edicao_livro.php on line 64
+[17-Jul-2025 03:48:53 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\livros\salvar_edicao_livro.php:64
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\livros\salvar_edicao_livro.php on line 64
+[17-Jul-2025 03:58:56 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/includes/footer.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 03:58:56 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/includes/footer.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:100
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 04:00:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 60
+[17-Jul-2025 04:00:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 61
+[17-Jul-2025 04:00:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 66
+[17-Jul-2025 04:00:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 67
+[17-Jul-2025 04:00:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 68
+[17-Jul-2025 04:00:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 69
+[17-Jul-2025 04:00:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 70
+[17-Jul-2025 04:00:17 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 04:00:17 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 04:01:46 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 60
+[17-Jul-2025 04:01:46 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 61
+[17-Jul-2025 04:01:46 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 66
+[17-Jul-2025 04:01:46 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 67
+[17-Jul-2025 04:01:46 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 68
+[17-Jul-2025 04:01:46 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 69
+[17-Jul-2025 04:01:46 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 70
+[17-Jul-2025 04:11:38 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 04:11:38 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 04:17:20 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 04:17:20 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 04:28:22 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/includes/footer.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 04:28:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/includes/footer.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:100
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 04:40:05 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/includes/footer.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 04:40:05 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/includes/footer.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:100
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 04:54:41 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_livros.php on line 60

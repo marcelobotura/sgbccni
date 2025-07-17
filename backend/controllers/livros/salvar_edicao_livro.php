@@ -1,6 +1,10 @@
 <?php
-require_once __DIR__ . '/../../../config/config.php';
-require_once __DIR__ . '/../../../includes/session.php';
+define('BASE_PATH', dirname(__DIR__, 2)); // vai até /backend
+require_once BASE_PATH . '/config/config.php';
+require_once BASE_PATH . '/includes/session.php';
+require_once BASE_PATH . '/includes/protect_admin.php';
+require_once BASE_PATH . '/includes/atividade_logger.php';
+
 exigir_login('admin');
 
 // 🧪 Validação
@@ -20,20 +24,35 @@ $categoria_id    = intval($_POST['categoria_id'] ?? 0);
 
 if ($id <= 0 || $titulo === '' || $isbn === '' || $codigo_interno === '') {
     $_SESSION['erro'] = "Preencha todos os campos obrigatórios.";
-    header("Location: ../../../frontend/admin/pages/editar_livro.php?id=$id");
+    header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
     exit;
 }
 
 // 📁 Upload de nova capa (opcional)
-$capa_nome = null;
+$capa_url = null;
 if (!empty($_FILES['nova_capa']['name'])) {
-    $extensao = pathinfo($_FILES['nova_capa']['name'], PATHINFO_EXTENSION);
-    $capa_nome = uniqid('capa_') . '.' . strtolower($extensao);
-    $caminho_destino = __DIR__ . '/../../../uploads/capas/' . $capa_nome;
+    $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
+    $tipo_arquivo = mime_content_type($_FILES['nova_capa']['tmp_name']);
 
-    if (!move_uploaded_file($_FILES['nova_capa']['tmp_name'], $caminho_destino)) {
-        $_SESSION['erro'] = "Erro ao fazer upload da nova capa.";
-        header("Location: ../../../frontend/admin/pages/editar_livro.php?id=$id");
+    if (!in_array($tipo_arquivo, $permitidos)) {
+        $_SESSION['erro'] = "Formato de imagem não permitido.";
+        header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
+        exit;
+    }
+
+    $ext = pathinfo($_FILES['nova_capa']['name'], PATHINFO_EXTENSION);
+    $nome_arquivo = uniqid('capa_', true) . '.' . $ext;
+    $destino = BASE_PATH . '/../uploads/capas/' . $nome_arquivo;
+
+    if (!is_dir(dirname($destino))) {
+        mkdir(dirname($destino), 0755, true);
+    }
+
+    if (move_uploaded_file($_FILES['nova_capa']['tmp_name'], $destino)) {
+        $capa_url = 'uploads/capas/' . $nome_arquivo;
+    } else {
+        $_SESSION['erro'] = "Erro ao salvar a imagem.";
+        header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
         exit;
     }
 }
@@ -53,13 +72,13 @@ try {
                 editora_id = :editora_id,
                 categoria_id = :categoria_id";
 
-    if ($capa_nome) {
-        $sql .= ", capa = :capa";
+    if ($capa_url) {
+        $sql .= ", capa_url = :capa_url";
     }
 
     $sql .= " WHERE id = :id";
 
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':titulo', $titulo);
     $stmt->bindValue(':isbn', $isbn);
     $stmt->bindValue(':volume', $volume);
@@ -72,18 +91,21 @@ try {
     $stmt->bindValue(':autor_id', $autor_id);
     $stmt->bindValue(':editora_id', $editora_id);
     $stmt->bindValue(':categoria_id', $categoria_id);
-    if ($capa_nome) {
-        $stmt->bindValue(':capa', $capa_nome);
+    if ($capa_url) {
+        $stmt->bindValue(':capa_url', $capa_url);
     }
     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
     $stmt->execute();
 
+    // 📝 Registrar atividade
+    registrar_atividade($pdo, "Livro editado: ID #$id - $titulo (ISBN: $isbn)", $_SESSION['usuario_id']);
+
     $_SESSION['sucesso'] = "Livro atualizado com sucesso!";
-    header("Location: ../../../frontend/admin/pages/listar_livros.php");
+    header("Location: " . URL_BASE . "frontend/admin/pages/listar_livros.php");
     exit;
 } catch (PDOException $e) {
     $_SESSION['erro'] = "Erro ao atualizar livro: " . $e->getMessage();
-    header("Location: ../../../frontend/admin/pages/editar_livro.php?id=$id");
+    header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
     exit;
 }

@@ -13,7 +13,8 @@ if (empty($tipo)) {
 
 try {
     // 🔍 Consulta as tags existentes
-    $stmt = $conn->prepare("
+    $stmt = $pdo->prepare("
+
         SELECT id, nome 
         FROM tags 
         WHERE tipo = :tipo AND nome LIKE :termo 

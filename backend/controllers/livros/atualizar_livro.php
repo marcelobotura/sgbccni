@@ -1,10 +1,12 @@
 <?php
 require_once __DIR__ . '/../../../config/config.php';
 require_once __DIR__ . '/../../../includes/session.php';
+require_once __DIR__ . '/../../../includes/atividade_logger.php';
+
 exigir_login('admin');
 
-// 📥 Recebe e sanitiza os dados
-$id              = $_POST['id'] ?? null;
+// 📥 Dados do formulário
+$id              = intval($_POST['id'] ?? 0);
 $titulo          = trim($_POST['titulo'] ?? '');
 $isbn            = trim($_POST['isbn'] ?? '');
 $descricao       = trim($_POST['descricao'] ?? '');
@@ -19,14 +21,14 @@ $autor_id        = is_numeric($_POST['autor_id'] ?? '') ? (int)$_POST['autor_id'
 $editora_id      = is_numeric($_POST['editora_id'] ?? '') ? (int)$_POST['editora_id'] : null;
 $categoria_id    = is_numeric($_POST['categoria_id'] ?? '') ? (int)$_POST['categoria_id'] : null;
 
-// 🚫 Validação
-if (!$id || !$titulo || !$isbn || !$codigo_interno) {
+// Validação básica
+if ($id <= 0 || !$titulo || !$isbn || !$codigo_interno) {
     $_SESSION['erro'] = "Preencha todos os campos obrigatórios.";
     header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
     exit;
 }
 
-// 🖼️ Upload de nova capa (opcional)
+// 🖼️ Upload de capa (opcional)
 $capa_url = null;
 if (!empty($_FILES['capa']['name']) && is_uploaded_file($_FILES['capa']['tmp_name'])) {
     $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
@@ -55,41 +57,62 @@ if (!empty($_FILES['capa']['name']) && is_uploaded_file($_FILES['capa']['tmp_nam
     }
 }
 
-// 🛠️ Monta query dinamicamente
-$query = "UPDATE livros SET 
-    titulo = ?, isbn = ?, descricao = ?, tipo = ?, formato = ?, link_digital = ?, 
-    volume = ?, edicao = ?, codigo_interno = ?, 
-    autor_id = ?, editora_id = ?, categoria_id = ?";
+try {
+    // Monta dinamicamente
+    $sql = "UPDATE livros SET 
+        titulo = :titulo,
+        isbn = :isbn,
+        descricao = :descricao,
+        tipo = :tipo,
+        formato = :formato,
+        link_digital = :link_digital,
+        volume = :volume,
+        edicao = :edicao,
+        codigo_interno = :codigo_interno,
+        autor_id = :autor_id,
+        editora_id = :editora_id,
+        categoria_id = :categoria_id";
 
-$params = [
-    $titulo, $isbn, $descricao, $tipo, $formato, $link_digital,
-    $volume, $edicao, $codigo_interno,
-    $autor_id, $editora_id, $categoria_id
-];
+    if ($capa_url) {
+        $sql .= ", capa_url = :capa_url";
+    }
 
-$types = "ssssssssiii";
+    $sql .= " WHERE id = :id";
 
-// Se enviou nova capa
-if ($capa_url) {
-    $query .= ", capa_url = ?";
-    $params[] = $capa_url;
-    $types .= "s";
-}
+    $stmt = $pdo->prepare($sql);
 
-$query .= " WHERE id = ?";
-$params[] = $id;
-$types .= "i";
+    // Parâmetros obrigatórios
+    $stmt->bindValue(':titulo', $titulo);
+    $stmt->bindValue(':isbn', $isbn);
+    $stmt->bindValue(':descricao', $descricao);
+    $stmt->bindValue(':tipo', $tipo);
+    $stmt->bindValue(':formato', $formato);
+    $stmt->bindValue(':link_digital', $link_digital);
+    $stmt->bindValue(':volume', $volume);
+    $stmt->bindValue(':edicao', $edicao);
+    $stmt->bindValue(':codigo_interno', $codigo_interno);
+    $stmt->bindValue(':autor_id', $autor_id);
+    $stmt->bindValue(':editora_id', $editora_id);
+    $stmt->bindValue(':categoria_id', $categoria_id);
 
-// 🔄 Executa a query
-$stmt = $conn->prepare($query);
-$stmt->bind_param($types, ...$params);
+    if ($capa_url) {
+        $stmt->bindValue(':capa_url', $capa_url);
+    }
 
-if ($stmt->execute()) {
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    // ✅ Registrar atividade
+    registrar_atividade($_SESSION['usuario_id'], "Livro atualizado", "Livro atualizado: $titulo (ID #$id, ISBN: $isbn)");
+
     $_SESSION['sucesso'] = "Livro atualizado com sucesso!";
-} else {
-    error_log("Erro ao atualizar livro ID $id: " . $stmt->error);
-    $_SESSION['erro'] = "Erro ao atualizar o livro.";
-}
+    header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
+    exit;
 
-header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
-exit;
+} catch (PDOException $e) {
+    error_log("Erro ao atualizar livro ID $id: " . $e->getMessage());
+    $_SESSION['erro'] = "Erro ao atualizar o livro.";
+    header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
+    exit;
+}

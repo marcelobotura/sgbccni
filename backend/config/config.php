@@ -1,69 +1,78 @@
 <?php
-session_start();
-
-// Inclui as configurações do ambiente
+// ✅ Carrega variáveis de ambiente e sessão
 require_once __DIR__ . '/env.php';
+require_once __DIR__ . '/../includes/session.php';
 
-// Inclui o protect_admin para garantir que apenas admins acessem
-require_once ROOT_PATH . 'backend/includes/protect_admin.php';
+$erros = [];
+$avisos = [];
+$sucessos = [];
 
-// 🗓️ Data atual para nome do backup
-$data = date('Y-m-d_H-i-s');
-$arquivo_backup = "backup_banco_$data.sql";
-
-// 🔧 Caminho do mysqldump (obtido de env.php)
-$mysqldump = MYSQLDUMP_PATH;
-
-// Verifica se o mysqldump existe no caminho especificado
-if (!file_exists($mysqldump)) {
-    error_log("❌ Erro mysqldump: mysqldump não encontrado em $mysqldump. Verifique o caminho em env.php.");
-    $_SESSION['erro'] = "Erro interno: Ferramenta de backup não encontrada. Contate o suporte.";
-    header('Location: ' . URL_BASE . 'frontend/admin/pages/configuracoes.php');
-    exit;
+// 🧪 Teste conexão com banco
+try {
+    $conn->query("SELECT 1");
+    $sucessos[] = "✅ Conexão com o banco de dados funcionando.";
+} catch (Exception $e) {
+    $erros[] = "❌ Falha na conexão com o banco: " . $e->getMessage();
 }
 
-// 🏗️ Monta o comando mysqldump usando as constantes do env.php
-if (DB_PASS === '') {
-    $comando = "\"$mysqldump\" --user=" . DB_USER . " --host=" . DB_HOST . " " . DB_NAME;
+// 🔐 Teste sessão
+if (session_status() === PHP_SESSION_ACTIVE) {
+    $sucessos[] = "✅ Sessão ativa.";
 } else {
-    $comando = "\"$mysqldump\" --user=" . DB_USER . " --password=" . DB_PASS . " --host=" . DB_HOST . " " . DB_NAME;
+    $erros[] = "❌ Sessão não está ativa.";
 }
 
-// 🔥 Headers para download
-header('Content-Type: application/octet-stream');
-header("Content-Disposition: attachment; filename=\"$arquivo_backup\"");
-header('Pragma: no-cache');
-header('Expires: 0');
-if (function_exists('apache_setenv')) {
-    apache_setenv('no-gzip', '1');
-}
-ini_set('zlib.output_compression', 'Off');
-ini_set('output_buffering', 'Off');
-ini_set('implicit_flush', 'On');
-ob_implicit_flush(1);
-for ($i = 0; $i < 4096; $i++) {
-    echo ' ';
-}
-flush();
-
-// 🚀 Executa o comando e envia o conteúdo como download
-$process = popen($comando, 'r');
-if (!$process) {
-    error_log("❌ Erro popen: Falha ao executar o comando mysqldump.");
-    echo "Erro ao gerar o backup. Verifique os logs do servidor.";
-    exit;
+// 🧾 Teste escrita em logs/
+$logTest = dirname(__DIR__) . '/logs/teste_log.txt';
+if (@file_put_contents($logTest, 'Teste de escrita em ' . date('Y-m-d H:i:s'))) {
+    $sucessos[] = "✅ Permissão de escrita em /logs.";
+    unlink($logTest);
+} else {
+    $erros[] = "❌ Sem permissão de escrita em /logs.";
 }
 
-while (!feof($process)) {
-    echo fread($process, 8192);
-    flush();
-}
-$exitCode = pclose($process);
-
-if ($exitCode !== 0) {
-    error_log("❌ Erro mysqldump: mysqldump terminou com código de erro $exitCode.");
-    echo "\n-- ATENÇÃO: O backup pode estar incompleto ou conter erros. Código de saída: $exitCode --\n";
+// 🖼️ Teste permissão em uploads/
+$uploadPath = dirname(__DIR__) . '/../uploads/teste.txt';
+if (@file_put_contents($uploadPath, 'teste')) {
+    $sucessos[] = "✅ Permissão de escrita em /uploads.";
+    unlink($uploadPath);
+} else {
+    $erros[] = "❌ Sem permissão de escrita em /uploads.";
 }
 
-exit;
+// 🌐 Teste constantes do sistema
+if (defined('URL_BASE')) {
+    $sucessos[] = "✅ URL_BASE definida como: " . URL_BASE;
+} else {
+    $erros[] = "❌ Constante URL_BASE não definida.";
+}
+
+if (defined('NOME_SISTEMA')) {
+    $sucessos[] = "✅ NOME_SISTEMA: " . NOME_SISTEMA;
+}
+
+if (defined('VERSAO_SISTEMA')) {
+    $sucessos[] = "✅ VERSAO_SISTEMA: " . VERSAO_SISTEMA;
+}
+
+// 🎨 Tema atual
+$tema = $_COOKIE['modo_tema'] ?? 'claro';
+$sucessos[] = "🎨 Tema atual (via cookie): $tema";
+
+// 🌍 Ambiente
+$sucessos[] = "🌎 Ambiente atual: " . (defined('ENV_DEV') && ENV_DEV ? "Desenvolvimento (DEV)" : "Produção");
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagnóstico do Sistema</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { padding: 2rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  
+</body>
+</html>

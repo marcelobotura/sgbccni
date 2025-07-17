@@ -2,9 +2,9 @@
 session_start();
 define('BASE_PATH', dirname(__DIR__, 3) . '/backend');
 
+// 🔐 Proteções e configurações
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
-require_once BASE_PATH . '/includes/verifica_admin.php';
 require_once BASE_PATH . '/includes/protect_admin.php';
 require_once BASE_PATH . '/includes/header.php';
 require_once BASE_PATH . '/includes/menu.php';
@@ -15,7 +15,7 @@ exigir_login('admin');
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 if (!$id) {
     $_SESSION['erro'] = "ID inválido.";
-    header("Location: usuarios.php");
+    header("Location: gerenciar_usuarios.php");
     exit;
 }
 
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         if ($nova_senha !== '') {
             $senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
-            $stmt = $conn->prepare("UPDATE usuarios SET nome = :nome, email = :email, tipo = :tipo, senha = :senha WHERE id = :id");
+            $stmt = $pdo->prepare("UPDATE usuarios SET nome = :nome, email = :email, tipo = :tipo, senha = :senha WHERE id = :id");
             $stmt->execute([
                 ':nome'   => $nome,
                 ':email'  => $email,
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':id'     => $id
             ]);
         } else {
-            $stmt = $conn->prepare("UPDATE usuarios SET nome = :nome, email = :email, tipo = :tipo WHERE id = :id");
+            $stmt = $pdo->prepare("UPDATE usuarios SET nome = :nome, email = :email, tipo = :tipo WHERE id = :id");
             $stmt->execute([
                 ':nome'   => $nome,
                 ':email'  => $email,
@@ -58,18 +58,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['erro'] = "❌ Erro ao atualizar usuário: " . $e->getMessage();
     }
 
-    header("Location: usuarios.php");
+    header("Location: gerenciar_usuarios.php");
     exit;
 }
 
 // 🔍 Buscar dados do usuário para preencher o formulário
-$stmt = $conn->prepare("SELECT nome, email, tipo FROM usuarios WHERE id = :id");
+$stmt = $pdo->prepare("SELECT nome, email, tipo FROM usuarios WHERE id = :id");
 $stmt->execute([':id' => $id]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$usuario) {
     $_SESSION['erro'] = "Usuário não encontrado.";
-    header("Location: usuarios.php");
+    header("Location: gerenciar_usuarios.php");
     exit;
 }
 ?>
@@ -109,7 +109,7 @@ if (!$usuario) {
         </div>
 
         <button type="submit" class="btn btn-primary">💾 Salvar Alterações</button>
-        <a href="usuarios.php" class="btn btn-secondary">↩️ Cancelar</a>
+        <a href="gerenciar_usuarios.php" class="btn btn-secondary">↩️ Cancelar</a>
     </form>
 </div>
 

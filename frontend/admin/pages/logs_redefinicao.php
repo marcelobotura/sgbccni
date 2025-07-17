@@ -1,7 +1,12 @@
 <?php
-require_once __DIR__ . '/../../../backend/includes/verifica_admin.php';
-require_once __DIR__ . '/../../../backend/includes/header.php';
-require_once __DIR__ . '/../../../backend/includes/protect_admin.php';
+session_start();
+define('BASE_PATH', dirname(__DIR__, 3) . '/backend');
+
+require_once BASE_PATH . '/config/config.php';
+require_once BASE_PATH . '/includes/session.php';
+require_once BASE_PATH . '/includes/protect_admin.php';
+require_once BASE_PATH . '/includes/header.php';
+require_once BASE_PATH . '/includes/menu.php';
 
 exigir_login('admin');
 
@@ -10,7 +15,7 @@ $filtro_email = trim($_GET['email'] ?? '');
 $filtro_ip    = trim($_GET['ip'] ?? '');
 $filtro_data  = trim($_GET['data'] ?? '');
 
-// 🔧 Monta SQL dinâmico
+// 🔧 SQL dinâmico com filtros
 $sql = "SELECT * FROM log_redefinicao_senha WHERE 1=1";
 $params = [];
 
@@ -31,10 +36,14 @@ if (!empty($filtro_data)) {
 
 $sql .= " ORDER BY data_redefinicao DESC";
 
-// 🔍 Executa consulta
-$stmt = $conn->prepare($sql);
-$stmt->execute($params);
-$resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "<div class='container mt-4 alert alert-danger'>Erro ao buscar logs: " . htmlspecialchars($e->getMessage()) . "</div>";
+    $resultado = [];
+}
 ?>
 
 <div class="container py-4">
@@ -88,4 +97,4 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
-<?php require_once __DIR__ . '/../../../backend/includes/footer.php'; ?>
+<?php require_once BASE_PATH . '/includes/footer.php'; ?>

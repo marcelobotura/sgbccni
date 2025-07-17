@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/../../../backend/config/config.php';
+// Define que o retorno será em JSON
 header('Content-Type: application/json');
 
-// ✅ Verifica se o método é POST
+// ✅ Só permite requisição POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode([
@@ -12,7 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// ✅ Recebe e valida os dados
+// ✅ Carrega configurações do banco
+require_once __DIR__ . '/../../../backend/config/config.php';
+
+// ✅ Recebe e valida os dados do POST
 $nome = trim($_POST['nome'] ?? '');
 $tipo = trim($_POST['tipo'] ?? '');
 
@@ -28,7 +31,7 @@ if ($nome === '' || !in_array($tipo, $tipos_validos)) {
 }
 
 try {
-    // 🔍 Verifica se a tag já existe
+    // 🔍 Verifica se já existe tag com o mesmo nome e tipo
     $stmt = $conn->prepare("SELECT id FROM tags WHERE nome = ? AND tipo = ?");
     $stmt->execute([$nome, $tipo]);
     $tagExistente = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -43,7 +46,7 @@ try {
         exit;
     }
 
-    // ✅ Insere nova tag
+    // ✅ Insere a nova tag
     $stmtInsert = $conn->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
     $stmtInsert->execute([$nome, $tipo]);
 
@@ -61,4 +64,3 @@ try {
         'mensagem' => 'Erro no servidor: ' . $e->getMessage()
     ]);
 }
-?>

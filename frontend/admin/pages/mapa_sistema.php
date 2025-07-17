@@ -60,7 +60,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
         </ul>
 
         <br>
-        <a href="index.php" class="btn">⬅️ Voltar ao Painel</a>
+        <a href="../index.php" class="btn">⬅️ Voltar ao Painel</a>
     </section>
 </main>
 

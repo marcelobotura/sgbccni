@@ -14,8 +14,8 @@ if ($id <= 0) {
     exit;
 }
 
-// 🔎 Buscar o livro
-$stmt = $conn->prepare("SELECT * FROM livros WHERE id = :id");
+// 🔎 Buscar o livro (usando PDO corretamente)
+$stmt = $pdo->prepare("SELECT * FROM livros WHERE id = :id");
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
 $livro = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -35,7 +35,7 @@ if (!$livro) {
             <!-- Capa -->
             <div class="col-md-4">
                 <?php if (!empty($livro['capa'])): ?>
-                    <img src="<?= URL_BASE ?>uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="Capa do livro">
+                    <img src="<?= URL_BASE ?>/uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="Capa do livro">
                 <?php elseif (!empty($livro['capa_url'])): ?>
                     <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="Capa do livro">
                 <?php else: ?>
@@ -49,7 +49,7 @@ if (!$livro) {
             <div class="col-md-8">
                 <div class="card-body">
                     <h3><?= htmlspecialchars($livro['titulo']) ?></h3>
-                    <?php if ($livro['subtitulo']): ?>
+                    <?php if (!empty($livro['subtitulo'])): ?>
                         <h5 class="text-muted"><?= htmlspecialchars($livro['subtitulo']) ?></h5>
                     <?php endif; ?>
 
@@ -71,7 +71,7 @@ if (!$livro) {
                         <tr>
                             <th>Link Digital</th>
                             <td>
-                                <?php if ($livro['link_digital']): ?>
+                                <?php if (!empty($livro['link_digital'])): ?>
                                     <a href="<?= htmlspecialchars($livro['link_digital']) ?>" target="_blank" class="btn btn-sm btn-success">
                                         📖 Acessar Link
                                     </a>

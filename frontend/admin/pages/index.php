@@ -21,7 +21,6 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
     <!-- CSS do Painel -->
     <link rel="stylesheet" href="../../assets/css/pages/painel_admin.css">
 </head>
-
 <body>
 
 <!-- 🔷 Sidebar -->
@@ -30,18 +29,20 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
     <nav>
         <ul>
             <li><a href="index.php"><i class="bi bi-house-door"></i> Início</a></li>
-            <li><a href="usuarios.php"><i class="bi bi-people"></i> Usuários</a></li>
-            <li><a href="listar_livros.php"><i class="bi bi-journal-text"></i> Livros</a></li>
+            <li><a href="gerenciar_usuarios.php"><i class="bi bi-people"></i> Usuários</a></li> 
+            <li><a href="gerenciar_livros.php"><i class="bi bi-journal-text"></i> Livros</a></li>
             <li><a href="mensagens.php"><i class="bi bi-chat-dots"></i> Mensagens</a></li>
             <li><a href="gerenciar_tags.php"><i class="bi bi-tags"></i> Tags</a></li>
             <li><a href="configuracoes.php"><i class="bi bi-gear"></i> Configurações</a></li>
-            <li><a href="relatorios.php"><i class="bi bi-bar-chart-line"></i> Relatórios</a></li>
-            <li><a href="logs.php"><i class="bi bi-clock-history"></i> Logs</a></li>
+            <li><a href="gerenciar_relatorios.php"><i class="bi bi-bar-chart-line"></i> Relatórios</a></li>
+            <li><a href="gerenciar_logs.php"><i class="bi bi-clock-history"></i> Logs</a></li>
             <li><a href="backup.php"><i class="bi bi-cloud-arrow-down"></i> Backup</a></li>
             <li><a href="restaurar_backup.php"><i class="bi bi-cloud-arrow-up"></i> Restaurar Backup</a></li>
             <li><a href="arquivos.php"><i class="bi bi-folder"></i> Arquivos</a></li>
             <li><a href="mapa_sistema.php"><i class="bi bi-diagram-3"></i> Mapa do Sistema</a></li>
-            <li><a href="../../../backend/controllers/auth/logout.php"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
+            <a href="/sgbccni/backend/controllers/auth/logout.php">
+            <i class="bi bi-box-arrow-right"></i> Sair
+            </a>
         </ul>
     </nav>
 </aside>
@@ -54,23 +55,22 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
 
     <section class="grid">
 
-        <!-- 🟦 Funções principais -->
         <div class="card">
             <h3><i class="bi bi-people"></i> Gerenciar Usuários</h3>
             <p>Controle os usuários cadastrados no sistema.</p>
-            <a href="usuarios.php" class="btn">Acessar</a>
+            <a href="gerenciar_usuarios.php" class="btn">Acessar</a>
         </div>
 
         <div class="card">
             <h3><i class="bi bi-journal-text"></i> Gerenciar Livros</h3>
             <p>Adicione, edite ou remova livros da biblioteca.</p>
-            <a href="listar_livros.php" class="btn">Ver Livros</a>
+            <a href="gerenciar_livros.php" class="btn">Ver Livros</a>
         </div>
 
         <div class="card">
             <h3><i class="bi bi-chat-dots"></i> Mensagens</h3>
             <p>Visualize e responda mensagens dos usuários.</p>
-            <a href="mensagens.php" class="btn">Moderador</a>
+            <a href="gerenciar_mensagens.php" class="btn">Moderador</a>
         </div>
 
         <div class="card">
@@ -85,17 +85,16 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
             <a href="configuracoes.php" class="btn">Ajustar</a>
         </div>
 
-        <!-- 🟩 Recursos Avançados -->
         <div class="card">
             <h3><i class="bi bi-bar-chart-line"></i> Relatórios</h3>
             <p>Veja estatísticas e relatórios do sistema.</p>
-            <a href="relatorios.php" class="btn">Acessar</a>
+            <a href="gerenciar_relatorios.php" class="btn">Acessar</a>
         </div>
 
         <div class="card">
             <h3><i class="bi bi-clock-history"></i> Logs</h3>
             <p>Visualize atividades como login, exclusões e alterações.</p>
-            <a href="logs.php" class="btn">Ver Logs</a>
+            <a href="gerenciar_logs.php" class="btn">Ver Logs</a>
         </div>
 
         <div class="card">
@@ -113,7 +112,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
         <div class="card">
             <h3><i class="bi bi-folder"></i> Gerenciador de Arquivos</h3>
             <p>Gerencie uploads como imagens de capas.</p>
-            <a href="arquivos.php" class="btn">Arquivos</a>
+            <a href="gerenciar_arquivos.php" class="btn">Arquivos</a>
         </div>
 
         <div class="card">

@@ -1,12 +1,20 @@
 <?php
-session_start();
+// Ativa exibição de erros (opcional para desenvolvimento)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// 🔐 Verifica se está logado como usuário comum
-if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'usuario') {
-    header('Location: ../login/login_user.php');
-    exit;
-}
+// Define caminho raiz para incluir arquivos backend
+define('BASE_PATH', dirname(__DIR__) . '/../backend');
+
+// Inclui sessão, config e autenticação
+require_once BASE_PATH . '/config/config.php';
+require_once BASE_PATH . '/includes/session.php';
+
+// ✅ Garante que somente usuários comuns possam acessar
+exigir_login('usuario');
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,7 +40,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'usuario') 
   <main class="painel-usuario container">
     <header class="painel-header d-flex justify-content-between align-items-center my-4">
       <h2>Olá, <?= htmlspecialchars($_SESSION['usuario_nome']); ?> 👋</h2>
-      <a href="../../backend/controllers/auth/logout.php" class="btn btn-erro">
+      <a href="<?= URL_BASE ?>/backend/controllers/auth/logout.php" class="btn btn-erro">
         <i class="bi bi-box-arrow-right"></i> Sair
       </a>
     </header>

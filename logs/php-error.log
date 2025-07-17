@@ -66,3 +66,868 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 22
+[16-Jul-2025 22:53:29 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[16-Jul-2025 22:53:29 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[16-Jul-2025 22:53:34 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[16-Jul-2025 22:53:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[16-Jul-2025 22:53:44 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[16-Jul-2025 22:53:44 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[16-Jul-2025 22:53:48 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[16-Jul-2025 22:53:48 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:33
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[16-Jul-2025 23:34:44 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:34:44 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:34:49 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:34:49 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:35:08 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:35:08 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:35:12 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:35:12 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:36:47 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:36:47 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:41:22 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:41:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:46:44 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:46:44 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:49:02 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:49:02 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:49:18 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:49:18 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:49:30 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:49:30 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:53:18 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:53:18 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:53:26 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:53:26 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:55:06 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:55:06 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:55:07 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:55:07 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:55:13 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:55:13 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:55:32 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:55:32 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:56:46 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:56:46 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:56:56 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 8
+[16-Jul-2025 23:56:56 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 8
+[16-Jul-2025 23:57:08 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:57:08 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[16-Jul-2025 23:57:18 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:18 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:22 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:33 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:33 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:35 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:35 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:36 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:36 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:44 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:44 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:47 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:47 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:55 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[16-Jul-2025 23:57:55 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\usuarios.php on line 8
+[17-Jul-2025 00:01:44 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[17-Jul-2025 00:01:44 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[17-Jul-2025 00:04:21 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 7
+[17-Jul-2025 00:04:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:7
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 7
+[17-Jul-2025 00:04:42 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\ajax\salvar_admin.php on line 17
+[17-Jul-2025 00:04:42 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\ajax\salvar_admin.php:17
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\ajax\salvar_admin.php on line 17
+[17-Jul-2025 00:06:50 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:06:50 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:07:09 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:07:09 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:08:18 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\configuracoes.php on line 10
+[17-Jul-2025 00:08:18 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\configuracoes.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\configuracoes.php on line 10
+[17-Jul-2025 00:08:46 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:08:46 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:09:58 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 65
+[17-Jul-2025 00:09:58 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:65
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 65
+[17-Jul-2025 00:12:38 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\configuracoes.php on line 10
+[17-Jul-2025 00:12:38 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\configuracoes.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\configuracoes.php on line 10
+[17-Jul-2025 00:13:22 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\configuracoes.php on line 10
+[17-Jul-2025 00:13:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\configuracoes.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\configuracoes.php on line 10
+[17-Jul-2025 00:14:05 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:14:05 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:14:38 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:14:38 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:15:05 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:15:05 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:29 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:29 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:30 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:30 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:33 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:33 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:44 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:44 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:56 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:16:56 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:17:10 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:17:10 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:18:56 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:18:56 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:19:00 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:19:00 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:19:23 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:19:23 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:19:31 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 65
+[17-Jul-2025 00:19:31 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:65
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 65
+[17-Jul-2025 00:19:43 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:19:43 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:20:52 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 65
+[17-Jul-2025 00:20:52 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:65
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 65
+[17-Jul-2025 00:20:56 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 65
+[17-Jul-2025 00:20:56 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:65
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 65
+[17-Jul-2025 00:21:21 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:21:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:21:22 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:21:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:21:29 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:21:29 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:21:33 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:21:33 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:21:48 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:21:48 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_usuario.php on line 67
+[17-Jul-2025 00:23:39 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:23:39 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:23:44 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:23:44 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:24:14 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:24:14 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:24:44 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:24:44 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:26:13 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:26:13 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:27:45 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 18
+[17-Jul-2025 00:27:45 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 18
+[17-Jul-2025 00:31:08 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 60
+[17-Jul-2025 00:31:08 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 61
+[17-Jul-2025 00:31:08 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 66
+[17-Jul-2025 00:31:08 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 67
+[17-Jul-2025 00:31:08 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 68
+[17-Jul-2025 00:31:08 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 69
+[17-Jul-2025 00:31:08 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 70
+[17-Jul-2025 00:31:12 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:31:12 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:31:32 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 60
+[17-Jul-2025 00:31:32 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 61
+[17-Jul-2025 00:31:32 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 66
+[17-Jul-2025 00:31:32 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 67
+[17-Jul-2025 00:31:32 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 68
+[17-Jul-2025 00:31:32 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 69
+[17-Jul-2025 00:31:32 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 70
+[17-Jul-2025 00:34:05 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:34:05 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:34:07 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:34:07 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:34:13 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:34:13 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:34:35 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:34:35 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:38:39 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:38:39 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:38:41 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:38:41 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:39:06 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:39:06 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:39:24 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:39:24 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 00:46:29 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sgbccni.log_login' doesn't exist in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php:36
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php(36): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 36
+[17-Jul-2025 00:46:51 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sgbccni.log_login' doesn't exist in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php:36
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php(36): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 36
+[17-Jul-2025 01:02:19 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 01:02:19 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 01:03:00 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\ajax\salvar_admin.php on line 17
+[17-Jul-2025 01:03:00 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\ajax\salvar_admin.php:17
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\ajax\salvar_admin.php on line 17
+[17-Jul-2025 01:08:56 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 01:08:56 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 01:10:21 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 01:10:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:10:31 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:14:57 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:15:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:39:14 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\ajax\salvar_admin.php on line 17
+[17-Jul-2025 01:39:14 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\ajax\salvar_admin.php:17
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\ajax\salvar_admin.php on line 17
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:40:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 01:51:13 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 8
+[17-Jul-2025 01:51:13 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 8
+[17-Jul-2025 01:51:31 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 15
+[17-Jul-2025 01:51:31 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 15
+[17-Jul-2025 01:51:45 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[17-Jul-2025 01:51:45 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[17-Jul-2025 01:51:45 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[17-Jul-2025 01:51:45 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[17-Jul-2025 01:52:26 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 10
+[17-Jul-2025 01:52:26 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/verifica_admin.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 10
+[17-Jul-2025 01:53:03 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 19
+[17-Jul-2025 01:53:03 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 19
+[17-Jul-2025 01:54:31 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 15
+[17-Jul-2025 01:54:31 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 15
+[17-Jul-2025 02:01:03 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 19
+[17-Jul-2025 02:01:03 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 19
+[17-Jul-2025 02:09:23 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 18
+[17-Jul-2025 02:09:23 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php on line 18
+[17-Jul-2025 02:27:12 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\backend\config../includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 4
+[17-Jul-2025 02:27:12 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\backend\config../includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\backend\config\config.php:4
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\mensagens.php(8): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 4
+[17-Jul-2025 02:37:45 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 15
+[17-Jul-2025 02:37:45 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 15
+[17-Jul-2025 02:45:40 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 15
+[17-Jul-2025 02:45:40 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 15
+[17-Jul-2025 03:05:59 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\excluir_usuario.php on line 28
+[17-Jul-2025 03:05:59 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\excluir_usuario.php:28
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\excluir_usuario.php on line 28
+[17-Jul-2025 03:12:17 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[17-Jul-2025 03:12:17 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[17-Jul-2025 03:12:25 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 03:12:25 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 03:13:09 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 03:13:09 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 03:13:17 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 03:13:17 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 03:14:47 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:14:47 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:15:02 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:15:02 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:15:06 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:15:06 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:15:09 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:15:09 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:15:28 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:15:28 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 90
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:16:17 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 93
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:39 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:19:42 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 97
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Warning:  Undefined array key "tipo_usuario" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:22:05 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\logs_login.php on line 100
+[17-Jul-2025 03:31:26 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 13
+[17-Jul-2025 03:31:39 America/Sao_Paulo] PHP Warning:  require_once(/includes/atividade_logger.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 13
+[17-Jul-2025 03:31:39 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required '/includes/atividade_logger.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 13
+[17-Jul-2025 03:32:02 America/Sao_Paulo] PHP Warning:  require_once(../../../includes/atividade_logger.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 13
+[17-Jul-2025 03:32:02 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required '../../../includes/atividade_logger.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 13
+[17-Jul-2025 03:36:15 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:36:15 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:36:20 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:36:20 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:36:22 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:36:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:37:46 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16
+[17-Jul-2025 03:37:46 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\services\buscar_tags.php on line 16

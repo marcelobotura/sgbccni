@@ -1,4 +1,4 @@
-<?php
+<?php 
 // ✅ Carrega variáveis de ambiente e sessão
 require_once __DIR__ . '/env.php';
 require_once __DIR__ . '/../includes/session.php';
@@ -7,11 +7,21 @@ $erros = [];
 $avisos = [];
 $sucessos = [];
 
-// 🧪 Teste conexão com banco
+// 🔌 Conecta ao banco de dados com PDO
 try {
-    $conn->query("SELECT 1");
+    $pdo = new PDO(
+        "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
+        DB_USER,
+        DB_PASS,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]
+    );
+    // Teste simples da conexão
+    $pdo->query("SELECT 1");
     $sucessos[] = "✅ Conexão com o banco de dados funcionando.";
-} catch (Exception $e) {
+} catch (PDOException $e) {
     $erros[] = "❌ Falha na conexão com o banco: " . $e->getMessage();
 }
 
@@ -62,17 +72,3 @@ $sucessos[] = "🎨 Tema atual (via cookie): $tema";
 // 🌍 Ambiente
 $sucessos[] = "🌎 Ambiente atual: " . (defined('ENV_DEV') && ENV_DEV ? "Desenvolvimento (DEV)" : "Produção");
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Diagnóstico do Sistema</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body { padding: 2rem; font-family: sans-serif; }
-  </style>
-</head>
-<body>
-  
-</body>
-</html>

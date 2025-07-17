@@ -1,18 +1,22 @@
 <?php
-require_once __DIR__ . '/../../../backend/includes/verifica_admin.php';
+require_once __DIR__ . '/../../../backend/config/config.php';
 require_once __DIR__ . '/../../../backend/includes/header.php';
 require_once __DIR__ . '/../../../backend/includes/menu.php';
-require_once __DIR__ . '/../../../backend/config/config.php';
 require_once __DIR__ . '/../../../backend/includes/protect_admin.php';
 
 exigir_login('admin');
 
-// 🔍 Carregar configurações atuais
-$stmt = $conn->prepare("SELECT chave, valor FROM configuracoes");
-$stmt->execute();
-$config = [];
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $config[$row['chave']] = $row['valor'];
+// 🔍 Carregar configurações atuais (usando PDO corretamente)
+try {
+    $stmt = $pdo->prepare("SELECT chave, valor FROM configuracoes");
+    $stmt->execute();
+    $config = [];
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $config[$row['chave']] = $row['valor'];
+    }
+} catch (PDOException $e) {
+    $_SESSION['erro'] = "Erro ao carregar configurações: " . $e->getMessage();
+    $config = [];
 }
 ?>
 

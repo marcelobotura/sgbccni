@@ -224,3 +224,70 @@ Stack trace:
 #0 C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php(25): mysqli->prepare('SELECT * FROM u...')
 #1 {main}
   thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 25
+[16-Jul-2025 22:20:45 America/Sao_Paulo] PHP Warning:  Constant URL_BASE already defined in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 10
+[16-Jul-2025 22:20:56 America/Sao_Paulo] PHP Warning:  Constant URL_BASE already defined in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 10
+[16-Jul-2025 22:34:22 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:34:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:34:29 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:34:29 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:38:34 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:38:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:38:39 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:38:39 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:42:52 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:42:52 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:42:59 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:42:59 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:43:57 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:43:57 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:44:01 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:44:01 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:45:10 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:45:10 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:45:14 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:45:14 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:46:15 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:46:15 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:46:21 America/Sao_Paulo] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:46:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php on line 30
+[16-Jul-2025 22:49:59 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "DB_HOST" in C:\xampp\htdocs\sgbccni\backend\config\config.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\controllers\auth\login_valida.php(12): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\config\config.php on line 13

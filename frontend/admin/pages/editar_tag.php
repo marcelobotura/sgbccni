@@ -7,6 +7,9 @@ require_once __DIR__ . '/../../../backend/includes/menu.php';
 
 exigir_login('admin');
 
+// Lista de tipos válidos (deve coincidir com ENUM no banco)
+$tipos_validos = ['autor', 'categoria', 'editora', 'outro', 'volume', 'edicao', 'tipo', 'formato'];
+
 // Verifica ID
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     $_SESSION['erro'] = "ID inválido.";
@@ -40,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($nome) || empty($tipo)) {
         $_SESSION['erro'] = "Preencha todos os campos.";
+    } elseif (!in_array($tipo, $tipos_validos)) {
+        $_SESSION['erro'] = "Tipo de tag inválido.";
     } else {
         try {
             $stmt = $pdo->prepare("UPDATE tags SET nome = ?, tipo = ? WHERE id = ?");
@@ -72,10 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="tipo" class="form-label">Tipo</label>
             <select name="tipo" id="tipo" class="form-select" required>
                 <option value="">Selecione o tipo</option>
-                <option value="autor" <?= $tag['tipo'] === 'autor' ? 'selected' : '' ?>>Autor</option>
-                <option value="categoria" <?= $tag['tipo'] === 'categoria' ? 'selected' : '' ?>>Categoria</option>
-                <option value="editora" <?= $tag['tipo'] === 'editora' ? 'selected' : '' ?>>Editora</option>
-                <option value="outro" <?= $tag['tipo'] === 'outro' ? 'selected' : '' ?>>Outro</option>
+                <?php foreach ($tipos_validos as $tipo_opcao): ?>
+                    <option value="<?= htmlspecialchars($tipo_opcao) ?>" <?= $tag['tipo'] === $tipo_opcao ? 'selected' : '' ?>>
+                        <?= ucfirst($tipo_opcao) ?>
+                    </option>
+                <?php endforeach; ?>
             </select>
         </div>
 

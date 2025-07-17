@@ -1,8 +1,9 @@
 <?php
-require_once __DIR__ . '/../../../config/config.php';
-require_once __DIR__ . '/../../../includes/session.php';
-require_once __DIR__ . '/../../../includes/atividade_logger.php';
+require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../includes/session.php';
+require_once __DIR__ . '/../../includes/atividade_logger.php';
 exigir_login('admin');
+
 
 // Função para criar tag se não existir
 function definirTagID($pdo, $tipo, $nome) {

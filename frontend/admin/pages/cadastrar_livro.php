@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once __DIR__ . '/../../../backend/includes/protect_admin.php';
 require_once __DIR__ . '/../../../backend/includes/header.php';
 require_once __DIR__ . '/../../../backend/includes/menu.php';
@@ -16,11 +16,18 @@ exigir_login('admin');
   <?php endif; ?>
 
   <form action="<?= URL_BASE ?>backend/controllers/livros/salvar_livro.php" method="POST" enctype="multipart/form-data">
+    
+    <!-- 🔍 Busca por ISBN -->
+    <div class="mb-4">
+      <label class="form-label">Informe o ISBN (10 ou 13) *</label>
+      <input type="text" name="isbn_input" id="isbn_input" class="form-control" required placeholder="Digite ISBN-10 ou ISBN-13">
+    </div>
+
     <!-- 🔢 Identificação -->
     <div class="row mb-3">
       <div class="col-md-3">
-        <label class="form-label">ISBN (13) *</label>
-        <input type="text" name="isbn" id="isbn" class="form-control" required>
+        <label class="form-label">ISBN-13</label>
+        <input type="text" name="isbn" id="isbn" class="form-control" readonly>
       </div>
       <div class="col-md-3">
         <label class="form-label">ISBN-10</label>
@@ -39,67 +46,47 @@ exigir_login('admin');
       </div>
     </div>
 
-    <!-- 📖 Dados -->
+    <!-- 🏷️ Informações Técnicas -->
     <div class="row mb-3">
-      <div class="col-md-8">
+      <div class="col-md-6">
         <label class="form-label">Título *</label>
         <input type="text" name="titulo" id="titulo" class="form-control" required>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <label class="form-label">Subtítulo</label>
         <input type="text" name="subtitulo" id="subtitulo" class="form-control">
       </div>
     </div>
 
     <div class="row mb-3">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label class="form-label">Volume</label>
         <input type="text" name="volume" id="volume" class="form-control">
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label class="form-label">Edição</label>
         <input type="text" name="edicao" id="edicao" class="form-control">
       </div>
-      <div class="col-md-4">
-        <label class="form-label">Ano</label>
+      <div class="col-md-3">
+        <label class="form-label">Ano Publicado</label>
         <input type="text" name="ano" id="ano" class="form-control">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Nº Único do Acervo</label>
+        <input type="text" name="numero_acervo" id="numero_acervo" class="form-control" readonly>
       </div>
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Descrição</label>
+      <label class="form-label">Descrição / Resumo</label>
       <textarea name="descricao" id="descricao" rows="4" class="form-control"></textarea>
     </div>
 
-    <!-- 📄 Técnicos -->
+    <!-- 🧷 Tags Avançadas -->
     <div class="row mb-3">
       <div class="col-md-4">
-        <label class="form-label">Tipo *</label>
-        <select name="tipo" id="tipo" class="form-select" required>
-          <option value="físico">Físico</option>
-          <option value="digital">Digital</option>
-        </select>
-      </div>
-      <div class="col-md-4">
-        <label class="form-label">Formato</label>
-        <select name="formato" id="formato" class="form-select">
-          <option value="">Selecione</option>
-          <option value="PDF">PDF</option>
-          <option value="EPUB">EPUB</option>
-          <option value="Link Externo">Link Externo</option>
-        </select>
-      </div>
-      <div class="col-md-4">
-        <label class="form-label">Link Digital</label>
-        <input type="url" name="link_digital" id="link_digital" class="form-control">
-      </div>
-    </div>
-
-    <!-- 🏷️ Tags -->
-    <div class="row mb-3">
-      <div class="col-md-4">
-        <label class="form-label">Autor *</label>
-        <select name="autor_id" id="autor_id" class="form-select" required></select>
+        <label class="form-label">Autores</label>
+        <select name="autores[]" id="autor_id" class="form-select" multiple></select>
       </div>
       <div class="col-md-4">
         <label class="form-label">Editora *</label>
@@ -111,12 +98,31 @@ exigir_login('admin');
       </div>
     </div>
 
-    <!-- 🖼️ Capa -->
     <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Tipo *</label>
+        <select name="tipo" id="tipo_id" class="form-select" required></select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Formato *</label>
+        <select name="formato" id="formato_id" class="form-select" required></select>
+      </div>
+    </div>
+
+    <!-- 🌐 Digital -->
+    <div class="mb-3">
+      <label class="form-label">Link Digital (caso seja online)</label>
+      <input type="url" name="link_digital" id="link_digital" class="form-control">
+    </div>
+
+    <!-- 🖼️ Capa -->
+    <div class="row mb-4">
       <div class="col-md-6">
         <label class="form-label">Capa do Livro</label>
         <input type="file" name="capa" id="capa" accept="image/*" class="form-control">
-        <img id="preview_capa" class="img-thumbnail mt-3 d-none" style="max-height: 200px;">
+        <div class="text-center mt-3">
+          <img id="preview_capa" class="img-fluid rounded shadow d-none" style="max-height: 300px; object-fit: contain;" alt="Pré-visualização da capa">
+        </div>
       </div>
       <div class="col-md-6">
         <label class="form-label">Fonte dos Dados</label>
@@ -128,15 +134,16 @@ exigir_login('admin');
   </form>
 </div>
 
-<!-- 📦 Scripts -->
+<!-- Scripts -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-function configurarTag(id, tipo) {
+function configurarTag(id, tipo, multiple = false) {
   $('#' + id).select2({
     theme: 'bootstrap-5',
     tags: true,
+    multiple: multiple,
     ajax: {
       url: '<?= URL_BASE ?>backend/services/buscar_tags.php',
       dataType: 'json',
@@ -149,9 +156,11 @@ function configurarTag(id, tipo) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  configurarTag('autor_id', 'autor');
+  configurarTag('autor_id', 'autor', true);
   configurarTag('editora_id', 'editora');
   configurarTag('categoria_id', 'categoria');
+  configurarTag('tipo_id', 'tipo');
+  configurarTag('formato_id', 'formato');
   gerarCodigoInterno();
 });
 
@@ -160,7 +169,7 @@ function gerarCodigoInterno() {
   const titulo = document.getElementById('titulo').value.trim();
   let codigo = '';
 
-  if (isbn) {
+  if (isbn.length > 0) {
     codigo = 'LIV-' + isbn.slice(-6);
   } else if (titulo) {
     const slug = titulo.substring(0, 4).toUpperCase().replace(/[^A-Z0-9]/g, '');
@@ -174,7 +183,7 @@ function gerarCodigoInterno() {
   document.getElementById('codigo_interno').value = codigo;
 }
 
-document.getElementById('isbn').addEventListener('blur', function () {
+document.getElementById('isbn_input').addEventListener('blur', function () {
   const isbn = this.value.trim();
   if (!isbn) return;
 
@@ -187,22 +196,39 @@ document.getElementById('isbn').addEventListener('blur', function () {
         return;
       }
 
+      // Preencher ISBN-10 e 13 corretamente
+      if (isbn.length === 10) {
+        document.getElementById('isbn10').value = isbn;
+        document.getElementById('isbn').value = data.isbn13 || '';
+      } else if (isbn.length === 13) {
+        document.getElementById('isbn').value = isbn;
+        document.getElementById('isbn10').value = data.isbn10 || '';
+      }
+
+      document.getElementById('codigo_barras').value = data.codigo_barras || '';
       document.getElementById('titulo').value = data.titulo || '';
       document.getElementById('subtitulo').value = data.subtitulo || '';
       document.getElementById('descricao').value = data.descricao || '';
       document.getElementById('ano').value = data.ano || '';
-      document.getElementById('isbn10').value = data.isbn10 || '';
-      document.getElementById('codigo_barras').value = data.codigo_barras || '';
       document.getElementById('fonte').value = data.fonte || 'Desconhecida';
 
+      // Gerar número único do acervo
+      document.getElementById('numero_acervo').value = 'ACV-' + Date.now();
+
+      // Autores (opcional)
       if (data.autor) {
-        const opt = new Option(data.autor, data.autor, true, true);
-        $('#autor_id').append(opt).trigger('change');
+        let autores = data.autor.split(',').map(a => a.trim());
+        autores.forEach(nome => {
+          const opt = new Option(nome, nome, true, true);
+          $('#autor_id').append(opt).trigger('change');
+        });
       }
+
       if (data.editora) {
         const opt = new Option(data.editora, data.editora, true, true);
         $('#editora_id').append(opt).trigger('change');
       }
+
       if (data.categoria) {
         const opt = new Option(data.categoria, data.categoria, true, true);
         $('#categoria_id').append(opt).trigger('change');

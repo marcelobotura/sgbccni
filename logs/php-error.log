@@ -981,3 +981,53 @@ Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
 [17-Jul-2025 04:54:41 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_livros.php on line 60
+[17-Jul-2025 08:51:10 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 08:51:10 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 08:51:32 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 08:51:32 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php:10
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\listar_livros.php on line 10
+[17-Jul-2025 09:03:50 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 09:03:50 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:29
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 09:03:59 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 09:03:59 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:29
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 09:04:13 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 09:04:13 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:29
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 09:34:21 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/includes/footer.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 09:34:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/includes/footer.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:100
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 10:01:03 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 10:01:03 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:29
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 10:01:08 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 10:01:08 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:29
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 10:24:26 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/includes/footer.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 10:24:26 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/includes/footer.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:100
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 10:52:31 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/includes/footer.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 10:52:31 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/includes/footer.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php:100
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100

@@ -46,8 +46,10 @@ if (!$livro) {
         <div class="row g-0">
             <!-- Capa -->
             <div class="col-md-4">
-                <?php if (!empty($livro['capa_url'])): ?>
-                    <img src="<?= URL_BASE . htmlspecialchars($livro['capa_url']) ?>" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="Capa do livro">
+                <?php if (!empty($livro['capa'])): ?>
+                    <img src="<?= URL_BASE ?>uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="Capa do livro">
+                <?php elseif (!empty($livro['capa_url']) && filter_var($livro['capa_url'], FILTER_VALIDATE_URL)): ?>
+                    <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="Capa do livro">
                 <?php else: ?>
                     <div class="d-flex align-items-center justify-content-center h-100 bg-light text-muted p-4 rounded-start">
                         Sem imagem disponível
@@ -101,7 +103,7 @@ if (!$livro) {
                     </table>
 
                     <div class="text-center">
-                        <a href="listar_livros.php" class="btn btn-outline-primary">← Voltar</a>
+                        <a href="gerenciar_livros.php" class="btn btn-outline-primary">← Voltar</a>
                     </div>
                 </div>
             </div>

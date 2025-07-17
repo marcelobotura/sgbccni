@@ -7,6 +7,9 @@ require_once __DIR__ . '/../../../backend/includes/menu.php';
 
 exigir_login('admin');
 
+// Lista de tipos válidos (deve coincidir com os tipos do ENUM no banco de dados)
+$tipos_validos = ['autor', 'categoria', 'editora', 'outro', 'volume', 'edicao', 'tipo', 'formato'];
+
 // Processa o formulário
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');
@@ -14,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($nome) || empty($tipo)) {
         $_SESSION['erro'] = "Preencha todos os campos.";
+    } elseif (!in_array($tipo, $tipos_validos)) {
+        $_SESSION['erro'] = "Tipo de tag inválido.";
     } else {
         try {
             $stmt = $pdo->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
@@ -48,10 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="tipo" class="form-label">Tipo</label>
             <select name="tipo" id="tipo" class="form-select" required>
                 <option value="">Selecione o tipo</option>
-                <option value="autor">Autor</option>
-                <option value="categoria">Categoria</option>
-                <option value="editora">Editora</option>
-                <option value="outro">Outro</option>
+                <?php foreach ($tipos_validos as $tipo): ?>
+                    <option value="<?= htmlspecialchars($tipo) ?>"><?= ucfirst($tipo) ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
 

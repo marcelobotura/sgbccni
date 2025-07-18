@@ -1,5 +1,5 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/../backend');
+define('BASE_PATH', realpath(__DIR__ . '/../backend'));
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 
@@ -24,17 +24,19 @@ $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
-    $_SESSION['erro'] = "Este e-mail já está sendo usado.";
+    $_SESSION['erro'] = "Este e-mail já está sendo usado por outro usuário.";
     header("Location: perfil.php");
     exit;
 }
 $stmt->close();
 
-// Atualização da senha (se fornecida)
+// Inicializa SQL
 $senha_sql = "";
+$foto_sql = "";
 $params = [$nome, $email];
 $types = "ss";
 
+// Atualiza senha, se fornecida
 if (!empty($nova_senha)) {
     $senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
     $senha_sql = ", senha = ?";
@@ -42,17 +44,16 @@ if (!empty($nova_senha)) {
     $types .= "s";
 }
 
-// Upload da nova foto (opcional)
-$foto_sql = "";
+// Upload da nova foto
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-    $ext = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
-    $novo_nome = uniqid() . "." . $ext;
-    $caminho_destino = BASE_PATH . "/../uploads/perfis/" . $novo_nome;
+    $extensao = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
+    $novo_nome = uniqid('perfil_', true) . '.' . $extensao;
+    $destino = BASE_PATH . '/../uploads/perfis/' . $novo_nome;
 
-    if (move_uploaded_file($_FILES['foto']['tmp_name'], $caminho_destino)) {
-        // Apaga a foto antiga, se existir
-        if ($foto_atual && file_exists(BASE_PATH . "/../uploads/perfis/" . $foto_atual)) {
-            unlink(BASE_PATH . "/../uploads/perfis/" . $foto_atual);
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $destino)) {
+        // Exclui foto antiga
+        if ($foto_atual && file_exists(BASE_PATH . '/../uploads/perfis/' . $foto_atual)) {
+            unlink(BASE_PATH . '/../uploads/perfis/' . $foto_atual);
         }
 
         $foto_sql = ", foto = ?";
@@ -60,13 +61,13 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
         $types .= "s";
         $_SESSION['usuario_foto'] = $novo_nome;
     } else {
-        $_SESSION['erro'] = "Erro ao enviar a nova foto.";
+        $_SESSION['erro'] = "Erro ao enviar a nova foto de perfil.";
         header("Location: perfil.php");
         exit;
     }
 }
 
-// Executa o UPDATE
+// Monta e executa o UPDATE
 $sql = "UPDATE usuarios SET nome = ?, email = ?{$senha_sql}{$foto_sql} WHERE id = ?";
 $params[] = $id;
 $types .= "i";

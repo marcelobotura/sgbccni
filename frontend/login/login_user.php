@@ -1,8 +1,13 @@
 <?php 
+// Define URL_BASE se ainda não estiver definida
 if (!defined('URL_BASE')) {
-  define('URL_BASE', '/sgbccni/'); // ajuste conforme sua pasta
+  define('URL_BASE', '/sgbccni/'); // ajuste se necessário
 }
-session_start(); 
+
+// Inicia sessão apenas se ainda não estiver ativa
+if (session_status() !== PHP_SESSION_ACTIVE) {
+  session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,12 +16,12 @@ session_start();
   <title>Login do Usuário</title>
 
   <!-- Estilos profissionais -->
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/utilities.css">
-  <link rel="stylesheet" href="../assets/css/pages/login.css">
-  <link rel="stylesheet" href="../assets/css/themes/light.css" id="theme-style">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/layout.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/components.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/utilities.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/pages/login.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/themes/light.css" id="theme-style">
 </head>
 <body>
 
@@ -24,7 +29,11 @@ session_start();
     <h2>Login Usuário</h2>
 
     <?php if (isset($_GET['erro'])): ?>
-      <div class="alerta-erro">Usuário ou senha inválidos.</div>
+      <div class="alerta-erro">❌ Usuário ou senha inválidos.</div>
+    <?php endif; ?>
+
+    <?php if (isset($_GET['logout'])): ?>
+      <div class="alerta-sucesso">✅ Logout realizado com sucesso.</div>
     <?php endif; ?>
 
     <form action="<?= URL_BASE ?>backend/controllers/auth/login_valida.php" method="POST">

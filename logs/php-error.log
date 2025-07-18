@@ -1031,3 +1031,338 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_tags.php on line 100
+[17-Jul-2025 18:26:47 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:26:47 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:27:29 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:27:29 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:28:33 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[17-Jul-2025 18:28:33 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 18
+[17-Jul-2025 18:29:08 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 5
+[17-Jul-2025 18:29:54 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:29:57 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:29:58 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:30:01 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:30:24 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:31:53 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:31:53 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:31:54 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:31:54 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:32:10 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:32:10 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:33:10 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:33:10 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:33:11 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:33:11 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\backend/backend/includes/session.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:33:13 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "URL_BASE" in C:\xampp\htdocs\sgbccni\backend\includes\session.php:33
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\includes\protect_admin.php(5): exigir_login('admin')
+#1 C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php(4): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\includes\session.php on line 33
+[17-Jul-2025 18:33:20 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "URL_BASE" in C:\xampp\htdocs\sgbccni\backend\includes\session.php:33
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\includes\protect_admin.php(5): exigir_login('admin')
+#1 C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php(4): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\includes\session.php on line 33
+[17-Jul-2025 18:33:20 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "URL_BASE" in C:\xampp\htdocs\sgbccni\backend\includes\session.php:33
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\includes\protect_admin.php(5): exigir_login('admin')
+#1 C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php(4): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\includes\session.php on line 33
+[17-Jul-2025 18:33:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "URL_BASE" in C:\xampp\htdocs\sgbccni\backend\includes\session.php:33
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\includes\protect_admin.php(5): exigir_login('admin')
+#1 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_livros.php(3): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\includes\session.php on line 33
+[17-Jul-2025 18:37:17 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:37:27 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:37:27 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/header.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:39:05 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:39:07 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:39:07 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:39:08 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:39:28 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:39:29 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 3
+[17-Jul-2025 18:41:34 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:41:34 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:41:34 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:41:34 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:41:34 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:41:34 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:41:34 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:41:34 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:42:00 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:42:00 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:42:00 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:42:00 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:42:00 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:42:00 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:42:00 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:42:00 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 93
+[17-Jul-2025 18:44:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:44:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:44:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:44:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:44:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:44:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:44:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:44:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:48 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:48 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:48 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:48 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:48 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:48 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:48 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:45:48 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:46:49 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:46:49 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:46:49 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:46:49 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:46:49 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:46:49 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:46:49 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:46:49 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:46:51 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php:32
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php(32): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php on line 32
+[17-Jul-2025 18:48:47 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/footer.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php on line 127
+[17-Jul-2025 18:48:47 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/footer.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php:127
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php on line 127
+[17-Jul-2025 18:49:47 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/footer.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php on line 127
+[17-Jul-2025 18:49:47 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/footer.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php:127
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php on line 127
+[17-Jul-2025 18:49:51 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 18:49:51 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:33
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 18:50:27 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:50:27 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:50:27 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:50:27 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:50:27 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:50:27 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:50:27 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:50:27 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 97
+[17-Jul-2025 18:50:40 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/footer.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php on line 127
+[17-Jul-2025 18:50:40 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\frontend\usuario/../includes/footer.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php:127
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\detalhes.php on line 127
+[17-Jul-2025 18:57:53 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 18:57:53 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 18:57:53 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 18:57:53 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 18:57:53 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 18:57:53 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 18:57:53 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 18:57:53 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 18:58:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php:3
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 3
+[17-Jul-2025 18:58:58 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 71
+[17-Jul-2025 19:00:45 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 19:00:45 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:33
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 19:01:42 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 19:01:42 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:33
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 19:02:03 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 19:02:03 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:33
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 19:02:51 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 19:02:51 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:33
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 33
+[17-Jul-2025 19:04:05 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 19:04:05 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:29
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 19:05:15 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 19:05:15 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:29
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 29
+[17-Jul-2025 19:07:07 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 71
+[17-Jul-2025 19:07:45 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:07:45 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:07:45 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php:31
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:07:53 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:07:53 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:07:53 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php:31
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:08:27 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:08:27 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:08:27 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php:31
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:08:51 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:08:51 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:08:51 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php:31
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:08:59 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:08:59 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:08:59 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php:31
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 31
+[17-Jul-2025 19:09:34 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:10:25 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:10:27 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:10:27 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_livros.php on line 64
+[17-Jul-2025 19:12:29 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:12:30 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:14:30 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:14:31 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:14:33 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:14:38 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:14:56 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:14:57 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:15:00 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:16:29 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:16:30 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 19:16:39 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\usuario\protect_usuario.php on line 2
+[17-Jul-2025 20:44:01 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 71
+[17-Jul-2025 20:44:51 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 71
+[17-Jul-2025 20:45:46 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'lu.data_emprestimo' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\emprestimos.php:20
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\emprestimos.php(20): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\emprestimos.php on line 20
+[17-Jul-2025 20:49:22 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 71
+[17-Jul-2025 20:49:33 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'lu.data_emprestimo' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\emprestimos.php:20
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\emprestimos.php(20): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\emprestimos.php on line 20
+[17-Jul-2025 20:50:02 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 71
+[17-Jul-2025 20:57:00 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 71
+[17-Jul-2025 20:57:24 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 71
+[17-Jul-2025 21:01:20 America/Sao_Paulo] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\historico.php on line 71
+[17-Jul-2025 21:23:23 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:23 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:23 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:23 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:23 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:23 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:23 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:23 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:30 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categoria_padrao' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:52
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php(52): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 52
+[17-Jul-2025 21:23:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:23:33 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:35:18 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 6
+[17-Jul-2025 21:35:18 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 6

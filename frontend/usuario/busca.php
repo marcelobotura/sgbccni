@@ -1,18 +1,31 @@
 <?php
-require_once __DIR__ . '/../../backend/config/config.php';
-require_once __DIR__ . '/../includes/header.php';
+// 🔧 Exibir erros para desenvolvimento
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Filtros
+// 🛡️ Define BASE_PATH corretamente
+define('BASE_PATH', dirname(__DIR__, 2));
+
+// 📦 Includes principais
+require_once BASE_PATH . '/backend/config/config.php';
+require_once BASE_PATH . '/backend/includes/session.php';
+require_once BASE_PATH . '/backend/includes/header.php';
+
+// 🔒 Protege acesso: apenas usuários
+exigir_login('usuario');
+
+// 🔍 Filtros
 $busca = trim($_GET['q'] ?? '');
 $status = $_GET['status'] ?? '';
 $categoria = $_GET['categoria'] ?? '';
 
-// Buscar categorias com PDO
-$cat_stmt = $conn->prepare("SELECT nome FROM tags WHERE tipo = 'categoria' ORDER BY nome ASC");
+// 🔖 Carrega categorias disponíveis
+$cat_stmt = $pdo->prepare("SELECT nome FROM tags WHERE tipo = 'categoria' ORDER BY nome ASC");
 $cat_stmt->execute();
-$categorias_disponiveis = $cat_stmt->fetchAll(PDO::FETCH_ASSOC);
+$categorias_disponiveis = $cat_stmt->fetchAll();
 
-// Montar consulta dinâmica
+// 🔎 Monta consulta dinâmica
 $where = [];
 $params = [];
 
@@ -35,9 +48,9 @@ if (!empty($where)) {
 }
 $sql .= " ORDER BY criado_em DESC";
 
-$stmt = $conn->prepare($sql);
+$stmt = $pdo->prepare($sql);
 $stmt->execute($params);
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$result = $stmt->fetchAll();
 ?>
 
 <div class="container resultado-container py-4">
@@ -45,7 +58,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?= $busca ? "📚 Resultados para: <em>" . htmlspecialchars($busca) . "</em>" : "📚 Todos os livros cadastrados" ?>
   </h3>
 
-  <!-- 🔍 Formulário de Filtro -->
+  <!-- 🔍 Filtro -->
   <form method="GET" class="row g-2 mb-4">
     <div class="col-md-4">
       <input type="text" name="q" value="<?= htmlspecialchars($busca) ?>" class="form-control" placeholder="Título, autor, editora ou tag">
@@ -79,13 +92,16 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <?php foreach ($result as $livro): ?>
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
-            <?php if (!empty($livro['capa'])): ?>
-              <img src="../../uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="card-img-top" alt="Capa do livro">
-            <?php elseif (!empty($livro['capa_url'])): ?>
-              <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="card-img-top" alt="Capa do livro">
-            <?php else: ?>
-              <img src="../../assets/img/sem_capa.png" class="card-img-top" alt="Sem capa">
-            <?php endif; ?>
+            <?php
+              if (!empty($livro['capa'])) {
+                $caminhoCapa = URL_BASE . 'uploads/capas/' . htmlspecialchars($livro['capa']);
+              } elseif (!empty($livro['capa_url'])) {
+                $caminhoCapa = htmlspecialchars($livro['capa_url']);
+              } else {
+                $caminhoCapa = URL_BASE . 'assets/img/sem_capa.png';
+              }
+            ?>
+            <img src="<?= $caminhoCapa ?>" class="card-img-top" alt="Capa do livro">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h5>
               <p class="card-text mb-1"><strong>Autor:</strong> <?= htmlspecialchars($livro['autor']) ?></p>
@@ -115,9 +131,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 </div>
 
-<?php require_once __DIR__ . '/../includes/footer.php'; ?>
+<?php require_once BASE_PATH . '/backend/includes/footer.php'; ?>
 
-<!-- 📦 Select2 CDN -->
+<!-- 📦 Select2 (autocomplete de categoria) -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 

@@ -1,11 +1,9 @@
 <?php
-// 🔧 Base e includes
 define('BASE_PATH', realpath(__DIR__ . '/../../backend'));
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
-include_once BASE_PATH . '/includes/header.php';
+require_once BASE_PATH . '/includes/header.php';
 
-// 📥 Parâmetros GET
 $codigo_interno = $_GET['codigo'] ?? '';
 $isbn_param = $_GET['isbn'] ?? '';
 
@@ -24,9 +22,8 @@ if (!empty($codigo_interno)) {
     exit;
 }
 
-// 🔍 Consulta do livro
 try {
-    $stmt = $conn->prepare("SELECT * FROM livros WHERE $where_clause");
+    $stmt = $pdo->prepare("SELECT * FROM livros WHERE $where_clause");
     $stmt->execute([$param_value]);
     $livro = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -41,11 +38,22 @@ try {
     exit;
 }
 
-// 🔗 Dados usuário
+// Busca nomes reais das tags
+function buscar_nome_tag($id, $pdo) {
+    if (!$id) return 'N/A';
+    $stmt = $pdo->prepare("SELECT nome FROM tags WHERE id = ?");
+    $stmt->execute([$id]);
+    $res = $stmt->fetch();
+    return $res ? $res['nome'] : 'N/A';
+}
+
+$autor_nome = buscar_nome_tag($livro['autor_id'] ?? null, $pdo);
+$editora_nome = buscar_nome_tag($livro['editora_id'] ?? null, $pdo);
+$categoria_nome = buscar_nome_tag($livro['categoria_id'] ?? null, $pdo);
+
 $livro_id = $livro['id'];
 $usuario_id = $_SESSION['usuario_id'] ?? null;
 
-// 🎯 Processamento de ações POST (lido ou favorito)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuario_id) {
     if (isset($_POST['acao'])) {
         try {
@@ -61,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuario_id) {
                 throw new Exception("Ação inválida.");
             }
 
-            $stmt = $conn->prepare($sql);
+            $stmt = $pdo->prepare($sql);
             $stmt->execute([$usuario_id, $livro_id]);
 
             $_SESSION['sucesso'] = "✅ Ação registrada com sucesso!";
@@ -74,10 +82,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuario_id) {
     }
 }
 
-// 🔗 Livros relacionados
+// Livros relacionados
 $relacionados = [];
 try {
-    $stmt_rel = $conn->prepare("SELECT id, titulo, capa_local, isbn FROM livros
+    $stmt_rel = $pdo->prepare("SELECT id, titulo, capa, isbn FROM livros
                                 WHERE id != ? AND (autor_id = ? OR editora_id = ?)
                                 LIMIT 4");
     $stmt_rel->execute([$livro_id, $livro['autor_id'], $livro['editora_id']]);
@@ -91,12 +99,12 @@ try {
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($livro['titulo']) ?> - Biblioteca</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/estilo-base.css">
 </head>
 <body>
+
 <div class="container py-5">
     <?php if (isset($_SESSION['sucesso'])): ?>
         <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
@@ -107,17 +115,16 @@ try {
 
     <div class="row">
         <div class="col-md-4">
-            <?php if (!empty($livro['capa_local'])): ?>
-                <img src="<?= htmlspecialchars(URL_BASE . $livro['capa_local']) ?>" alt="Capa" class="img-fluid rounded shadow">
-            <?php else: ?>
-                <div class="bg-light text-muted text-center p-5 rounded" style="height: 300px; display: flex; align-items: center; justify-content: center;">Sem capa disponível</div>
-            <?php endif; ?>
+            <?php
+                $capa = $livro['capa'] ? URL_BASE . 'uploads/capas/' . htmlspecialchars($livro['capa']) : URL_BASE . 'assets/img/sem_capa.png';
+            ?>
+            <img src="<?= $capa ?>" class="img-fluid rounded shadow" alt="Capa do livro">
         </div>
         <div class="col-md-8">
             <h2><?= htmlspecialchars($livro['titulo']) ?></h2>
-            <p><strong>Autor:</strong> <?= htmlspecialchars($livro['autor_id'] ?? 'N/A') ?></p>
-            <p><strong>Editora:</strong> <?= htmlspecialchars($livro['editora_id'] ?? 'N/A') ?></p>
-            <p><strong>Categoria:</strong> <?= htmlspecialchars($livro['categoria_id'] ?? 'N/A') ?></p>
+            <p><strong>Autor:</strong> <?= htmlspecialchars($autor_nome) ?></p>
+            <p><strong>Editora:</strong> <?= htmlspecialchars($editora_nome) ?></p>
+            <p><strong>Categoria:</strong> <?= htmlspecialchars($categoria_nome) ?></p>
             <?php if (!empty($livro['volume'])): ?><p><strong>Volume:</strong> <?= htmlspecialchars($livro['volume']) ?></p><?php endif; ?>
             <?php if (!empty($livro['edicao'])): ?><p><strong>Edição:</strong> <?= htmlspecialchars($livro['edicao']) ?></p><?php endif; ?>
             <p><strong>ISBN:</strong> <?= htmlspecialchars($livro['isbn']) ?></p>
@@ -150,11 +157,10 @@ try {
             <?php foreach ($relacionados as $r): ?>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <?php if (!empty($r['capa_local'])): ?>
-                            <img src="<?= htmlspecialchars(URL_BASE . $r['capa_local']) ?>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Capa Livro Relacionado">
-                        <?php else: ?>
-                            <div class="bg-light text-muted text-center p-5 rounded-top" style="height: 200px; display: flex; align-items: center; justify-content: center;">Sem capa</div>
-                        <?php endif; ?>
+                        <?php
+                            $capa_rel = $r['capa'] ? URL_BASE . 'uploads/capas/' . htmlspecialchars($r['capa']) : URL_BASE . 'assets/img/sem_capa.png';
+                        ?>
+                        <img src="<?= $capa_rel ?>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Capa Livro Relacionado">
                         <div class="card-body">
                             <h6 class="card-title text-truncate"><?= htmlspecialchars($r['titulo']) ?></h6>
                             <a href="livro.php?isbn=<?= urlencode($r['isbn']) ?>" class="btn btn-sm btn-primary">Ver Detalhes</a>

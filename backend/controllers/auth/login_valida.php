@@ -20,7 +20,7 @@ $senha   = trim($_POST['senha'] ?? '');
 $origem  = $_POST['origem'] ?? 'usuario'; // padrão
 
 // Define página de login conforme a origem
-$loginPage = ($origem === 'admin') ? '/frontend/admin/pages/login_admin.php' : '/frontend/login/login_user.php';
+$loginPage = ($origem === 'admin') ? 'frontend/admin/pages/login_admin.php' : 'frontend/login/login_user.php';
 
 // Validação básica
 if (empty($email) || empty($senha)) {
@@ -62,9 +62,9 @@ try {
 
         // Redireciona para painel
         if ($usuario['tipo'] === 'admin') {
-            header('Location: ' . URL_BASE . '/frontend/admin/index.php');
+            header('Location: ' . URL_BASE . 'frontend/admin/index.php');
         } else {
-            header('Location: ' . URL_BASE . '/frontend/usuario/index.php');
+            header('Location: ' . URL_BASE . 'frontend/usuario/index.php');
         }
         exit;
 

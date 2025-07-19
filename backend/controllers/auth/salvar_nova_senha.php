@@ -76,7 +76,7 @@ $stmtUpdate->bind_param("si", $senha_hash, $usuario_id);
 if ($stmtUpdate->execute()) {
     $stmtUpdate->close();
 
-    // 📝 Log de redefinição (opcional)
+    // 📝 Log de redefinição
     try {
         $ip = $_SERVER['REMOTE_ADDR'] ?? 'desconhecido';
         $navegador = substr($_SERVER['HTTP_USER_AGENT'] ?? 'desconhecido', 0, 250);
@@ -91,9 +91,9 @@ if ($stmtUpdate->execute()) {
             $stmt_email->close();
         }
 
-        $stmtLog = $conn->prepare("INSERT INTO log_redefinicao_senha (usuario_id, email, ip, navegador) VALUES (?, ?, ?, ?)");
+        $stmtLog = $conn->prepare("INSERT INTO log_redefinicao_senha (usuario_id, email, ip, navegador, token_utilizado, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?)");
         if ($stmtLog) {
-            $stmtLog->bind_param("isss", $usuario_id, $email_usuario_log, $ip, $navegador);
+            $stmtLog->bind_param("isssss", $usuario_id, $email_usuario_log, $ip, $navegador, $token, $tipo);
             $stmtLog->execute();
             $stmtLog->close();
         }

@@ -5,10 +5,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // 🔐 Includes
-define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
-require_once BASE_PATH . '/config/config.php';
-require_once BASE_PATH . '/includes/session.php';
-require_once BASE_PATH . '/includes/header.php';
+define('BASE_PATH', dirname(__DIR__, 2)); // agora corretamente até /sgbccni
+require_once BASE_PATH . '/backend/config/config.php';
+require_once BASE_PATH . '/backend/includes/session.php';
+require_once BASE_PATH . '/backend/includes/protect_usuario.php';
+require_once BASE_PATH . '/backend/includes/header.php';
 
 exigir_login('usuario');
 
@@ -16,9 +17,8 @@ exigir_login('usuario');
 $nome = htmlspecialchars($_SESSION['usuario_nome'] ?? 'Usuário');
 $email = htmlspecialchars($_SESSION['usuario_email'] ?? 'sem_email@exemplo.com');
 $foto = $_SESSION['usuario_foto'] ?? null;
-$caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'assets/img/avatar_padrao.png';
+$caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'frontend/assets/img/avatar_padrao.png';
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -29,7 +29,7 @@ $caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'assets
   <!-- Fontes e ícones -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link rel="icon" href="<?= URL_BASE ?>assets/img/favicon.png" type="image/png">
+  <link rel="icon" href="<?= URL_BASE ?>frontend/assets/img/favicon.png" type="image/png">
 
   <!-- CSS Global -->
   <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base.css">
@@ -50,7 +50,7 @@ $caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'assets
         <small class="text-muted"><?= $email ?></small>
       </div>
     </div>
-    <a href="<?= URL_BASE ?>backend/controllers/auth/logout.php" class="btn btn-erro mt-3 mt-md-0">
+    <a href="<?= URL_BASE ?>frontend/logout.php" class="btn btn-erro mt-3 mt-md-0">
       <i class="bi bi-box-arrow-right"></i> Sair
     </a>
   </header>
@@ -60,7 +60,7 @@ $caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'assets
     <article class="card">
       <h3 class="card-title">🔍 Pesquisar Livros</h3>
       <p>Explore o acervo da biblioteca.</p>
-      <a href="busca.php" class="btn btn-primario">
+      <a href="<?= URL_BASE ?>frontend/usuario/pesquisa.php" class="btn btn-primario">
         <i class="bi bi-search"></i> Buscar
       </a>
     </article>
@@ -68,7 +68,7 @@ $caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'assets
     <article class="card">
       <h3 class="card-title">📖 Meus Empréstimos</h3>
       <p>Acompanhe os livros que você está lendo.</p>
-      <a href="emprestimos.php" class="btn btn-primario">
+      <a href="<?= URL_BASE ?>frontend/usuario/historico_leitura.php" class="btn btn-primario">
         <i class="bi bi-book-half"></i> Visualizar
       </a>
     </article>
@@ -76,7 +76,7 @@ $caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'assets
     <article class="card">
       <h3 class="card-title">⭐ Favoritos</h3>
       <p>Seus livros favoritos em um só lugar.</p>
-      <a href="meus_favoritos.php" class="btn btn-primario">
+      <a href="<?= URL_BASE ?>frontend/usuario/meus_favoritos.php" class="btn btn-primario">
         <i class="bi bi-star-fill"></i> Ver Favoritos
       </a>
     </article>
@@ -84,7 +84,7 @@ $caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'assets
     <article class="card">
       <h3 class="card-title">📊 Relatórios</h3>
       <p>Veja estatísticas da sua leitura.</p>
-      <a href="relatorios.php" class="btn btn-secundario">
+      <a href="<?= URL_BASE ?>frontend/usuario/relatorios.php" class="btn btn-secundario">
         <i class="bi bi-graph-up"></i> Ver Relatórios
       </a>
     </article>
@@ -92,13 +92,13 @@ $caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'assets
     <article class="card">
       <h3 class="card-title">⚙️ Conta</h3>
       <p>Atualize seus dados pessoais.</p>
-      <a href="editar_conta.php" class="btn btn-secundario">
+      <a href="<?= URL_BASE ?>frontend/usuario/editar_conta.php" class="btn btn-secundario">
         <i class="bi bi-pencil"></i> Editar Conta
       </a>
     </article>
   </section>
 </main>
 
-<?php require_once BASE_PATH . '/includes/footer.php'; ?>
+<?php require_once BASE_PATH . '/backend/includes/footer.php'; ?>
 </body>
 </html>

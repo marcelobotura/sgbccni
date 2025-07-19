@@ -13,6 +13,14 @@ require_once __DIR__ . '/../backend/includes/session.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/layout.css">
   <style>
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      flex: 1;
+    }
     .carousel-container {
       overflow-x: auto;
       display: flex;
@@ -31,15 +39,21 @@ require_once __DIR__ . '/../backend/includes/session.php';
       flex: 0 0 auto;
       width: 180px;
     }
-    .carousel-item img {
-      height: 240px;
-      object-fit: cover;
-    }
+    .carousel-item img,
     .livro-card img {
       height: 220px;
       object-fit: cover;
     }
-    #resultados { display: none; }
+    #resultados {
+      display: none;
+    }
+    footer {
+      background: #212529;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      margin-top: auto;
+    }
   </style>
 </head>
 <body class="bg-light">
@@ -53,12 +67,7 @@ require_once __DIR__ . '/../backend/includes/session.php';
       <a href="sobre.php" class="btn btn-outline-secondary"><i class="bi bi-info-circle"></i> Sobre Nós</a>
       <a href="sistema.php" class="btn btn-outline-dark"><i class="bi bi-gear"></i> Sistema</a>
       <a href="contato.php" class="btn btn-outline-success"><i class="bi bi-envelope"></i> Contato</a>
-      <a href="<?= URL_BASE ?>frontend/login/login_user.php" class="btn btn-primary">
-        <i class="bi bi-box-arrow-in-right"></i> Entrar
-      </a>
-      <a href="<?= URL_BASE ?>frontend/login/register_user.php" class="btn btn-success">
-        <i class="bi bi-person-plus"></i> Criar Conta
-      </a>
+      <a href="login.php" class="btn btn-primary"><i class="bi bi-box-arrow-in-right"></i> Entrar</a>
     </nav>
   </header>
 
@@ -67,25 +76,27 @@ require_once __DIR__ . '/../backend/includes/session.php';
   <div class="carousel-container mb-5">
     <?php
     try {
-      $stmt = $pdo->query("SELECT titulo, capa, capa_url, id FROM livros ORDER BY RAND() LIMIT 10");
+      $stmt = $pdo->query("SELECT id, titulo, capa_local, capa_url FROM livros ORDER BY RAND() LIMIT 10");
       while ($livro = $stmt->fetch(PDO::FETCH_ASSOC)):
     ?>
       <div class="card shadow-sm carousel-item">
-        <?php if (!empty($livro['capa'])): ?>
-          <img src="<?= URL_BASE ?>uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="card-img-top" alt="Capa do livro">
-        <?php elseif (!empty($livro['capa_url'])): ?>
-          <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="card-img-top" alt="Capa do livro">
-        <?php else: ?>
-          <div class="bg-secondary text-white text-center py-5">Sem Capa</div>
-        <?php endif; ?>
+        <?php if (!empty($livro['capa_local'])): ?>
+  <img src="<?= URL_BASE ?>uploads/capas/<?= htmlspecialchars($livro['capa_local']) ?>" class="card-img-top" alt="Capa do livro">
+<?php elseif (!empty($livro['capa_url'])): ?>
+  <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="card-img-top" alt="Capa do livro">
+<?php else: ?>
+  <div class="bg-secondary text-white text-center py-5">Sem Capa</div>
+<?php endif; ?>
+
         <div class="card-body p-2 text-center">
           <h6 class="card-title small"><?= htmlspecialchars($livro['titulo']) ?></h6>
-          <a href="<?= URL_BASE ?>frontend/usuario/livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-primary" onclick="return verificarLoginOuRedirecionar();">
+          <a href="<?= URL_BASE ?>/frontend/usuario/livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-primary" onclick="return verificarLoginOuRedirecionar();">
             <i class="bi bi-eye"></i> Ver
           </a>
         </div>
       </div>
-    <?php endwhile; } catch (PDOException $e) {
+    <?php endwhile;
+    } catch (PDOException $e) {
       echo '<div class="alert alert-danger">Erro ao carregar livros: ' . $e->getMessage() . '</div>';
     } ?>
   </div>
@@ -96,7 +107,7 @@ require_once __DIR__ . '/../backend/includes/session.php';
     <button class="btn btn-dark" type="button"><i class="bi bi-search"></i> Buscar</button>
   </div>
 
-  <!-- 🔽 Resultados da busca -->
+  <!-- 🕽️ Resultados da busca -->
   <div id="resultados" class="mb-5"></div>
 </div>
 
@@ -115,12 +126,12 @@ function verificarLoginOuRedirecionar() {
 
 <!-- 🔎 Busca Dinâmica com AJAX -->
 <script>
-document.getElementById('campo-busca').addEventListener('keyup', function() {
+document.getElementById('campo-busca').addEventListener('keyup', function () {
   const termo = this.value.trim();
   const resultados = document.getElementById('resultados');
 
   if (termo.length >= 2) {
-    fetch('<?= URL_BASE ?>backend/ajax/buscar_livros.php?q=' + encodeURIComponent(termo))
+    fetch('<?= URL_BASE ?>/backend/ajax/buscar_livros.php?q=' + encodeURIComponent(termo))
       .then(res => res.text())
       .then(html => {
         resultados.innerHTML = html;

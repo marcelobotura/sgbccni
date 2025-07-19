@@ -26,12 +26,7 @@ require_once BASE_PATH . '/includes/header.php';
       <a href="sobre.php" class="btn btn-outline-secondary me-2">Sobre Nós</a>
       <a href="contato.php" class="btn btn-outline-success me-2">Contato</a>
       <a href="sistema.php" class="btn btn-outline-dark me-2">Sistema</a>
-      <a href="<?= URL_BASE ?>frontend/login/login_user.php" class="btn btn-primary me-1">
-        <i class="bi bi-person"></i> Entrar
-      </a>
-      <a href="<?= URL_BASE ?>frontend/login/register_user.php" class="btn btn-success">
-        <i class="bi bi-person-plus"></i> Criar Conta
-      </a>
+      <a href="login.php" class="btn btn-primary"><i class="bi bi-box-arrow-in-right"></i> Entrar</a>
     </nav>
   </header>
 

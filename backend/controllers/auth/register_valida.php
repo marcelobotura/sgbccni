@@ -1,56 +1,69 @@
 <?php
-require_once '../../backend/config/config.php';
-require_once '../../backend/includes/db.php';
+// Caminho: backend/controllers/auth/register_valida.php
+
+define('BASE_PATH', dirname(__DIR__, 2));
+require_once BASE_PATH . '/config/config.php';
+require_once BASE_PATH . '/config/env.php';
+require_once BASE_PATH . '/includes/db.php';
 
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nome = trim($_POST['nome']);
-    $email = trim($_POST['email']);
-    $senha = trim($_POST['senha']);
-    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-    
-    // Sempre define como usuário comum
-    $tipo = 'usuario';
+    $nome    = trim($_POST['nome'] ?? '');
+    $email   = trim($_POST['email'] ?? '');
+    $senha   = trim($_POST['senha'] ?? '');
+    $senha2  = trim($_POST['senha2'] ?? '');
+    $tipo    = trim($_POST['tipo'] ?? 'usuario');
 
-    // Validação simples
-    if (empty($nome) || empty($email) || empty($senha)) {
+    // Salvar os dados parciais para repopular o formulário em caso de erro
+    $_SESSION['form_data'] = [
+        'nome'  => $nome,
+        'email' => $email
+    ];
+
+    // Verificações básicas
+    if (empty($nome) || empty($email) || empty($senha) || empty($senha2)) {
         $_SESSION['erro'] = "Preencha todos os campos.";
-        header("Location: ../login/register_user.php");
+        header("Location: " . URL_BASE . "frontend/login/register_user.php");
+        exit;
+    }
+
+    if ($senha !== $senha2) {
+        $_SESSION['erro'] = "As senhas não coincidem.";
+        header("Location: " . URL_BASE . "frontend/login/register_user.php");
         exit;
     }
 
     try {
-        // Verifica se e-mail já está em uso
-        $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
+        // Verificar se e-mail já está cadastrado
+        $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);
 
         if ($stmt->rowCount() > 0) {
             $_SESSION['erro'] = "E-mail já cadastrado.";
-            header("Location: ../login/register_user.php");
+            header("Location: " . URL_BASE . "frontend/login/register_user.php");
             exit;
         }
 
-        // Insere novo usuário
-        $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)");
+        // Inserir usuário
+        $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+        $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)");
         $stmt->execute([$nome, $email, $senha_hash, $tipo]);
 
         $_SESSION['sucesso'] = "Cadastro realizado com sucesso! Faça login.";
+        unset($_SESSION['form_data']); // Limpar os dados do formulário
 
-        // ✅ Redirecionamento automático com base no tipo de usuário
-        if ($tipo === 'admin') {
-            header("Location: ../login/login_admin.php");
-        } else {
-            header("Location: ../login/login_user.php");
-        }
+        // Redirecionamento pós cadastro
+        header("Location: " . URL_BASE . "frontend/login/login_user.php");
         exit;
 
     } catch (PDOException $e) {
         $_SESSION['erro'] = "Erro no cadastro: " . $e->getMessage();
-        header("Location: ../login/register_user.php");
+        header("Location: " . URL_BASE . "frontend/login/register_user.php");
         exit;
     }
+
 } else {
-    header("Location: ../login/register_user.php");
+    header("Location: " . URL_BASE . "frontend/login/register_user.php");
     exit;
 }

@@ -35,7 +35,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     <?php if (isset($_GET['logout'])): ?>
       <div class="alerta-sucesso">✅ Logout realizado com sucesso.</div>
     <?php endif; ?>
-
     <form action="<?= URL_BASE ?>backend/controllers/auth/login_valida.php" method="POST">
       <input type="hidden" name="acao" value="login">
       <input type="hidden" name="origem" value="usuario">

@@ -4,84 +4,86 @@ require_once __DIR__ . '/../../includes/session.php';
 require_once __DIR__ . '/../../includes/atividade_logger.php';
 exigir_login('admin');
 
-
-// Função para criar tag se não existir
+// Função para criar ou obter tag
 function definirTagID($pdo, $tipo, $nome) {
     if (!$nome) return null;
-    
-    // Verifica se já existe
     $stmt = $pdo->prepare("SELECT id FROM tags WHERE nome = ? AND tipo = ?");
     $stmt->execute([$nome, $tipo]);
     $tag = $stmt->fetch(PDO::FETCH_ASSOC);
-    
     if ($tag) return $tag['id'];
-
-    // Cria nova tag
     $stmt = $pdo->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
     $stmt->execute([$nome, $tipo]);
     return $pdo->lastInsertId();
 }
 
 // Dados obrigatórios
-$titulo          = trim($_POST['titulo'] ?? '');
-$isbn            = trim($_POST['isbn'] ?? '');
-$codigoInterno   = trim($_POST['codigo_interno'] ?? '');
+$titulo        = trim($_POST['titulo'] ?? '');
+$isbn          = trim($_POST['isbn'] ?? '');
+$codigoInterno = trim($_POST['codigo_interno'] ?? '');
 
 if (empty($titulo) || empty($isbn) || empty($codigoInterno)) {
-    $_SESSION['erro'] = 'Preencha todos os campos obrigatórios';
+    $_SESSION['erro'] = 'Preencha todos os campos obrigatórios.';
     header('Location: ' . URL_BASE . 'frontend/admin/pages/cadastrar_livro.php');
     exit;
 }
 
-// Demais dados
-$subtitulo       = trim($_POST['subtitulo'] ?? '');
-$descricao       = trim($_POST['descricao'] ?? '');
-$volume          = trim($_POST['volume'] ?? '');
-$edicao          = trim($_POST['edicao'] ?? '');
-$ano             = trim($_POST['ano'] ?? '');
-$idioma          = trim($_POST['idioma'] ?? '');
-$tipo            = $_POST['tipo'] ?? 'físico';
-$formato         = $_POST['formato'] ?? '';
-$linkDigital     = trim($_POST['link_digital'] ?? '');
-$isbn10          = trim($_POST['isbn10'] ?? '');
-$codigoBarras    = trim($_POST['codigo_barras'] ?? '');
-$fonte           = trim($_POST['fonte'] ?? 'Manual');
+// Dados adicionais
+$subtitulo     = trim($_POST['subtitulo'] ?? '');
+$descricao     = trim($_POST['descricao'] ?? '');
+$volume        = trim($_POST['volume'] ?? '');
+$edicao        = trim($_POST['edicao'] ?? '');
+$ano           = trim($_POST['ano'] ?? '');
+$idioma        = trim($_POST['idioma'] ?? '');
+$tipo          = $_POST['tipo'] ?? 'físico';
+$formato       = $_POST['formato'] ?? '';
+$linkDigital   = trim($_POST['link_digital'] ?? '');
+$isbn10        = trim($_POST['isbn10'] ?? '');
+$codigoBarras  = trim($_POST['codigo_barras'] ?? '');
+$fonte         = trim($_POST['fonte'] ?? 'Manual');
 
-// Tags (podem vir como texto novo)
-$autor           = trim($_POST['autor_id'] ?? '');
-$editora         = trim($_POST['editora_id'] ?? '');
-$categoria       = trim($_POST['categoria_id'] ?? '');
+$capa_url      = trim($_POST['capa_url'] ?? '');
+$origem_capa   = trim($_POST['origem_capa'] ?? '');
+$capa_local    = null;
 
-$autorID = definirTagID($pdo, 'autor', $autor);
-$editoraID = definirTagID($pdo, 'editora', $editora);
+// Tags (via Select2)
+$autor         = trim($_POST['autor_id'] ?? '');
+$editora       = trim($_POST['editora_id'] ?? '');
+$categoria     = trim($_POST['categoria_id'] ?? '');
+
+$autorID     = definirTagID($pdo, 'autor', $autor);
+$editoraID   = definirTagID($pdo, 'editora', $editora);
 $categoriaID = definirTagID($pdo, 'categoria', $categoria);
 
-// Upload da capa
+// Upload da capa local (se houver)
 $capaArquivo = $_FILES['capa'] ?? null;
-$capaNome = null;
 if ($capaArquivo && $capaArquivo['error'] === UPLOAD_ERR_OK) {
-    $ext = pathinfo($capaArquivo['name'], PATHINFO_EXTENSION);
-    $capaNome = uniqid('capa_', true) . '.' . strtolower($ext);
-    $destino = __DIR__ . '/../../../uploads/capas/' . $capaNome;
-    if (!move_uploaded_file($capaArquivo['tmp_name'], $destino)) {
+    $ext = strtolower(pathinfo($capaArquivo['name'], PATHINFO_EXTENSION));
+    $nomeCapa = uniqid('capa_', true) . '.' . $ext;
+    $destino = __DIR__ . '/../../../uploads/capas/' . $nomeCapa;
+    if (move_uploaded_file($capaArquivo['tmp_name'], $destino)) {
+        $capa_local = 'uploads/capas/' . $nomeCapa;
+        $origem_capa = 'upload';
+    } else {
         $_SESSION['erro'] = 'Erro ao salvar a capa do livro.';
         header('Location: ' . URL_BASE . 'frontend/admin/pages/cadastrar_livro.php');
         exit;
     }
 }
 
-// Inserir no banco
+// Inserção
 try {
     $stmt = $pdo->prepare("INSERT INTO livros (
         titulo, subtitulo, descricao, volume, edicao, ano, idioma,
         isbn, isbn10, codigo_barras, codigo_interno,
         tipo, formato, link_digital, fonte,
-        autor_id, editora_id, categoria_id, capa
+        autor_id, editora_id, categoria_id,
+        capa_url, capa_local, origem_capa
     ) VALUES (
         :titulo, :subtitulo, :descricao, :volume, :edicao, :ano, :idioma,
         :isbn, :isbn10, :codigo_barras, :codigo_interno,
         :tipo, :formato, :link_digital, :fonte,
-        :autor_id, :editora_id, :categoria_id, :capa
+        :autor_id, :editora_id, :categoria_id,
+        :capa_url, :capa_local, :origem_capa
     )");
 
     $stmt->execute([
@@ -103,11 +105,12 @@ try {
         ':autor_id' => $autorID,
         ':editora_id' => $editoraID,
         ':categoria_id' => $categoriaID,
-        ':capa' => $capaNome
+        ':capa_url' => $capa_url,
+        ':capa_local' => $capa_local,
+        ':origem_capa' => $origem_capa
     ]);
 
-
-        // Registra atividade se a função existir
+    // Atividade
     if (function_exists('registrar_atividade')) {
         registrar_atividade($pdo, $_SESSION['usuario_id'], "Livro cadastrado: $titulo (ISBN: $isbn)");
     }
@@ -117,6 +120,5 @@ try {
     $_SESSION['erro'] = 'Erro ao salvar o livro: ' . $e->getMessage();
 }
 
-// Redireciona de volta para o formulário
 header('Location: ' . URL_BASE . 'frontend/admin/pages/cadastrar_livro.php');
 exit;

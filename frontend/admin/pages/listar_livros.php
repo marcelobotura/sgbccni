@@ -7,7 +7,7 @@ require_once __DIR__ . '/../../../backend/includes/menu.php';
 exigir_login('admin');
 
 try {
-    $stmt = $conn->prepare("SELECT * FROM livros ORDER BY id DESC");
+    $stmt = $pdo->prepare("SELECT * FROM livros ORDER BY id DESC");
     $stmt->execute();
     $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -55,8 +55,8 @@ try {
                         <tr>
                             <td><?= htmlspecialchars($livro['id']) ?></td>
                             <td style="width:80px;">
-                                <?php if (!empty($livro['capa'])): ?>
-                                    <img src="<?= URL_BASE ?>uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="img-thumbnail" style="height:60px;">
+                                <?php if (!empty($livro['capa_local'])): ?>
+                                    <img src="<?= URL_BASE . htmlspecialchars($livro['capa_local']) ?>" class="img-thumbnail" style="height:60px;">
                                 <?php elseif (!empty($livro['capa_url'])): ?>
                                     <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="img-thumbnail" style="height:60px;">
                                 <?php else: ?>
@@ -77,15 +77,9 @@ try {
                                 </span>
                             </td>
                             <td>
-                                <a href="editar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-warning mb-1">
-                                    ✏️ Editar
-                                </a>
-                                <a href="<?= URL_BASE ?>backend/controllers/livros/excluir_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Tem certeza que deseja excluir este livro?');">
-                                    🗑️ Excluir
-                                </a>
-                                <a href="visualizar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-outline-primary">
-                                    🔍 Ver
-                                </a>
+                                <a href="editar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-warning mb-1">✏️ Editar</a>
+                                <a href="<?= URL_BASE ?>backend/controllers/livros/excluir_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Tem certeza que deseja excluir este livro?');">🗑️ Excluir</a>
+                                <a href="visualizar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-outline-primary">🔍 Ver</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -95,14 +89,12 @@ try {
     </div>
 </div>
 
-<!-- ✔️ DataTables e dependências -->
+<!-- ✔️ DataTables e Exportações -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
-
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -110,7 +102,6 @@ try {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-
 <script>
 $(document).ready(function () {
     $('#tabelaLivros').DataTable({
@@ -120,26 +111,11 @@ $(document).ready(function () {
         pageLength: 10,
         dom: 'Bfrtip',
         buttons: [
-            {
-                extend: 'copy',
-                text: '📋 Copiar'
-            },
-            {
-                extend: 'csv',
-                text: '📑 CSV'
-            },
-            {
-                extend: 'excel',
-                text: '📊 Excel'
-            },
-            {
-                extend: 'pdf',
-                text: '📄 PDF'
-            },
-            {
-                extend: 'print',
-                text: '🖨️ Imprimir'
-            }
+            { extend: 'copy', text: '📋 Copiar' },
+            { extend: 'csv', text: '📑 CSV' },
+            { extend: 'excel', text: '📊 Excel' },
+            { extend: 'pdf', text: '📄 PDF' },
+            { extend: 'print', text: '🖨️ Imprimir' }
         ]
     });
 });

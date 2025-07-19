@@ -72,6 +72,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <?php else: ?>
     <div class="alert alert-info">Você ainda não marcou livros como lidos.</div>
   <?php endif; ?>
+  
 </div>
 
 <?php require_once __DIR__ . '/../../backend/includes/footer.php'; ?>

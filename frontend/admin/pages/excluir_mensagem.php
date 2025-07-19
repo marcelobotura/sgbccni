@@ -8,7 +8,7 @@ require_once BASE_PATH . '/includes/protect_admin.php';
 
 exigir_login('admin');
 
-// 🔍 Validação do ID
+// 🔍 Valida o ID da mensagem
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 if (!$id) {
     $_SESSION['erro'] = "ID inválido.";
@@ -17,7 +17,7 @@ if (!$id) {
 }
 
 try {
-    // 🔎 Verifica se a mensagem existe
+    // 🔍 Verifica se a mensagem existe
     $stmt = $pdo->prepare("SELECT id FROM mensagens WHERE id = :id");
     $stmt->execute([':id' => $id]);
 
@@ -27,13 +27,12 @@ try {
         // 🔥 Exclui a mensagem
         $stmt = $pdo->prepare("DELETE FROM mensagens WHERE id = :id");
         $stmt->execute([':id' => $id]);
-
         $_SESSION['sucesso'] = "✅ Mensagem excluída com sucesso.";
     }
-} catch (PDOException $e) {
-    $_SESSION['erro'] = "❌ Erro ao excluir: " . $e->getMessage();
+} catch (Exception $e) {
+    $_SESSION['erro'] = "❌ Erro ao excluir mensagem: " . $e->getMessage();
 }
 
-// 🔁 Redireciona de volta
+// 🔁 Redireciona para a página de mensagens
 header("Location: " . URL_BASE . "frontend/admin/pages/gerenciar_mensagens.php");
 exit;

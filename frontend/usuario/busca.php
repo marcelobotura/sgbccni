@@ -1,151 +1,168 @@
 <?php
-// 🔧 Exibir erros para desenvolvimento
 ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// 🛡️ Define BASE_PATH corretamente
 define('BASE_PATH', dirname(__DIR__, 2));
-
-// 📦 Includes principais
 require_once BASE_PATH . '/backend/config/config.php';
 require_once BASE_PATH . '/backend/includes/session.php';
 require_once BASE_PATH . '/backend/includes/header.php';
 
-// 🔒 Protege acesso: apenas usuários
 exigir_login('usuario');
 
-// 🔍 Filtros
 $busca = trim($_GET['q'] ?? '');
 $status = $_GET['status'] ?? '';
 $categoria = $_GET['categoria'] ?? '';
+$tipo = $_GET['tipo'] ?? '';
+$formato = $_GET['formato'] ?? '';
+$ano_inicio = $_GET['ano_inicio'] ?? '';
+$ano_fim = $_GET['ano_fim'] ?? '';
 
-// 🔖 Carrega categorias disponíveis
+// Categorias para filtro
 $cat_stmt = $pdo->prepare("SELECT nome FROM tags WHERE tipo = 'categoria' ORDER BY nome ASC");
 $cat_stmt->execute();
-$categorias_disponiveis = $cat_stmt->fetchAll();
+$categorias_disponiveis = $cat_stmt->fetchAll(PDO::FETCH_COLUMN);
 
-// 🔎 Monta consulta dinâmica
+// Montar SQL
 $where = [];
 $params = [];
 
-if ($busca !== "") {
-  $where[] = "(titulo LIKE :busca OR autor LIKE :busca OR editora LIKE :busca OR tags LIKE :busca)";
+if ($busca !== '') {
+  $where[] = "(l.titulo LIKE :busca OR taut.nome LIKE :busca OR tedit.nome LIKE :busca OR l.descricao LIKE :busca)";
   $params[':busca'] = "%$busca%";
 }
-if ($status !== "") {
-  $where[] = "status = :status";
+if ($status !== '') {
+  $where[] = "l.status = :status";
   $params[':status'] = $status;
 }
-if ($categoria !== "") {
-  $where[] = "categoria_padrao LIKE :categoria";
+if ($tipo !== '') {
+  $where[] = "l.tipo = :tipo";
+  $params[':tipo'] = $tipo;
+}
+if ($formato !== '') {
+  $where[] = "l.formato = :formato";
+  $params[':formato'] = $formato;
+}
+if ($categoria !== '') {
+  $where[] = "tcat.nome LIKE :categoria";
   $params[':categoria'] = "%$categoria%";
 }
+if ($ano_inicio !== '' && is_numeric($ano_inicio)) {
+  $where[] = "l.ano >= :ano_inicio";
+  $params[':ano_inicio'] = $ano_inicio;
+}
+if ($ano_fim !== '' && is_numeric($ano_fim)) {
+  $where[] = "l.ano <= :ano_fim";
+  $params[':ano_fim'] = $ano_fim;
+}
 
-$sql = "SELECT * FROM livros";
-if (!empty($where)) {
+$sql = "SELECT l.*, 
+        taut.nome AS autor_nome,
+        tedit.nome AS editora_nome,
+        tcat.nome AS categoria_nome
+        FROM livros l
+        LEFT JOIN tags taut ON l.autor_id = taut.id
+        LEFT JOIN tags tedit ON l.editora_id = tedit.id
+        LEFT JOIN tags tcat ON l.categoria_id = tcat.id";
+
+if ($where) {
   $sql .= " WHERE " . implode(" AND ", $where);
 }
-$sql .= " ORDER BY criado_em DESC";
+$sql .= " ORDER BY l.criado_em DESC";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
-$result = $stmt->fetchAll();
+$resultados = $stmt->fetchAll();
 ?>
 
-<div class="container resultado-container py-4">
-  <h3 class="mb-4">
-    <?= $busca ? "📚 Resultados para: <em>" . htmlspecialchars($busca) . "</em>" : "📚 Todos os livros cadastrados" ?>
-  </h3>
-
-  <!-- 🔍 Filtro -->
-  <form method="GET" class="row g-2 mb-4">
-    <div class="col-md-4">
-      <input type="text" name="q" value="<?= htmlspecialchars($busca) ?>" class="form-control" placeholder="Título, autor, editora ou tag">
-    </div>
-    <div class="col-md-3">
-      <select name="status" class="form-select">
-        <option value="">Todos os status</option>
-        <option value="disponivel" <?= $status === 'disponivel' ? 'selected' : '' ?>>Disponível</option>
-        <option value="emprestado" <?= $status === 'emprestado' ? 'selected' : '' ?>>Emprestado</option>
-        <option value="reservado" <?= $status === 'reservado' ? 'selected' : '' ?>>Reservado</option>
-      </select>
-    </div>
-    <div class="col-md-3">
-      <select name="categoria" class="form-select" id="categoria">
-        <option value="">Todas as categorias</option>
-        <?php foreach ($categorias_disponiveis as $cat): ?>
-          <option value="<?= htmlspecialchars($cat['nome']) ?>" <?= $categoria === $cat['nome'] ? 'selected' : '' ?>>
-            <?= htmlspecialchars($cat['nome']) ?>
-          </option>
-        <?php endforeach; ?>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <button type="submit" class="btn btn-primary w-100">🔍 Filtrar</button>
-    </div>
-  </form>
-
-  <!-- 📚 Resultados -->
+<div class="container mt-4">
   <div class="row">
-    <?php if ($result): ?>
-      <?php foreach ($result as $livro): ?>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <?php
-              if (!empty($livro['capa'])) {
-                $caminhoCapa = URL_BASE . 'uploads/capas/' . htmlspecialchars($livro['capa']);
-              } elseif (!empty($livro['capa_url'])) {
-                $caminhoCapa = htmlspecialchars($livro['capa_url']);
-              } else {
-                $caminhoCapa = URL_BASE . 'assets/img/sem_capa.png';
-              }
-            ?>
-            <img src="<?= $caminhoCapa ?>" class="card-img-top" alt="Capa do livro">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h5>
-              <p class="card-text mb-1"><strong>Autor:</strong> <?= htmlspecialchars($livro['autor']) ?></p>
-              <p class="card-text mb-1"><strong>Editora:</strong> <?= htmlspecialchars($livro['editora'] ?? '-') ?></p>
-              <p class="card-text mb-1"><strong>Categoria:</strong> <?= htmlspecialchars($livro['categoria_padrao'] ?? '-') ?></p>
-              <p class="card-text mb-1"><strong>Tags:</strong> <?= htmlspecialchars($livro['tags'] ?? '-') ?></p>
-              <p class="card-text mb-2"><strong>Status:</strong>
-                <?php
-                  $badge = match ($livro['status']) {
-                    'disponivel' => 'success',
-                    'reservado' => 'warning',
-                    default => 'danger',
-                  };
-                ?>
-                <span class="badge bg-<?= $badge ?>"><?= ucfirst($livro['status']) ?></span>
-              </p>
-              <a href="detalhes.php?id=<?= $livro['id'] ?>" class="btn btn-outline-primary mt-auto">Ver detalhes</a>
-            </div>
+    <div class="col-md-3">
+      <form method="GET" class="border p-3 rounded shadow-sm bg-light">
+        <h5 class="mb-3">🔎 Filtros</h5>
+
+        <div class="mb-2">
+          <label>Palavra-chave</label>
+          <input type="text" name="q" class="form-control" value="<?= htmlspecialchars($busca) ?>">
+        </div>
+
+        <div class="mb-2">
+          <label>Tipo</label>
+          <select name="tipo" class="form-select">
+            <option value="">Todos</option>
+            <option value="digital" <?= $tipo === 'digital' ? 'selected' : '' ?>>Digital</option>
+            <option value="físico" <?= $tipo === 'físico' ? 'selected' : '' ?>>Físico</option>
+          </select>
+        </div>
+
+        <div class="mb-2">
+          <label>Formato</label>
+          <select name="formato" class="form-select">
+            <option value="">Todos</option>
+            <option value="PDF" <?= $formato === 'PDF' ? 'selected' : '' ?>>PDF</option>
+            <option value="EPUB" <?= $formato === 'EPUB' ? 'selected' : '' ?>>EPUB</option>
+            <option value="Online" <?= $formato === 'Online' ? 'selected' : '' ?>>Online</option>
+          </select>
+        </div>
+
+        <div class="mb-2">
+          <label>Categoria</label>
+          <select name="categoria" class="form-select">
+            <option value="">Todas</option>
+            <?php foreach ($categorias_disponiveis as $cat): ?>
+              <option value="<?= htmlspecialchars($cat) ?>" <?= $categoria === $cat ? 'selected' : '' ?>>
+                <?= htmlspecialchars($cat) ?>
+              </option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+
+        <div class="mb-2">
+          <label>Ano</label>
+          <div class="d-flex gap-2">
+            <input type="number" name="ano_inicio" class="form-control" placeholder="De" value="<?= htmlspecialchars($ano_inicio) ?>">
+            <input type="number" name="ano_fim" class="form-control" placeholder="Até" value="<?= htmlspecialchars($ano_fim) ?>">
           </div>
         </div>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <div class="col-12">
-        <div class="alert alert-warning">⚠️ Nenhum livro encontrado com os filtros aplicados.</div>
-      </div>
-    <?php endif; ?>
+
+        <div class="d-grid gap-2 mt-3">
+          <button type="submit" class="btn btn-primary">🔍 Buscar</button>
+          <a href="busca.php" class="btn btn-outline-secondary">🔄 Limpar</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-9">
+      <h4 class="mb-3">📘 Resultados</h4>
+
+      <?php if ($resultados): ?>
+        <?php foreach ($resultados as $livro): ?>
+          <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <?= htmlspecialchars($livro['titulo']) ?> <small class="text-muted">(<?= $livro['ano'] ?? '-' ?>)</small>
+              </h5>
+              <p class="card-text mb-1">
+                <strong>Autor:</strong> <?= htmlspecialchars($livro['autor_nome'] ?? '-') ?> |
+                <strong>Editora:</strong> <?= htmlspecialchars($livro['editora_nome'] ?? '-') ?> |
+                <strong>Categoria:</strong> <?= htmlspecialchars($livro['categoria_nome'] ?? '-') ?>
+              </p>
+              <p class="card-text small text-muted"><?= mb_strimwidth(strip_tags($livro['descricao']), 0, 200, '...') ?></p>
+              <div class="d-flex justify-content-between">
+                <span><strong>Status:</strong>
+                  <span class="badge bg-<?= $livro['status'] === 'disponivel' ? 'success' : 'danger' ?>">
+                    <?= ucfirst($livro['status']) ?>
+                  </span>
+                </span>
+                <a href="livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-outline-primary">🔎 Ver Detalhes</a>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <div class="alert alert-warning">⚠️ Nenhum resultado encontrado.</div>
+      <?php endif; ?>
+    </div>
   </div>
 </div>
 
 <?php require_once BASE_PATH . '/backend/includes/footer.php'; ?>
-
-<!-- 📦 Select2 (autocomplete de categoria) -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const categoria = document.getElementById('categoria');
-    if (categoria) {
-      $(categoria).select2({
-        placeholder: "Todas as categorias",
-        allowClear: true,
-        width: '100%'
-      });
-    }
-  });
-</script>

@@ -1,0 +1,140 @@
+/* Estilo Geral */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 240px;
+  background: linear-gradient(180deg, #004085, #0062cc);
+  color: white;
+  padding: 1rem;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #fff;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 1rem;
+}
+
+.sidebar nav ul li a {
+  display: flex;
+  align-items: center;
+  color: #f8f9fa;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.sidebar nav ul li a i {
+  margin-right: 0.75rem;
+}
+
+.sidebar nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Botão de logout */
+.sidebar a[href*="logout"] {
+  display: block;
+  margin-top: 2rem;
+  color: #ffc107;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.sidebar a[href*="logout"]:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Conteúdo principal */
+.painel-admin {
+  margin-left: 240px;
+  padding: 2rem;
+}
+
+.painel-admin .header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #004085;
+}
+
+/* Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #004085;
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.card h3 i {
+  margin-right: 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  color: #555;
+}
+
+.card .btn {
+  background-color: #0062cc;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.card .btn:hover {
+  background-color: #004b9a;
+}

@@ -72,8 +72,8 @@ exigir_login('admin');
         <input type="text" name="ano" id="ano" class="form-control">
       </div>
       <div class="col-md-3">
-        <label class="form-label">Nº Único do Acervo</label>
-        <input type="text" name="numero_acervo" id="numero_acervo" class="form-control" readonly>
+        <label class="form-label">Idioma</label>
+        <input type="text" name="idioma" id="idioma" class="form-control" placeholder="Português, Inglês, etc.">
       </div>
     </div>
 
@@ -86,7 +86,7 @@ exigir_login('admin');
     <div class="row mb-3">
       <div class="col-md-4">
         <label class="form-label">Autores</label>
-        <select name="autores[]" id="autor_id" class="form-select" multiple></select>
+        <select name="autor_id" id="autor_id" class="form-select" multiple></select>
       </div>
       <div class="col-md-4">
         <label class="form-label">Editora *</label>
@@ -130,6 +130,10 @@ exigir_login('admin');
       </div>
     </div>
 
+    <!-- 🛠️ Campos ocultos para salvar capa da API -->
+    <input type="hidden" name="capa_url" id="capa_url">
+    <input type="hidden" name="origem_capa" id="origem_capa">
+
     <button type="submit" class="btn btn-success">💾 Salvar Livro</button>
   </form>
 </div>
@@ -138,6 +142,7 @@ exigir_login('admin');
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script>
 function configurarTag(id, tipo, multiple = false) {
   $('#' + id).select2({
@@ -196,11 +201,10 @@ document.getElementById('isbn_input').addEventListener('blur', function () {
         return;
       }
 
-      // Preencher ISBN-10 e 13 corretamente
       if (isbn.length === 10) {
         document.getElementById('isbn10').value = isbn;
         document.getElementById('isbn').value = data.isbn13 || '';
-      } else if (isbn.length === 13) {
+      } else {
         document.getElementById('isbn').value = isbn;
         document.getElementById('isbn10').value = data.isbn10 || '';
       }
@@ -212,10 +216,9 @@ document.getElementById('isbn_input').addEventListener('blur', function () {
       document.getElementById('ano').value = data.ano || '';
       document.getElementById('fonte').value = data.fonte || 'Desconhecida';
 
-      // Gerar número único do acervo
-      document.getElementById('numero_acervo').value = 'ACV-' + Date.now();
+      // Número único
+      document.getElementById('codigo_interno').value = 'LIV-' + Math.floor(100000 + Math.random() * 900000);
 
-      // Autores (opcional)
       if (data.autor) {
         let autores = data.autor.split(',').map(a => a.trim());
         autores.forEach(nome => {
@@ -235,9 +238,10 @@ document.getElementById('isbn_input').addEventListener('blur', function () {
       }
 
       if (data.capa) {
-        const preview = document.getElementById('preview_capa');
-        preview.src = data.capa;
-        preview.classList.remove('d-none');
+        document.getElementById('preview_capa').src = data.capa;
+        document.getElementById('preview_capa').classList.remove('d-none');
+        document.getElementById('capa_url').value = data.capa;
+        document.getElementById('origem_capa').value = 'url';
       }
     })
     .catch(() => {

@@ -1,44 +1,55 @@
 <?php
-// Define o caminho base para a pasta 'backend', um nível acima da 'public_html'
-define('BASE_PATH', dirname(__FILE__) . '/../backend');
-
-// Inclui os arquivos de configuração e sessão essenciais
-require_once BASE_PATH . '/config/config.php'; // Inclui configurações gerais, como URL_BASE
-require_once BASE_PATH . '/includes/session.php'; // Gerencia a sessão (session_start() e funções de sessão)
-
-// Inclui o cabeçalho da página
-// Nota: O header.php deve estar na pasta 'backend/includes'
-include_once BASE_PATH . '/includes/header.php';
+define('BASE_PATH', dirname(__DIR__) . '/backend');
+require_once BASE_PATH . '/config/config.php';
+require_once BASE_PATH . '/includes/session.php';
+require_once BASE_PATH . '/includes/header.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-tema="<?= htmlspecialchars($_COOKIE['modo_tema'] ?? 'claro') ?>">
 <head>
   <meta charset="UTF-8">
-  <title>Contato - Biblioteca CNI</title>
+  <title>Contato - <?= NOME_SISTEMA ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/layout.css">
+</head>
 <body class="bg-light">
 
-<div class="container py-5">
+<div class="container py-4">
+  <!-- Cabeçalho com menu -->
+  <header class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-primary">📬 Contato</h2>
+    <nav>
+      <a href="index.php" class="btn btn-outline-primary me-2">Início</a>
+      <a href="sobre.php" class="btn btn-outline-secondary me-2">Sobre Nós</a>
+      <a href="contato.php" class="btn btn-outline-success me-2">Contato</a>
+      <a href="sistema.php" class="btn btn-outline-dark me-2">Sistema</a>
+      <a href="<?= URL_BASE ?>frontend/login/login_user.php" class="btn btn-primary me-1">
+        <i class="bi bi-person"></i> Entrar
+      </a>
+      <a href="<?= URL_BASE ?>frontend/login/register_user.php" class="btn btn-success">
+        <i class="bi bi-person-plus"></i> Criar Conta
+      </a>
+    </nav>
+  </header>
+
+  <!-- Formulário de contato -->
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card shadow border-0">
         <div class="card-header bg-primary text-white text-center">
-          <h4 class="mb-0">📬 Entre em Contato</h4>
+          <h4 class="mb-0">Envie sua Mensagem</h4>
         </div>
         <div class="card-body">
 
-          <?php 
-          // Exibe mensagens de sucesso ou erro da sessão
-          if (isset($_SESSION['sucesso'])): 
-          ?>
-            <div class="alert alert-success text-center" role="alert"><?= htmlspecialchars($_SESSION['sucesso']) ?></div>
-            <?php unset($_SESSION['sucesso']); // Limpa a mensagem após exibir ?>
+          <?php if (isset($_SESSION['sucesso'])): ?>
+            <div class="alert alert-success text-center"><?= htmlspecialchars($_SESSION['sucesso']) ?></div>
+            <?php unset($_SESSION['sucesso']); ?>
           <?php elseif (isset($_SESSION['erro'])): ?>
-            <div class="alert alert-danger text-center" role="alert"><?= htmlspecialchars($_SESSION['erro']) ?></div>
-            <?php unset($_SESSION['erro']); // Limpa a mensagem após exibir ?>
+            <div class="alert alert-danger text-center"><?= htmlspecialchars($_SESSION['erro']) ?></div>
+            <?php unset($_SESSION['erro']); ?>
           <?php endif; ?>
 
           <form method="POST" action="enviar_contato.php">
@@ -69,6 +80,31 @@ include_once BASE_PATH . '/includes/header.php';
             </div>
 
             <div class="mb-3">
+              <label for="celular" class="form-label">Celular (opcional):</label>
+              <input 
+                type="tel" 
+                name="celular" 
+                id="celular" 
+                class="form-control" 
+                placeholder="(99) 99999-9999"
+                value="<?= htmlspecialchars($_SESSION['form_data']['celular'] ?? '') ?>"
+              >
+            </div>
+
+            <div class="mb-3">
+              <label for="assunto" class="form-label">Assunto:</label>
+              <input 
+                type="text" 
+                name="assunto" 
+                id="assunto" 
+                class="form-control" 
+                required 
+                placeholder="Assunto da mensagem"
+                value="<?= htmlspecialchars($_SESSION['form_data']['assunto'] ?? '') ?>"
+              >
+            </div>
+
+            <div class="mb-3">
               <label for="mensagem" class="form-label">Mensagem:</label>
               <textarea 
                 name="mensagem" 
@@ -90,11 +126,7 @@ include_once BASE_PATH . '/includes/header.php';
 </div>
 
 <?php 
-// Inclui o rodapé da página
-// Nota: O footer.php deve estar na pasta 'backend/includes'
-include_once BASE_PATH . '/includes/footer.php'; 
-
-// Limpa os dados do formulário da sessão após a exibição
+require_once BASE_PATH . '/includes/footer.php'; 
 unset($_SESSION['form_data']);
 ?>
 </body>

@@ -10,17 +10,17 @@ require_once BASE_PATH . '/includes/menu.php';
 
 exigir_login('admin');
 
-// 🧭 Captura filtros de pesquisa
+// Captura filtros de pesquisa
 $busca = trim($_GET['busca'] ?? '');
 $tipoFiltro = $_GET['tipo'] ?? '';
 
-// 🔍 Consulta com filtros
+// Monta a consulta com filtros
 $sql = "SELECT id, nome, email, tipo FROM usuarios WHERE 1";
 $params = [];
 
 if ($busca !== '') {
     $sql .= " AND (nome LIKE :busca OR email LIKE :busca)";
-    $params[':busca'] = '%' . $busca . '%';
+    $params[':busca'] = "%$busca%";
 }
 
 if (in_array($tipoFiltro, ['admin', 'usuario'])) {
@@ -48,11 +48,10 @@ try {
         </a>
     </div>
 
-    <!-- 🔎 Formulário de busca -->
+    <!-- Formulário de busca -->
     <form method="GET" class="row g-2 mb-3">
         <div class="col-md-5">
-            <input type="text" name="busca" class="form-control" placeholder="Buscar por nome ou e-mail"
-                   value="<?= htmlspecialchars($busca) ?>">
+            <input type="text" name="busca" class="form-control" placeholder="Buscar por nome ou e-mail" value="<?= htmlspecialchars($busca) ?>">
         </div>
         <div class="col-md-3">
             <select name="tipo" class="form-select">
@@ -65,13 +64,13 @@ try {
             <button type="submit" class="btn btn-primary">
                 <i class="bi bi-search"></i> Pesquisar
             </button>
-            <a href="usuarios.php" class="btn btn-outline-secondary">
+            <a href="gerenciar_usuarios.php" class="btn btn-outline-secondary">
                 <i class="bi bi-x-lg"></i> Limpar
             </a>
         </div>
     </form>
 
-    <!-- 🔔 Mensagens -->
+    <!-- Mensagens -->
     <?php if (!empty($_SESSION['sucesso'])): ?>
         <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
     <?php elseif (!empty($_SESSION['erro'])): ?>
@@ -82,7 +81,7 @@ try {
         <div class="alert alert-warning text-center">Nenhum usuário encontrado com os filtros aplicados.</div>
     <?php else: ?>
         <div class="table-responsive">
-            <table class="table table-bordered table-striped align-middle">
+            <table class="table table-bordered table-hover align-middle">
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
@@ -104,19 +103,20 @@ try {
                                 </span>
                             </td>
                             <td class="text-center">
-                                <a href="editar_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-warning">
-                                    <i class="bi bi-pencil"></i> Editar
-                                </a>
-                                <?php if ($_SESSION['usuario_id'] != $usuario['id']): ?>
-                                    <a href="excluir_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-danger"
-                                       onclick="return confirm('Tem certeza que deseja excluir este usuário?')">
-                                       <i class="bi bi-trash"></i> Excluir
+                                <div class="btn-group">
+                                    <a href="editar_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-warning">
+                                        <i class="bi bi-pencil"></i>
                                     </a>
-                                <?php else: ?>
-                                    <span class="text-muted" title="Você não pode excluir a si mesmo.">
-                                        🔒
-                                    </span>
-                                <?php endif; ?>
+                                    <?php if ($_SESSION['usuario_id'] != $usuario['id']): ?>
+                                        <a href="excluir_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?')">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    <?php else: ?>
+                                        <span class="btn btn-sm btn-light text-muted" title="Você não pode excluir a si mesmo.">
+                                            <i class="bi bi-lock"></i>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -19,7 +19,7 @@ try {
 
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>📚 Livros</h2>
+        <h2>📚 Gerenciar Livros</h2>
         <a href="cadastrar_livro.php" class="btn btn-success">
             ➕ Novo Livro
         </a>
@@ -32,7 +32,7 @@ try {
     <?php endif; ?>
 
     <div class="table-responsive">
-        <table id="tabelaLivros" class="table table-bordered table-striped table-hover align-middle">
+        <table id="tabelaLivros" class="table table-bordered table-hover align-middle">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -43,21 +43,19 @@ try {
                     <th>Formato</th>
                     <th>Código Interno</th>
                     <th>Status</th>
-                    <th style="width: 220px;">Ações</th>
+                    <th style="width:220px;">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (count($livros) === 0): ?>
-                    <tr>
-                        <td colspan="9" class="text-center">Nenhum livro encontrado.</td>
-                    </tr>
+                <?php if (empty($livros)): ?>
+                    <tr><td colspan="9" class="text-center">Nenhum livro encontrado.</td></tr>
                 <?php else: ?>
                     <?php foreach ($livros as $livro): ?>
                         <tr>
-                            <td><?= htmlspecialchars($livro['id']) ?></td>
+                            <td><?= $livro['id'] ?></td>
                             <td style="width:80px;">
-                                <?php if (!empty($livro['capa'])): ?>
-                                    <img src="<?= URL_BASE ?>uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="img-thumbnail" style="height:60px;">
+                                <?php if (!empty($livro['capa_local'])): ?>
+                                    <img src="<?= URL_BASE . htmlspecialchars($livro['capa_local']) ?>" class="img-thumbnail" style="height:60px;">
                                 <?php elseif (!empty($livro['capa_url'])): ?>
                                     <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="img-thumbnail" style="height:60px;">
                                 <?php else: ?>
@@ -66,25 +64,28 @@ try {
                             </td>
                             <td><?= htmlspecialchars($livro['titulo']) ?></td>
                             <td><?= htmlspecialchars($livro['isbn']) ?></td>
-                            <td><?= ucfirst(htmlspecialchars($livro['tipo'])) ?></td>
-                            <td><?= strtoupper(htmlspecialchars($livro['formato'])) ?></td>
+                            <td><?= ucfirst($livro['tipo']) ?></td>
+                            <td><?= strtoupper($livro['formato']) ?></td>
                             <td><?= htmlspecialchars($livro['codigo_interno']) ?></td>
                             <td>
-                                <span class="badge bg-<?= 
-                                    $livro['status'] === 'disponivel' ? 'success' : (
-                                    $livro['status'] === 'reservado' ? 'warning' : 'danger'
-                                ) ?>">
-                                    <?= ucfirst($livro['status'] ?? 'Indisponível') ?>
-                                </span>
+                                <?php if (isset($livro['status'])): ?>
+                                    <span class="badge bg-<?= 
+                                        $livro['status'] === 'disponivel' ? 'success' :
+                                        ($livro['status'] === 'reservado' ? 'warning' : 'danger') ?>">
+                                        <?= ucfirst($livro['status']) ?>
+                                    </span>
+                                <?php else: ?>
+                                    <span class="badge bg-secondary">Não informado</span>
+                                <?php endif; ?>
                             </td>
                             <td>
                                 <a href="editar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-warning mb-1">
                                     ✏️ Editar
                                 </a>
-                                <a href="<?= URL_BASE ?>backend/controllers/livros/excluir_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Tem certeza que deseja excluir este livro?');">
+                                <a href="<?= URL_BASE ?>backend/controllers/livros/excluir_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Deseja realmente excluir este livro?');">
                                     🗑️ Excluir
                                 </a>
-                                <a href="visualizar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-outline-primary">
+                                <a href="visualizar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-outline-primary mb-1">
                                     🔍 Ver
                                 </a>
                             </td>
@@ -96,14 +97,13 @@ try {
     </div>
 </div>
 
-<!-- ✔️ DataTables e dependências -->
+<!-- 📊 DataTables -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -121,26 +121,11 @@ $(document).ready(function () {
         pageLength: 10,
         dom: 'Bfrtip',
         buttons: [
-            {
-                extend: 'copy',
-                text: '📋 Copiar'
-            },
-            {
-                extend: 'csv',
-                text: '📑 CSV'
-            },
-            {
-                extend: 'excel',
-                text: '📊 Excel'
-            },
-            {
-                extend: 'pdf',
-                text: '📄 PDF'
-            },
-            {
-                extend: 'print',
-                text: '🖨️ Imprimir'
-            }
+            { extend: 'copy', text: '📋 Copiar' },
+            { extend: 'csv',  text: '📑 CSV' },
+            { extend: 'excel',text: '📊 Excel' },
+            { extend: 'pdf',  text: '📄 PDF' },
+            { extend: 'print',text: '🖨️ Imprimir' }
         ]
     });
 });

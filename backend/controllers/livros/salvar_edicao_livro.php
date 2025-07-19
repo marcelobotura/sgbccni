@@ -1,111 +1,154 @@
 <?php
-define('BASE_PATH', dirname(__DIR__, 2)); // vai até /backend
-require_once BASE_PATH . '/config/config.php';
-require_once BASE_PATH . '/includes/session.php';
-require_once BASE_PATH . '/includes/protect_admin.php';
-require_once BASE_PATH . '/includes/atividade_logger.php';
-
+require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../includes/session.php';
+require_once __DIR__ . '/../../includes/atividade_logger.php';
 exigir_login('admin');
 
-// 🧪 Validação
-$id              = intval($_POST['id'] ?? 0);
-$titulo          = trim($_POST['titulo'] ?? '');
-$isbn            = trim($_POST['isbn'] ?? '');
-$volume          = trim($_POST['volume'] ?? '');
-$edicao          = trim($_POST['edicao'] ?? '');
-$codigo_interno  = trim($_POST['codigo_interno'] ?? '');
-$descricao       = trim($_POST['descricao'] ?? '');
-$tipo            = $_POST['tipo'] ?? 'físico';
-$formato         = $_POST['formato'] ?? '';
-$link_digital    = trim($_POST['link_digital'] ?? '');
-$autor_id        = intval($_POST['autor_id'] ?? 0);
-$editora_id      = intval($_POST['editora_id'] ?? 0);
-$categoria_id    = intval($_POST['categoria_id'] ?? 0);
+// Função para buscar ou criar uma tag
+function definirTagID($pdo, $tipo, $valor) {
+    if (!$valor) return null;
 
-if ($id <= 0 || $titulo === '' || $isbn === '' || $codigo_interno === '') {
-    $_SESSION['erro'] = "Preencha todos os campos obrigatórios.";
-    header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
+    // Se for ID válido, apenas retorna
+    if (is_numeric($valor)) return $valor;
+
+    // Verifica se já existe
+    $stmt = $pdo->prepare("SELECT id FROM tags WHERE nome = ? AND tipo = ?");
+    $stmt->execute([$valor, $tipo]);
+    $tag = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($tag) return $tag['id'];
+
+    // Cria nova
+    $stmt = $pdo->prepare("INSERT INTO tags (nome, tipo) VALUES (?, ?)");
+    $stmt->execute([$valor, $tipo]);
+    return $pdo->lastInsertId();
+}
+
+// Verifica ID
+$id = intval($_POST['id'] ?? 0);
+if ($id <= 0) {
+    $_SESSION['erro'] = 'ID inválido.';
+    header('Location: ' . URL_BASE . 'frontend/admin/pages/gerenciar_livros.php');
     exit;
 }
 
-// 📁 Upload de nova capa (opcional)
-$capa_url = null;
-if (!empty($_FILES['nova_capa']['name'])) {
-    $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
-    $tipo_arquivo = mime_content_type($_FILES['nova_capa']['tmp_name']);
+// Campos do formulário
+$titulo        = trim($_POST['titulo'] ?? '');
+$codigoInterno = trim($_POST['codigo_interno'] ?? '');
+$isbn          = trim($_POST['isbn'] ?? '');
+$isbn10        = trim($_POST['isbn10'] ?? '');
+$codigoBarras  = trim($_POST['codigo_barras'] ?? '');
+$subtitulo     = trim($_POST['subtitulo'] ?? '');
+$descricao     = trim($_POST['descricao'] ?? '');
+$volume        = trim($_POST['volume'] ?? '');
+$edicao        = trim($_POST['edicao'] ?? '');
+$ano           = trim($_POST['ano'] ?? '');
+$idioma        = trim($_POST['idioma'] ?? '');
+$linkDigital   = trim($_POST['link_digital'] ?? '');
+$tipo          = $_POST['tipo'] ?? 'físico';
+$formato       = $_POST['formato'] ?? '';
+$autor         = $_POST['autor_id'] ?? '';
+$editora       = $_POST['editora_id'] ?? '';
+$categoria     = $_POST['categoria_id'] ?? '';
 
-    if (!in_array($tipo_arquivo, $permitidos)) {
-        $_SESSION['erro'] = "Formato de imagem não permitido.";
-        header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
-        exit;
-    }
+// Validação básica
+if (!$titulo || !$codigoInterno) {
+    $_SESSION['erro'] = 'Título e código interno são obrigatórios.';
+    header('Location: ' . URL_BASE . 'frontend/admin/pages/editar_livro.php?id=' . $id);
+    exit;
+}
 
-    $ext = pathinfo($_FILES['nova_capa']['name'], PATHINFO_EXTENSION);
-    $nome_arquivo = uniqid('capa_', true) . '.' . $ext;
-    $destino = BASE_PATH . '/../uploads/capas/' . $nome_arquivo;
+// Define tags
+$autorID = definirTagID($pdo, 'autor', $autor);
+$editoraID = definirTagID($pdo, 'editora', $editora);
+$categoriaID = definirTagID($pdo, 'categoria', $categoria);
 
-    if (!is_dir(dirname($destino))) {
-        mkdir(dirname($destino), 0755, true);
-    }
+// Processa nova capa se houver
+$novaCapa = $_FILES['nova_capa'] ?? null;
+$capa_local = null;
+$origem_capa = null;
 
-    if (move_uploaded_file($_FILES['nova_capa']['tmp_name'], $destino)) {
-        $capa_url = 'uploads/capas/' . $nome_arquivo;
+if ($novaCapa && $novaCapa['error'] === UPLOAD_ERR_OK) {
+    $ext = strtolower(pathinfo($novaCapa['name'], PATHINFO_EXTENSION));
+    $nomeArquivo = 'capa_' . uniqid() . '.' . $ext;
+    $destino = __DIR__ . '/../../../uploads/capas/' . $nomeArquivo;
+
+    if (move_uploaded_file($novaCapa['tmp_name'], $destino)) {
+        $capa_local = 'uploads/capas/' . $nomeArquivo;
+        $origem_capa = 'upload';
     } else {
-        $_SESSION['erro'] = "Erro ao salvar a imagem.";
-        header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
+        $_SESSION['erro'] = 'Erro ao fazer upload da nova capa.';
+        header('Location: ' . URL_BASE . 'frontend/admin/pages/editar_livro.php?id=' . $id);
         exit;
     }
 }
 
+// Monta UPDATE
+$sql = "UPDATE livros SET
+    titulo = :titulo,
+    codigo_interno = :codigo_interno,
+    isbn = :isbn,
+    isbn10 = :isbn10,
+    codigo_barras = :codigo_barras,
+    subtitulo = :subtitulo,
+    descricao = :descricao,
+    volume = :volume,
+    edicao = :edicao,
+    ano = :ano,
+    idioma = :idioma,
+    tipo = :tipo,
+    formato = :formato,
+    link_digital = :link_digital,
+    autor_id = :autor_id,
+    editora_id = :editora_id,
+    categoria_id = :categoria_id";
+
+// Capa (opcional)
+if ($capa_local) {
+    $sql .= ", capa_local = :capa_local, origem_capa = :origem_capa";
+}
+
+$sql .= " WHERE id = :id";
+
+// Executa
 try {
-    $sql = "UPDATE livros SET 
-                titulo = :titulo,
-                isbn = :isbn,
-                volume = :volume,
-                edicao = :edicao,
-                codigo_interno = :codigo_interno,
-                descricao = :descricao,
-                tipo = :tipo,
-                formato = :formato,
-                link_digital = :link_digital,
-                autor_id = :autor_id,
-                editora_id = :editora_id,
-                categoria_id = :categoria_id";
-
-    if ($capa_url) {
-        $sql .= ", capa_url = :capa_url";
-    }
-
-    $sql .= " WHERE id = :id";
-
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':titulo', $titulo);
-    $stmt->bindValue(':isbn', $isbn);
-    $stmt->bindValue(':volume', $volume);
-    $stmt->bindValue(':edicao', $edicao);
-    $stmt->bindValue(':codigo_interno', $codigo_interno);
-    $stmt->bindValue(':descricao', $descricao);
-    $stmt->bindValue(':tipo', $tipo);
-    $stmt->bindValue(':formato', $formato);
-    $stmt->bindValue(':link_digital', $link_digital);
-    $stmt->bindValue(':autor_id', $autor_id);
-    $stmt->bindValue(':editora_id', $editora_id);
-    $stmt->bindValue(':categoria_id', $categoria_id);
-    if ($capa_url) {
-        $stmt->bindValue(':capa_url', $capa_url);
+    $params = [
+        ':titulo' => $titulo,
+        ':codigo_interno' => $codigoInterno,
+        ':isbn' => $isbn,
+        ':isbn10' => $isbn10,
+        ':codigo_barras' => $codigoBarras,
+        ':subtitulo' => $subtitulo,
+        ':descricao' => $descricao,
+        ':volume' => $volume,
+        ':edicao' => $edicao,
+        ':ano' => $ano,
+        ':idioma' => $idioma,
+        ':tipo' => $tipo,
+        ':formato' => $formato,
+        ':link_digital' => $linkDigital,
+        ':autor_id' => $autorID,
+        ':editora_id' => $editoraID,
+        ':categoria_id' => $categoriaID,
+        ':id' => $id
+    ];
+
+    if ($capa_local) {
+        $params[':capa_local'] = $capa_local;
+        $params[':origem_capa'] = $origem_capa;
     }
-    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
-    $stmt->execute();
+    $stmt->execute($params);
 
-    // 📝 Registrar atividade
-    registrar_atividade($pdo, "Livro editado: ID #$id - $titulo (ISBN: $isbn)", $_SESSION['usuario_id']);
+    if (function_exists('registrar_atividade')) {
+        registrar_atividade($pdo, $_SESSION['usuario_id'], "Atualizou os dados do livro ID $id");
+    }
 
-    $_SESSION['sucesso'] = "Livro atualizado com sucesso!";
-    header("Location: " . URL_BASE . "frontend/admin/pages/listar_livros.php");
+    $_SESSION['sucesso'] = 'Livro atualizado com sucesso.';
+    header('Location: ' . URL_BASE . 'frontend/admin/pages/editar_livro.php?id=' . $id);
     exit;
 } catch (PDOException $e) {
-    $_SESSION['erro'] = "Erro ao atualizar livro: " . $e->getMessage();
-    header("Location: " . URL_BASE . "frontend/admin/pages/editar_livro.php?id=$id");
+    $_SESSION['erro'] = 'Erro ao atualizar o livro: ' . $e->getMessage();
+    header('Location: ' . URL_BASE . 'frontend/admin/pages/editar_livro.php?id=' . $id);
     exit;
 }

@@ -1,5 +1,4 @@
 <?php
-// 🔧 Exibir erros no desenvolvimento
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -17,7 +16,7 @@ $nome_atual = $_SESSION['usuario_nome'] ?? '';
 $email_atual = $_SESSION['usuario_email'] ?? '';
 $foto_atual = $_SESSION['usuario_foto'] ?? null;
 
-// Atualização de perfil
+// Atualização
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['acao']) && $_POST['acao'] === 'atualizar') {
         $nome = trim($_POST['nome'] ?? '');
@@ -27,9 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($nome) || empty($email)) {
             $_SESSION['erro'] = "Nome e e-mail são obrigatórios.";
         } else {
-            // Verificar e-mail duplicado
+            // Verifica se e-mail já existe
             $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = ? AND id != ?");
             $stmt->execute([$email, $id]);
+
             if ($stmt->rowCount() > 0) {
                 $_SESSION['erro'] = "Este e-mail já está em uso.";
             } else {
@@ -45,14 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             unlink(BASE_PATH . "/../uploads/perfis/" . $foto_atual);
                         }
                         $foto_sql = ", foto = ?";
-                        $_SESSION['usuario_foto'] = $novo_nome;
                         $foto_param = $novo_nome;
                     } else {
                         $_SESSION['erro'] = "Erro ao fazer upload da nova foto.";
                     }
                 }
 
-                // Atualizar dados
+                // Monta a SQL
                 $params = [$nome, $email];
                 $sql = "UPDATE usuarios SET nome = ?, email = ?";
 
@@ -72,8 +71,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $stmt = $pdo->prepare($sql);
                 if ($stmt->execute($params)) {
-                    $_SESSION['usuario_nome'] = $nome;
-                    $_SESSION['usuario_email'] = $email;
+                    // Atualiza a sessão com os dados reais
+                    $stmt = $pdo->prepare("SELECT nome, email, foto, criado_em FROM usuarios WHERE id = ?");
+                    $stmt->execute([$id]);
+                    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    $_SESSION['usuario_nome']  = $usuario['nome'];
+                    $_SESSION['usuario_email'] = $usuario['email'];
+                    $_SESSION['usuario_foto']  = $usuario['foto'];
+                    $_SESSION['usuario_data']  = $usuario['criado_em'];
+
                     $_SESSION['sucesso'] = "Perfil atualizado com sucesso!";
                 } else {
                     $_SESSION['erro'] = "Erro ao atualizar o perfil.";
@@ -82,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Exclusão de conta
+    // Exclusão
     if (isset($_POST['acao']) && $_POST['acao'] === 'excluir') {
         $senha = $_POST['senha_confirmacao'] ?? '';
 
@@ -99,7 +106,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
                 $pdo->prepare("DELETE FROM usuarios WHERE id = ?")->execute([$id]);
-
                 session_destroy();
                 header("Location: ../login/login_user.php?msg=conta_excluida");
                 exit;
@@ -113,10 +119,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// Dados atualizados para exibição
-$nome = htmlspecialchars($_SESSION['usuario_nome'] ?? '');
+// Dados para exibição
+$nome  = htmlspecialchars($_SESSION['usuario_nome'] ?? '');
 $email = htmlspecialchars($_SESSION['usuario_email'] ?? '');
-$foto = $_SESSION['usuario_foto'] ?? null;
+$foto  = $_SESSION['usuario_foto'] ?? null;
 ?>
 
 <!DOCTYPE html>

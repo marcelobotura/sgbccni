@@ -1,121 +1,107 @@
 <?php
+// Caminho: frontend/admin/index.php
 session_start();
-
-// Verifica se o admin está logado
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
     header('Location: ../login/login_admin.php');
     exit;
-}
-
-// Define constante da base da URL (caso não definida)
-if (!defined('URL_BASE')) {
-    define('URL_BASE', '/sgbccni/');
 }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Bem-vindo ao Painel Admin - Biblioteca CNI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel do Administrador - Biblioteca CNI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts + Bootstrap Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Bootstrap e Ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="../../assets/css/pages/painel_admin_moderno.css">
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f4f4f4;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    body { font-family: 'Inter', sans-serif; display: flex; }
+    .sidebar {
+      width: 240px;
+      background-color: #0d6efd;
+      color: white;
       height: 100vh;
-      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 20px;
     }
-
-    .painel {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 500px;
-      width: 90%;
-    }
-
-    .painel h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-      color: #333;
-    }
-
-    .painel p {
-      font-size: 16px;
-      color: #666;
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 20px;
-      margin: 8px;
-      font-size: 16px;
+    .sidebar a {
+      display: block;
+      color: white;
       text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s ease;
+      padding: 10px 0;
     }
-
-    .btn-primary {
-      background: #007bff;
-      color: white;
+    .sidebar a:hover {
+      background: rgba(255,255,255,0.1);
+      border-radius: 5px;
     }
-
-    .btn-primary:hover {
-      background: #0056b3;
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #dc3545;
-      color: #dc3545;
-    }
-
-    .btn-outline:hover {
-      background: #dc3545;
-      color: white;
-    }
-
-    .icon {
-      margin-right: 8px;
-    }
-
-    .logo {
-      font-size: 36px;
-      margin-bottom: 20px;
+    .main-content {
+      margin-left: 240px;
+      padding: 30px;
+      flex-grow: 1;
+      background: #f8f9fa;
+      min-height: 100vh;
     }
   </style>
 </head>
 <body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h4 class="mb-4">📚 Admin CNI</h4>
+    <nav>
+      <ul class="list-unstyled">
+        <li><a href="#" data-page="dashboard"> <i class="bi bi-house-door"></i> Início</a></li>
+        <li><a href="#" data-page="gerenciar_usuarios"> <i class="bi bi-people"></i> Usuários</a></li>
+        <li><a href="#" data-page="gerenciar_livros"> <i class="bi bi-journal-text"></i> Livros</a></li>
+        <li><a href="#" data-page="gerenciar_mensagens"> <i class="bi bi-chat-dots"></i> Mensagens</a></li>
+        <li><a href="#" data-page="gerenciar_comentarios"> <i class="bi bi-chat-dots"></i> Comentarios</a></li>
+        <li><a href="#" data-page="gerenciar_tags"> <i class="bi bi-tags"></i> Tags</a></li>
+        <li><a href="#" data-page="configuracoes"> <i class="bi bi-gear"></i> Configurações</a></li>
+        <li><a href="#" data-page="gerenciar_relatorios"> <i class="bi bi-bar-chart-line"></i> Relatórios</a></li>
+        <li><a href="#" data-page="gerenciar_logs"> <i class="bi bi-clock-history"></i> Logs</a></li>
+        <li><a href="#" data-page="backup"> <i class="bi bi-cloud-arrow-down"></i> Backup</a></li>
+        <li><a href="#" data-page="restaurar_backup"> <i class="bi bi-cloud-arrow-up"></i> Restaurar</a></li>
+        <li><a href="#" data-page="gerenciar_arquivos"> <i class="bi bi-folder"></i> Arquivos</a></li>
+        <li><a href="#" data-page="mapa_sistema"> <i class="bi bi-diagram-3"></i> Mapa</a></li>
+        <li><a href="../../backend/controllers/auth/logout.php"> <i class="bi bi-box-arrow-right"></i> Sair</a></li>
+      </ul>
+    </nav>
+  </aside>
 
-  <div class="painel">
-    <div class="logo">📚 Biblioteca CNI</div>
+  <!-- Conteúdo dinâmico -->
+  <main class="main-content">
+    <div id="conteudo-principal">
+      <h2>Bem-vindo ao Painel Admin!</h2>
+      <p>Selecione um item no menu para começar.</p>
+    </div>
+  </main>
 
-    <h1>Olá, <?= htmlspecialchars($_SESSION['usuario_nome']); ?> 👋</h1>
-    <p>Seja bem-vindo(a) ao painel administrativo.</p>
+  <!-- JS Bootstrap + SPA Script -->
+  <script>
+    const links = document.querySelectorAll("[data-page]");
+    const conteudo = document.getElementById("conteudo-principal");
 
-    <a href="pages/index.php" class="btn btn-primary">
-      <i class="bi bi-grid icon"></i> Ir para o Painel Completo
-    </a>
+    links.forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const page = this.dataset.page;
 
-    <a href="<?= URL_BASE ?>backend/controllers/auth/logout.php" class="btn btn-outline">
-      <i class="bi bi-box-arrow-right icon"></i> Sair
-    </a>
-  </div>
-
+        fetch(`pages/${page}.php`)
+          .then(res => {
+            if (!res.ok) throw new Error("Erro ao carregar a página");
+            return res.text();
+          })
+          .then(html => conteudo.innerHTML = html)
+          .catch(err => conteudo.innerHTML = `<div class='alert alert-danger'>Erro: ${err.message}</div>`);
+      });
+    });
+  </script>
 </body>
 </html>

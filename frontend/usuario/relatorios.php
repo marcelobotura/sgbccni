@@ -3,16 +3,36 @@ define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 require_once BASE_PATH . '/includes/header.php';
-;
 
 exigir_login('usuario');
 
-// Simulação de dados (futuramente virá do banco de dados)
+$usuario_id = $_SESSION['usuario_id'] ?? null;
 $usuario = htmlspecialchars($_SESSION['usuario_nome'] ?? 'Usuário');
-$total_lidos = 12;
-$em_andamento = 2;
-$favoritos = 5;
-$ultimo_lido = "O Pequeno Príncipe";
+
+// 🔢 Total de livros lidos
+$stmt1 = $pdo->prepare("SELECT COUNT(*) FROM livros_usuarios WHERE usuario_id = :uid AND status = 'lido'");
+$stmt1->execute([':uid' => $usuario_id]);
+$total_lidos = $stmt1->fetchColumn();
+
+// ⏳ Livros em andamento
+$stmt2 = $pdo->prepare("SELECT COUNT(*) FROM livros_usuarios WHERE usuario_id = :uid AND status = 'em_andamento'");
+$stmt2->execute([':uid' => $usuario_id]);
+$em_andamento = $stmt2->fetchColumn();
+
+// ⭐ Favoritos
+$stmt3 = $pdo->prepare("SELECT COUNT(*) FROM livros_usuarios WHERE usuario_id = :uid AND favorito = 1");
+$stmt3->execute([':uid' => $usuario_id]);
+$favoritos = $stmt3->fetchColumn();
+
+// 📖 Último livro lido
+$stmt4 = $pdo->prepare("SELECT l.titulo 
+                        FROM livros_usuarios lu 
+                        JOIN livros l ON lu.livro_id = l.id 
+                        WHERE lu.usuario_id = :uid AND lu.status = 'lido' 
+                        ORDER BY lu.data_leitura DESC 
+                        LIMIT 1");
+$stmt4->execute([':uid' => $usuario_id]);
+$ultimo_lido = $stmt4->fetchColumn() ?: 'Nenhum ainda';
 ?>
 
 <!DOCTYPE html>
@@ -70,22 +90,23 @@ $ultimo_lido = "O Pequeno Príncipe";
       <div class="card text-center shadow-sm">
         <div class="card-body">
           <h5 class="card-title">📖 Último Lido</h5>
-          <p class="fs-5 text-dark"><?= $ultimo_lido ?></p>
+          <p class="fs-5 text-dark"><?= htmlspecialchars($ultimo_lido) ?></p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="mt-5">
-    <h4 class="mb-3">Resumo para <?= $usuario ?>:</h4>
+    <h4 class="mb-3">Resumo para <?= htmlspecialchars($usuario) ?>:</h4>
     <ul class="list-group">
       <li class="list-group-item">Total de livros lidos: <strong><?= $total_lidos ?></strong></li>
       <li class="list-group-item">Atualmente lendo: <strong><?= $em_andamento ?></strong></li>
       <li class="list-group-item">Livros favoritos: <strong><?= $favoritos ?></strong></li>
-      <li class="list-group-item">Último livro lido: <strong><?= $ultimo_lido ?></strong></li>
+      <li class="list-group-item">Último livro lido: <strong><?= htmlspecialchars($ultimo_lido) ?></strong></li>
     </ul>
   </div>
 </div>
+
 <?php require_once BASE_PATH . '/includes/footer.php'; ?>
 </body>
 </html>

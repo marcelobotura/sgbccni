@@ -1366,3 +1366,352 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 6
+[17-Jul-2025 21:40:52 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni\backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 6
+[17-Jul-2025 21:40:52 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 6
+[17-Jul-2025 21:43:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:43:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:43:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:43:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:43:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:43:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:43:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:43:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:44:11 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\frontend\usuario\marcar_lido.php on line 13
+[17-Jul-2025 21:44:11 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\frontend\usuario\marcar_lido.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\marcar_lido.php on line 13
+[17-Jul-2025 21:56:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 21:56:52 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:04:21 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:04:21 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:04:21 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:04:21 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:04:21 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:04:21 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:04:21 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:04:21 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:04:36 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categoria_padrao' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:52
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php(52): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 52
+[17-Jul-2025 22:05:03 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categoria_padrao' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:52
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php(52): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 52
+[17-Jul-2025 22:05:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:05:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:05:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:05:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:05:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:05:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:05:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:05:13 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 107
+[17-Jul-2025 22:06:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categoria_padrao' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:52
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php(52): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 52
+[17-Jul-2025 23:49:19 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'lu.data' in 'order clause' in C:\xampp\htdocs\sgbccni\frontend\usuario\relatorios.php:33
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\relatorios.php(33): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\relatorios.php on line 33
+[18-Jul-2025 15:29:57 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`sgbccni`.`livros_usuarios`, CONSTRAINT `livros_usuarios_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)) in C:\xampp\htdocs\sgbccni\frontend\usuario\editar_conta.php:108
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\editar_conta.php(108): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\editar_conta.php on line 108
+[18-Jul-2025 16:58:02 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sgbccni.mensagens' doesn't exist in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php:24
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php(24): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 24
+[18-Jul-2025 17:00:39 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'lida' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php:33
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php(33): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 33
+[18-Jul-2025 17:03:35 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php:34
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php(34): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 34
+[18-Jul-2025 17:03:36 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php:34
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php(34): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 34
+[18-Jul-2025 17:03:43 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php:34
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php(34): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 34
+[18-Jul-2025 17:03:49 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'lida' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php:33
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php(33): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 33
+[18-Jul-2025 17:04:18 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php:34
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php(34): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 34
+[18-Jul-2025 17:06:37 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'lida' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php:32
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php(32): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 32
+[18-Jul-2025 17:07:10 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'lida' in 'where clause' in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php:32
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php(32): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 32
+[18-Jul-2025 18:15:34 America/Sao_Paulo] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\sgbccni\public_html\enviar_contato.php on line 27
+[18-Jul-2025 18:15:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\sgbccni\public_html\enviar_contato.php:27
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\enviar_contato.php on line 27
+[18-Jul-2025 18:25:23 America/Sao_Paulo] PHP Warning:  Undefined array key "assunto" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:25:23 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:29:08 America/Sao_Paulo] PHP Warning:  Undefined array key "assunto" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:29:08 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:29:08 America/Sao_Paulo] PHP Warning:  Undefined array key "assunto" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:29:08 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:30:34 America/Sao_Paulo] PHP Warning:  Undefined array key "assunto" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\ver_mensagem.php on line 45
+[18-Jul-2025 18:30:34 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\ver_mensagem.php on line 45
+[18-Jul-2025 18:30:41 America/Sao_Paulo] PHP Warning:  Undefined array key "assunto" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:30:41 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:30:41 America/Sao_Paulo] PHP Warning:  Undefined array key "assunto" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:30:41 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_mensagens.php on line 95
+[18-Jul-2025 18:30:49 America/Sao_Paulo] PHP Warning:  Undefined array key "assunto" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\ver_mensagem.php on line 45
+[18-Jul-2025 18:30:49 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\ver_mensagem.php on line 45
+[18-Jul-2025 18:37:32 America/Sao_Paulo] PHP Warning:  Undefined array key "assunto" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\ver_mensagem.php on line 45
+[18-Jul-2025 18:37:32 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\ver_mensagem.php on line 45
+[18-Jul-2025 18:41:06 America/Sao_Paulo] Erro ao salvar mensagem: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'celular' in 'field list'
+[18-Jul-2025 18:41:32 America/Sao_Paulo] Erro ao salvar mensagem: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'celular' in 'field list'
+[19-Jul-2025 01:58:20 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 01:58:20 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 01:58:22 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 01:58:26 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 01:58:27 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:04:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 75
+[19-Jul-2025 02:04:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 79
+[19-Jul-2025 02:04:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 94
+[19-Jul-2025 02:04:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 98
+[19-Jul-2025 02:04:37 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 104
+[19-Jul-2025 02:12:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 75
+[19-Jul-2025 02:12:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 79
+[19-Jul-2025 02:12:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 94
+[19-Jul-2025 02:12:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 98
+[19-Jul-2025 02:12:09 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 104
+[19-Jul-2025 02:18:46 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.autor' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php:75
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php(75): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\busca.php on line 75
+[19-Jul-2025 02:24:53 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\emprestimos.php:33
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\emprestimos.php(33): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\emprestimos.php on line 33
+[19-Jul-2025 02:24:58 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:35
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php(35): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 35
+[19-Jul-2025 02:25:35 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:35
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php(35): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 35
+[19-Jul-2025 02:28:40 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:35
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php(35): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 35
+[19-Jul-2025 02:28:52 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\favoritos.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\favoritos.php on line 20
+[19-Jul-2025 02:28:57 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\favoritos.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\favoritos.php on line 20
+[19-Jul-2025 02:30:42 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:35
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php(35): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 35
+[19-Jul-2025 02:31:22 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:31:24 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:31:25 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:31:28 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:31:29 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:31:29 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:32:17 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.autor' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\pesquisa.php:29
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\pesquisa.php(29): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\pesquisa.php on line 29
+[19-Jul-2025 02:32:51 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:32:51 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:32:51 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:26
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(26): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 26
+[19-Jul-2025 02:38:08 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.autor' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:27
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(27): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 27
+[19-Jul-2025 02:38:09 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.autor' in 'field list' in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php:27
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php(27): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\ajax\buscar_livros.php on line 27
+[19-Jul-2025 02:39:37 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.autor' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\pesquisa.php:29
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\pesquisa.php(29): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\pesquisa.php on line 29
+[19-Jul-2025 02:39:38 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.autor' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\pesquisa.php:29
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\pesquisa.php(29): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\pesquisa.php on line 29
+[19-Jul-2025 02:40:23 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'capa' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:85
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php(85): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 85
+[19-Jul-2025 02:41:27 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'capa' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:85
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php(85): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 85
+[19-Jul-2025 02:41:58 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 72
+[19-Jul-2025 02:41:58 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 73
+[19-Jul-2025 02:41:58 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 78
+[19-Jul-2025 02:41:58 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\visualizar_livro.php on line 79
+[19-Jul-2025 02:50:10 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'capa' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:100
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php(100): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 100
+[19-Jul-2025 02:57:09 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sgbccni.comentarios' doesn't exist in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php:100
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php(100): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 100
+[19-Jul-2025 02:58:19 America/Sao_Paulo] PHP Warning:  include(livro.html): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 103
+[19-Jul-2025 02:58:19 America/Sao_Paulo] PHP Warning:  include(): Failed opening 'livro.html' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\livro.php on line 103
+[19-Jul-2025 02:59:48 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.autor' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\pesquisa.php:29
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\pesquisa.php(29): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\pesquisa.php on line 29
+[19-Jul-2025 03:59:45 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 03:59:45 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 03:59:45 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 03:59:45 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:09:01 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:09:01 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:09:01 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:09:01 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:09:03 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:09:03 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:09:03 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:09:03 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:20:30 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:20:30 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:20:30 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:20:30 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:27:02 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:27:02 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:27:02 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:27:02 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:27:04 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:27:04 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:27:04 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:27:04 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[19-Jul-2025 04:47:10 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\sistema.php:85
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\sistema.php on line 85
+[19-Jul-2025 04:47:17 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\sobre.php:56
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\sobre.php on line 56

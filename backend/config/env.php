@@ -3,7 +3,7 @@
 
 // 🌐 Define URL base global
 if (!defined('URL_BASE')) {
-    define('URL_BASE', getenv('URL_BASE') ?: 'http://localhost/sgbccni/');
+    define('URL_BASE', getenv('URL_BASE') ?: 'http://localhost/sgbccni');
 }
 
 // ⚙️ Ambiente: true = desenvolvimento, false = produção

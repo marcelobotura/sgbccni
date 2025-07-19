@@ -14,7 +14,7 @@ if ($id <= 0) {
     exit;
 }
 
-// 🔎 Buscar o livro com joins (tags como nomes)
+// 🔎 Buscar livro com JOIN nas tags
 $sql = "
     SELECT 
         l.*, 
@@ -44,12 +44,18 @@ if (!$livro) {
 
     <div class="card shadow-lg border-0">
         <div class="row g-0">
-            <!-- Capa -->
+            <!-- 📘 Capa -->
             <div class="col-md-4">
-                <?php if (!empty($livro['capa'])): ?>
-                    <img src="<?= URL_BASE ?>uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="Capa do livro">
-                <?php elseif (!empty($livro['capa_url']) && filter_var($livro['capa_url'], FILTER_VALIDATE_URL)): ?>
-                    <img src="<?= htmlspecialchars($livro['capa_url']) ?>" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="Capa do livro">
+                <?php
+                    $capa = '';
+                    if (!empty($livro['capa_local'])) {
+                        $capa = URL_BASE . htmlspecialchars($livro['capa_local']);
+                    } elseif (!empty($livro['capa_url']) && filter_var($livro['capa_url'], FILTER_VALIDATE_URL)) {
+                        $capa = htmlspecialchars($livro['capa_url']);
+                    }
+                ?>
+                <?php if ($capa): ?>
+                    <img src="<?= $capa ?>" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="Capa do livro">
                 <?php else: ?>
                     <div class="d-flex align-items-center justify-content-center h-100 bg-light text-muted p-4 rounded-start">
                         Sem imagem disponível
@@ -57,7 +63,7 @@ if (!$livro) {
                 <?php endif; ?>
             </div>
 
-            <!-- Dados -->
+            <!-- 📑 Dados -->
             <div class="col-md-8">
                 <div class="card-body">
                     <h3><?= htmlspecialchars($livro['titulo']) ?></h3>
@@ -69,14 +75,14 @@ if (!$livro) {
                         <tr><th>ID</th><td><?= $livro['id'] ?></td></tr>
                         <tr><th>Código Interno</th><td><?= htmlspecialchars($livro['codigo_interno']) ?></td></tr>
                         <tr><th>ISBN (13)</th><td><?= htmlspecialchars($livro['isbn']) ?></td></tr>
-                        <tr><th>ISBN-10</th><td><?= htmlspecialchars($livro['isbn10'] ?? '') ?></td></tr>
-                        <tr><th>Código de Barras</th><td><?= htmlspecialchars($livro['codigo_barras'] ?? '') ?></td></tr>
-                        <tr><th>Tipo</th><td><?= htmlspecialchars(ucfirst($livro['tipo'])) ?></td></tr>
-                        <tr><th>Formato</th><td><?= htmlspecialchars($livro['formato']) ?></td></tr>
+                        <tr><th>ISBN-10</th><td><?= htmlspecialchars($livro['isbn10']) ?></td></tr>
+                        <tr><th>Código de Barras</th><td><?= htmlspecialchars($livro['codigo_barras']) ?></td></tr>
+                        <tr><th>Tipo</th><td><?= ucfirst(htmlspecialchars($livro['tipo'])) ?></td></tr>
+                        <tr><th>Formato</th><td><?= strtoupper(htmlspecialchars($livro['formato'])) ?></td></tr>
                         <tr><th>Volume</th><td><?= htmlspecialchars($livro['volume']) ?></td></tr>
                         <tr><th>Edição</th><td><?= htmlspecialchars($livro['edicao']) ?></td></tr>
-                        <tr><th>Ano</th><td><?= htmlspecialchars($livro['ano'] ?? '') ?></td></tr>
-                        <tr><th>Idioma</th><td><?= htmlspecialchars($livro['idioma'] ?? '') ?></td></tr>
+                        <tr><th>Ano</th><td><?= htmlspecialchars($livro['ano']) ?></td></tr>
+                        <tr><th>Idioma</th><td><?= htmlspecialchars($livro['idioma']) ?></td></tr>
                         <tr><th>Autor</th><td><?= htmlspecialchars($livro['autor'] ?? 'Não informado') ?></td></tr>
                         <tr><th>Editora</th><td><?= htmlspecialchars($livro['editora'] ?? 'Não informada') ?></td></tr>
                         <tr><th>Categoria</th><td><?= htmlspecialchars($livro['categoria'] ?? 'Não informada') ?></td></tr>
@@ -85,7 +91,7 @@ if (!$livro) {
                             <td>
                                 <?php if (!empty($livro['link_digital'])): ?>
                                     <a href="<?= htmlspecialchars($livro['link_digital']) ?>" target="_blank" class="btn btn-sm btn-success">
-                                        📖 Acessar Link
+                                        📖 Acessar
                                     </a>
                                 <?php else: ?>
                                     <em>Nenhum</em>
@@ -94,7 +100,7 @@ if (!$livro) {
                         </tr>
                         <tr>
                             <th>Descrição</th>
-                            <td><?= nl2br(htmlspecialchars($livro['descricao'])) ?></td>
+                            <td><?= nl2br(htmlspecialchars($livro['descricao'] ?? '')) ?></td>
                         </tr>
                         <tr>
                             <th>Fonte dos Dados</th>

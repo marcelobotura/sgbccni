@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/session.php'; // para acessar $_SESSION['usuario_id']
 
 $q = trim($_GET['q'] ?? '');
 
@@ -27,7 +28,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if (count($livros) === 0) {
+if (empty($livros)) {
     echo '<div class="alert alert-info">Nenhum livro encontrado.</div>';
     exit;
 }
@@ -40,7 +41,7 @@ if (count($livros) === 0) {
       <?php if (!empty($livro['capa'])): ?>
         <img src="<?= htmlspecialchars($livro['capa']) ?>" class="card-img-top" style="height:220px; object-fit:cover;" alt="Capa do livro">
       <?php else: ?>
-        <div class="bg-secondary text-white text-center py-5">Sem Capa</div>
+        <div class="sem-capa">Sem Capa</div>
       <?php endif; ?>
       <div class="card-body text-center">
         <h6 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h6>

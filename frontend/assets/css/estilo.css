@@ -1,0 +1,79 @@
+/* === estilo.css para index.php === */
+
+/* Corpo geral */
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+}
+
+/* Livros em destaque */
+.livros-destaque h4 {
+  font-weight: bold;
+  color: #495057;
+}
+
+/* Carrossel de livros */
+.carousel-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-behavior: smooth;
+}
+
+.carousel-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 4px;
+}
+
+/* Cards dos livros */
+.card.carousel-item {
+  flex: 0 0 auto;
+  width: 180px;
+}
+
+.card.carousel-item img,
+.livro-card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.sem-capa {
+  height: 220px;
+  background-color: #6c757d;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Resultados da busca */
+#resultados {
+  display: none;
+}
+
+/* Rodapé */
+footer {
+  background: #212529;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+  font-size: 0.9rem;
+}

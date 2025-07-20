@@ -1,0 +1,58 @@
+[19-Jul-2025 20:32:34 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 20:32:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php:11
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 20:32:41 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 20:32:41 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php:11
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 20:32:48 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 20:32:48 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php:11
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 21:03:08 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 21:03:08 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php:11
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 21:04:45 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.capa' in 'field list' in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php:35
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php(35): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\meus_favoritos.php on line 35
+[19-Jul-2025 21:44:17 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 21:44:17 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php:11
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 11
+[19-Jul-2025 21:45:32 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 13
+[19-Jul-2025 21:45:32 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 13
+[19-Jul-2025 21:45:33 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 13
+[19-Jul-2025 21:45:33 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 13
+[19-Jul-2025 21:48:37 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 15
+[19-Jul-2025 21:48:37 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 15
+[19-Jul-2025 21:48:38 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 15
+[19-Jul-2025 21:48:38 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/protect_usuario.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\index.php on line 15
+[19-Jul-2025 21:49:08 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico_leitura.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico_leitura.php on line 19
+[19-Jul-2025 22:00:55 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico_leitura.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico_leitura.php on line 19

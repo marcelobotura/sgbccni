@@ -1,19 +1,24 @@
 <?php
-// 🔧 Exibir erros em desenvolvimento
+// Caminho: frontend/usuario/index.php
+
+// 🔧 Exibir erros em desenvolvimento (remova em produção)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// 🔐 Includes
-define('BASE_PATH', dirname(__DIR__, 2)); // agora corretamente até /sgbccni
+// ✅ Caminho base correto
+define('BASE_PATH', realpath(__DIR__ . '/../../'));
+
+// 🔐 Includes essenciais
 require_once BASE_PATH . '/backend/config/config.php';
 require_once BASE_PATH . '/backend/includes/session.php';
-require_once BASE_PATH . '/backend/includes/protect_usuario.php';
+
 require_once BASE_PATH . '/backend/includes/header.php';
 
+// 🔒 Exige login do tipo usuário
 exigir_login('usuario');
 
-// 🔎 Dados do usuário
+// 👤 Dados do usuário logado
 $nome = htmlspecialchars($_SESSION['usuario_nome'] ?? 'Usuário');
 $email = htmlspecialchars($_SESSION['usuario_email'] ?? 'sem_email@exemplo.com');
 $foto = $_SESSION['usuario_foto'] ?? null;

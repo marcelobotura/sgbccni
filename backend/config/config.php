@@ -18,11 +18,15 @@ try {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]
     );
-    // Teste simples da conexão
-    $pdo->query("SELECT 1");
+    $pdo->query("SELECT 1"); // Teste simples
     $sucessos[] = "✅ Conexão com o banco de dados funcionando.";
 } catch (PDOException $e) {
-    $erros[] = "❌ Falha na conexão com o banco: " . $e->getMessage();
+    $mensagem = "❌ Falha na conexão com o banco: " . $e->getMessage();
+    $erros[] = $mensagem;
+
+    // 🪵 Log do erro
+    $erroLog = dirname(__DIR__, 2) . '/storage/logs/system-error.log';
+    @file_put_contents($erroLog, "[" . date('Y-m-d H:i:s') . "] $mensagem" . PHP_EOL, FILE_APPEND);
 }
 
 // 🔐 Teste sessão
@@ -33,16 +37,16 @@ if (session_status() === PHP_SESSION_ACTIVE) {
 }
 
 // 🧾 Teste escrita em logs/
-$logTest = dirname(__DIR__) . '/logs/teste_log.txt';
+$logTest = dirname(__DIR__, 2) . '/storage/logs/teste_log.txt';
 if (@file_put_contents($logTest, 'Teste de escrita em ' . date('Y-m-d H:i:s'))) {
-    $sucessos[] = "✅ Permissão de escrita em /logs.";
+    $sucessos[] = "✅ Permissão de escrita em /storage/logs.";
     unlink($logTest);
 } else {
-    $erros[] = "❌ Sem permissão de escrita em /logs.";
+    $erros[] = "❌ Sem permissão de escrita em /storage/logs.";
 }
 
 // 🖼️ Teste permissão em uploads/
-$uploadPath = dirname(__DIR__) . '/../uploads/teste.txt';
+$uploadPath = dirname(__DIR__, 2) . '/uploads/teste.txt';
 if (@file_put_contents($uploadPath, 'teste')) {
     $sucessos[] = "✅ Permissão de escrita em /uploads.";
     unlink($uploadPath);

@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->rowCount() > 0) {
             $_SESSION['erro'] = "Este e-mail já está cadastrado.";
-            header("Location: " . URL_BASE . "login/register.php");
+            header("Location: " . URL_BASE . "frontend/login/register.php");
             exit;
         }
 
@@ -43,12 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['usuario_nome'] = htmlspecialchars($nome);
         $_SESSION['usuario_tipo'] = $tipo;
 
-        header("Location: " . URL_BASE . "usuario/meus_livros.php");
+        header("Location: " . URL_BASE . "frontend/login/register.php");
         exit;
 
     } catch (PDOException $e) {
         $_SESSION['erro'] = "Erro ao registrar: " . $e->getMessage();
-        header("Location: " . URL_BASE . "login/register.php");
+        header("Location: " . URL_BASE . "frontend/login/register.php");
         exit;
     }
 }

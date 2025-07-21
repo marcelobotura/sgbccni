@@ -55,7 +55,7 @@ require_once __DIR__ . '/../../backend/includes/session.php';
           </form>
 
           <div class="mt-3 text-center">
-            <small>Não tem uma conta? <a href="<?= URL_BASE ?>login/register.php">Cadastre-se</a></small>
+            <small>Não tem uma conta? <a href="register.php">Cadastre-se</a></small>
           </div>
         </div>
       </div>

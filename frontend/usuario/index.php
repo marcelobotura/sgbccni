@@ -55,7 +55,8 @@ $caminhoFoto = $foto ? URL_BASE . 'uploads/perfis/' . $foto : URL_BASE . 'fronte
         <small class="text-muted"><?= $email ?></small>
       </div>
     </div>
-    <a href="<?= URL_BASE ?>frontend/logout.php" class="btn btn-erro mt-3 mt-md-0">
+    
+    <a href="../../backend/controllers/autenticacao/logout.php" class="btn btn-erro mt-3 mt-md-0">
       <i class="bi bi-box-arrow-right"></i> Sair
     </a>
   </header>

@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../includes/db.php';
-require_once __DIR__ . '/../includes/session.php'; // para acessar $_SESSION['usuario_id']
+require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../includes/db.php';
+require_once __DIR__ . '/../../includes/session.php'; // para $_SESSION
 
 $q = trim($_GET['q'] ?? '');
 
@@ -38,11 +38,20 @@ if (empty($livros)) {
 <?php foreach ($livros as $livro): ?>
   <div class="col">
     <div class="card h-100 shadow-sm">
-      <?php if (!empty($livro['capa'])): ?>
-        <img src="<?= htmlspecialchars($livro['capa']) ?>" class="card-img-top" style="height:220px; object-fit:cover;" alt="Capa do livro">
-      <?php else: ?>
-        <div class="sem-capa">Sem Capa</div>
-      <?php endif; ?>
+      <?php
+        $capa = htmlspecialchars($livro['capa']);
+        $caminhoCapa = '';
+
+        if (str_starts_with($capa, 'http')) {
+            $caminhoCapa = $capa;
+        } elseif (!empty($capa)) {
+            $caminhoCapa = URL_BASE . 'uploads/capas/' . $capa;
+        } else {
+            $caminhoCapa = URL_BASE . 'storage/uploads/capas/sem-capa.png';
+        }
+      ?>
+      <img src="<?= $caminhoCapa ?>" class="card-img-top" style="height:220px; object-fit:cover;" alt="Capa do livro">
+      
       <div class="card-body text-center">
         <h6 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h6>
         <p class="small text-muted"><?= htmlspecialchars($livro['autor_nome'] ?? '-') ?> | <?= htmlspecialchars($livro['editora_nome'] ?? '-') ?></p>

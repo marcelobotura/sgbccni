@@ -37,7 +37,7 @@ require_once __DIR__ . '/../../backend/includes/session.php';
             <div class="alert alert-success"><?= $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></div>
           <?php endif; ?>
 
-          <form method="POST" action="<?= URL_BASE ?>backend/controllers/autenticacao/registro.php">
+          <form method="POST" action="<?= URL_BASE ?>backend/controllers/autenticacao/register.php">
             <div class="mb-3">
               <label for="nome" class="form-label">Nome</label>
               <input type="text" name="nome" class="form-control" required>
@@ -60,7 +60,7 @@ require_once __DIR__ . '/../../backend/includes/session.php';
           </form>
 
           <div class="mt-3 text-center">
-            <small>Já tem uma conta? <a href="<?= URL_BASE ?>login/login.php">Entrar</a></small>
+            <small>Já tem uma conta? <a href="login.php">Entrar</a></small>
           </div>
         </div>
       </div>

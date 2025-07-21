@@ -1,0 +1,13 @@
+/* 📁 themes/high-contrast.css */
+body.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+.high-contrast a {
+  color: #0ff !important;
+}
+.high-contrast .btn {
+  border: 2px solid #fff !important;
+  background: transparent !important;
+  color: #fff !important;
+}

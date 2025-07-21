@@ -1,0 +1,12 @@
+.livro-detalhes {
+  padding: 2rem;
+}
+.livro-capa {
+  width: 160px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+.livro-info {
+  margin-left: 2rem;
+}

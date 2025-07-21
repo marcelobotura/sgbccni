@@ -1,0 +1,5 @@
+/* ======================
+   UTILITIES: visibility.css
+   ====================== */
+.hidden { display: none; }
+.visible { display: block; }

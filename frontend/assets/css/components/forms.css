@@ -1,0 +1,17 @@
+/* ======================
+   COMPONENTS: forms.css
+   ====================== */
+input, select, textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+label {
+  margin-bottom: 0.5rem;
+  display: block;
+  font-weight: bold;
+}

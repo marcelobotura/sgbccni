@@ -1,6 +1,9 @@
-:root {
-  --color-bg: #181818;
-  --color-text: #e4e4e4;
-  --color-card: #242424;
-  --color-border: #333;
+/* ======================
+   THEMES: dark.css
+   ====================== */
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #f1f1f1;
+  --card-bg: #1e1e1e;
+  --border: #333;
 }

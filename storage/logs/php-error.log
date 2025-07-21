@@ -200,3 +200,56 @@ Stack trace:
 #0 C:\xampp\htdocs\sgbccni\public_html\index.php(97): PDOStatement->execute()
 #1 {main}
   thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 97
+[21-Jul-2025 01:02:23 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:97
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(97): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 97
+[21-Jul-2025 01:02:24 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:97
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(97): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 97
+[21-Jul-2025 01:02:45 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[21-Jul-2025 01:02:45 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[21-Jul-2025 01:02:45 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[21-Jul-2025 01:02:45 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[21-Jul-2025 01:05:57 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[21-Jul-2025 01:05:57 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[21-Jul-2025 01:05:57 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[21-Jul-2025 01:05:57 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[21-Jul-2025 01:07:57 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:97
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(97): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 97
+[21-Jul-2025 01:07:57 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:97
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(97): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 97
+[21-Jul-2025 01:08:17 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\usuario\historico_leitura.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\usuario\historico_leitura.php on line 19
+[21-Jul-2025 01:29:17 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:97
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(97): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 97
+[21-Jul-2025 01:29:17 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:97
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(97): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 97
+[21-Jul-2025 01:44:02 America/Sao_Paulo] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\sgbccni\backend\controllers\autenticacao\register.php on line 10
+[21-Jul-2025 01:54:24 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:97
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(97): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 97
+[21-Jul-2025 01:54:25 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:97
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(97): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 97

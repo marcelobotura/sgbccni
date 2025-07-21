@@ -1,67 +1,9 @@
-:root {
-  /* Cores principais */
-  --color-bg: #f7faff;
-  --color-bg-box: #ffffff;
-  --color-text: #212529;
-  --color-text-secondary: #6c757d;
-
-  /* Cores de ação */
-  --color-primary: #007bff;
-  --color-primary-hover: #0056b3;
-  --color-success: #28a745;
-  --color-error: #dc3545;
-  --color-warning: #ffc107;
-
-  /* Borda e fundo */
-  --color-border: #cddbe8;
-  --color-shadow: rgba(0, 0, 0, 0.05);
-
-  /* Inputs e botões */
-  --input-bg: #ffffff;
-  --input-border: #ced4da;
-  --input-focus: #80bdff;
-
-  /* Links */
-  --link-color: #007bff;
-  --link-hover: #0056b3;
-}
-
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.usuario-box,
-.login-box {
-  background: var(--color-bg-box);
-  border: 1px solid var(--color-border);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px var(--color-shadow);
-  max-width: 500px;
-  margin: 20px auto;
-}
-
-a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--link-hover);
-  text-decoration: underline;
-}
-
-.btn {
-  background-color: var(--color-primary);
-  color: #fff;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: var(--color-primary-hover);
+/* ======================
+   THEMES: light.css
+   ====================== */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #111111;
+  --card-bg: #f9f9f9;
+  --border: #ddd;
 }

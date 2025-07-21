@@ -1,0 +1,11 @@
+/* ======================
+   BASE: variables.css
+   ====================== */
+:root {
+  --cor-primaria: #007bff;
+  --cor-secundaria: #6c757d;
+  --cor-sucesso: #28a745;
+  --cor-perigo: #dc3545;
+  --cor-fundo: #ffffff;
+  --cor-texto: #212529;
+}

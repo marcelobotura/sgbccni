@@ -1,0 +1,15 @@
+/* 📁 components/modals.css */
+.modal {
+  background: var(--cor-clara);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+}
+.modal-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}

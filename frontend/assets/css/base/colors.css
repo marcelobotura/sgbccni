@@ -1,0 +1,11 @@
+/* 📁 base/colors.css */
+:root {
+  --cor-primaria: #3f51b5;
+  --cor-secundaria: #f50057;
+  --cor-sucesso: #4caf50;
+  --cor-erro: #f44336;
+  --cor-info: #2196f3;
+  --cor-aviso: #ff9800;
+  --cor-clara: #ffffff;
+  --cor-escura: #121212;
+}

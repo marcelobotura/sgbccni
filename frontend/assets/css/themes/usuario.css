@@ -1,0 +1,9 @@
+/* ======================
+   THEMES: usuario.css
+   ====================== */
+[data-theme="usuario"] {
+  --bg: #e7f0fa;
+  --text: #0c1e35;
+  --card-bg: #ffffff;
+  --primary: #007bff;
+}

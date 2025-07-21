@@ -1,0 +1,12 @@
+/* 📁 pages/perfil.css */
+.perfil-box {
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  max-width: 500px;
+  margin: auto;
+}
+.perfil-box h3 {
+  color: var(--cor-info);
+}

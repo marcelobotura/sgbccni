@@ -1,129 +1,70 @@
-:root {
-  --color-bg: #f4f6f8;
-  --color-white: #ffffff;
-  --color-text: #333;
-  --color-primary: #007bff;
-  --color-danger: #dc3545;
-  --color-border: #ccc;
+/* === Estilização geral da página de login === */
+.login-body {
+  background: linear-gradient(to right, #e3f2fd, #ffffff);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-body {
+/* === Container principal do card de login === */
+.login-card {
+  width: 100%;
+  max-width: 420px; /* Evita corte do título */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* === Cabeçalho do card de login === */
+.login-header {
+  background-color: #0d6efd;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+/* === Título do cabeçalho === */
+.login-header h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* === Botão de login === */
+.btn-login {
+  background-color: #0d6efd;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+  background-color: #0b5ed7;
+}
+
+/* === Ícone de visualização de senha === */
+.toggle-password {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+/* === Responsividade e centralização do layout === */
+.bg-login {
+  background-color: #f4f6f8;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background: var(--color-bg);
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Caixa de login genérica */
-.login-box {
-  background: var(--color-white);
-  padding: 2.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+.login-container {
   width: 100%;
   max-width: 420px;
-  position: relative;
-}
-
-/* Estilo exclusivo: Admin */
-.login-box.admin {
-  border: 2px solid #d0e5ff;
-  background-color: #f8fbff;
-}
-
-/* Estilo exclusivo: Usuário */
-.login-box.usuario {
-  border: 2px solid #cfeedd;
-  background-color: #f8fffa;
-}
-
-.login-box h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-.form-group {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.form-control {
-  width: 100%;
-  padding: 0.75rem 2.5rem 0.75rem 0.75rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  background-color: #f8f9fa;
-  color: var(--color-text);
-  transition: border-color 0.3s, background-color 0.3s;
-}
-
-.form-control:focus {
-  border-color: var(--color-primary);
-  outline: none;
-  background-color: #ffffff;
-}
-
-.toggle-password {
-  position: absolute;
-  top: 50%;
-  right: 0.75rem;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  font-size: 1rem;
-  color: #888;
-  cursor: pointer;
-}
-
-.btn {
-  width: 100%;
-  font-size: 1rem;
-  padding: 0.75rem;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border: none;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
-.link-cadastro {
-  text-align: center;
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-}
-
-.link-cadastro a {
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.link-cadastro a:hover {
-  text-decoration: underline;
-}
-
-.alerta-erro {
-  background: var(--color-danger);
-  color: white;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-}
-
-.login-box {
-  background-color: #fefefe;
-  border: 1px solid #e2e8f0;
+  padding: 1rem;
 }

@@ -1,13 +1,37 @@
-/* 📁 themes/high-contrast.css */
-body.high-contrast {
-  background-color: #000 !important;
-  color: #fff !important;
+[data-theme="high-contrast"] {
+  --bg: #000000;
+  --text: #ffff00;
+  --card-bg: #000000;
+  --border: #ffffff;
+  --input-bg: #000000;
+  --btn-bg: #ffcc00;
+  --btn-text: #000000;
+  --card-title: #ffff00;
 }
-.high-contrast a {
-  color: #0ff !important;
+
+.btn-primario {
+  background-color: var(--btn-primario-bg);
+  color: var(--btn-primario-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-radius: 8px;
 }
-.high-contrast .btn {
-  border: 2px solid #fff !important;
-  background: transparent !important;
-  color: #fff !important;
+
+.btn-secundario {
+  background-color: var(--btn-secundario-bg);
+  color: var(--btn-secundario-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.btn-erro {
+  background-color: var(--btn-erro-bg);
+  color: var(--btn-erro-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-radius: 8px;
 }

@@ -1,7 +1,10 @@
 <?php
-define('BASE_PATH', realpath(__DIR__ . '/../backend'));
+// Caminho: frontend/usuario/salvar_perfil.php
+
+define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
+require_once __DIR__ . '/protect_usuario.php';
 
 exigir_login('usuario');
 
@@ -13,76 +16,75 @@ $foto_atual = $_SESSION['usuario_foto'] ?? null;
 
 if (empty($nome) || empty($email)) {
     $_SESSION['erro'] = "Nome e e-mail são obrigatórios.";
-    header("Location: perfil.php");
+    header("Location: editar_perfil.php");
     exit;
 }
 
-// Verifica se o e-mail já está em uso por outro usuário
-$stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ? AND id != ?");
-$stmt->bind_param("si", $email, $id);
-$stmt->execute();
-$stmt->store_result();
-
-if ($stmt->num_rows > 0) {
+// 🧪 Verifica se e-mail já está em uso por outro
+$stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = ? AND id != ?");
+$stmt->execute([$email, $id]);
+if ($stmt->rowCount() > 0) {
     $_SESSION['erro'] = "Este e-mail já está sendo usado por outro usuário.";
-    header("Location: perfil.php");
+    header("Location: editar_perfil.php");
     exit;
 }
-$stmt->close();
 
-// Inicializa SQL
-$senha_sql = "";
-$foto_sql = "";
-$params = [$nome, $email];
-$types = "ss";
+// 📸 Upload da imagem, se existir
+$nova_foto = $foto_atual;
+if (!empty($_FILES['foto']['name'])) {
+    $permitidos = ['image/jpeg', 'image/png'];
+    $tipo = $_FILES['foto']['type'];
+    $tamanho = $_FILES['foto']['size'];
+    $tmp = $_FILES['foto']['tmp_name'];
 
-// Atualiza senha, se fornecida
-if (!empty($nova_senha)) {
-    $senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
-    $senha_sql = ", senha = ?";
-    $params[] = $senha_hash;
-    $types .= "s";
-}
+    if (!in_array($tipo, $permitidos)) {
+        $_SESSION['erro'] = "Formato inválido. Envie JPG ou PNG.";
+        header("Location: editar_perfil.php");
+        exit;
+    }
 
-// Upload da nova foto
-if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-    $extensao = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
-    $novo_nome = uniqid('perfil_', true) . '.' . $extensao;
-    $destino = BASE_PATH . '/../uploads/perfis/' . $novo_nome;
+    if ($tamanho > 2 * 1024 * 1024) {
+        $_SESSION['erro'] = "Imagem muito grande. Limite de 2MB.";
+        header("Location: editar_perfil.php");
+        exit;
+    }
 
-    if (move_uploaded_file($_FILES['foto']['tmp_name'], $destino)) {
-        // Exclui foto antiga
-        if ($foto_atual && file_exists(BASE_PATH . '/../uploads/perfis/' . $foto_atual)) {
-            unlink(BASE_PATH . '/../uploads/perfis/' . $foto_atual);
+    $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+    $nome_arquivo = 'perfil_' . $id . '_' . time() . '.' . $extensao;
+   $destino = dirname(__DIR__, 2) . '/storage/uploads/perfis/' . $nome_arquivo;
+
+
+    if (move_uploaded_file($tmp, $destino)) {
+        $nova_foto = $nome_arquivo;
+
+        // Remove a foto anterior se não for a padrão
+        if (!empty($foto_atual) && file_exists(dirname(__DIR__, 2) . '/uploads/perfis/' . $foto_atual)) {
+            @unlink(dirname(__DIR__, 2) . '/uploads/perfis/' . $foto_atual);
         }
-
-        $foto_sql = ", foto = ?";
-        $params[] = $novo_nome;
-        $types .= "s";
-        $_SESSION['usuario_foto'] = $novo_nome;
     } else {
-        $_SESSION['erro'] = "Erro ao enviar a nova foto de perfil.";
-        header("Location: perfil.php");
+        $_SESSION['erro'] = "Erro ao fazer upload da nova imagem de perfil.";
+        header("Location: editar_perfil.php");
         exit;
     }
 }
 
-// Monta e executa o UPDATE
-$sql = "UPDATE usuarios SET nome = ?, email = ?{$senha_sql}{$foto_sql} WHERE id = ?";
-$params[] = $id;
-$types .= "i";
-
-$stmt = $conn->prepare($sql);
-$stmt->bind_param($types, ...$params);
-
-if ($stmt->execute()) {
-    $_SESSION['usuario_nome'] = $nome;
-    $_SESSION['usuario_email'] = $email;
-    $_SESSION['sucesso'] = "✅ Perfil atualizado com sucesso!";
-} else {
-    $_SESSION['erro'] = "Erro ao atualizar perfil: " . $conn->error;
+// 🔐 Atualiza os dados
+$sql = "UPDATE usuarios SET nome = ?, email = ?, foto = ?" . (!empty($nova_senha) ? ", senha = ?" : "") . " WHERE id = ?";
+$params = [$nome, $email, $nova_foto];
+if (!empty($nova_senha)) {
+    $senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
+    $params[] = $senha_hash;
 }
+$params[] = $id;
 
-$stmt->close();
-header("Location: perfil.php");
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
+
+// 🧠 Atualiza sessão
+$_SESSION['usuario_nome'] = $nome;
+$_SESSION['usuario_email'] = $email;
+$_SESSION['usuario_foto'] = $nova_foto;
+
+$_SESSION['sucesso'] = "Perfil atualizado com sucesso!";
+header("Location: ver_perfil.php");
 exit;

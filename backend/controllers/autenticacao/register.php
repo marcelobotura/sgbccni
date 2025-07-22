@@ -14,13 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($nome) || empty($email) || empty($senha)) {
         $_SESSION['erro'] = "Preencha todos os campos.";
-        header("Location: " . URL_BASE . "login/register.php");
+        header("Location: " . URL_BASE . "frontend/register.php");
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['erro'] = "E-mail inválido.";
-        header("Location: " . URL_BASE . "login/register.php");
+        header("Location: " . URL_BASE . "frontend/login/register.php");
         exit;
     }
 

@@ -1,0 +1,60 @@
+:root {
+  --btn-primario-bg: #0d6efd;
+  --btn-primario-text: #fff;
+  --btn-secundario-bg: #6c757d;
+  --btn-secundario-text: #fff;
+  --btn-erro-bg: #dc3545;
+  --btn-erro-text: #fff;
+}
+/* Botões personalizados */
+.btn-primario {
+  background-color: #0d6efd;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+}
+
+.btn-primario:hover {
+  filter: brightness(1.1);
+}
+
+.btn-secundario {
+  background-color: #6c757d;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+}
+
+.btn-secundario:hover {
+  filter: brightness(1.1);
+}
+
+.btn-erro {
+  background-color: #dc3545;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+}
+
+.btn-erro:hover {
+  filter: brightness(1.1);
+}
+
+/* Botão de alternar tema */
+.toggle-theme {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--border);
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.toggle-theme:hover {
+  filter: brightness(1.1);
+}

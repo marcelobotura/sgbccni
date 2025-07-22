@@ -1,70 +1,86 @@
-/* === Estilização geral da página de login === */
-.login-body {
-  background: linear-gradient(to right, #e3f2fd, #ffffff);
-  font-family: 'Segoe UI', sans-serif;
+/* =====================
+   📄 login.css
+   ===================== */
+
+/* Corpo da tela de login */
+body.login-body {
+  background-color: var(--bg);
+  color: var(--text);
 }
 
-/* === Container principal do card de login === */
+/* Cartão de login */
 .login-card {
-  width: 100%;
-  max-width: 420px; /* Evita corte do título */
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 100%;              /* 📐 Garante responsividade */
+  max-width: 420px;         /* 🎯 Aqui você altera o tamanho do card */
+  padding: 1.5rem;          /* 🧩 Espaçamento interno opcional */
 }
 
-/* === Cabeçalho do card de login === */
+/* Cabeçalho do cartão */
 .login-header {
-  background-color: #0d6efd;
-  padding: 1.2rem;
-  text-align: center;
-}
-
-/* === Título do cabeçalho === */
-.login-header h4 {
-  margin: 0;
-  font-size: 1.2rem;
+  background-color: transparent;
+  color: var(--text);
   font-weight: bold;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 1.25rem;
 }
 
-/* === Botão de login === */
+/* Labels, links e texto do formulário */
+.login-card .form-label,
+.login-card small,
+.login-card a,
+.login-card .text-center {
+  color: var(--text);
+}
+
+/* Campos de entrada */
+.login-card .form-control {
+  background-color: var(--input-bg, #fff);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* Placeholder dos inputs */
+.login-card .form-control::placeholder {
+  color: var(--text);
+  opacity: 0.6;
+}
+
+/* Botão principal de login/cadastro */
 .btn-login {
-  background-color: #0d6efd;
-  color: white;
+  background-color: var(--btn-bg);
+  color: var(--btn-text) !important;
   font-weight: bold;
-  transition: background-color 0.3s ease-in-out;
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
 .btn-login:hover {
-  background-color: #0b5ed7;
+  filter: brightness(1.1);
 }
 
-/* === Ícone de visualização de senha === */
+/* Botão de alternar tema */
+.btn-alternar-tema {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 6px 16px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.btn-alternar-tema:hover {
+  filter: brightness(1.1);
+}
+
+/* Ícone do olho (mostrar senha) */
 .toggle-password {
-  cursor: pointer;
   position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
+  right: 10px;
+  top: 38px;
+  cursor: pointer;
   font-size: 1.2rem;
-  color: #6c757d;
-}
-
-/* === Responsividade e centralização do layout === */
-.bg-login {
-  background-color: #f4f6f8;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-container {
-  width: 100%;
-  max-width: 420px;
-  padding: 1rem;
 }

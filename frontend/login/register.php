@@ -1,45 +1,44 @@
+<!-- Caminho: frontend/login/register.php -->
 <?php
-// Caminho: frontend/login/register.php
 session_start();
 require_once __DIR__ . '/../../backend/config/env.php';
 require_once __DIR__ . '/../../backend/includes/session.php';
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="<?= htmlspecialchars($_COOKIE['tema'] ?? 'light') ?>">
 <head>
   <meta charset="UTF-8">
   <title>Cadastro - <?= NOME_SISTEMA ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap + CSS Base -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
- <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base/base.css">
-  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base/colors.css">
-  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base/typography.css">
-  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base/reset.css">
+  <!-- Estilos principais -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base/base.css">
   <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/pages/login.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/themes/light.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/themes/dark.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/themes/high-contrast.css">
 </head>
 <body class="login-body">
 
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
   <div class="card login-card shadow">
 
-    <!-- Cabeçalho -->
-    <div class="card-header login-header bg-success text-white text-center">
-      <h4 class="mb-0">Criar Conta</h4>
+    <!-- 🌟 Cabeçalho com "Criar Conta" -->
+    <div class="card-header login-header text-center">
+      <h4 class="mb-0" style="color: var(--card-title)">Criar Conta</h4> <!-- ⬆ Aqui você pode mudar a cor -->
     </div>
 
-    <!-- Corpo -->
     <div class="card-body">
       <?php if (!empty($_SESSION['erro'])): ?>
         <div class="alert alert-danger"><?= htmlspecialchars($_SESSION['erro']); unset($_SESSION['erro']); ?></div>
       <?php endif; ?>
+
       <?php if (!empty($_SESSION['sucesso'])): ?>
         <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
       <?php endif; ?>
 
-      <!-- Formulário -->
-      <form method="POST" action="<?= URL_BASE ?>backend/controllers/autenticacao/registro.php" novalidate>
+      <form method="POST" action="<?= URL_BASE ?>backend/controllers/autenticacao/register.php" novalidate>
         <div class="mb-3">
           <label for="nome" class="form-label">Nome</label>
           <input type="text" name="nome" id="nome" class="form-control" required placeholder="Seu nome completo">
@@ -53,7 +52,7 @@ require_once __DIR__ . '/../../backend/includes/session.php';
         <div class="mb-3 position-relative">
           <label for="senhaRegistro" class="form-label">Senha</label>
           <input type="password" name="senha" id="senhaRegistro" class="form-control" required placeholder="********">
-          <span class="toggle-password" onclick="toggleSenha('senhaRegistro')" title="Mostrar/ocultar senha">👁️</span>
+          <span class="toggle-password" onclick="toggleSenha('senhaRegistro')">👁️</span>
         </div>
 
         <div class="d-grid">
@@ -64,6 +63,12 @@ require_once __DIR__ . '/../../backend/includes/session.php';
       <div class="mt-3 text-center">
         <small>Já tem uma conta? <a href="login.php">Entrar</a></small>
       </div>
+
+      <!-- 🌜 Botão de Alternar Tema -->
+      <div class="text-end mt-3">
+        <button onclick="alternarTema()" class="btn btn-sm btn-alternar-tema">🌓 Alternar Tema</button>
+      </div>
+
     </div>
   </div>
 </div>
@@ -72,16 +77,16 @@ require_once __DIR__ . '/../../backend/includes/session.php';
   function toggleSenha(id) {
     const campo = document.getElementById(id);
     const icone = event.target;
+    campo.type = campo.type === 'password' ? 'text' : 'password';
+    icone.textContent = campo.type === 'text' ? '🙈' : '👁️';
+  }
 
-    if (campo.type === 'password') {
-      campo.type = 'text';
-      icone.textContent = '🙈'; // Fecha o olho
-    } else {
-      campo.type = 'password';
-      icone.textContent = '👁️'; // Abre o olho
-    }
+  function alternarTema() {
+    const atual = document.documentElement.getAttribute('data-theme') || 'light';
+    const novo = atual === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', novo);
+    document.cookie = `tema=${novo}; path=/; max-age=31536000`;
   }
 </script>
-
 </body>
 </html>

@@ -1,12 +1,56 @@
-/* 📁 pages/perfil.css */
-.perfil-box {
-  border: 1px solid #ddd;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  background: #fff;
-  max-width: 500px;
-  margin: auto;
+/* === Estilo para visualização do perfil do usuário === */
+
+.painel-usuario {
+  font-family: 'Inter', sans-serif;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 }
-.perfil-box h3 {
-  color: var(--cor-info);
+
+.painel-header {
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.painel-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.card h4 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.btn-primario {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+}
+
+.btn-primario:hover {
+  background-color: #0b5ed7;
+}
+
+img.rounded-circle {
+  border: 2px solid #ccc;
+  transition: transform 0.3s ease;
+}
+
+img.rounded-circle:hover {
+  transform: scale(1.05);
 }

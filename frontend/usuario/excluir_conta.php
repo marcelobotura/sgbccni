@@ -1,52 +1,40 @@
 <?php
-session_start();
+define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
+require_once BASE_PATH . '/config/config.php';
+require_once BASE_PATH . '/includes/session.php';
+require_once __DIR__ . '/protect_usuario.php';
 
-if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'usuario') {
-    header('Location: ../login/login_user.php');
-    exit;
-}
+exigir_login('usuario');
 
-require_once __DIR__ . '/../backend/config/config.php';
-
-$usuario_id = $_SESSION['usuario_id'];
+$id = $_SESSION['usuario_id'];
+$foto = $_SESSION['usuario_foto'] ?? null;
 $erro = '';
-$sucesso = '';
 
-// Processa o formulário
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $senha = $_POST['senha'] ?? '';
+  $senha = $_POST['senha'] ?? '';
 
-    if (!empty($senha)) {
-        // Verifica senha
-        $stmt = $conn->prepare("SELECT senha FROM usuarios WHERE id = ?");
-        $stmt->bind_param("i", $usuario_id);
-        $stmt->execute();
-        $stmt->bind_result($senha_hash);
-        $stmt->fetch();
-        $stmt->close();
+  if (empty($senha)) {
+    $erro = "Digite sua senha para confirmar.";
+  } else {
+    $stmt = $pdo->prepare("SELECT senha FROM usuarios WHERE id = ?");
+    $stmt->execute([$id]);
+    $senha_hash = $stmt->fetchColumn();
 
-        if (password_verify($senha, $senha_hash)) {
-            // Apaga dados de livros_usuarios relacionados
-            $stmt = $conn->prepare("DELETE FROM livros_usuarios WHERE usuario_id = ?");
-            $stmt->bind_param("i", $usuario_id);
-            $stmt->execute();
+    if ($senha_hash && password_verify($senha, $senha_hash)) {
+      if ($foto && file_exists(dirname(__DIR__, 2) . "/uploads/perfis/" . $foto)) {
+        unlink(dirname(__DIR__, 2) . "/uploads/perfis/" . $foto);
+      }
 
-            // Apaga o usuário
-            $stmt = $conn->prepare("DELETE FROM usuarios WHERE id = ?");
-            $stmt->bind_param("i", $usuario_id);
-            $stmt->execute();
+      $pdo->prepare("DELETE FROM livros_usuarios WHERE usuario_id = ?")->execute([$id]);
+      $pdo->prepare("DELETE FROM usuarios WHERE id = ?")->execute([$id]);
 
-            // Finaliza sessão
-            session_destroy();
-            $sucesso = "Sua conta foi excluída com sucesso.";
-            header("Location: ../login/login_user.php?excluido=1");
-            exit;
-        } else {
-            $erro = "Senha incorreta. Tente novamente.";
-        }
+      session_destroy();
+      header("Location: ../login/login.php?msg=conta_excluida");
+      exit;
     } else {
-        $erro = "Informe sua senha para confirmar a exclusão.";
+      $erro = "Senha incorreta. Tente novamente.";
     }
+  }
 }
 ?>
 
@@ -54,36 +42,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Excluir Conta - Biblioteca CNI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/themes/light.css" id="theme-style">
+  <title>Excluir Conta</title>
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base.css">
 </head>
-<body>
-  <div class="container py-5">
-    <h2 class="text-danger mb-4">⚠️ Excluir Conta</h2>
+<body class="container py-5">
+  <h2 class="text-danger mb-4"><i class="bi bi-trash"></i> Excluir Conta</h2>
 
-    <?php if ($erro): ?>
-      <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
-    <?php endif; ?>
+  <?php if ($erro): ?>
+    <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
+  <?php endif; ?>
 
-    <div class="alert alert-warning">
-      Esta ação é <strong>irreversível</strong>. Todos os seus dados, favoritos, históricos e empréstimos serão apagados.
-    </div>
-
-    <form method="POST" class="card p-4 shadow-sm">
-      <div class="mb-3">
-        <label for="senha" class="form-label">Digite sua senha para confirmar:</label>
-        <input type="password" name="senha" id="senha" class="form-control" required>
-      </div>
-
-      <div class="d-flex justify-content-between">
-        <a href="painel_usuario.php" class="btn btn-outline-secondary">← Cancelar</a>
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir sua conta?')">Excluir Minha Conta</button>
-      </div>
-    </form>
-  </div>
-</body>
-</html>
+  <form method="POST" class="card p-4 shadow-sm">
+    <p class="mb-3">Tem certeza que deseja excluir sua conta? Esta ação não poderá ser desfeita.</p>
+    <div class="mb-3">
+      <label for="senha">Confirme sua senha:</label>
+      <input type="password" name=

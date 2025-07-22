@@ -1,4 +1,26 @@
-@import url("base/reset.css");
-@import url("base/variables.css");
-@import url("base/colors.css");
-@import url("base/typography.css");
+/* =====================
+   📄 base.css
+   ===================== */
+@import url("reset.css");
+@import url("variables.css");
+@import url("colors.css");
+@import url("typography.css");
+
+body.login-body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.btn-alternar-tema {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--border);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+}
+
+.btn-alternar-tema:hover {
+  filter: brightness(1.15);
+}

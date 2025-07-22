@@ -1,9 +1,10 @@
-/* ======================
-   THEMES: light.css
-   ====================== */
 [data-theme="light"] {
   --bg: #ffffff;
-  --text: #111111;
+  --text: #000000;
   --card-bg: #f9f9f9;
-  --border: #ddd;
+  --border: #ccc;
+  --input-bg: #ffffff;
+  --btn-bg: #0d6efd;
+  --btn-text: #ffffff;
+  --card-title: #000000;
 }

@@ -72,6 +72,7 @@ require_once __DIR__ . '/../backend/includes/session.php';
           <li class="nav-item"><a href="index.php" class="nav-link">Início</a></li>
           <li class="nav-item"><a href="sobre.php" class="nav-link">Sobre</a></li>
           <li class="nav-item"><a href="sistema.php" class="nav-link">Sistema</a></li>
+          <li class="nav-item"><a href="catalago.php" class="nav-link">Catálogo</a></li>
           <li class="nav-item"><a href="contato.php" class="nav-link">Contato</a></li>
           <li class="nav-item"><a href="<?= URL_BASE ?>frontend/login/login.php" class="btn btn-light ms-2">Entrar</a></li>
         </ul>

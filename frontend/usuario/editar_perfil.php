@@ -1,4 +1,6 @@
 <?php
+// Caminho: frontend/usuario/editar_perfil.php
+
 define('BASE_PATH', dirname(__DIR__, 2) . '/backend');
 require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
@@ -7,15 +9,34 @@ require_once __DIR__ . '/protect_usuario.php';
 
 exigir_login('usuario');
 
-$nome  = htmlspecialchars($_SESSION['usuario_nome'] ?? '');
-$email = htmlspecialchars($_SESSION['usuario_email'] ?? '');
-$foto  = $_SESSION['usuario_foto'] ?? null;
+// Buscar do banco, como em ver_perfil.php
+$id_usuario = $_SESSION['usuario_id'] ?? null;
+if (!$id_usuario) {
+  header("Location: login.php");
+  exit;
+}
 
-// Caminho completo e fallback
-$caminhoCompleto = BASE_PATH . '/../uploads/perfis/' . $foto;
-$caminhoFoto = (!empty($foto) && file_exists($caminhoCompleto))
-  ? URL_BASE . 'uploads/perfis/' . $foto
-  : URL_BASE . 'frontend/assets/img/perfil_sem_img.png';
+$stmt = $pdo->prepare("SELECT nome, email, foto FROM usuarios WHERE id = ?");
+$stmt->execute([$id_usuario]);
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$usuario) {
+  $_SESSION['erro'] = "Usuário não encontrado.";
+  header("Location: login.php");
+  exit;
+}
+
+$nome  = htmlspecialchars($usuario['nome']);
+$email = htmlspecialchars($usuario['email']);
+$foto  = $usuario['foto'] ?? null;
+
+// Caminhos corretos para imagem
+$caminhoFisicoFoto = dirname(__DIR__, 2) . '/storage/uploads/perfis/' . $foto;
+$caminhoWebFoto = URL_BASE . 'storage/uploads/perfis/' . $foto;
+
+// Verifica se a imagem existe
+$existeFoto = (!empty($foto) && file_exists($caminhoFisicoFoto));
+$caminhoFoto = $existeFoto ? $caminhoWebFoto : URL_BASE . 'frontend/assets/img/perfil_sem_img.png';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +45,6 @@ $caminhoFoto = (!empty($foto) && file_exists($caminhoCompleto))
   <meta charset="UTF-8">
   <title>Editar Perfil - <?= NOME_SISTEMA ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base.css">
@@ -47,7 +67,14 @@ $caminhoFoto = (!empty($foto) && file_exists($caminhoCompleto))
       <div class="col-md-3 text-center">
         <img src="<?= $caminhoFoto ?>" alt="Foto atual" id="previewFoto" class="rounded-circle shadow border" style="width: 120px; height: 120px; object-fit: cover;">
         <p class="text-muted mt-2 mb-0">Foto atual</p>
+
+        <?php if ($existeFoto): ?>
+          <a href="remover_foto.php" class="btn btn-sm btn-outline-danger mt-2" onclick="return confirm('Tem certeza que deseja remover sua foto de perfil?')">
+            <i class="bi bi-trash"></i> Remover foto
+          </a>
+        <?php endif; ?>
       </div>
+
       <div class="col-md-9">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome completo</label>
@@ -79,7 +106,6 @@ $caminhoFoto = (!empty($foto) && file_exists($caminhoCompleto))
   </form>
 </div>
 
-<!-- Script de preview e validação -->
 <script>
 document.getElementById('foto').addEventListener('change', function (event) {
   const file = event.target.files[0];
@@ -90,7 +116,7 @@ document.getElementById('foto').addEventListener('change', function (event) {
   if (!file) return;
 
   const validTypes = ['image/jpeg', 'image/png'];
-  const maxSize = 2 * 1024 * 1024; // 2MB
+  const maxSize = 2 * 1024 * 1024;
 
   if (!validTypes.includes(file.type)) {
     erro.textContent = 'Formato inválido. Use JPG ou PNG.';

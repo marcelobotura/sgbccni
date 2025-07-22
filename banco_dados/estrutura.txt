@@ -1,0 +1,8 @@
+Listagem de caminhos de pasta
+O número de série do volume é 3E99-D763
+C:.
+    estrutura.txt
+    sgbccni.sql
+    
+Não existem subpastas 
+

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Jul-2025 às 08:06
+-- Tempo de geração: 22-Jul-2025 às 18:21
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -601,24 +601,26 @@ CREATE TABLE `usuarios` (
   `estado` varchar(100) DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT 1,
   `criado_em` datetime DEFAULT current_timestamp(),
-  `foto` varchar(255) DEFAULT NULL
+  `foto` varchar(255) DEFAULT NULL,
+  `data_criacao` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `tipo`, `imagem_perfil`, `data_nascimento`, `genero`, `cep`, `endereco`, `cidade`, `estado`, `ativo`, `criado_em`, `foto`) VALUES
-(29, 'Bottura', 'marcelo@marcelo.com', '$2y$10$y4SkxWOAqIR2Zp3Nfb.WgOzXkNYKoj5SnZ7PrOflAGjT2kuM8fyMm', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-06-11 23:26:27', 'perfil_29_1753164217.jpg'),
-(30, 'Marcelo Botura', 'mbsfoz@gmail.com', '$2y$10$amjwDKCg.5xH3rkke.ncAe8myQAx0I8mQaVjHrSMwBWUzk8XQu45i', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-06-11 23:27:30', NULL),
-(41, 'Marcos', 'marcos@marcos.com', '$2y$10$IiHOZrR8hu14xGlOeKuG2udwpuRSQWiCjwntnyLUwxmtRBsJSUwo6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 03:09:10', NULL),
-(42, 'marcelo', 'marcelo@admin.com', '$2y$10$kYnqOrEkQB2cYQ84polqyerJjdgWcafB00WSPWNpMLWKv0YXPfyzm', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 17:32:08', NULL),
-(43, 'mmmmmmmmm', 'mmmmm@mmm.com', '$2y$10$uaRrhyW1VdNs5yjmcScT4uKF1iiGsbADipAi/Lj9hXx4YFCxSg9O6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:34:39', NULL),
-(44, 'pedrinho', 'pedrinho@pedrinho.com', '$2y$10$O/qJdCYTYgYOFnr7WKONFOxnHltRrjTuEJxIFudXvcHP8LRXMiUoO', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:41:36', NULL),
-(45, 'emanoela', 'emanoela@emanoela.com', '$2y$10$EKWc9ccBYWViEvRq1LYhUuAxh98tmZJ2TF.sX6pinyQcy54Z4v6AC', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:42:29', NULL),
-(46, 'Marcelo Souza', 'm_botura@gmail.com', '$2y$10$qMC.w9oz/LZlqUgs7yFUs.cDLeQNbOmd6usTyPz9CUzMj2KPAoC3y', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 01:44:02', NULL),
-(47, '1111', 'aa@aa.com', '$2y$10$C0Nmj9PEs6gmyznvRryBpODYKUROl8pTaSyzJXBT5An.TNg79voOO', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 23:22:44', NULL),
-(48, 'ola', 'ola@ola.com', '$2y$10$zE4AWIcEgqI.C6yIE.PG2O9JBYYyDOqw934pPaobXz0d6p7mxt8GG', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 23:24:40', NULL);
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `tipo`, `imagem_perfil`, `data_nascimento`, `genero`, `cep`, `endereco`, `cidade`, `estado`, `ativo`, `criado_em`, `foto`, `data_criacao`) VALUES
+(29, 'Bottura', 'marcelo@marcelo.com', '$2y$10$08fu1yJgdQfEq8Lzyk02ZODfBw3hRjF4YfFynod79593ZmMuXH0Y6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-06-11 23:26:27', 'perfil_29_1753197337.jpg', '2025-07-22 11:43:32'),
+(30, 'Marcelo Botura', 'mbsfoz@gmail.com', '$2y$10$amjwDKCg.5xH3rkke.ncAe8myQAx0I8mQaVjHrSMwBWUzk8XQu45i', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-06-11 23:27:30', NULL, '2025-07-22 11:43:32'),
+(41, 'Marcos', 'marcos@marcos.com', '$2y$10$IiHOZrR8hu14xGlOeKuG2udwpuRSQWiCjwntnyLUwxmtRBsJSUwo6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 03:09:10', NULL, '2025-07-22 11:43:32'),
+(42, 'marcelo', 'marcelo@admin.com', '$2y$10$kYnqOrEkQB2cYQ84polqyerJjdgWcafB00WSPWNpMLWKv0YXPfyzm', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 17:32:08', NULL, '2025-07-22 11:43:32'),
+(43, 'mmmmmmmmm', 'mmmmm@mmm.com', '$2y$10$uaRrhyW1VdNs5yjmcScT4uKF1iiGsbADipAi/Lj9hXx4YFCxSg9O6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:34:39', NULL, '2025-07-22 11:43:32'),
+(44, 'pedrinho', 'pedrinho@pedrinho.com', '$2y$10$O/qJdCYTYgYOFnr7WKONFOxnHltRrjTuEJxIFudXvcHP8LRXMiUoO', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:41:36', NULL, '2025-07-22 11:43:32'),
+(45, 'emanoela', 'emanoela@emanoela.com', '$2y$10$EKWc9ccBYWViEvRq1LYhUuAxh98tmZJ2TF.sX6pinyQcy54Z4v6AC', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:42:29', NULL, '2025-07-22 11:43:32'),
+(46, 'Marcelo Souza', 'm_botura@gmail.com', '$2y$10$qMC.w9oz/LZlqUgs7yFUs.cDLeQNbOmd6usTyPz9CUzMj2KPAoC3y', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 01:44:02', NULL, '2025-07-22 11:43:32'),
+(47, '1111', 'aa@aa.com', '$2y$10$C0Nmj9PEs6gmyznvRryBpODYKUROl8pTaSyzJXBT5An.TNg79voOO', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 23:22:44', NULL, '2025-07-22 11:43:32'),
+(48, 'ola', 'ola@ola.com', '$2y$10$zE4AWIcEgqI.C6yIE.PG2O9JBYYyDOqw934pPaobXz0d6p7mxt8GG', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 23:24:40', NULL, '2025-07-22 11:43:32'),
+(49, 'Jéssica Fernandes', 'jessifernandes0@gmail.com', '$2y$10$14HL4jqehFv4lcA16ZfWluNmIUvy.Rt/OtFbVZxwlBEDNb1kdkYTu', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-22 12:59:22', 'perfil_49_1753199996.png', '2025-07-22 12:59:22');
 
 --
 -- Índices para tabelas despejadas
@@ -896,7 +898,7 @@ ALTER TABLE `tokens_recuperacao`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Restrições para despejos de tabelas

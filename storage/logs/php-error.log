@@ -616,3 +616,28 @@ Stack trace:
 #0 C:\xampp\htdocs\sgbccni\public_html\index.php(98): PDOStatement->execute()
 #1 {main}
   thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 98
+[22-Jul-2025 13:23:23 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:98
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(98): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 98
+[23-Jul-2025 15:34:50 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:98
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(98): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 98
+[23-Jul-2025 15:34:50 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:98
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(98): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 98
+[23-Jul-2025 15:34:50 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:98
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(98): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 98
+[23-Jul-2025 15:34:55 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'acessos' in 'order clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:98
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(98): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 98

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Jul-2025 às 18:21
+-- Tempo de geração: 24-Jul-2025 às 08:42
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -33,20 +33,22 @@ CREATE TABLE `comentarios` (
   `livro_id` int(11) NOT NULL,
   `texto` text NOT NULL,
   `criado_em` datetime NOT NULL DEFAULT current_timestamp(),
-  `aprovado` tinyint(1) DEFAULT 0
+  `aprovado` tinyint(1) DEFAULT 0,
+  `atualizado_em` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `comentarios`
 --
 
-INSERT INTO `comentarios` (`id`, `usuario_id`, `livro_id`, `texto`, `criado_em`, `aprovado`) VALUES
-(1, 29, 10, 'Gostei muito desse livro', '2025-07-19 03:03:52', 1),
-(2, 29, 11, 'Olá mundo', '2025-07-19 03:06:55', 1),
-(4, 29, 12, 'Olá mundo, estou de volta', '2025-07-19 03:31:48', 1),
-(5, 41, 3, 'Esta faltando capa', '2025-07-19 03:38:08', 1),
-(6, 41, 11, 'Sei lá ta foda', '2025-07-19 03:38:31', 1),
-(7, 29, 12, 'oiee', '2025-07-19 19:40:59', 0);
+INSERT INTO `comentarios` (`id`, `usuario_id`, `livro_id`, `texto`, `criado_em`, `aprovado`, `atualizado_em`) VALUES
+(1, 29, 10, 'Gostei muito desse livro', '2025-07-19 03:03:52', 1, '2025-07-24 02:37:04'),
+(2, 29, 11, 'Olá mundo', '2025-07-19 03:06:55', 1, '2025-07-24 02:37:04'),
+(4, 29, 12, 'Olá mundo, estou de volta', '2025-07-19 03:31:48', 1, '2025-07-24 02:37:04'),
+(5, 41, 3, 'Esta faltando capa', '2025-07-19 03:38:08', 1, '2025-07-24 02:37:04'),
+(6, 41, 11, 'Sei lá ta foda', '2025-07-19 03:38:31', 1, '2025-07-24 02:37:04'),
+(7, 29, 12, 'oiee kkkkkkkkkkkkkkkkk', '2025-07-19 19:40:59', 0, '2025-07-24 02:41:32'),
+(9, 29, 2, 'Testando meu sistema de cometarios', '2025-07-24 02:47:53', 0, '2025-07-24 02:47:53');
 
 -- --------------------------------------------------------
 
@@ -89,6 +91,20 @@ CREATE TABLE `emprestimos` (
   `data_devolucao` date DEFAULT NULL,
   `devolvido` tinyint(1) DEFAULT 0,
   `observacao` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `episodios`
+--
+
+CREATE TABLE `episodios` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `link` text NOT NULL,
+  `capa` varchar(255) DEFAULT NULL,
+  `criado_em` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -159,24 +175,37 @@ CREATE TABLE `livros` (
   `disponivel` tinyint(1) DEFAULT 1,
   `subtitulo` varchar(255) DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `fonte` varchar(100) DEFAULT 'Manual'
+  `fonte` varchar(100) DEFAULT 'Manual',
+  `destaque` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `livros`
 --
 
-INSERT INTO `livros` (`id`, `qr_code`, `codigo_barras`, `prateleira`, `titulo`, `volume`, `edicao`, `ano`, `isbn`, `isbn10`, `isbn13`, `status`, `tipo`, `formato`, `tamanho`, `idioma`, `copias_disponiveis`, `exemplares`, `capa_local`, `capa_url`, `origem_capa`, `link_digital`, `link_download`, `descricao`, `informacoes_adicionais`, `visualizacoes`, `criado_em`, `autor_id`, `editora_id`, `categoria_id`, `codigo_interno`, `disponivel`, `subtitulo`, `updated_at`, `fonte`) VALUES
-(2, NULL, NULL, NULL, 'Bliss and Other Stories', '', '', NULL, '9781409901853', NULL, NULL, 'disponivel', 'físico', 'PDF', NULL, NULL, 1, 1, NULL, NULL, NULL, 'https://www.youtube.com/watch?v=aROGxJmUwS4&ab_channel=EXPANS%C3%83ODAMENTE', NULL, 'Kathleen Mansfield Murry (1888-1923) was a prominent New Zealand modernist writer of short fiction. She took on the pen-name Katherine Mansfield upon the publication of her first collection of short stories, In a German Pension, in 1911. She also contracted gonorrhoea around this time, an event that was to plague her with arthritic pain for the rest of her short life, as well as to make her view herself as a \'soiled\' woman. Her life and work were changed forever with the death of her brother, a soldier, during World War I. She was shocked and traumatised by the experience, so much so that her work began to take refuge in the nostalgic reminiscences of their childhood in New Zealand. Miss Brill, the bittersweet story of a fragile woman living an ephemeral life of observation and simple pleasures in Paris, established Mansfield as one of the preeminent writers of the Modernist period, upon its publication in 1920\'s. She followed with the equally praised collection, The Garden Party, published in 1922.', NULL, 0, '2025-06-12 13:52:04', 1, 2, 3, '123', 1, NULL, '2025-06-14 03:38:02', 'Manual'),
-(3, NULL, '9783368113469', NULL, 'Decadas De Tito Livio, Principe De La Historia Romana', '1', '', 0, '9783368113469', '1018681817', NULL, 'disponivel', 'digital', 'PDF', NULL, 'Espanhol', 1, 1, 'uploads/capas/capa_687b2947d1e36.jpg', NULL, 'upload', 'https://b.cidadenovainforma.com.br/?busca=&status=', NULL, 'Reimpresión del original, primera publicación en 1795.', NULL, 0, '2025-06-13 12:22:10', 1, 2, 3, 'LIV-12342', 1, '', '2025-07-19 05:16:58', 'Manual'),
-(5, NULL, NULL, NULL, 'Galileu e os negadores da ciência', '', '', NULL, '9786555872835', NULL, NULL, 'disponivel', 'físico', 'PDF', NULL, NULL, 1, 1, 'uploads/capas/capa_684cd007873875.74856668.jpg\r\n', 'uploads/capas/capa_684cd007873875.74856668.jpg', NULL, '', NULL, 'Em Galileu e os negadores da ciência, Mario Livio, astrofísico e autor best-seller, baseia-se em seu próprio conhecimento científico para conjecturar como Galileu chegou às suas conclusões revolucionárias sobre o cosmo e as leis da natureza. A história de Galileu Galilei é um terrível antecedente do que vivemos hoje, por exemplo no que se refere à crise climática ou ao combate à Covid-19. A ciência, mais uma vez, é equivocadamente questionada e ignorada. Quatrocentos anos atrás, Galileu enfrentou o mesmo problema. Suas descobertas, baseadas em observação cuidadosa e experimentos engenhosos, contradiziam o senso comum e os ensinamentos da Igreja Católica à época. Como retaliação, em um ataque direto à liberdade de pensamento, seus livros foram proibidos pelas autoridades eclesiásticas. Um pensador livre, que seguia as evidências, Galileu foi uma das figuras de maior destaque da Revolução Científica. Acreditava que toda pessoa deveria aprender ciência, assim como literatura, e insistia em buscar o maior público possível para suas descobertas, publicando seus livros em italiano, em vez de latim. Galileu foi julgado por se recusar a renegar suas convicções científicas. Ficou para a história como um herói e uma inspiração para cientistas e para todos aqueles que respeitam a ciência — e que, como Mario Livio nos lembra, seguem ameaçados até hoje.', NULL, 0, '2025-06-13 22:27:35', NULL, NULL, NULL, '1234567', 1, NULL, '2025-07-19 04:35:02', 'Manual'),
-(6, NULL, NULL, NULL, 'Bacon', '', '', NULL, '9783822821985', NULL, NULL, 'disponivel', 'físico', '', NULL, NULL, 1, 1, NULL, NULL, NULL, '', NULL, 'This introductory volume shows the best of Francis Bacon\'s work.', NULL, 0, '2025-06-14 00:00:49', NULL, NULL, NULL, 'LIV-682041', 1, NULL, '2025-06-14 03:38:02', 'Manual'),
-(7, NULL, NULL, NULL, 'O Príncipe', '', '', NULL, '9788552100560', NULL, NULL, 'disponivel', 'físico', '', NULL, NULL, 1, 1, NULL, NULL, NULL, '', NULL, 'Nesta obra, que é um clássico sobre pensamento político, o grande escritor Maquiavel mostra como funciona a ciência política. Discorre sobre os diferentes tipos de Estado e ensina como um príncipe pode conquistar e manter o domínio sobre um Estado. Trata daquilo que é o seu objetivo principal: as virtudes que o governante deve adquirir e os vícios que deve evitar para manter-se no poder. Maquiavel mostra em O Príncipe que a moralidade e a ciência política são separadas. Ele aponta a contradição entre governar um Estado e, ao mesmo tempo, levar uma vida moral.', NULL, 0, '2025-06-14 00:17:34', NULL, NULL, NULL, 'LIV-745009', 1, NULL, '2025-06-14 03:38:02', 'Manual'),
-(8, NULL, '9788581303079', NULL, 'O Pequeno príncipe', '', '', 2020, '9788581303079', '8581303072', NULL, 'disponivel', 'físico', '', NULL, '', 1, 1, NULL, NULL, NULL, '', NULL, 'Um piloto cai com seu avião no deserto e ali encontra uma criança loura e frágil. Ela diz ter vindo de um pequeno planeta distante. E ali, na convivência com o piloto perdido, os dois repensam os seus valores e encontram o sentido da vida. Com essa história mágica, sensível, comovente, às vezes triste, e só aparentemente infantil, o escritor francês Antoine de Saint-Exupéry criou há 70 anos um dos maiores clássicos da literatura universal. Não há adulto que não se comova ao se lembrar de quando o leu quando criança. Trata-se da maior obra existencialista do século XX, segundo Martin Heidegger. Livro mais traduzido da história, depois do Alcorão e da Bíblia, ele agora chega ao Brasil em nova edição, completa, enriquecida com um caderno ilustrado sobre a obra e a curta e trágica vida do autor.', NULL, 0, '2025-07-17 08:57:14', 1, 6, 7, 'LIV-292724', 1, '', '2025-07-17 11:57:14', 'Google Books'),
-(9, NULL, '9786586490619', NULL, 'O pequeno príncipe', '', '', 2022, '9786586490619', '6586490618', NULL, 'disponivel', 'físico', '', NULL, '', 1, 1, NULL, NULL, NULL, 'https://www.google.com.br/books/edition/O_pequeno_pr%C3%ADncipe/N1rgEAAAQBAJ?hl=pt-BR&gbpv=1&pg=PP1&printsec=frontcover', NULL, 'Um dos livros favoritos dos leitores brasileiros chega em nova edição, com reinterpretação das artes originais por Lu Cafaggi e tradução direta do francês. Depois de sofrer um acidente e se perder no deserto, um aviador vê um pequeno príncipe, fato que muda sua vida dali em diante. Em meio a privações e risco de vida, o inusitado encontro com o menino se mostra uma jornada de aprendizado para o adulto — assim como será para o leitor. Por meio de delírios e pérolas de sabedoria, o pequeno príncipe nos mostra como, por vezes, os adultos não entendem nada sozinhos — e como isso pode ser cansativo para as crianças. O aviador também percebe, após ouvir o menino, como os adultos podem se corromper quando cobertos por julgamentos e obrigações. E é esta história sobre pureza que comove leitores de várias gerações desde então. Publicado pela primeira vez em 1943, O pequeno príncipe cativa leitores de todas as idades. A edição da Antofágica une pela primeira vez essa consagrada história a ilustrações inéditas, assinadas por Lu Cafaggi. A publicação conta ainda com tradução de Heloisa Jahn e posfácio da professora doutora em Literatura Comparada pela Universidade de Chicago Rosana Kohl Bines. Adriel Bispo, da página Livros do Drii, faz a apresentação, e o educador parental e podcaster Thiago Queiroz, do Paizinho, Vírgula!, e o cantor e compositor Toquinho escrevem ensaios sensíveis e encantadores.', NULL, 0, '2025-07-17 09:29:01', 8, 9, 7, 'LIV-601909', 1, '', '2025-07-17 12:29:01', 'Google Books'),
-(10, NULL, '9788466652339', NULL, 'Educar las emociones', '', '', 2013, '9788466652339', '8466652337', NULL, 'disponivel', 'digital', 'PDF', NULL, '', 1, 1, NULL, NULL, NULL, '', NULL, 'En esta obra, la especialista en neuropsiquiatría infantil, Amanda Céspedes, entrega las claves a padres, profesores y cualquier adulto que se relacione en forma permanente con niños, para contenerlos, guiarlos en su formación emocional y desarrollar toda', NULL, 0, '2025-07-17 10:24:15', NULL, 10, 11, 'LIV-674960', 1, '', '2025-07-17 13:24:15', 'Google Books'),
-(11, NULL, '9786599036484', NULL, 'Machado de Assis e o cânone ocidental', '', '', 2019, '9786599036484', '6599036481', NULL, 'disponivel', 'digital', 'PDF', NULL, 'Português', 1, 1, NULL, 'http://books.google.com/books/content?id=Zi3rDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'url', '', NULL, '(1o lugar na categoria Crítica Literária do 59o prêmio Jabuti) A obra, dividida em três partes, observa os mecanismos de diálogo de Machado com o leitor e o crítico, analisa a ironia no tecido retórico da narrativa machadiana e, por fim, revê a relação do escritor carioca com a cultura italiana, aqui representada por exemplos na literatura, história, teatro e ópera. Realizando uma integração de vários processos teóricos e dialogando com a crítica nacional e estrangeira, os capítulos se entrecruzam e dialogam entre si, revisitando os temas principais que contribuíram para a centralidade da obra de Machado de Assis na literatura brasileira.', NULL, 0, '2025-07-19 01:58:05', 19, 20, 21, 'LIV-238633', 1, 'itinerários de leitura', '2025-07-19 04:58:05', 'Google Books'),
-(12, NULL, '9781409901853', NULL, 'Bliss and Other Stories', '', '', 2008, '9781409901853', '1409901858', NULL, 'disponivel', 'digital', 'PDF', NULL, '', 1, 1, NULL, 'http://books.google.com/books/content?id=UDyGAQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 'url', '', NULL, 'Kathleen Mansfield Murry (1888-1923) was a prominent New Zealand modernist writer of short fiction. She took on the pen-name Katherine Mansfield upon the publication of her first collection of short stories, In a German Pension, in 1911. She also contracted gonorrhoea around this time, an event that was to plague her with arthritic pain for the rest of her short life, as well as to make her view herself as a \'soiled\' woman. Her life and work were changed forever with the death of her brother, a soldier, during World War I. She was shocked and traumatised by the experience, so much so that her work began to take refuge in the nostalgic reminiscences of their childhood in New Zealand. Miss Brill, the bittersweet story of a fragile woman living an ephemeral life of observation and simple pleasures in Paris, established Mansfield as one of the preeminent writers of the Modernist period, upon its publication in 1920\'s. She followed with the equally praised collection, The Garden Party, published in 1922.', NULL, 0, '2025-07-19 02:05:58', 22, 10, 7, 'LIV-439273', 1, '', '2025-07-19 05:05:58', 'Google Books');
+INSERT INTO `livros` (`id`, `qr_code`, `codigo_barras`, `prateleira`, `titulo`, `volume`, `edicao`, `ano`, `isbn`, `isbn10`, `isbn13`, `status`, `tipo`, `formato`, `tamanho`, `idioma`, `copias_disponiveis`, `exemplares`, `capa_local`, `capa_url`, `origem_capa`, `link_digital`, `link_download`, `descricao`, `informacoes_adicionais`, `visualizacoes`, `criado_em`, `autor_id`, `editora_id`, `categoria_id`, `codigo_interno`, `disponivel`, `subtitulo`, `updated_at`, `fonte`, `destaque`) VALUES
+(2, NULL, NULL, NULL, 'Bliss and Other Stories', '', '', NULL, '9781409901853', NULL, NULL, 'disponivel', 'físico', 'PDF', NULL, NULL, 1, 1, NULL, NULL, NULL, 'https://www.youtube.com/watch?v=aROGxJmUwS4&ab_channel=EXPANS%C3%83ODAMENTE', NULL, 'Kathleen Mansfield Murry (1888-1923) was a prominent New Zealand modernist writer of short fiction. She took on the pen-name Katherine Mansfield upon the publication of her first collection of short stories, In a German Pension, in 1911. She also contracted gonorrhoea around this time, an event that was to plague her with arthritic pain for the rest of her short life, as well as to make her view herself as a \'soiled\' woman. Her life and work were changed forever with the death of her brother, a soldier, during World War I. She was shocked and traumatised by the experience, so much so that her work began to take refuge in the nostalgic reminiscences of their childhood in New Zealand. Miss Brill, the bittersweet story of a fragile woman living an ephemeral life of observation and simple pleasures in Paris, established Mansfield as one of the preeminent writers of the Modernist period, upon its publication in 1920\'s. She followed with the equally praised collection, The Garden Party, published in 1922.', NULL, 0, '2025-06-12 13:52:04', 1, 2, 3, '123', 1, NULL, '2025-06-14 03:38:02', 'Manual', 0),
+(3, NULL, '9783368113469', NULL, 'Decadas De Tito Livio, Principe De La Historia Romana', '1', '', 0, '9783368113469', '1018681817', NULL, 'disponivel', 'digital', 'PDF', NULL, 'Espanhol', 1, 1, 'uploads/capas/capa_687b2947d1e36.jpg', NULL, 'upload', 'https://b.cidadenovainforma.com.br/?busca=&status=', NULL, 'Reimpresión del original, primera publicación en 1795.', NULL, 0, '2025-06-13 12:22:10', 1, 2, 3, 'LIV-12342', 1, '', '2025-07-19 05:16:58', 'Manual', 0),
+(5, NULL, NULL, NULL, 'Galileu e os negadores da ciência', '', '', NULL, '9786555872835', NULL, NULL, 'disponivel', 'físico', 'PDF', NULL, NULL, 1, 1, 'uploads/capas/capa_684cd007873875.74856668.jpg\r\n', 'uploads/capas/capa_684cd007873875.74856668.jpg', NULL, '', NULL, 'Em Galileu e os negadores da ciência, Mario Livio, astrofísico e autor best-seller, baseia-se em seu próprio conhecimento científico para conjecturar como Galileu chegou às suas conclusões revolucionárias sobre o cosmo e as leis da natureza. A história de Galileu Galilei é um terrível antecedente do que vivemos hoje, por exemplo no que se refere à crise climática ou ao combate à Covid-19. A ciência, mais uma vez, é equivocadamente questionada e ignorada. Quatrocentos anos atrás, Galileu enfrentou o mesmo problema. Suas descobertas, baseadas em observação cuidadosa e experimentos engenhosos, contradiziam o senso comum e os ensinamentos da Igreja Católica à época. Como retaliação, em um ataque direto à liberdade de pensamento, seus livros foram proibidos pelas autoridades eclesiásticas. Um pensador livre, que seguia as evidências, Galileu foi uma das figuras de maior destaque da Revolução Científica. Acreditava que toda pessoa deveria aprender ciência, assim como literatura, e insistia em buscar o maior público possível para suas descobertas, publicando seus livros em italiano, em vez de latim. Galileu foi julgado por se recusar a renegar suas convicções científicas. Ficou para a história como um herói e uma inspiração para cientistas e para todos aqueles que respeitam a ciência — e que, como Mario Livio nos lembra, seguem ameaçados até hoje.', NULL, 0, '2025-06-13 22:27:35', NULL, NULL, NULL, '1234567', 1, NULL, '2025-07-19 04:35:02', 'Manual', 0),
+(6, NULL, NULL, NULL, 'Bacon', '', '', NULL, '9783822821985', NULL, NULL, 'disponivel', 'físico', '', NULL, NULL, 1, 1, NULL, NULL, NULL, '', NULL, 'This introductory volume shows the best of Francis Bacon\'s work.', NULL, 0, '2025-06-14 00:00:49', NULL, NULL, NULL, 'LIV-682041', 1, NULL, '2025-06-14 03:38:02', 'Manual', 0),
+(7, NULL, NULL, NULL, 'O Príncipe', '', '', NULL, '9788552100560', NULL, NULL, 'disponivel', 'físico', '', NULL, NULL, 1, 1, NULL, NULL, NULL, '', NULL, 'Nesta obra, que é um clássico sobre pensamento político, o grande escritor Maquiavel mostra como funciona a ciência política. Discorre sobre os diferentes tipos de Estado e ensina como um príncipe pode conquistar e manter o domínio sobre um Estado. Trata daquilo que é o seu objetivo principal: as virtudes que o governante deve adquirir e os vícios que deve evitar para manter-se no poder. Maquiavel mostra em O Príncipe que a moralidade e a ciência política são separadas. Ele aponta a contradição entre governar um Estado e, ao mesmo tempo, levar uma vida moral.', NULL, 0, '2025-06-14 00:17:34', NULL, NULL, NULL, 'LIV-745009', 1, NULL, '2025-06-14 03:38:02', 'Manual', 0),
+(8, NULL, '9788581303079', NULL, 'O Pequeno príncipe', '', '', 2020, '9788581303079', '8581303072', NULL, 'disponivel', 'físico', '', NULL, '', 1, 1, NULL, NULL, NULL, '', NULL, 'Um piloto cai com seu avião no deserto e ali encontra uma criança loura e frágil. Ela diz ter vindo de um pequeno planeta distante. E ali, na convivência com o piloto perdido, os dois repensam os seus valores e encontram o sentido da vida. Com essa história mágica, sensível, comovente, às vezes triste, e só aparentemente infantil, o escritor francês Antoine de Saint-Exupéry criou há 70 anos um dos maiores clássicos da literatura universal. Não há adulto que não se comova ao se lembrar de quando o leu quando criança. Trata-se da maior obra existencialista do século XX, segundo Martin Heidegger. Livro mais traduzido da história, depois do Alcorão e da Bíblia, ele agora chega ao Brasil em nova edição, completa, enriquecida com um caderno ilustrado sobre a obra e a curta e trágica vida do autor.', NULL, 0, '2025-07-17 08:57:14', 1, 6, 7, 'LIV-292724', 1, '', '2025-07-17 11:57:14', 'Google Books', 0),
+(9, NULL, '9786586490619', NULL, 'O pequeno príncipe', '', '', 2022, '9786586490619', '6586490618', NULL, 'disponivel', 'físico', '', NULL, '', 1, 1, NULL, NULL, NULL, 'https://www.google.com.br/books/edition/O_pequeno_pr%C3%ADncipe/N1rgEAAAQBAJ?hl=pt-BR&gbpv=1&pg=PP1&printsec=frontcover', NULL, 'Um dos livros favoritos dos leitores brasileiros chega em nova edição, com reinterpretação das artes originais por Lu Cafaggi e tradução direta do francês. Depois de sofrer um acidente e se perder no deserto, um aviador vê um pequeno príncipe, fato que muda sua vida dali em diante. Em meio a privações e risco de vida, o inusitado encontro com o menino se mostra uma jornada de aprendizado para o adulto — assim como será para o leitor. Por meio de delírios e pérolas de sabedoria, o pequeno príncipe nos mostra como, por vezes, os adultos não entendem nada sozinhos — e como isso pode ser cansativo para as crianças. O aviador também percebe, após ouvir o menino, como os adultos podem se corromper quando cobertos por julgamentos e obrigações. E é esta história sobre pureza que comove leitores de várias gerações desde então. Publicado pela primeira vez em 1943, O pequeno príncipe cativa leitores de todas as idades. A edição da Antofágica une pela primeira vez essa consagrada história a ilustrações inéditas, assinadas por Lu Cafaggi. A publicação conta ainda com tradução de Heloisa Jahn e posfácio da professora doutora em Literatura Comparada pela Universidade de Chicago Rosana Kohl Bines. Adriel Bispo, da página Livros do Drii, faz a apresentação, e o educador parental e podcaster Thiago Queiroz, do Paizinho, Vírgula!, e o cantor e compositor Toquinho escrevem ensaios sensíveis e encantadores.', NULL, 0, '2025-07-17 09:29:01', 8, 9, 7, 'LIV-601909', 1, '', '2025-07-17 12:29:01', 'Google Books', 0),
+(10, NULL, '9788466652339', NULL, 'Educar las emociones', '', '', 2013, '9788466652339', '8466652337', NULL, 'disponivel', 'digital', 'PDF', NULL, '', 1, 1, NULL, NULL, NULL, '', NULL, 'En esta obra, la especialista en neuropsiquiatría infantil, Amanda Céspedes, entrega las claves a padres, profesores y cualquier adulto que se relacione en forma permanente con niños, para contenerlos, guiarlos en su formación emocional y desarrollar toda', NULL, 0, '2025-07-17 10:24:15', NULL, 10, 11, 'LIV-674960', 1, '', '2025-07-17 13:24:15', 'Google Books', 0),
+(11, NULL, '9786599036484', NULL, 'Machado de Assis e o cânone ocidental', '', '', 2019, '9786599036484', '6599036481', NULL, 'disponivel', 'digital', 'PDF', NULL, 'Português', 1, 1, NULL, 'http://books.google.com/books/content?id=Zi3rDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'url', '', NULL, '(1o lugar na categoria Crítica Literária do 59o prêmio Jabuti) A obra, dividida em três partes, observa os mecanismos de diálogo de Machado com o leitor e o crítico, analisa a ironia no tecido retórico da narrativa machadiana e, por fim, revê a relação do escritor carioca com a cultura italiana, aqui representada por exemplos na literatura, história, teatro e ópera. Realizando uma integração de vários processos teóricos e dialogando com a crítica nacional e estrangeira, os capítulos se entrecruzam e dialogam entre si, revisitando os temas principais que contribuíram para a centralidade da obra de Machado de Assis na literatura brasileira.', NULL, 0, '2025-07-19 01:58:05', 19, 20, 21, 'LIV-238633', 1, 'itinerários de leitura', '2025-07-19 04:58:05', 'Google Books', 0),
+(12, NULL, '9781409901853', NULL, 'Bliss and Other Stories', '', '', 2008, '9781409901853', '1409901858', NULL, 'disponivel', 'digital', 'PDF', NULL, '', 1, 1, NULL, 'http://books.google.com/books/content?id=UDyGAQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 'url', '', NULL, 'Kathleen Mansfield Murry (1888-1923) was a prominent New Zealand modernist writer of short fiction. She took on the pen-name Katherine Mansfield upon the publication of her first collection of short stories, In a German Pension, in 1911. She also contracted gonorrhoea around this time, an event that was to plague her with arthritic pain for the rest of her short life, as well as to make her view herself as a \'soiled\' woman. Her life and work were changed forever with the death of her brother, a soldier, during World War I. She was shocked and traumatised by the experience, so much so that her work began to take refuge in the nostalgic reminiscences of their childhood in New Zealand. Miss Brill, the bittersweet story of a fragile woman living an ephemeral life of observation and simple pleasures in Paris, established Mansfield as one of the preeminent writers of the Modernist period, upon its publication in 1920\'s. She followed with the equally praised collection, The Garden Party, published in 1922.', NULL, 0, '2025-07-19 02:05:58', 22, 10, 7, 'LIV-439273', 1, '', '2025-07-19 05:05:58', 'Google Books', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `livros_tags`
+--
+
+CREATE TABLE `livros_tags` (
+  `id` int(11) NOT NULL,
+  `livro_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -194,16 +223,20 @@ CREATE TABLE `livros_usuarios` (
   `observacao` text DEFAULT NULL,
   `atualizado_em` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `criado_em` datetime DEFAULT current_timestamp(),
-  `status` varchar(20) DEFAULT NULL
+  `status` enum('lido','favorito','em_progresso') DEFAULT 'lido',
+  `tipo_emprestimo` varchar(50) DEFAULT 'normal',
+  `data_emprestimo` datetime DEFAULT current_timestamp(),
+  `data_renovacao` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `livros_usuarios`
 --
 
-INSERT INTO `livros_usuarios` (`id`, `usuario_id`, `livro_id`, `lido`, `favorito`, `data_leitura`, `observacao`, `atualizado_em`, `criado_em`, `status`) VALUES
-(1, 29, 3, 1, 1, NULL, 'ola mundo, mues livro lidos', '2025-07-17 19:14:56', '2025-06-13 22:23:18', NULL),
-(12, 29, 12, 1, 1, NULL, NULL, '2025-07-19 19:40:49', '2025-07-19 03:03:20', NULL);
+INSERT INTO `livros_usuarios` (`id`, `usuario_id`, `livro_id`, `lido`, `favorito`, `data_leitura`, `observacao`, `atualizado_em`, `criado_em`, `status`, `tipo_emprestimo`, `data_emprestimo`, `data_renovacao`) VALUES
+(1, 29, 3, 1, 1, NULL, 'ola mundo, mues livro lidos', '2025-07-17 19:14:56', '2025-06-13 22:23:18', NULL, 'normal', '2025-07-24 02:15:50', NULL),
+(12, 29, 12, 1, 1, NULL, NULL, '2025-07-19 19:40:49', '2025-07-19 03:03:20', NULL, 'normal', '2025-07-24 02:15:50', NULL),
+(16, 29, 2, 1, 0, NULL, NULL, '2025-07-24 01:09:29', '2025-07-24 01:09:29', 'lido', 'normal', '2025-07-24 02:15:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -452,7 +485,33 @@ INSERT INTO `log_visualizacoes` (`id`, `usuario_id`, `livro_id`, `data_visualiza
 (53, 29, 12, '2025-07-19 19:41:16', '::1'),
 (54, 29, 12, '2025-07-19 20:12:49', '::1'),
 (55, 29, 11, '2025-07-19 20:32:20', '::1'),
-(56, 45, 11, '2025-07-19 22:52:55', '::1');
+(56, 45, 11, '2025-07-19 22:52:55', '::1'),
+(57, 29, 2, '2025-07-24 01:06:07', '::1'),
+(58, 29, 2, '2025-07-24 01:09:25', '::1'),
+(59, 29, 2, '2025-07-24 01:09:29', '::1'),
+(60, 29, 2, '2025-07-24 01:09:29', '::1'),
+(61, 29, 8, '2025-07-24 01:10:05', '::1'),
+(62, 29, 12, '2025-07-24 01:18:29', '::1'),
+(63, 29, 12, '2025-07-24 01:21:59', '::1'),
+(64, 29, 12, '2025-07-24 01:21:59', '::1'),
+(65, 29, 3, '2025-07-24 02:02:42', '::1'),
+(66, 29, 2, '2025-07-24 02:07:05', '::1'),
+(67, 29, 12, '2025-07-24 02:23:17', '::1'),
+(68, 29, 11, '2025-07-24 02:29:56', '::1'),
+(69, 29, 11, '2025-07-24 02:30:07', '::1'),
+(70, 29, 11, '2025-07-24 02:30:07', '::1'),
+(71, 29, 11, '2025-07-24 02:32:37', '::1'),
+(72, 29, 12, '2025-07-24 02:41:10', '::1'),
+(73, 29, 12, '2025-07-24 02:41:16', '::1'),
+(74, 29, 12, '2025-07-24 02:41:35', '::1'),
+(75, 29, 12, '2025-07-24 02:45:02', '::1'),
+(76, 29, 12, '2025-07-24 02:47:10', '::1'),
+(77, 29, 12, '2025-07-24 02:47:10', '::1'),
+(78, 29, 12, '2025-07-24 02:47:14', '::1'),
+(79, 29, 2, '2025-07-24 02:47:37', '::1'),
+(80, 29, 2, '2025-07-24 02:47:53', '::1'),
+(81, 29, 2, '2025-07-24 02:47:53', '::1'),
+(82, 29, 2, '2025-07-24 02:48:35', '::1');
 
 -- --------------------------------------------------------
 
@@ -529,6 +588,23 @@ CREATE TABLE `reservas` (
   `id_livro` int(11) DEFAULT NULL,
   `data_reserva` datetime DEFAULT current_timestamp(),
   `status` enum('pendente','confirmada','cancelada') DEFAULT 'pendente'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sugestoes`
+--
+
+CREATE TABLE `sugestoes` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `mensagem` text NOT NULL,
+  `data_envio` datetime DEFAULT current_timestamp(),
+  `visualizado` tinyint(1) DEFAULT 0,
+  `tipo` varchar(50) DEFAULT NULL,
+  `resposta` text DEFAULT NULL,
+  `respondido_em` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -656,6 +732,12 @@ ALTER TABLE `emprestimos`
   ADD KEY `id_livro` (`id_livro`);
 
 --
+-- Índices para tabela `episodios`
+--
+ALTER TABLE `episodios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `historico_visualizacoes`
 --
 ALTER TABLE `historico_visualizacoes`
@@ -679,6 +761,14 @@ ALTER TABLE `livros`
   ADD KEY `fk_autor` (`autor_id`),
   ADD KEY `fk_editora` (`editora_id`),
   ADD KEY `fk_categoria` (`categoria_id`);
+
+--
+-- Índices para tabela `livros_tags`
+--
+ALTER TABLE `livros_tags`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `livro_id` (`livro_id`),
+  ADD KEY `tag_id` (`tag_id`);
 
 --
 -- Índices para tabela `livros_usuarios`
@@ -754,6 +844,13 @@ ALTER TABLE `reservas`
   ADD KEY `id_livro` (`id_livro`);
 
 --
+-- Índices para tabela `sugestoes`
+--
+ALTER TABLE `sugestoes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuario_sugestao` (`usuario_id`);
+
+--
 -- Índices para tabela `tags`
 --
 ALTER TABLE `tags`
@@ -784,7 +881,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `configuracoes`
@@ -802,6 +899,12 @@ ALTER TABLE `contatos`
 -- AUTO_INCREMENT de tabela `emprestimos`
 --
 ALTER TABLE `emprestimos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `episodios`
+--
+ALTER TABLE `episodios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -823,10 +926,16 @@ ALTER TABLE `livros`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT de tabela `livros_tags`
+--
+ALTER TABLE `livros_tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `livros_usuarios`
 --
 ALTER TABLE `livros_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `log_atividade`
@@ -856,7 +965,7 @@ ALTER TABLE `log_usuarios`
 -- AUTO_INCREMENT de tabela `log_visualizacoes`
 --
 ALTER TABLE `log_visualizacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de tabela `mensagens`
@@ -880,6 +989,12 @@ ALTER TABLE `notificacoes`
 -- AUTO_INCREMENT de tabela `reservas`
 --
 ALTER TABLE `reservas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `sugestoes`
+--
+ALTER TABLE `sugestoes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -941,6 +1056,13 @@ ALTER TABLE `livros`
   ADD CONSTRAINT `fk_editora` FOREIGN KEY (`editora_id`) REFERENCES `tags` (`id`);
 
 --
+-- Limitadores para a tabela `livros_tags`
+--
+ALTER TABLE `livros_tags`
+  ADD CONSTRAINT `livros_tags_ibfk_1` FOREIGN KEY (`livro_id`) REFERENCES `livros` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `livros_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE;
+
+--
 -- Limitadores para a tabela `livros_usuarios`
 --
 ALTER TABLE `livros_usuarios`
@@ -972,6 +1094,13 @@ ALTER TABLE `notificacoes`
 ALTER TABLE `reservas`
   ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id`);
+
+--
+-- Limitadores para a tabela `sugestoes`
+--
+ALTER TABLE `sugestoes`
+  ADD CONSTRAINT `fk_usuario_sugestao` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sugestoes_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `tokens_recuperacao`

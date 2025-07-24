@@ -58,3 +58,13 @@
 .toggle-theme:hover {
   filter: brightness(1.1);
 }
+
+.btn-purple {
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+}
+.btn-purple:hover {
+  background-color: #e148f5;
+  color: white;
+}

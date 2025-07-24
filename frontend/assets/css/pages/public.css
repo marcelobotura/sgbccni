@@ -1,0 +1,60 @@
+
+/* === Estilo da página inicial (index.php) === */
+
+/* 🔍 Estilo da barra de busca */
+.form-busca-home input {
+  border-radius: 30px 0 0 30px;
+}
+
+.form-busca-home button {
+  border-radius: 0 30px 30px 0;
+}
+
+/* 🧩 Seções da home */
+.secao-home {
+  margin-bottom: 2rem;
+}
+
+/* 🎞️ Carrossel com SwiperJS */
+.swiper {
+  padding: 10px 0;
+}
+.swiper-slide {
+  width: 130px !important;
+  text-align: center;
+}
+.swiper-slide img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+.swiper-slide img:hover {
+  transform: scale(1.05);
+}
+.swiper-slide small {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #333;
+}
+.tipo-badge {
+  display: inline-block;
+  margin-top: 4px;
+  background: #6c757d;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+.btn-vermais {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.8rem;
+}
+.livro-link {
+  text-decoration: none;
+  color: inherit;
+}

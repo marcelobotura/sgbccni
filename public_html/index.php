@@ -1,130 +1,168 @@
+
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/../backend/config/config.php';
 require_once __DIR__ . '/../backend/includes/db.php';
 require_once __DIR__ . '/../backend/includes/session.php';
+
+$busca = trim($_GET['q'] ?? '');
+
+function capaLivro($livro) {
+  if (!empty($livro['capa_local']) && file_exists(BASE_PATH . '/storage/uploads/capas/' . $livro['capa_local'])) {
+    return URL_BASE . 'storage/uploads/capas/' . $livro['capa_local'];
+  }
+  return $livro['capa_url'] ?? (URL_BASE . 'frontend/assets/img/livro_padrao.png');
+}
+
+// 🔎 Consulta de busca
+$resultados = [];
+if ($busca !== '') {
+  $sqlBusca = "SELECT DISTINCT l.id, l.titulo, l.capa_url, l.capa_local, l.tipo
+               FROM livros l
+               LEFT JOIN tags t1 ON t1.id = l.autor_id
+               LEFT JOIN tags t2 ON t2.id = l.editora_id
+               LEFT JOIN tags t3 ON t3.id = l.categoria_id
+               WHERE l.titulo LIKE :busca
+                  OR t1.nome LIKE :busca
+                  OR t2.nome LIKE :busca
+                  OR t3.nome LIKE :busca
+               ORDER BY l.criado_em DESC";
+  $stmt = $pdo->prepare($sqlBusca);
+  $stmt->execute([':busca' => "%$busca%"]);
+  $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// 📚 Seções da home
+$destaques = $pdo->query("SELECT id, titulo, capa_url, capa_local, tipo FROM livros WHERE destaque = 1 ORDER BY criado_em DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
+$novos = $pdo->query("SELECT id, titulo, capa_url, capa_local, tipo FROM livros ORDER BY criado_em DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
+$mais_lidos = $pdo->query("SELECT l.id, l.titulo, l.capa_url, l.capa_local, l.tipo, COUNT(lu.id) AS favoritos
+                            FROM livros l
+                            JOIN livros_usuarios lu ON l.id = lu.livro_id AND lu.status = 'favorito'
+                            GROUP BY l.id ORDER BY favoritos DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
+$episodios = $pdo->query("SELECT id, titulo, link, capa FROM episodios ORDER BY criado_em DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= NOME_SISTEMA ?> - Biblioteca Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><?= NOME_SISTEMA ?> - Biblioteca CNI</title>
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base/base.css">
+  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/pages/public.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <style>
-    body {
-      background: #f9f9f9;
-    }
-    .secao-livros {
-      margin-bottom: 3rem;
-    }
-    .secao-livros h3 {
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-    .livros-scroll {
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding-bottom: 0.5rem;
-    }
-    .livros-scroll::-webkit-scrollbar {
-      height: 6px;
-    }
-    .livros-scroll::-webkit-scrollbar-thumb {
-      background: #0d6efd;
-      border-radius: 10px;
-    }
-    .livro-card {
-      min-width: 140px;
-      max-width: 140px;
-      flex: 0 0 auto;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .livro-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .livro-card .titulo {
-      font-size: 0.85rem;
-      padding: 0.5rem;
-      text-align: center;
-    }
-    .livro-card .btn-ver {
-      display: block;
-      margin: 0 auto 0.5rem;
-    }
+    .livro-item { text-align: center; }
+    .livro-item img { width: 100px; height: 140px; object-fit: cover; border-radius: 10px; transition: .3s; }
+    .livro-item small { display: block; margin-top: 4px; font-size: .9rem; color: #333; }
+    .tipo-badge { margin-top: 6px; display: inline-block; background: #6c757d; color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; }
+    .livro-item:hover img { transform: scale(1.05); }
+    .btn-ver-mais { margin-top: 6px; font-size: 0.8rem; }
+    .tema-toggle { cursor: pointer; font-size: 1.3rem; margin-left: 1rem; }
   </style>
 </head>
-<header class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">📚 <?= NOME_SISTEMA ?></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="menuPrincipal">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a href="index.php" class="nav-link">Início</a></li>
-          <li class="nav-item"><a href="sobre.php" class="nav-link">Sobre</a></li>
-          <li class="nav-item"><a href="sistema.php" class="nav-link">Sistema</a></li>
-          <li class="nav-item"><a href="catalago.php" class="nav-link">Catálogo</a></li>
-          <li class="nav-item"><a href="contato.php" class="nav-link">Contato</a></li>
-          <li class="nav-item"><a href="<?= URL_BASE ?>frontend/login/login.php" class="btn btn-light ms-2">Entrar</a></li>
-        </ul>
-      </div>
-    </div>
-  </header>
-<body>
+<body data-bs-theme="light">
+<header class="bg-dark text-white py-3 mb-4">
+  <div class="container d-flex justify-content-between align-items-center">
+    <h1 class="h4 m-0"><a href="index.php" class="text-white text-decoration-none">📚 <?= NOME_SISTEMA ?></a></h1>
+    <nav class="d-flex align-items-center">
+      <a href="index.php" class="text-white me-3">Início</a>
+      <a href="sobre.php" class="text-white me-3">Sobre</a>
+      <a href="sistema.php" class="text-white me-3">Sistema</a>
+      <a href="contato.php" class="text-white me-3">Contato</a>
+      <a href="/frontend/login/login.php" class="btn btn-outline-light btn-sm">Entrar</a>
+      <i class="bi bi-moon-stars-fill tema-toggle" id="tema-toggle"></i>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <form method="GET" class="input-group mb-5 mx-auto form-busca-home" style="max-width:600px">
+    <input type="text" name="q" class="form-control" placeholder="Buscar por título, autor ou categoria..." value="<?= htmlspecialchars($busca) ?>">
+    <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+  </form>
 
-
-  <div class="container py-4">
-   
-
-    <?php
-    // Exemplo com 3 seções fixas, cada uma com 8 livros
-    $secoes = [
-      'Livros em Destaque' => "ORDER BY RAND() LIMIT 8",
-      'Novidades' => "ORDER BY criado_em DESC LIMIT 8",
-      'Mais Lidos' => "ORDER BY acessos DESC LIMIT 8"
-    ];
-
-    foreach ($secoes as $titulo => $criterio):
-      $stmt = $pdo->prepare("SELECT id, titulo, capa_local, capa_url FROM livros $criterio");
-      $stmt->execute();
-      $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      if (!$livros) continue;
-    ?>
-    <div class="secao-livros">
-      <h3><?= $titulo ?></h3>
-      <div class="livros-scroll">
-        <?php foreach ($livros as $livro): 
-          $capa = (!empty($livro['capa_local']) && file_exists(__DIR__ . '/../storage/uploads/capas/' . $livro['capa_local']))
-                  ? URL_BASE . 'storage/uploads/capas/' . $livro['capa_local']
-                  : (!empty($livro['capa_url']) ? $livro['capa_url'] : URL_BASE . 'storage/uploads/capas/sem-capa.png');
-        ?>
-        <div class="livro-card">
-          <a href="<?= URL_BASE ?>frontend/usuario/livro.php?id=<?= $livro['id'] ?>">
-            <img src="<?= $capa ?>" alt="Capa do livro">
-          </a>
-          <div class="titulo"><?= htmlspecialchars($livro['titulo']) ?></div>
-          <a href="<?= URL_BASE ?>frontend/usuario/livro.php?id=<?= $livro['id'] ?>" class="btn btn-sm btn-outline-primary btn-ver">
-            <i class="bi bi-eye"></i> Ver
-          </a>
+  <?php if ($busca !== ''): ?>
+    <h5 class="mb-3">🔎 Resultados para: <em><?= htmlspecialchars($busca) ?></em></h5>
+    <div class="row g-4">
+      <?php foreach ($resultados as $livro): ?>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="livro-item">
+            <a href="<?= URL_BASE ?>public_html/ver_livro.php?id=<?= $livro['id'] ?>">
+              <img src="<?= capaLivro($livro) ?>" alt="Capa do livro">
+              <?php if (!empty($livro['tipo'])): ?><div class="tipo-badge"><?= ucfirst($livro['tipo']) ?></div><?php endif; ?>
+              <small><?= htmlspecialchars($livro['titulo']) ?></small>
+            </a>
+            <a href="<?= URL_BASE ?>public_html/ver_livro.php?id=<?= $livro['id'] ?>" class="btn btn-outline-primary btn-sm btn-ver-mais">Ver mais</a>
+          </div>
         </div>
+      <?php endforeach; ?>
+    </div>
+  <?php else:
+    $secoes = [ '🏅 Destaques' => $destaques, '🆕 Novas Aquisições' => $novos, '⭐ Mais Lidos' => $mais_lidos ];
+    foreach ($secoes as $titulo => $livros):
+  ?>
+    <h4><?= $titulo ?></h4>
+    <div class="swiper mySwiper mb-4">
+      <div class="swiper-wrapper">
+        <?php foreach ($livros as $livro): ?>
+          <div class="swiper-slide livro-item">
+            <a href="<?= URL_BASE ?>public_html/ver_livro.php?id=<?= $livro['id'] ?>">
+              <img src="<?= capaLivro($livro) ?>" alt="Livro">
+              <?php if (!empty($livro['tipo'])): ?><div class="tipo-badge"><?= ucfirst($livro['tipo']) ?></div><?php endif; ?>
+              <small><?= htmlspecialchars($livro['titulo']) ?></small>
+            </a>
+            <a href="<?= URL_BASE ?>public_html/ver_livro.php?id=<?= $livro['id'] ?>" class="btn btn-outline-primary btn-sm btn-ver-mais">Ver mais</a>
+          </div>
         <?php endforeach; ?>
       </div>
     </div>
-    <?php endforeach; ?>
+  <?php endforeach; ?>
 
+  <h4>🎧 LivroCast</h4>
+  <div class="swiper mySwiper mb-5">
+    <div class="swiper-wrapper">
+      <?php foreach ($episodios as $ep): ?>
+        <div class="swiper-slide livro-item">
+          <a href="<?= htmlspecialchars($ep['link']) ?>" target="_blank">
+            <img src="<?= URL_BASE ?>storage/uploads/episodios/<?= $ep['capa'] ?? 'padrao.png' ?>" alt="Episódio">
+            <div class="tipo-badge">Podcast</div>
+            <small><?= htmlspecialchars($ep['titulo']) ?></small>
+          </a>
+        </div>
+      <?php endforeach; ?>
+    </div>
   </div>
+  <?php endif; ?>
+</div>
 
-  <footer class="bg-dark text-white text-center py-3">
-    <p class="mb-0">&copy; <?= date('Y') ?> <?= NOME_SISTEMA ?> | Desenvolvido por Marcelo Botura Souza</p>
-  </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const temaToggle = document.getElementById('tema-toggle');
+  temaToggle.onclick = () => {
+    const atual = document.body.getAttribute('data-bs-theme');
+    const novo = atual === 'dark' ? 'light' : 'dark';
+    document.body.setAttribute('data-bs-theme', novo);
+    document.cookie = 'modo_tema=' + novo;
+    temaToggle.classList.toggle('bi-sun-fill');
+    temaToggle.classList.toggle('bi-moon-stars-fill');
+  };
+
+  new Swiper('.mySwiper', {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    breakpoints: {
+      576: { slidesPerView: 3 },
+      768: { slidesPerView: 4 },
+      992: { slidesPerView: 5 },
+      1200: { slidesPerView: 6 }
+    },
+    loop: true,
+    autoplay: { delay: 3500 },
+  });
+</script>
 </body>
 </html>

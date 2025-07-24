@@ -85,7 +85,7 @@ $caminhoFoto       = (!empty($foto) && file_exists($caminhoFisicoFoto)) ? $camin
         <div class="card-body">
           <h3 class="card-title">🔍 Pesquisar Livros</h3>
           <p class="card-text">Explore o acervo da biblioteca.</p>
-          <a href="<?= URL_BASE ?>frontend/usuario/pesquisa.php" class="btn btn-primario">
+          <a href="<?= URL_BASE ?>frontend/usuario/busca.php" class="btn btn-primario">
             <i class="bi bi-search"></i> Buscar
           </a>
         </div>
@@ -95,9 +95,9 @@ $caminhoFoto       = (!empty($foto) && file_exists($caminhoFisicoFoto)) ? $camin
     <div class="col-md-6 col-lg-4">
       <article class="card h-100">
         <div class="card-body">
-          <h3 class="card-title">📖 Meus Empréstimos</h3>
+          <h3 class="card-title">📖 Empréstimos</h3>
           <p class="card-text">Acompanhe os livros que você está lendo.</p>
-          <a href="<?= URL_BASE ?>frontend/usuario/historico_leitura.php" class="btn btn-primario">
+          <a href="<?= URL_BASE ?>frontend/usuario/emprestimo.php" class="btn btn-primario">
             <i class="bi bi-book-half"></i> Visualizar
           </a>
         </div>
@@ -115,6 +115,30 @@ $caminhoFoto       = (!empty($foto) && file_exists($caminhoFisicoFoto)) ? $camin
         </div>
       </article>
     </div>
+    
+     <div class="col-md-6 col-lg-4">
+      <article class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">💬 Comentários</h3>
+          <p class="card-text">Tudo os meus comentários</p>
+          <a href="<?= URL_BASE ?>frontend/usuario/comentarios.php" class="btn btn-primario">
+            <i class="bi bi-lightbulb"></i> Ver Comentários</a>
+        </div>
+      </article>
+</div>
+
+
+    <div class="col-md-6 col-lg-4">
+      <article class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">🕑 Histórico</h3>
+          <p class="card-text">Veja abaixo o seu histórico.</p>
+          <a href="<?= URL_BASE ?>frontend/usuario/historico.php" class="btn btn-secundario">
+            <i class="bi bi-graph-up"></i> Ver Histórico
+          </a>
+        </div>
+      </article>
+    </div>
 
     <div class="col-md-6 col-lg-4">
       <article class="card h-100">
@@ -127,6 +151,20 @@ $caminhoFoto       = (!empty($foto) && file_exists($caminhoFisicoFoto)) ? $camin
         </div>
       </article>
     </div>
+
+
+ <div class="col-md-6 col-lg-4">
+      <article class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">🖐 Sugestão</h3>
+          <p class="card-text">Surir livros ou melhoria</p>
+          <a href="<?= URL_BASE ?>frontend/usuario/sugestao.php" class="btn btn-purple">
+            <i class="bi bi-pencil"></i> Enviar Sugestão
+          </a>
+        </div>
+      </article>
+    </div>
+
 
     <div class="col-md-6 col-lg-4">
       <article class="card h-100">

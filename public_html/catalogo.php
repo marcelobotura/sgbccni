@@ -1,17 +1,16 @@
 <?php
 // Caminho: public_html/catalogo.php
-
 declare(strict_types=1);
 
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 
-// Caminho base
 define('BASE_PATH', dirname(__DIR__));
 require_once BASE_PATH . '/backend/config/config.php';
 require_once BASE_PATH . '/backend/includes/db.php';
+require_once BASE_PATH . '/backend/includes/session.php';
 
-// Filtros da URL
+// Filtros
 $busca = trim($_GET['q'] ?? '');
 $categoria = $_GET['categoria'] ?? '';
 $tipo = $_GET['tipo'] ?? '';
@@ -19,12 +18,12 @@ $formato = $_GET['formato'] ?? '';
 $ano_inicio = $_GET['ano_inicio'] ?? '';
 $ano_fim = $_GET['ano_fim'] ?? '';
 
-// Carrega categorias disponíveis
+// Carregar categorias
 $cat_stmt = $pdo->prepare("SELECT nome FROM tags WHERE tipo = 'categoria' ORDER BY nome ASC");
 $cat_stmt->execute();
 $categorias_disponiveis = $cat_stmt->fetchAll(PDO::FETCH_COLUMN);
 
-// Monta a query SQL
+// Monta SQL
 $where = [];
 $params = [];
 
@@ -85,10 +84,13 @@ function capaLivro(array $livro): string {
   <title>Catálogo de Livros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base.css">
-  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/layout.css">
-  <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/components.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    .livro-card:hover { cursor: pointer; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .detalhes-livro { border-top: 1px solid #ccc; margin-top: 30px; padding-top: 20px; display: none; }
+    .estrelinhas i { color: gold; }
+  </style>
 </head>
 <body>
 <div class="container py-4">
@@ -127,29 +129,33 @@ function capaLivro(array $livro): string {
   </form>
 
   <div class="row g-4">
-    <?php if ($livros): ?>
-      <?php foreach ($livros as $livro): ?>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card h-100">
-            <img src="<?= capaLivro($livro) ?>" class="card-img-top" alt="Capa do livro" style="height: 220px; object-fit: cover;">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h5>
-              <p class="card-text small text-muted mb-2">
-                <?= htmlspecialchars($livro['autor_nome'] ?? '-') ?> | <?= htmlspecialchars($livro['editora_nome'] ?? '-') ?>
-              </p>
-              <a href="ver_livro.php?id=<?= $livro['id'] ?>" class="btn btn-outline-primary mt-auto">
-                <i class="bi bi-eye"></i> Ver detalhes
-              </a>
-            </div>
+    <?php foreach ($livros as $livro): ?>
+      <div class="col-sm-6 col-md-4 col-lg-3 livro-card" onclick="mostrarDetalhes(<?= $livro['id'] ?>)">
+        <div class="card h-100">
+          <img src="<?= capaLivro($livro) ?>" class="card-img-top" alt="Capa do livro" style="height: 220px; object-fit: cover;">
+          <div class="card-body">
+            <h6 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h6>
+            <small class="text-muted"><?= htmlspecialchars($livro['autor_nome'] ?? '-') ?></small>
           </div>
         </div>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <div class="col-12">
-        <div class="alert alert-warning text-center">⚠️ Nenhum resultado encontrado.</div>
       </div>
-    <?php endif; ?>
+    <?php endforeach; ?>
   </div>
+
+  <!-- 🔽 Detalhes do livro clicado -->
+  <div id="painelDetalhes" class="detalhes-livro row mt-5"></div>
 </div>
+
+<script>
+function mostrarDetalhes(id) {
+  fetch('ver_livro_ajax.php?id=' + id)
+    .then(resp => resp.text())
+    .then(html => {
+      document.getElementById('painelDetalhes').innerHTML = html;
+      document.getElementById('painelDetalhes').style.display = 'flex';
+      window.scrollTo({ top: document.getElementById('painelDetalhes').offsetTop - 100, behavior: 'smooth' });
+    });
+}
+</script>
 </body>
 </html>

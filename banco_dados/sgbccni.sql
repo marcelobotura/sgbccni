@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Jul-2025 às 19:57
+-- Tempo de geração: 24-Jul-2025 às 22:49
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -550,7 +550,8 @@ INSERT INTO `log_visualizacoes` (`id`, `usuario_id`, `livro_id`, `data_visualiza
 (85, 29, 14, '2025-07-24 14:38:03', '::1'),
 (86, 29, 14, '2025-07-24 14:38:23', '::1'),
 (87, 29, 14, '2025-07-24 14:38:23', '::1'),
-(88, 29, 14, '2025-07-24 14:38:25', '::1');
+(88, 29, 14, '2025-07-24 14:38:25', '::1'),
+(89, 29, 12, '2025-07-24 15:38:19', '::1');
 
 -- --------------------------------------------------------
 
@@ -772,7 +773,7 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `tipo`, `imagem_perfil`,
 (42, 'marcelo', 'marcelo@admin.com', '$2y$10$kYnqOrEkQB2cYQ84polqyerJjdgWcafB00WSPWNpMLWKv0YXPfyzm', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 17:32:08', NULL, '2025-07-22 11:43:32'),
 (43, 'José Batista', 'josefyfoz@gmail.com', '$2y$10$uaRrhyW1VdNs5yjmcScT4uKF1iiGsbADipAi/Lj9hXx4YFCxSg9O6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:34:39', NULL, '2025-07-22 11:43:32'),
 (44, 'pedrinho', 'pedrinho@pedrinho.com', '$2y$10$O/qJdCYTYgYOFnr7WKONFOxnHltRrjTuEJxIFudXvcHP8LRXMiUoO', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:41:36', NULL, '2025-07-22 11:43:32'),
-(45, 'Emanoela Tatiane', 'emanoelasouza@gmail.com', '$2y$10$EKWc9ccBYWViEvRq1LYhUuAxh98tmZJ2TF.sX6pinyQcy54Z4v6AC', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:42:29', NULL, '2025-07-22 11:43:32'),
+(45, 'Emanoela Tatiane Souza', 'emanoelasouza@gmail.com', '$2y$10$EKWc9ccBYWViEvRq1LYhUuAxh98tmZJ2TF.sX6pinyQcy54Z4v6AC', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:42:29', NULL, '2025-07-22 11:43:32'),
 (46, 'Marcelo Souza', 'm_botura@gmail.com', '$2y$10$qMC.w9oz/LZlqUgs7yFUs.cDLeQNbOmd6usTyPz9CUzMj2KPAoC3y', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 01:44:02', NULL, '2025-07-22 11:43:32'),
 (47, 'Pedro', 'pedro@pedro.com', '$2y$10$C0Nmj9PEs6gmyznvRryBpODYKUROl8pTaSyzJXBT5An.TNg79voOO', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 23:22:44', NULL, '2025-07-22 11:43:32'),
 (48, 'ola', 'ola@ola.com', '$2y$10$zE4AWIcEgqI.C6yIE.PG2O9JBYYyDOqw934pPaobXz0d6p7mxt8GG', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 23:24:40', NULL, '2025-07-22 11:43:32'),
@@ -1064,7 +1065,7 @@ ALTER TABLE `log_usuarios`
 -- AUTO_INCREMENT de tabela `log_visualizacoes`
 --
 ALTER TABLE `log_visualizacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT de tabela `mensagens`

@@ -1,12 +1,12 @@
-Listagem de caminhos de pasta
-O número de série do volume é 3E99-D763
+Listagem de caminhos de pasta para o volume WINDOWS
+O número de série do volume é 120D-C230
 C:.
 ¦   .env
 ¦   .gitattributes
 ¦   .gitignore
 ¦   composer.json
 ¦   composer.lock
-¦   estrutura_atual_do_sistema.txt
+¦   estrutura.txt
 ¦   README.md
 ¦   
 +---backend
@@ -18,6 +18,16 @@ C:.
 ¦   ¦       env.php
 ¦   ¦       
 ¦   +---controllers
+¦   ¦   +---arquivos
+¦   ¦   ¦   ¦   excluir_arquivo.php
+¦   ¦   ¦   ¦   salvar_arquivo.php
+¦   ¦   ¦   ¦   salvar_edicao_arquivo.php
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---frontend
+¦   ¦   ¦       +---admin
+¦   ¦   ¦           +---pages
+¦   ¦   ¦                   ver_arquivo.php
+¦   ¦   ¦                   
 ¦   ¦   +---autenticacao
 ¦   ¦   ¦       login.php
 ¦   ¦   ¦       logout.php
@@ -47,6 +57,15 @@ C:.
 ¦   ¦   ¦       excluir_mensagem.php
 ¦   ¦   ¦       salvar_mensagem.php
 ¦   ¦   ¦       
+¦   ¦   +---midias
+¦   ¦   ¦       buscar_info_midia.php
+¦   ¦   ¦       salvar_edicao_midia.php
+¦   ¦   ¦       salvar_midia.php
+¦   ¦   ¦       
+¦   ¦   +---relatorios
+¦   ¦   ¦       gerar_excel.php
+¦   ¦   ¦       gerar_pdf.php
+¦   ¦   ¦       
 ¦   ¦   +---sugestoes
 ¦   ¦   ¦       enviar_sugestao.php
 ¦   ¦   ¦       marcar_lida.php
@@ -63,6 +82,7 @@ C:.
 ¦   ¦       atividade_logger.php
 ¦   ¦       db.php
 ¦   ¦       footer.php
+¦   ¦       functions_admin.php
 ¦   ¦       header.php
 ¦   ¦       menu.php
 ¦   ¦       protect_admin.php
@@ -74,31 +94,13 @@ C:.
 ¦           isbn_lookup.php
 ¦           
 +---banco_dados
+¦       estrutura_atual_do_sistema.txt
 ¦       sgbccni.sql
 ¦       
 +---cache_isbn
-¦       1939591023.json
-¦       8525409510.json
-¦       8532645720.json
-¦       9780356085135.json
-¦       9781409901853.json
-¦       9781939591029.json
-¦       9783368113469.json
-¦       9786555872835.json
-¦       9786556661353.json
-¦       9786586490619.json
-¦       9786599036484.json
-¦       9788466652339.json
-¦       9788525409515.json
-¦       9788532645722.json
-¦       9788540205413.json
-¦       9788552100560.json
-¦       9788581303079.json
-¦       9789561315686.json
-¦       9789722354219.json
-¦       
 +---frontend
 ¦   +---admin
+¦   ¦   ¦   gerenciar_sugestoes.php
 ¦   ¦   ¦   index.php
 ¦   ¦   ¦   
 ¦   ¦   +---ajax
@@ -106,48 +108,60 @@ C:.
 ¦   ¦   ¦       salvar_tag.php
 ¦   ¦   ¦       
 ¦   ¦   +---pages
-¦   ¦           adicionar_tag.php
-¦   ¦           adicionar_usuario.php
-¦   ¦           aprovar_comentario.php
-¦   ¦           backup.php
-¦   ¦           cadastrar_livro.php
-¦   ¦           configuracoes.php
-¦   ¦           dashboard.php
-¦   ¦           diagnostico.php
-¦   ¦           editar_livro.php
-¦   ¦           editar_tag.php
-¦   ¦           editar_usuario.php
-¦   ¦           excluir_comentario.php
-¦   ¦           excluir_mensagem.php
-¦   ¦           excluir_usuario.php
-¦   ¦           exportar_mensagens_csv.php
-¦   ¦           exportar_mensagens_pdf.php
-¦   ¦           gerenciar_arquivos.php
-¦   ¦           gerenciar_comentarios.php
-¦   ¦           gerenciar_livros.php
-¦   ¦           gerenciar_logs.php
-¦   ¦           gerenciar_mensagens.php
-¦   ¦           gerenciar_relatorios.php
-¦   ¦           gerenciar_sugestoes.php
-¦   ¦           gerenciar_tags.php
-¦   ¦           gerenciar_usuarios.php
-¦   ¦           index1.php
-¦   ¦           listar_livros.php
-¦   ¦           logs_atividade.php
-¦   ¦           logs_login.php
-¦   ¦           logs_redefinicao.php
-¦   ¦           mapa_sistema.php
-¦   ¦           mensagens.php
-¦   ¦           protect_admin.php
-¦   ¦           register_admin.php
-¦   ¦           responder_sugestao.php
-¦   ¦           restaurar_backup.php
-¦   ¦           salvar_admin.php
-¦   ¦           salvar_configuracoes.php
-¦   ¦           ver_livro.php
-¦   ¦           ver_mensagem.php
-¦   ¦           visualizar_livro.php
-¦   ¦           
+¦   ¦       ¦   adicionar_tag.php
+¦   ¦       ¦   adicionar_usuario.php
+¦   ¦       ¦   aprovar_comentario.php
+¦   ¦       ¦   backup.php
+¦   ¦       ¦   cadastrar_livro.php
+¦   ¦       ¦   cadastrar_midia.php
+¦   ¦       ¦   configuracoes.php
+¦   ¦       ¦   dashboard.php
+¦   ¦       ¦   diagnostico.php
+¦   ¦       ¦   editar_arquivo.php
+¦   ¦       ¦   editar_livro.php
+¦   ¦       ¦   editar_midia.php
+¦   ¦       ¦   editar_tag.php
+¦   ¦       ¦   editar_usuario.php
+¦   ¦       ¦   excluir_comentario.php
+¦   ¦       ¦   excluir_mensagem.php
+¦   ¦       ¦   excluir_midia.php
+¦   ¦       ¦   excluir_usuario.php
+¦   ¦       ¦   exportar_mensagens_csv.php
+¦   ¦       ¦   exportar_mensagens_pdf.php
+¦   ¦       ¦   gerenciar_arquivos.php
+¦   ¦       ¦   gerenciar_comentarios.php
+¦   ¦       ¦   gerenciar_livros.php
+¦   ¦       ¦   gerenciar_logs.php
+¦   ¦       ¦   gerenciar_mensagens.php
+¦   ¦       ¦   gerenciar_midias.php
+¦   ¦       ¦   gerenciar_relatorios.php
+¦   ¦       ¦   gerenciar_sugestoes.php
+¦   ¦       ¦   gerenciar_tags.php
+¦   ¦       ¦   gerenciar_usuarios.php
+¦   ¦       ¦   index1.php
+¦   ¦       ¦   listar_livros.php
+¦   ¦       ¦   logs_atividade.php
+¦   ¦       ¦   logs_login.php
+¦   ¦       ¦   logs_redefinicao.php
+¦   ¦       ¦   mapa_sistema.php
+¦   ¦       ¦   mensagens.php
+¦   ¦       ¦   protect_admin.php
+¦   ¦       ¦   register_admin.php
+¦   ¦       ¦   responder_sugestao.php
+¦   ¦       ¦   restaurar_backup.php
+¦   ¦       ¦   salvar_admin.php
+¦   ¦       ¦   salvar_configuracoes.php
+¦   ¦       ¦   ver_livro.php
+¦   ¦       ¦   ver_mensagem.php
+¦   ¦       ¦   visualizar_livro.php
+¦   ¦       ¦   
+¦   ¦       +---relatorios
+¦   ¦               categorias.php
+¦   ¦               editoras.php
+¦   ¦               exportar.php
+¦   ¦               favoritos.php
+¦   ¦               livros_lidos.php
+¦   ¦               
 ¦   +---assets
 ¦   ¦   +---css
 ¦   ¦   ¦   +---base
@@ -242,6 +256,7 @@ C:.
 ¦       emprestar_livro.php
 ¦       enviar.php
 ¦       index.php
+¦       login.php
 ¦       pesquisa.php
 ¦       sistema.php
 ¦       sobre.php
@@ -251,16 +266,15 @@ C:.
 +---storage
 ¦   +---logs
 ¦   ¦       php-error.log
+¦   ¦       system-error.log
 ¦   ¦       
 ¦   +---uploads
 ¦       ¦   .htaccess
 ¦       ¦   
 ¦       +---arquivos
 ¦       ¦   +---apostilas
-¦       ¦   ¦       mensagens_contato.pdf
-¦       ¦   ¦       
-¦       ¦   +---editais
-¦       ¦   +---imagens
+¦       ¦           mensagens_contato.pdf
+¦       ¦           
 ¦       +---capas
 ¦       ¦       .gitignore
 ¦       ¦       capa_684c4832ac2535.66742834.jpg
@@ -273,12 +287,20 @@ C:.
 ¦       ¦       vidas-secas.jpg
 ¦       ¦       
 ¦       +---perfis
-¦       ¦       .gitkeep
-¦       ¦       perfil_29_1753197337.jpg
-¦       ¦       perfil_49_1753199996.png
-¦       ¦       
-¦       +---qrcodes
+¦               .gitkeep
+¦               perfil_29_1753197337.jpg
+¦               perfil_49_1753199996.png
+¦               
 +---uploads
+¦   +---arquivos
+¦       +---apostilas
+¦       ¦       POSTAL_Dia dos Pais25.pdf
+¦       ¦       
+¦       +---editais
+¦       +---imagens
+¦       ¦       Captura de tela 2025-03-07 164730.png
+¦       ¦       
+¦       +---outros
 +---vendor
     ¦   autoload.php
     ¦   

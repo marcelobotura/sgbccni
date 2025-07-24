@@ -21,13 +21,17 @@ require_once BASE_PATH . '/backend/config/config.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/pages/painel_admin.css">
+
+  <style>
+    .text-purple { color: #6f42c1 !important; }
+  </style>
 </head>
 <body class="bg-light">
 
 <div class="container py-5">
   <h1 class="text-center mb-4 text-primary"><i class="bi bi-speedometer2"></i> Painel Administrativo</h1>
   <div class="row g-4">
-  
+
     <!-- 📚 Livros -->
     <div class="col-md-4">
       <a href="pages/gerenciar_livros.php" class="text-decoration-none">
@@ -106,6 +110,19 @@ require_once BASE_PATH . '/backend/config/config.php';
       </a>
     </div>
 
+    <!-- 🎙️ Mídias -->
+    <div class="col-md-4">
+      <a href="pages/gerenciar_midias.php" class="text-decoration-none">
+        <div class="card text-center shadow-sm h-100">
+          <div class="card-body">
+            <i class="bi bi-play-circle fs-1 text-purple"></i>
+            <h5 class="card-title mt-2">Mídias</h5>
+            <p class="text-muted small">Vídeos, podcasts e conteúdo interativo.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
     <!-- 📊 Relatórios -->
     <div class="col-md-4">
       <a href="pages/gerenciar_relatorios.php" class="text-decoration-none">
@@ -170,7 +187,7 @@ require_once BASE_PATH . '/backend/config/config.php';
         </div>
       </a>
     </div>
-    
+
   </div>
 </div>
 

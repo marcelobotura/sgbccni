@@ -5379,3 +5379,45 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\sgbccni\backend\controllers\relatorios\gerar_pdf.php on line 7
+[24-Jul-2025 11:32:18 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 11:43:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 11:50:08 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 11:50:08 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 11:50:08 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 11:50:08 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 12:49:52 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:12
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(93): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 12
+[24-Jul-2025 12:49:55 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:12
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(93): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 12
+[24-Jul-2025 12:50:00 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:12
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(93): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 12
+[24-Jul-2025 12:55:03 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_midia.php on line 61
+[24-Jul-2025 12:55:03 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_midia.php on line 80
+[24-Jul-2025 13:40:45 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 75
+[24-Jul-2025 13:40:45 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 79
+[24-Jul-2025 13:40:45 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 94
+[24-Jul-2025 13:40:45 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 98
+[24-Jul-2025 13:40:45 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_livro.php on line 104
+[24-Jul-2025 15:39:41 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_midia.php on line 61
+[24-Jul-2025 15:39:41 America/Sao_Paulo] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\sgbccni\frontend\admin\pages\editar_midia.php on line 80
+[24-Jul-2025 15:39:56 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 15:39:56 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 15:39:56 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 15:39:56 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24

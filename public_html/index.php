@@ -1,4 +1,3 @@
-
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -41,7 +40,7 @@ $mais_lidos = $pdo->query("SELECT l.id, l.titulo, l.capa_url, l.capa_local, l.ti
                             FROM livros l
                             JOIN livros_usuarios lu ON l.id = lu.livro_id AND lu.status = 'favorito'
                             GROUP BY l.id ORDER BY favoritos DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
-$episodios = $pdo->query("SELECT id, titulo, link, capa FROM episodios ORDER BY criado_em DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
+$midias = $pdo->query("SELECT id, titulo, url, capa_url, tipo FROM midias ORDER BY criado_em DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -67,13 +66,13 @@ $episodios = $pdo->query("SELECT id, titulo, link, capa FROM episodios ORDER BY 
 <body data-bs-theme="light">
 <header class="bg-dark text-white py-3 mb-4">
   <div class="container d-flex justify-content-between align-items-center">
-    <h1 class="h4 m-0"><a href="index.php" class="text-white text-decoration-none">📚 <?= NOME_SISTEMA ?></a></h1>
+    <h1 class="h4 m-0"><a href="<?= URL_BASE ?>index.php" class="text-white text-decoration-none">📚 <?= NOME_SISTEMA ?></a></h1>
     <nav class="d-flex align-items-center">
-      <a href="index.php" class="text-white me-3">Início</a>
-      <a href="sobre.php" class="text-white me-3">Sobre</a>
-      <a href="sistema.php" class="text-white me-3">Sistema</a>
-      <a href="contato.php" class="text-white me-3">Contato</a>
-      <a href="../frontend/login/login.php" class="btn btn-outline-light btn-sm">Entrar</a>
+      <a href="<?= URL_BASE ?>index.php" class="text-white me-3">Início</a>
+      <a href="<?= URL_BASE ?>sobre.php" class="text-white me-3">Sobre</a>
+      <a href="<?= URL_BASE ?>sistema.php" class="text-white me-3">Sistema</a>
+      <a href="<?= URL_BASE ?>contato.php" class="text-white me-3">Contato</a>
+      <a href="<?= URL_BASE ?>login.php" class="btn btn-outline-light btn-sm">Entrar</a>
       <i class="bi bi-moon-stars-fill tema-toggle" id="tema-toggle"></i>
     </nav>
   </div>
@@ -90,12 +89,12 @@ $episodios = $pdo->query("SELECT id, titulo, link, capa FROM episodios ORDER BY 
       <?php foreach ($resultados as $livro): ?>
         <div class="col-6 col-sm-4 col-md-3 col-lg-2">
           <div class="livro-item">
-            <a href="<?= URL_BASE ?>public_html/ver_livro.php?id=<?= $livro['id'] ?>">
+            <a href="<?= URL_BASE ?>ver_livro.php?id=<?= $livro['id'] ?>">
               <img src="<?= capaLivro($livro) ?>" alt="Capa do livro">
               <?php if (!empty($livro['tipo'])): ?><div class="tipo-badge"><?= ucfirst($livro['tipo']) ?></div><?php endif; ?>
               <small><?= htmlspecialchars($livro['titulo']) ?></small>
             </a>
-            <a href="<?= URL_BASE ?>public_html/ver_livro.php?id=<?= $livro['id'] ?>" class="btn btn-outline-primary btn-sm btn-ver-mais">Ver mais</a>
+            <a href="<?= URL_BASE ?>ver_livro.php?id=<?= $livro['id'] ?>" class="btn btn-outline-primary btn-sm btn-ver-mais">Ver mais</a>
           </div>
         </div>
       <?php endforeach; ?>
@@ -109,27 +108,27 @@ $episodios = $pdo->query("SELECT id, titulo, link, capa FROM episodios ORDER BY 
       <div class="swiper-wrapper">
         <?php foreach ($livros as $livro): ?>
           <div class="swiper-slide livro-item">
-            <a href="<?= URL_BASE ?>public_html/ver_livro.php?id=<?= $livro['id'] ?>">
+            <a href="<?= URL_BASE ?>ver_livro.php?id=<?= $livro['id'] ?>">
               <img src="<?= capaLivro($livro) ?>" alt="Livro">
               <?php if (!empty($livro['tipo'])): ?><div class="tipo-badge"><?= ucfirst($livro['tipo']) ?></div><?php endif; ?>
               <small><?= htmlspecialchars($livro['titulo']) ?></small>
             </a>
-            <a href="<?= URL_BASE ?>public_html/ver_livro.php?id=<?= $livro['id'] ?>" class="btn btn-outline-primary btn-sm btn-ver-mais">Ver mais</a>
+            <a href="<?= URL_BASE ?>ver_livro.php?id=<?= $livro['id'] ?>" class="btn btn-outline-primary btn-sm btn-ver-mais">Ver mais</a>
           </div>
         <?php endforeach; ?>
       </div>
     </div>
   <?php endforeach; ?>
 
-  <h4>🎧 LivroCast</h4>
+  <h4>🎧 LivroCast e Vídeos</h4>
   <div class="swiper mySwiper mb-5">
     <div class="swiper-wrapper">
-      <?php foreach ($episodios as $ep): ?>
+      <?php foreach ($midias as $midia): ?>
         <div class="swiper-slide livro-item">
-          <a href="<?= htmlspecialchars($ep['link']) ?>" target="_blank">
-            <img src="<?= URL_BASE ?>storage/uploads/episodios/<?= $ep['capa'] ?? 'padrao.png' ?>" alt="Episódio">
-            <div class="tipo-badge">Podcast</div>
-            <small><?= htmlspecialchars($ep['titulo']) ?></small>
+          <a href="<?= htmlspecialchars($midia['url']) ?>" target="_blank">
+            <img src="<?= !empty($midia['capa_url']) ? htmlspecialchars($midia['capa_url']) : URL_BASE . 'frontend/assets/img/livro_padrao.png' ?>" alt="<?= htmlspecialchars($midia['tipo']) ?>">
+            <div class="tipo-badge"><?= ucfirst($midia['tipo']) ?></div>
+            <small><?= htmlspecialchars($midia['titulo']) ?></small>
           </a>
         </div>
       <?php endforeach; ?>

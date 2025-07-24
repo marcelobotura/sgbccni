@@ -73,7 +73,7 @@ $episodios = $pdo->query("SELECT id, titulo, link, capa FROM episodios ORDER BY 
       <a href="sobre.php" class="text-white me-3">Sobre</a>
       <a href="sistema.php" class="text-white me-3">Sistema</a>
       <a href="contato.php" class="text-white me-3">Contato</a>
-      <a href="/frontend/login/login.php" class="btn btn-outline-light btn-sm">Entrar</a>
+      <a href="../frontend/login/login.php" class="btn btn-outline-light btn-sm">Entrar</a>
       <i class="bi bi-moon-stars-fill tema-toggle" id="tema-toggle"></i>
     </nav>
   </div>

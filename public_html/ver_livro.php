@@ -40,15 +40,7 @@ function capaLivro(array $livro): string {
 $link_preview = $livro['link_leitura'] ?? '#';
 $logado = isset($_SESSION['usuario_id']);
 
-// 🔙 URL de origem
-$return_url = 'catalogo.php';
-if (isset($_GET['origem']) && $_GET['origem'] === 'index') {
-  $return_url = 'index.php';
-  if (!empty($_GET['q'])) {
-    $return_url .= '?q=' . urlencode($_GET['q']);
-  }
-}
-$back_button_link = URL_BASE . $return_url;
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -64,11 +56,12 @@ $back_button_link = URL_BASE . $return_url;
     .estrelinhas i { color: gold; }
     .badge { font-size: 0.85em; margin-right: 4px; }
   </style>
+  
 </head>
 <body>
 <div class="container py-5">
 
-  <a href="<?= $back_button_link ?>" class="btn btn-outline-secondary mb-3">
+  <a href="index.php" class="btn btn-outline-secondary mb-3">
     <i class="bi bi-arrow-left"></i> Voltar
   </a>
 

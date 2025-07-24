@@ -6,7 +6,7 @@ require_once BASE_PATH . '/backend/config/config.php';
 require_once BASE_PATH . '/backend/includes/session.php';
 require_once BASE_PATH . '/backend/includes/protect_admin.php';
 require_once BASE_PATH . '/backend/includes/header.php';
-require_once BASE_PATH . '/backend/includes/menu.php';
+
 
 exigir_login('admin');
 

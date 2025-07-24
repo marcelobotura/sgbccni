@@ -3,7 +3,7 @@ define('BASE_PATH', dirname(__DIR__, 3));
 require_once BASE_PATH . '/backend/config/config.php';
 require_once BASE_PATH . '/backend/includes/session.php';
 require_once BASE_PATH . '/backend/includes/header.php';
-require_once BASE_PATH . '/backend/includes/menu.php';
+
 
 exigir_login('admin');
 
@@ -94,4 +94,3 @@ $sugestoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <?php endif; ?>
 </div>
 
-<?php require_once BASE_PATH . '/backend/includes/footer.php'; ?>

@@ -5125,3 +5125,257 @@ Stack trace:
 #0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
 #1 {main}
   thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:05:26 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'destaque' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\index.php:38
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(38): PDO->query('SELECT id, titu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 38
+[24-Jul-2025 07:07:42 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:07:50 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:07:50 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:09:40 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:09:40 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:12:30 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:12:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:13:24 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:14:13 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:14:31 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:17:24 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:18:10 America/Sao_Paulo] PHP Warning:  Undefined variable $back_button_link in C:\xampp\htdocs\sgbccni\public_html\ver_livro.php on line 63
+[24-Jul-2025 07:18:18 America/Sao_Paulo] PHP Warning:  Undefined variable $back_button_link in C:\xampp\htdocs\sgbccni\public_html\ver_livro.php on line 63
+[24-Jul-2025 07:19:28 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:20:37 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:23:43 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:23:50 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:24:54 America/Sao_Paulo] PHP Warning:  Undefined variable $back_button_link in C:\xampp\htdocs\sgbccni\public_html\ver_livro.php on line 66
+[24-Jul-2025 07:25:06 America/Sao_Paulo] PHP Warning:  Undefined variable $back_button_link in C:\xampp\htdocs\sgbccni\public_html\ver_livro.php on line 66
+[24-Jul-2025 07:25:08 America/Sao_Paulo] PHP Warning:  Undefined variable $back_button_link in C:\xampp\htdocs\sgbccni\public_html\ver_livro.php on line 66
+[24-Jul-2025 07:25:08 America/Sao_Paulo] PHP Warning:  Undefined variable $back_button_link in C:\xampp\htdocs\sgbccni\public_html\ver_livro.php on line 66
+[24-Jul-2025 07:25:52 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:25:55 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:25:57 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:26:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:26:37 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:27:48 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:28:16 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:13
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(113): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 13
+[24-Jul-2025 07:41:08 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 07:41:08 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 07:41:08 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 07:41:08 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 07:54:11 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 07:54:11 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 07:54:11 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 07:54:11 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 08:01:49 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 08:01:49 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 08:01:49 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 08:01:49 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 08:43:55 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function contador_livros_lidos() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php:23
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php on line 23
+[24-Jul-2025 08:44:44 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/config/config.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\backend\includes\functions_admin.php on line 8
+[24-Jul-2025 08:44:44 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/config/config.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\backend\includes\functions_admin.php:8
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php(12): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\includes\functions_admin.php on line 8
+[24-Jul-2025 08:52:31 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 15
+[24-Jul-2025 08:52:32 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 15
+[24-Jul-2025 08:53:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 15
+[24-Jul-2025 08:53:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 15
+[24-Jul-2025 08:54:03 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 14
+[24-Jul-2025 08:54:04 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 14
+[24-Jul-2025 08:55:04 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 08:55:04 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 08:56:50 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 08:56:51 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 08:58:36 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 08:58:36 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 09:10:33 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 09:10:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 09:10:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 09:10:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 09:10:34 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function gerar_estatisticas_diarias() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:19
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 19
+[24-Jul-2025 09:11:59 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'data_criacao' in 'where clause' in C:\xampp\htdocs\sgbccni\backend\includes\functions_admin.php:22
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\backend\includes\functions_admin.php(22): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php(19): gerar_estatisticas_diarias(Object(PDO), 30)
+#2 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\includes\functions_admin.php on line 22
+[24-Jul-2025 09:17:32 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function total_livros() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php:25
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\dashboard.php on line 25
+[24-Jul-2025 09:17:46 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function contador_livros_lidos() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php on line 26
+[24-Jul-2025 09:17:50 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function contador_livros_lidos() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php on line 26
+[24-Jul-2025 09:17:50 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function contador_livros_lidos() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php on line 26
+[24-Jul-2025 09:18:14 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function contador_livros_lidos() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php on line 26
+[24-Jul-2025 09:20:37 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function contador_livros_lidos() in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\gerenciar_relatorios.php on line 26
+[24-Jul-2025 09:20:43 America/Sao_Paulo] PHP Warning:  Undefined variable $user in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 09:20:43 America/Sao_Paulo] PHP Warning:  Undefined variable $pass in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 09:20:43 America/Sao_Paulo] PHP Warning:  Undefined variable $host in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 09:20:43 America/Sao_Paulo] PHP Warning:  Undefined variable $db in C:\xampp\htdocs\sgbccni\frontend\admin\pages\backup.php on line 24
+[24-Jul-2025 09:43:27 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class "ZipArchive" not found in C:\xampp\htdocs\sgbccni\backend\controllers\relatorios\gerar_zip.php:28
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\relatorios\gerar_zip.php on line 28
+[24-Jul-2025 09:59:15 America/Sao_Paulo] PHP Warning:  require(C:\xampp\htdocs\sgbccni\backend/vendor/autoload.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\backend\controllers\relatorios\gerar_pdf.php on line 7
+[24-Jul-2025 09:59:15 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni\backend/vendor/autoload.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\backend\controllers\relatorios\gerar_pdf.php:7
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\relatorios\gerar_pdf.php on line 7

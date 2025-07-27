@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['erro'] = "E-mail inválido.";
-        header("Location: " . URL_BASE . "login/login.php");
+        header("Location: " . URL_BASE . "frontend/login/login.php");
         exit;
     }
 
@@ -27,8 +27,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['usuario_nome'] = htmlspecialchars($usuario['nome']);
                 $_SESSION['usuario_tipo'] = $usuario['tipo'];
 
-                $destino = $usuario['tipo'] === 'admin' ? "frontend/admin/index.php" : "frontend/usuario/index.php";
-                header("Location: " . URL_BASE . $destino);
+                // Redireciona conforme o tipo do usuário
+                switch ($usuario['tipo']) {
+                    case 'master':
+                    case 'admin':
+                        header("Location: " . URL_BASE . "frontend/admin/index.php");
+                        break;
+                    case 'usuario':
+                    default:
+                        header("Location: " . URL_BASE . "frontend/usuario/index.php");
+                        break;
+                }
                 exit;
             } else {
                 $_SESSION['erro'] = "Senha incorreta.";
@@ -37,12 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['erro'] = "E-mail não encontrado.";
         }
 
-        header("Location: " . URL_BASE . "login/login.php");
+        header("Location: " . URL_BASE . "frontend/login/login.php");
         exit;
 
     } catch (PDOException $e) {
         $_SESSION['erro'] = "Erro no login: " . $e->getMessage();
-        header("Location: " . URL_BASE . "login/login.php");
+        header("Location: " . URL_BASE . "frontend/login/login.php");
         exit;
     }
 }

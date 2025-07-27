@@ -1,4 +1,5 @@
 <?php
+// Caminho: frontend/admin/pages/gerenciar_usuarios.php
 session_start();
 define('BASE_PATH', dirname(__DIR__, 3) . '/backend');
 
@@ -7,14 +8,12 @@ require_once BASE_PATH . '/includes/session.php';
 require_once BASE_PATH . '/includes/protect_admin.php';
 require_once BASE_PATH . '/includes/header.php';
 
+exigir_login('admin'); // permite 'admin' e 'master'
 
-exigir_login('admin');
-
-// Captura filtros de pesquisa
+// 🔎 Filtros de busca
 $busca = trim($_GET['busca'] ?? '');
 $tipoFiltro = $_GET['tipo'] ?? '';
 
-// Monta a consulta com filtros
 $sql = "SELECT id, nome, email, tipo FROM usuarios WHERE 1";
 $params = [];
 
@@ -23,7 +22,7 @@ if ($busca !== '') {
     $params[':busca'] = "%$busca%";
 }
 
-if (in_array($tipoFiltro, ['admin', 'usuario'])) {
+if (in_array($tipoFiltro, ['admin', 'usuario', 'master'])) {
     $sql .= " AND tipo = :tipo";
     $params[':tipo'] = $tipoFiltro;
 }
@@ -48,7 +47,7 @@ try {
         </a>
     </div>
 
-    <!-- Formulário de busca -->
+    <!-- 🔍 Filtros -->
     <form method="GET" class="row g-2 mb-3">
         <div class="col-md-5">
             <input type="text" name="busca" class="form-control" placeholder="Buscar por nome ou e-mail" value="<?= htmlspecialchars($busca) ?>">
@@ -58,6 +57,7 @@ try {
                 <option value="">Todos os tipos</option>
                 <option value="admin" <?= $tipoFiltro === 'admin' ? 'selected' : '' ?>>Administrador</option>
                 <option value="usuario" <?= $tipoFiltro === 'usuario' ? 'selected' : '' ?>>Usuário</option>
+                <option value="master" <?= $tipoFiltro === 'master' ? 'selected' : '' ?>>Master</option>
             </select>
         </div>
         <div class="col-md-4 d-flex gap-2">
@@ -70,13 +70,14 @@ try {
         </div>
     </form>
 
-    <!-- Mensagens -->
+    <!-- 🔔 Mensagens -->
     <?php if (!empty($_SESSION['sucesso'])): ?>
         <div class="alert alert-success"><?= htmlspecialchars($_SESSION['sucesso']); unset($_SESSION['sucesso']); ?></div>
     <?php elseif (!empty($_SESSION['erro'])): ?>
         <div class="alert alert-danger"><?= htmlspecialchars($_SESSION['erro']); unset($_SESSION['erro']); ?></div>
     <?php endif; ?>
 
+    <!-- 📋 Tabela de usuários -->
     <?php if (count($usuarios) === 0): ?>
         <div class="alert alert-warning text-center">Nenhum usuário encontrado com os filtros aplicados.</div>
     <?php else: ?>
@@ -93,26 +94,43 @@ try {
                 </thead>
                 <tbody>
                     <?php foreach ($usuarios as $usuario): ?>
+                        <?php
+                        $logado_id = $_SESSION['usuario_id'];
+                        $logado_tipo = $_SESSION['usuario_tipo'];
+                        $alvo_id = $usuario['id'];
+                        $alvo_tipo = $usuario['tipo'];
+                        $mesmo_usuario = ($logado_id == $alvo_id);
+                        $pode_gerenciar = $logado_tipo === 'master' || $alvo_tipo !== 'master';
+                        ?>
                         <tr>
-                            <td><?= $usuario['id'] ?></td>
+                            <td><?= $alvo_id ?></td>
                             <td><?= htmlspecialchars($usuario['nome']) ?></td>
                             <td><?= htmlspecialchars($usuario['email']) ?></td>
                             <td>
-                                <span class="badge bg-<?= $usuario['tipo'] === 'admin' ? 'dark' : 'secondary' ?>">
-                                    <?= ucfirst($usuario['tipo']) ?>
+                                <span class="badge bg-<?= 
+                                    $alvo_tipo === 'master' ? 'primary' : 
+                                    ($alvo_tipo === 'admin' ? 'dark' : 'secondary') ?>">
+                                    <?= ucfirst($alvo_tipo) ?>
                                 </span>
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="editar_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-warning">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <?php if ($_SESSION['usuario_id'] != $usuario['id']): ?>
-                                        <a href="excluir_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?')">
+                                    <?php if ($pode_gerenciar): ?>
+                                        <a href="editar_usuario.php?id=<?= $alvo_id ?>" class="btn btn-sm btn-warning">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                    <?php else: ?>
+                                        <span class="btn btn-sm btn-light text-muted" title="Apenas master pode editar outro master.">
+                                            <i class="bi bi-lock"></i>
+                                        </span>
+                                    <?php endif; ?>
+
+                                    <?php if (!$mesmo_usuario && $pode_gerenciar): ?>
+                                        <a href="excluir_usuario.php?id=<?= $alvo_id ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?')">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                     <?php else: ?>
-                                        <span class="btn btn-sm btn-light text-muted" title="Você não pode excluir a si mesmo.">
+                                        <span class="btn btn-sm btn-light text-muted" title="<?= $mesmo_usuario ? 'Você não pode excluir a si mesmo.' : 'Apenas master pode excluir outro master.' ?>">
                                             <i class="bi bi-lock"></i>
                                         </span>
                                     <?php endif; ?>

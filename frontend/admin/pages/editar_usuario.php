@@ -11,7 +11,6 @@ require_once BASE_PATH . '/includes/menu.php';
 
 exigir_login('admin');
 
-// ⚠️ Validação do ID
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 if (!$id) {
     $_SESSION['erro'] = "ID inválido.";
@@ -19,15 +18,41 @@ if (!$id) {
     exit;
 }
 
-// 🧾 Processamento do formulário
+// 🔍 Dados do usuário a ser editado
+$stmt = $pdo->prepare("SELECT nome, email, tipo FROM usuarios WHERE id = :id");
+$stmt->execute([':id' => $id]);
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$usuario) {
+    $_SESSION['erro'] = "Usuário não encontrado.";
+    header("Location: gerenciar_usuarios.php");
+    exit;
+}
+
+// 🔒 Se o usuário a ser editado for MASTER e quem está logado não for MASTER → bloqueia
+if ($usuario['tipo'] === 'master' && $_SESSION['usuario_tipo'] !== 'master') {
+    $_SESSION['erro'] = "Apenas um usuário MASTER pode editar outro MASTER.";
+    header("Location: gerenciar_usuarios.php");
+    exit;
+}
+
+// 📥 Processamento do formulário
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome       = trim($_POST['nome'] ?? '');
     $email      = trim($_POST['email'] ?? '');
     $tipo       = $_POST['tipo'] ?? 'usuario';
     $nova_senha = $_POST['senha'] ?? '';
 
-    if ($nome === '' || $email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || !in_array($tipo, ['admin', 'usuario'])) {
-        $_SESSION['erro'] = "Preencha os dados corretamente.";
+    // Validação básica
+    if ($nome === '' || $email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['erro'] = "Preencha todos os dados corretamente.";
+        header("Location: editar_usuario.php?id=$id");
+        exit;
+    }
+
+    // 🔒 Impede alteração para MASTER se o editor não for MASTER
+    if ($tipo === 'master' && $_SESSION['usuario_tipo'] !== 'master') {
+        $_SESSION['erro'] = "Apenas um usuário MASTER pode atribuir nível MASTER.";
         header("Location: editar_usuario.php?id=$id");
         exit;
     }
@@ -61,17 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: gerenciar_usuarios.php");
     exit;
 }
-
-// 🔍 Buscar dados do usuário para preencher o formulário
-$stmt = $pdo->prepare("SELECT nome, email, tipo FROM usuarios WHERE id = :id");
-$stmt->execute([':id' => $id]);
-$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if (!$usuario) {
-    $_SESSION['erro'] = "Usuário não encontrado.";
-    header("Location: gerenciar_usuarios.php");
-    exit;
-}
 ?>
 
 <div class="container py-4">
@@ -99,6 +113,9 @@ if (!$usuario) {
             <select name="tipo" id="tipo" class="form-select" required>
                 <option value="usuario" <?= $usuario['tipo'] === 'usuario' ? 'selected' : '' ?>>Usuário</option>
                 <option value="admin" <?= $usuario['tipo'] === 'admin' ? 'selected' : '' ?>>Administrador</option>
+                <?php if ($_SESSION['usuario_tipo'] === 'master'): ?>
+                    <option value="master" <?= $usuario['tipo'] === 'master' ? 'selected' : '' ?>>Master</option>
+                <?php endif; ?>
             </select>
         </div>
 

@@ -10,7 +10,6 @@ require_once BASE_PATH . '/config/config.php';
 require_once BASE_PATH . '/includes/session.php';
 require_once BASE_PATH . '/includes/header.php';
 
-
 exigir_login('usuario');
 
 $usuario_id = $_SESSION['usuario_id'] ?? null;
@@ -23,7 +22,8 @@ SELECT
     lu.data_leitura AS data_devolucao,
     lu.observacao,
     l.titulo,
-    l.capa
+    l.capa_local,
+    l.capa_url
 FROM livros_usuarios lu
 JOIN livros l ON lu.livro_id = l.id
 WHERE lu.usuario_id = :usuario_id AND lu.status = 'devolvido'
@@ -32,6 +32,14 @@ ORDER BY lu.data_leitura DESC
 $stmt = $pdo->prepare($sql);
 $stmt->execute([':usuario_id' => $usuario_id]);
 $historico = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// 📦 Função para determinar a capa correta
+function capaLivro($livro) {
+  if (!empty($livro['capa_local']) && file_exists(__DIR__ . '/../../storage/uploads/capas/' . $livro['capa_local'])) {
+    return URL_BASE . 'storage/uploads/capas/' . $livro['capa_local'];
+  }
+  return !empty($livro['capa_url']) ? $livro['capa_url'] : URL_BASE . 'frontend/assets/img/livro_padrao.png';
+}
 ?>
 
 <!DOCTYPE html>
@@ -73,16 +81,11 @@ $historico = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <?php foreach ($historico as $livro): ?>
         <div class="col-md-6 col-lg-4">
           <div class="card h-100">
-            <?php if (!empty($livro['capa'])): ?>
-              <img src="<?= URL_BASE ?>uploads/capas/<?= htmlspecialchars($livro['capa']) ?>" class="img-fluid rounded mb-2" alt="Capa do livro">
-            <?php endif; ?>
-
+            <img src="<?= capaLivro($livro) ?>" class="img-fluid rounded mb-2" alt="Capa do livro">
             <h5 class="card-title"><?= htmlspecialchars($livro['titulo']) ?></h5>
-
             <p class="mb-1 text-muted">
               ✅ Leitura finalizada em: <?= date('d/m/Y', strtotime($livro['data_devolucao'])) ?>
             </p>
-
             <?php if (!empty($livro['observacao'])): ?>
               <p class="small text-secondary mt-2">📝 <?= htmlspecialchars($livro['observacao']) ?></p>
             <?php endif; ?>

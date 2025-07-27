@@ -97,7 +97,7 @@ $caminhoFoto       = (!empty($foto) && file_exists($caminhoFisicoFoto)) ? $camin
         <div class="card-body">
           <h3 class="card-title">📖 Empréstimos</h3>
           <p class="card-text">Acompanhe os livros que você está lendo.</p>
-          <a href="<?= URL_BASE ?>frontend/usuario/emprestimo.php" class="btn btn-primario">
+          <a href="<?= URL_BASE ?>frontend/usuario/emprestimos.php" class="btn btn-primario">
             <i class="bi bi-book-half"></i> Visualizar
           </a>
         </div>

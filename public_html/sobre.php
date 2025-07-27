@@ -27,9 +27,10 @@ require_once __DIR__ . '/../backend/includes/db.php';
     <nav>
         <a href="index.php" class="btn btn-link">Início</a>
         <a href="sobre.php" class="btn btn-link fw-bold text-primary">Sobre</a>
+        <a href="post/index.php" class="btn btn-link">Portagens</a>
         <a href="sistema.php" class="btn btn-link">Sistema</a>
         <a href="contato.php" class="btn btn-link">Contato</a>
-        <a href="<?= URL_BASE ?>frontend/login/login.php" class="btn btn-primary"><i class="bi bi-box-arrow-in-right"></i> Entrar</a>
+        <a href="login.php" class="btn btn-primary"><i class="bi bi-box-arrow-in-right"></i> Entrar</a>
         <i class="bi bi-moon-stars-fill tema-toggle" id="tema-toggle"></i>
       </nav>
     </div>

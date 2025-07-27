@@ -1,13 +1,14 @@
 <?php
 // backend/config/env.php
 
-// 🌐 Define URL base global
+// 🌐 Define a URL base global
 if (!defined('URL_BASE')) {
-    define('URL_BASE', getenv('URL_BASE') ?: 'http://localhost/sgbccni/');
+   define('URL_BASE', getenv('URL_BASE') ?: 'http://localhost/sgbccni/');
+
 }
 
 // ⚙️ Ambiente: true = desenvolvimento, false = produção
-define('ENV_DEV', getenv('ENV_DEV') === 'true');
+define('ENV_DEV', getenv('ENV_DEV') === 'false');
 
 // ⏰ Fuso horário
 date_default_timezone_set(getenv('TIMEZONE') ?: 'America/Sao_Paulo');

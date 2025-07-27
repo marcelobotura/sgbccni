@@ -28,9 +28,10 @@ require_once __DIR__ . '/../backend/includes/session.php';
       <nav>
         <a href="index.php" class="btn btn-link">Início</a>
         <a href="sobre.php" class="btn btn-link">Sobre</a>
+        <a href="post/index.php" class="btn btn-link">Portagens</a>
         <a href="sistema.php" class="btn btn-link fw-bold text-primary">Sistema</a>
         <a href="contato.php" class="btn btn-link">Contato</a>
-        <a href="<?= URL_BASE ?>frontend/login/login.php" class="btn btn-primary">
+        <a href="login.php" class="btn btn-primary">
           <i class="bi bi-box-arrow-in-right"></i> Entrar</a>
         <i class="bi bi-moon-stars-fill tema-toggle ms-3" id="tema-toggle" title="Alternar tema"></i>
       </nav>

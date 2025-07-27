@@ -1,4 +1,4 @@
-<?php
+<?php 
 // Caminho: public_html/ver_livro.php
 declare(strict_types=1);
 
@@ -29,6 +29,11 @@ if (!$livro) {
   die('Livro não encontrado.');
 }
 
+// 🔍 Verifica se está emprestado atualmente
+$stmtStatus = $pdo->prepare("SELECT COUNT(*) FROM emprestimos WHERE livro_id = ? AND status = 'emprestado'");
+$stmtStatus->execute([$livro['id']]);
+$livro_emprestado = $stmtStatus->fetchColumn() > 0;
+
 // Função da capa
 function capaLivro(array $livro): string {
   if (!empty($livro['capa_local']) && file_exists(BASE_PATH . '/storage/uploads/capas/' . $livro['capa_local'])) {
@@ -39,9 +44,8 @@ function capaLivro(array $livro): string {
 
 $link_preview = $livro['link_leitura'] ?? '#';
 $logado = isset($_SESSION['usuario_id']);
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -56,7 +60,6 @@ $logado = isset($_SESSION['usuario_id']);
     .estrelinhas i { color: gold; }
     .badge { font-size: 0.85em; margin-right: 4px; }
   </style>
-  
 </head>
 <body>
 <div class="container py-5">
@@ -71,12 +74,18 @@ $logado = isset($_SESSION['usuario_id']);
 
       <div class="mt-3">
         <?php if ($logado): ?>
-          <a href="<?= URL_BASE ?>frontend/usuario/emprestar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-primary w-100 mb-2">
-            <i class="bi bi-journal-arrow-down"></i> Emprestar
-          </a>
+          <?php if ($livro_emprestado): ?>
+            <a href="<?= URL_BASE ?>frontend/usuario/reservar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-warning w-100 mb-2">
+              <i class="bi bi-calendar-plus"></i> Reservar Livro
+            </a>
+          <?php else: ?>
+            <a href="<?= URL_BASE ?>frontend/usuario/emprestar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-success w-100 mb-2">
+              <i class="bi bi-journal-arrow-down"></i> Emprestar Livro
+            </a>
+          <?php endif; ?>
         <?php else: ?>
           <a href="<?= URL_BASE ?>frontend/login/login.php?redirect=../usuario/emprestar_livro.php&id=<?= $livro['id'] ?>" class="btn btn-primary w-100 mb-2">
-            <i class="bi bi-person-lock"></i> Entrar para emprestar
+            <i class="bi bi-person-lock"></i> Reservar
           </a>
         <?php endif; ?>
 

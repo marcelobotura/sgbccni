@@ -2,11 +2,14 @@
 // Caminho: frontend/admin/index.php
 
 session_start();
-if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'admin') {
+
+// ⚠️ Verifica se o usuário está logado e é admin ou master
+if (!isset($_SESSION['usuario_id']) || !in_array($_SESSION['usuario_tipo'], ['admin', 'master'])) {
     header('Location: ../../login/login_admin.php');
     exit;
 }
 
+// 🛠️ Constantes e configurações
 define('BASE_PATH', dirname(__DIR__, 2));
 require_once BASE_PATH . '/backend/config/config.php';
 ?>
@@ -31,6 +34,33 @@ require_once BASE_PATH . '/backend/config/config.php';
 <div class="container py-5">
   <h1 class="text-center mb-4 text-primary"><i class="bi bi-speedometer2"></i> Painel Administrativo</h1>
   <div class="row g-4">
+
+    <!-- ✅ NOVOS BLOCOS -->
+    <!-- 📖 Empréstimos -->
+    <div class="col-md-4">
+      <a href="pages/emprestimos.php" class="text-decoration-none">
+        <div class="card text-center shadow-sm h-100 border-primary">
+          <div class="card-body">
+            <i class="bi bi-arrow-left-right fs-1 text-primary"></i>
+            <h5 class="card-title mt-2">Empréstimos</h5>
+            <p class="text-muted small">Controle de empréstimos e devoluções.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 📝 Reservas -->
+    <div class="col-md-4">
+      <a href="pages/reservas.php" class="text-decoration-none">
+        <div class="card text-center shadow-sm h-100 border-info">
+          <div class="card-body">
+            <i class="bi bi-bookmark-check fs-1 text-info"></i>
+            <h5 class="card-title mt-2">Reservas</h5>
+            <p class="text-muted small">Livros reservados por usuários.</p>
+          </div>
+        </div>
+      </a>
+    </div>
 
     <!-- 📚 Livros -->
     <div class="col-md-4">

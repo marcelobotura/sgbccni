@@ -1,16 +1,7 @@
-<?php
-// Caminho: backend/config/config.php
-
-// Define a BASE_PATH como raiz absoluta do projeto
-if (!defined('BASE_PATH')) {
-    define('BASE_PATH', realpath(__DIR__ . '/../..'));
-}
-
-// Inclui o arquivo de variáveis de ambiente
-require_once BASE_PATH . '/backend/config/env.php';
-
-// Outras configurações gerais podem ser mantidas aqui...
-
+<?php 
+// ✅ Carrega variáveis de ambiente e sessão
+require_once __DIR__ . '/env.php';
+require_once __DIR__ . '/../includes/session.php';
 
 $erros = [];
 $avisos = [];

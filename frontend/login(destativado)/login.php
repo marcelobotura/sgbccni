@@ -1,17 +1,17 @@
-<!-- Caminho: frontend/login/login.php -->
 <?php
+if (!defined('BASE_PATH')) {
+    define('BASE_PATH', realpath(__DIR__ . '/../../'));
+}
+require_once BASE_PATH . '/backend/config/config.php';
 session_start();
-require_once __DIR__ . '/../../backend/config/env.php';
-require_once __DIR__ . '/../../backend/includes/session.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="<?= htmlspecialchars($_COOKIE['tema'] ?? 'light') ?>">
 <head>
   <meta charset="UTF-8">
   <title>Login - <?= NOME_SISTEMA ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Estilos principais -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/base/base.css">
   <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/pages/login.css">
@@ -51,20 +51,18 @@ require_once __DIR__ . '/../../backend/includes/session.php';
           <span class="toggle-password" onclick="toggleSenha('senhaLogin')">👁️</span>
         </div>
 
-        <!-- Correção: garantir que o botão não fique invisível -->
+        <!-- Botão -->
         <div class="d-grid">
           <button type="submit" class="btn btn-login" style="color: var(--btn-text)">Entrar</button>
         </div>
       </form>
 
       <div class="mt-3 text-center">
-        <small>Não tem uma conta? <a href="register.php">Cadastre-se</a></small>
+        <small>Não tem uma conta? 
+          <a href="<?= URL_BASE ?>frontend/login/register.php">Cadastre-se</a>
+        </small>
       </div>
 
-      <!-- 🌙 Alternar tema -->
-      <div class="text-end mt-3">
-        <button onclick="alternarTema()" class="btn btn-sm btn-alternar-tema">🌓 Alternar Tema</button>
-      </div>
     </div>
   </div>
 </div>
@@ -76,13 +74,6 @@ require_once __DIR__ . '/../../backend/includes/session.php';
     const icone = event.target;
     campo.type = campo.type === 'password' ? 'text' : 'password';
     icone.textContent = campo.type === 'text' ? '🙈' : '👁️';
-  }
-
-  function alternarTema() {
-    const atual = document.documentElement.getAttribute('data-theme') || 'light';
-    const novo = atual === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', novo);
-    document.cookie = `tema=${novo}; path=/; max-age=31536000`;
   }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>

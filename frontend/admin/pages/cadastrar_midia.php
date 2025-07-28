@@ -71,7 +71,7 @@ exigir_login('admin');
     <div class="mb-3">
       <label for="capa_upload" class="form-label">Capa da Mídia (arquivo ou URL)</label>
       <input type="file" name="capa_upload" id="capa_upload" class="form-control mb-2" accept="image/*">
-      <input type="hidden" name="capa_url" id="capa_url">
+      <input type="text" name="capa_url" id="capa_url" class="form-control" placeholder="Cole aqui a URL da imagem (opcional)">
     </div>
 
     <!-- Tipo -->
@@ -81,7 +81,7 @@ exigir_login('admin');
         <option value="">Selecione</option>
         <option value="podcast">Podcast</option>
         <option value="video">Vídeo</option>
-        <option value="audio">Áudio</option>
+        <option value="musica">Música</option>
         <option value="outro">Outro</option>
       </select>
     </div>

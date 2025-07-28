@@ -75,7 +75,7 @@ $logado = isset($_SESSION['usuario_id']);
       <div class="mt-3">
         <?php if ($logado): ?>
           <?php if ($livro_emprestado): ?>
-            <a href="<?= URL_BASE ?>frontend/usuario/reservar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-warning w-100 mb-2">
+            <a href="frontend/usuario/reservar_livro.php?id=<?= $livro['id'] ?>" class="btn btn-warning w-100 mb-2">
               <i class="bi bi-calendar-plus"></i> Reservar Livro
             </a>
           <?php else: ?>
@@ -84,7 +84,7 @@ $logado = isset($_SESSION['usuario_id']);
             </a>
           <?php endif; ?>
         <?php else: ?>
-          <a href="<?= URL_BASE ?>frontend/login/login.php?redirect=../usuario/emprestar_livro.php&id=<?= $livro['id'] ?>" class="btn btn-primary w-100 mb-2">
+          <a href="login.php?redirect=../usuario/emprestar_livro.php&id=<?= $livro['id'] ?>" class="btn btn-primary w-100 mb-2">
             <i class="bi bi-person-lock"></i> Reservar
           </a>
         <?php endif; ?>

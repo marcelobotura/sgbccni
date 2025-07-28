@@ -5636,3 +5636,405 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\sgbccni\backend\controllers\emprestimos\devolver.php on line 5
+[26-Jul-2025 23:57:40 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[26-Jul-2025 23:58:11 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 00:03:24 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 01:02:00 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\login\login.php on line 7
+[27-Jul-2025 02:59:51 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:02:14 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:03:31 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:03:31 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:03:33 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:03:35 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:03:37 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:04:35 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:04:35 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:04:37 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 5
+[27-Jul-2025 03:05:15 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 03:05:15 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 03:05:15 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 03:05:15 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 03:06:18 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:06:18 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:06:19 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:06:19 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:06:19 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:06:19 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:06:23 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:06:23 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:06:56 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:06:56 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:08:19 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:08:19 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:10:15 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:10:15 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:10:16 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:10:16 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:10:16 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:10:16 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 14
+[27-Jul-2025 03:10:49 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 03:10:49 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 03:10:49 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 03:10:49 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 03:10:51 America/Sao_Paulo] PHP Warning:  require_once(C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 03:10:51 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\sgbccni/backend/includes/funcoes.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php:13
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\frontend\admin\pages\reservas.php on line 13
+[27-Jul-2025 11:24:51 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'atualizado_em' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\sitemap.php:34
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\sitemap.php(34): PDO->query('SELECT id, titu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\sitemap.php on line 34
+[27-Jul-2025 11:48:27 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:34
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(34): PDO->query('SELECT id, titu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 34
+[27-Jul-2025 11:49:29 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titulo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, titu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:51:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:51:04 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:51:04 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:51:04 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:53:31 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:53:34 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:53:35 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:53:35 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:53:35 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:57:03 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:57:04 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:57:05 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:57:05 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:57:05 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo_original' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:58:37 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:58:38 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:58:40 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:58:41 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:58:41 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 11:58:41 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome_arquivo' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:59
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(59): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 59
+[27-Jul-2025 12:00:32 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:71
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(71): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 71
+[27-Jul-2025 12:00:33 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:71
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(71): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 71
+[27-Jul-2025 12:00:34 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:71
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(71): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 71
+[27-Jul-2025 12:00:36 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:71
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(71): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 71
+[27-Jul-2025 12:00:37 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:71
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(71): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 71
+[27-Jul-2025 12:00:37 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:71
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(71): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 71
+[27-Jul-2025 12:00:37 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:71
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(71): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 71
+[27-Jul-2025 12:00:51 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome' in 'field list' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:71
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(71): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 71
+[27-Jul-2025 12:02:09 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visibilidade' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:03:05 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:03:06 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:03:56 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:03:57 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:03:57 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:45 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:46 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:46 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:47 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:48 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:48 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:48 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:55 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:55 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:04:55 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 12:05:39 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'visivel' in 'where clause' in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php:84
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\mapa_site.php(84): PDO->query('SELECT id, nome...')
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\mapa_site.php on line 84
+[27-Jul-2025 14:43:27 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\backend\controllers\midias\salvar_midia.php:31
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\backend\controllers\midias\salvar_midia.php on line 31
+[27-Jul-2025 15:02:18 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\sgbccni\public_html\index.php:15
+Stack trace:
+#0 C:\xampp\htdocs\sgbccni\public_html\index.php(176): capaLivro(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 15
+[27-Jul-2025 15:25:39 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function obterCaminhoCapa() in C:\xampp\htdocs\sgbccni\public_html\index.php:206
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 206
+[27-Jul-2025 15:26:10 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function capaLivro() in C:\xampp\htdocs\sgbccni\public_html\index.php:171
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 171
+[27-Jul-2025 15:26:51 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function capaLivro() in C:\xampp\htdocs\sgbccni\public_html\index.php:177
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 177
+[27-Jul-2025 15:26:57 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function capaLivro() in C:\xampp\htdocs\sgbccni\public_html\index.php:177
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\sgbccni\public_html\index.php on line 177
+[27-Jul-2025 15:53:43 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\controllers\autenticacao\login.php on line 4
+[27-Jul-2025 15:53:43 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\login\login.php on line 2
+[27-Jul-2025 15:54:17 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\controllers\autenticacao\login.php on line 4
+[27-Jul-2025 15:54:18 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\controllers\autenticacao\login.php on line 4
+[27-Jul-2025 15:56:00 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\backend\controllers\autenticacao\login.php on line 4
+[27-Jul-2025 15:56:00 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\login\login.php on line 2
+[27-Jul-2025 15:56:28 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\frontend\login\login.php on line 2
+[27-Jul-2025 17:16:09 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\public_html\autenticacao.php on line 9
+[27-Jul-2025 17:19:29 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\public_html\autenticacao.php on line 9
+[27-Jul-2025 17:20:17 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\public_html\autenticacao.php on line 9
+[27-Jul-2025 17:21:56 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\public_html\autenticacao.php on line 9
+[27-Jul-2025 17:22:13 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\public_html\autenticacao.php on line 9
+[27-Jul-2025 17:28:08 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\public_html\autenticacao.php on line 9
+[27-Jul-2025 17:31:13 America/Sao_Paulo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\sgbccni\public_html\autenticacao.php on line 12

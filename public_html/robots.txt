@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: http://localhost/sgbccni/sitemap.xml

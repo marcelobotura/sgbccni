@@ -6,36 +6,28 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-// Define caminho base do projeto
 define('BASE_PATH', realpath(__DIR__ . '/../../'));
 
-// Includes essenciais
 require_once BASE_PATH . '/backend/config/config.php';
 require_once BASE_PATH . '/backend/includes/session.php';
-require_once BASE_PATH . '/backend/includes/db.php';
 require_once BASE_PATH . '/backend/includes/header.php';
 
-// Protege a página (acesso somente para usuários comuns)
 exigir_login('usuario');
 
-// Recupera dados do usuário logado
 $id_usuario = $_SESSION['usuario_id'] ?? null;
 if (!$id_usuario) {
-  header("Location: " . URL_BASE . "login.php");
+  header("Location: login.php");
   exit;
 }
 
-// Consulta os dados do usuário
 $stmt = $pdo->prepare("SELECT nome, email, foto FROM usuarios WHERE id = ?");
 $stmt->execute([$id_usuario]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Proteção contra valores vazios
 $nome  = htmlspecialchars($usuario['nome'] ?? 'Usuário');
 $email = htmlspecialchars($usuario['email'] ?? 'sem_email@exemplo.com');
 $foto  = $usuario['foto'] ?? null;
 
-// Caminhos da foto de perfil
 $caminhoFisicoFoto = BASE_PATH . '/storage/uploads/perfis/' . $foto;
 $caminhoWebFoto    = URL_BASE . 'storage/uploads/perfis/' . $foto;
 $caminhoFoto       = (!empty($foto) && file_exists($caminhoFisicoFoto)) ? $caminhoWebFoto : URL_BASE . 'frontend/assets/img/perfil_sem_img.png';
@@ -61,7 +53,6 @@ $caminhoFoto       = (!empty($foto) && file_exists($caminhoFisicoFoto)) ? $camin
 </head>
 <body>
 
-<!-- Botão para alternar tema -->
 <button class="toggle-theme" onclick="alternarTema()">🌃 Tema</button>
 
 <main class="painel-usuario container py-4">
@@ -73,12 +64,11 @@ $caminhoFoto       = (!empty($foto) && file_exists($caminhoFisicoFoto)) ? $camin
         <small class="text-muted"><?= $email ?></small>
       </div>
     </div>
-    <a href="<?= URL_BASE ?>logout.php" class="btn btn-erro mt-3 mt-md-0">
+    <a href="<?= URL_BASE ?>backend/controllers/autenticacao/logout.php" class="btn btn-erro mt-3 mt-md-0">
       <i class="bi bi-box-arrow-right"></i> Sair
     </a>
   </header>
 
-  <!-- Cards de funcionalidades -->
   <section class="painel-cards row g-4">
     <?php
     $botoes = [
@@ -120,12 +110,6 @@ function alternarTema() {
   document.documentElement.setAttribute('data-theme', novo);
   document.cookie = `tema=${novo}; path=/; max-age=31536000`;
 }
-
-// Restaura tema salvo no cookie
-document.addEventListener('DOMContentLoaded', () => {
-  const tema = document.cookie.split('; ').find(row => row.startsWith('tema='))?.split('=')[1];
-  if (tema) document.documentElement.setAttribute('data-theme', tema);
-});
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>

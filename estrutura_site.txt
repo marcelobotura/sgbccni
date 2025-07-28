@@ -7,6 +7,7 @@ C:.
 ³   composer.json
 ³   composer.lock
 ³   estruturas_3.txt
+³   estrutura_site.txt
 ³   README.md
 ³   
 ÃÄÄÄbackend
@@ -63,6 +64,11 @@ C:.
 ³   ³   ³       gerar_excel.php
 ³   ³   ³       gerar_pdf.php
 ³   ³   ³       
+³   ³   ÃÄÄÄreservas
+³   ³   ³       aprovar.php
+³   ³   ³       cancelar.php
+³   ³   ³       excluir.php
+³   ³   ³       
 ³   ³   ÃÄÄÄsugestoes
 ³   ³   ³       enviar_sugestao.php
 ³   ³   ³       marcar_lida.php
@@ -98,6 +104,7 @@ C:.
 ³           
 ÃÄÄÄcache_isbn
 ³       9788523220020.json
+³       9788527507066.json
 ³       9788564823297.json
 ³       
 ÃÄÄÄfrontend
@@ -156,6 +163,7 @@ C:.
 ³   ³       ³   register_admin.php
 ³   ³       ³   registrar_emprestimo.php
 ³   ³       ³   relatorio_emprestimos.php
+³   ³       ³   renovar_emprestimo.php
 ³   ³       ³   reservas.php
 ³   ³       ³   responder_sugestao.php
 ³   ³       ³   restaurar_backup.php
@@ -230,44 +238,47 @@ C:.
 ³   ³       register.php
 ³   ³       
 ³   ÀÄÄÄusuario
-³       ³   .htaccess
-³       ³   acao_favorito.php
-³       ³   acao_livro.php
-³       ³   busca.php
-³       ³   comentarios.php
-³       ³   detalhes.php
-³       ³   editar_perfil.php
-³       ³   emprestimos.php
-³       ³   excluir_comentario.php
-³       ³   excluir_conta.php
-³       ³   exportar_livros_pdf.php
-³       ³   favoritos.php
-³       ³   historico.php
-³       ³   historico_leitura.php
-³       ³   index.php
-³       ³   livro.php
-³       ³   log_visualizacoes.php
-³       ³   marcar_lido.php
-³       ³   meus_emprestimos.php
-³       ³   meus_favoritos.php
-³       ³   minhas_reservas.php
-³       ³   prorrogar_emprestimo.php
-³       ³   protect_usuario.php
-³       ³   relatorios.php
-³       ³   remover_favoritos.php
-³       ³   remover_foto.php
-³       ³   remover_livro_usuario.php
-³       ³   renovar_emprestimo.php
-³       ³   reservar_livro.php
-³       ³   salvar_comentario.php
-³       ³   salvar_perfil.php
-³       ³   sugestao.php
-³       ³   ver_perfil.php
-³       ³   
-³       ÀÄÄÄfrontend
-³           ÀÄÄÄusuario
-³                   cancelar_reserva.php
-³                   
+³           .htaccess
+³           acao_favorito.php
+³           acao_livro.php
+³           busca.php
+³           cancelar_reserva.php
+³           comentarios.php
+³           detalhes.php
+³           editar_perfil.php
+³           emprestar_livro.php
+³           emprestimos.php
+³           excluir_comentario.php
+³           excluir_conta.php
+³           exportar_livros_pdf.php
+³           favoritos.php
+³           historico.php
+³           historico_leitura.php
+³           index.php
+³           livro.php
+³           livros_disponiveis.php
+³           livros_emprestados.php
+³           log_visualizacoes.php
+³           marcar_lido.php
+³           meus_emprestimos.php
+³           meus_favoritos.php
+³           minhas_reservas.php
+³           notificacoes.php
+³           prorrogar_emprestimo.php
+³           protect_usuario.php
+³           relatorios.php
+³           remover_favoritos.php
+³           remover_foto.php
+³           remover_livro_usuario.php
+³           renovar_emprestimo.php
+³           reservar_livro.php
+³           salvar_comentario.php
+³           salvar_perfil.php
+³           solicitar_emprestimo.php
+³           sugestao.php
+³           user_reservas.php
+³           ver_perfil.php
+³           
 ÃÄÄÄpublic_html
 ³       .htaccess
 ³       acervo.php
@@ -280,9 +291,13 @@ C:.
 ³       index.php
 ³       login.php
 ³       logout.php
+³       mapa_site.php
 ³       pesquisa.php
 ³       register.php
+³       robots.txt
 ³       sistema.php
+³       sitemap.php
+³       sitemap.xml
 ³       sobre.php
 ³       ver_livro.php
 ³       ver_livro_ajax.php
@@ -301,6 +316,7 @@ C:.
 ³       ³           
 ³       ÃÄÄÄcapas
 ³       ³       .gitignore
+³       ³       capa_1753638277_68866585a9472.jpg
 ³       ³       capa_684c4832ac2535.66742834.jpg
 ³       ³       capa_684cd007873875.74856668.jpg
 ³       ³       capa_68789cd56ccc8.jpg
@@ -319,8 +335,6 @@ C:.
 ³               perfil_52_1753467100.png
 ³               
 ÃÄÄÄuploads
-³   ³   estrutura(26-07).txt
-³   ³   
 ³   ÃÄÄÄarquivos
 ³   ³   ÃÄÄÄapostilas
 ³   ³   ³       POSTAL_Dia dos Pais25.pdf
@@ -330,7 +344,8 @@ C:.
 ³   ³           Captura de tela 2025-03-07 164730.png
 ³   ³           
 ³   ÀÄÄÄbackup
-³           sgbccni(26-07).sql
+³           estrutura(26-07).txt
+³           sgbccni(27-07.1).sql
 ³           
 ÀÄÄÄvendor
     ³   autoload.php

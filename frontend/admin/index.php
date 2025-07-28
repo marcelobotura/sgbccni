@@ -3,15 +3,15 @@
 
 session_start();
 
-// ⚠️ Verifica se o usuário está logado e é admin ou master
+define('BASE_PATH', dirname(__DIR__, 2)); // /sgbccni
+require_once BASE_PATH . '/backend/config/config.php';
+require_once BASE_PATH . '/backend/includes/session.php';
+
+// ✅ Garante que apenas admin/master acessem
 if (!isset($_SESSION['usuario_id']) || !in_array($_SESSION['usuario_tipo'], ['admin', 'master'])) {
-    header('Location: ../../login/login_admin.php');
+    header('Location: ' . URL_BASE . 'login.php');
     exit;
 }
-
-// 🛠️ Constantes e configurações
-define('BASE_PATH', dirname(__DIR__, 2));
-require_once BASE_PATH . '/backend/config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" data-tema="<?= htmlspecialchars($_COOKIE['modo_tema'] ?? 'claro') ?>">
@@ -19,8 +19,8 @@ require_once BASE_PATH . '/backend/config/config.php';
   <meta charset="UTF-8">
   <title>Painel Admin - <?= NOME_SISTEMA ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Bootstrap e Ícones -->
+  
+  <!-- Bootstrap & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="<?= URL_BASE ?>frontend/assets/css/pages/painel_admin.css">
@@ -34,190 +34,44 @@ require_once BASE_PATH . '/backend/config/config.php';
 <div class="container py-5">
   <h1 class="text-center mb-4 text-primary"><i class="bi bi-speedometer2"></i> Painel Administrativo</h1>
   <div class="row g-4">
+  
+    <!-- Blocos de Gerenciamento -->
+    <?php
+    $cards = [
+      ['Empréstimos', 'pages/emprestimos.php', 'bi-arrow-left-right', 'Controle de empréstimos e devoluções.', 'primary'],
+      ['Reservas', 'pages/reservas.php', 'bi-bookmark-check', 'Livros reservados por usuários.', 'info'],
+      ['Livros', 'pages/gerenciar_livros.php', 'bi-book-half', 'Gerencie o acervo cadastrado.', 'info'],
+      ['Usuários', 'pages/gerenciar_usuarios.php', 'bi-people', 'Contas de usuários e administradores.', 'success'],
+      ['Tags', 'pages/gerenciar_tags.php', 'bi-tags', 'Autores, categorias, editoras...', 'warning'],
+      ['Comentários', 'pages/gerenciar_comentarios.php', 'bi-chat-left-dots', 'Moderação de comentários dos livros.', 'danger'],
+      ['Mensagens', 'pages/gerenciar_mensagens.php', 'bi-envelope', 'Contatos e formulários recebidos.', 'secondary'],
+      ['Sugestões', 'pages/gerenciar_sugestoes.php', 'bi-lightbulb', 'Ideias e colaborações dos leitores.', 'warning'],
+      ['Mídias', 'pages/gerenciar_midias.php', 'bi-play-circle', 'Vídeos, podcasts e conteúdo interativo.', 'purple'],
+      ['Relatórios', 'pages/gerenciar_relatorios.php', 'bi-graph-up-arrow', 'Estatísticas e exportações.', 'primary'],
+      ['Arquivos', 'pages/gerenciar_arquivos.php', 'bi-folder2-open', 'Uploads de capas, perfis e mais.', 'info'],
+      ['Backup', 'pages/backup.php', 'bi-database-check', 'Criação e restauração de dados.', 'success'],
+      ['Mapa do Sistema', 'pages/mapa_sistema.php', 'bi-diagram-3', 'Visualize as páginas e estruturas.', 'dark'],
+      ['Sair', URL_BASE . 'logout.php', 'bi-box-arrow-right', 'Encerrar sessão do administrador.', 'danger']
+    ];
 
-    <!-- ✅ NOVOS BLOCOS -->
-    <!-- 📖 Empréstimos -->
-    <div class="col-md-4">
-      <a href="pages/emprestimos.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100 border-primary">
-          <div class="card-body">
-            <i class="bi bi-arrow-left-right fs-1 text-primary"></i>
-            <h5 class="card-title mt-2">Empréstimos</h5>
-            <p class="text-muted small">Controle de empréstimos e devoluções.</p>
+    foreach ($cards as [$titulo, $link, $icone, $descricao, $cor]) {
+      $classeCor = $cor === 'purple' ? 'text-purple' : "text-$cor";
+      $borda     = in_array($cor, ['primary', 'danger']) ? "border-$cor" : '';
+      echo <<<HTML
+      <div class="col-md-4">
+        <a href="$link" class="text-decoration-none">
+          <div class="card text-center shadow-sm h-100 $borda">
+            <div class="card-body">
+              <i class="bi $icone fs-1 $classeCor"></i>
+              <h5 class="card-title mt-2">$titulo</h5>
+              <p class="text-muted small">$descricao</p>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 📝 Reservas -->
-    <div class="col-md-4">
-      <a href="pages/reservas.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100 border-info">
-          <div class="card-body">
-            <i class="bi bi-bookmark-check fs-1 text-info"></i>
-            <h5 class="card-title mt-2">Reservas</h5>
-            <p class="text-muted small">Livros reservados por usuários.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 📚 Livros -->
-    <div class="col-md-4">
-      <a href="pages/gerenciar_livros.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-book-half fs-1 text-info"></i>
-            <h5 class="card-title mt-2">Livros</h5>
-            <p class="text-muted small">Gerencie o acervo cadastrado.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 👥 Usuários -->
-    <div class="col-md-4">
-      <a href="pages/gerenciar_usuarios.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-people fs-1 text-success"></i>
-            <h5 class="card-title mt-2">Usuários</h5>
-            <p class="text-muted small">Contas de usuários e administradores.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 🏷️ Tags -->
-    <div class="col-md-4">
-      <a href="pages/gerenciar_tags.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-tags fs-1 text-warning"></i>
-            <h5 class="card-title mt-2">Tags</h5>
-            <p class="text-muted small">Autores, categorias, editoras...</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 💬 Comentários -->
-    <div class="col-md-4">
-      <a href="pages/gerenciar_comentarios.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-chat-left-dots fs-1 text-danger"></i>
-            <h5 class="card-title mt-2">Comentários</h5>
-            <p class="text-muted small">Moderação de comentários dos livros.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- ✉️ Mensagens -->
-    <div class="col-md-4">
-      <a href="pages/gerenciar_mensagens.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-envelope fs-1 text-secondary"></i>
-            <h5 class="card-title mt-2">Mensagens</h5>
-            <p class="text-muted small">Contatos e formulários recebidos.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 💡 Sugestões -->
-    <div class="col-md-4">
-      <a href="pages/gerenciar_sugestoes.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-lightbulb fs-1 text-warning"></i>
-            <h5 class="card-title mt-2">Sugestões</h5>
-            <p class="text-muted small">Ideias e colaborações dos leitores.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 🎙️ Mídias -->
-    <div class="col-md-4">
-      <a href="pages/gerenciar_midias.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-play-circle fs-1 text-purple"></i>
-            <h5 class="card-title mt-2">Mídias</h5>
-            <p class="text-muted small">Vídeos, podcasts e conteúdo interativo.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 📊 Relatórios -->
-    <div class="col-md-4">
-      <a href="pages/gerenciar_relatorios.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-graph-up-arrow fs-1 text-primary"></i>
-            <h5 class="card-title mt-2">Relatórios</h5>
-            <p class="text-muted small">Estatísticas e exportações.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 🗂️ Arquivos -->
-    <div class="col-md-4">
-      <a href="pages/gerenciar_arquivos.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-folder2-open fs-1 text-info"></i>
-            <h5 class="card-title mt-2">Arquivos</h5>
-            <p class="text-muted small">Uploads de capas, perfis e mais.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 🗄️ Backup -->
-    <div class="col-md-4">
-      <a href="pages/backup.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-database-check fs-1 text-success"></i>
-            <h5 class="card-title mt-2">Backup</h5>
-            <p class="text-muted small">Criação e restauração de dados.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 🌐 Mapa do Sistema -->
-    <div class="col-md-4">
-      <a href="pages/mapa_sistema.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100">
-          <div class="card-body">
-            <i class="bi bi-diagram-3 fs-1 text-dark"></i>
-            <h5 class="card-title mt-2">Mapa do Sistema</h5>
-            <p class="text-muted small">Visualize as páginas e estruturas.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 🔐 Sair -->
-    <div class="col-md-4">
-      <a href="<?= URL_BASE ?>logout.php" class="text-decoration-none">
-        <div class="card text-center shadow-sm h-100 border-danger">
-          <div class="card-body">
-            <i class="bi bi-box-arrow-right fs-1 text-danger"></i>
-            <h5 class="card-title mt-2">Sair</h5>
-            <p class="text-muted small">Encerrar sessão do administrador.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
+        </a>
+      </div>
+      HTML;
+    }
+    ?>
   </div>
 </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Jul-2025 às 03:45
+-- Tempo de geração: 27-Jul-2025 às 20:34
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.0.30
 
@@ -60,7 +60,6 @@ CREATE TABLE `comentarios` (
 INSERT INTO `comentarios` (`id`, `usuario_id`, `livro_id`, `texto`, `criado_em`, `aprovado`, `atualizado_em`) VALUES
 (2, 29, 11, 'Olá mundo', '2025-07-19 03:06:55', 1, '2025-07-24 02:37:04'),
 (4, 29, 12, 'Olá mundo, estou de volta', '2025-07-19 03:31:48', 1, '2025-07-24 02:37:04'),
-(6, 41, 11, 'Sei lá ta foda', '2025-07-19 03:38:31', 1, '2025-07-24 02:37:04'),
 (7, 29, 12, 'oiee kkkkkkkkkkkkkkkkk', '2025-07-19 19:40:59', 0, '2025-07-24 02:41:32'),
 (10, 29, 14, 'teste', '2025-07-24 14:38:23', 0, '2025-07-24 14:38:23'),
 (11, 52, 23, 'oiee sou paulinho do cavaco', '2025-07-25 15:12:08', 0, '2025-07-25 15:12:08'),
@@ -117,6 +116,22 @@ CREATE TABLE `emprestimos` (
   `multa` decimal(10,2) DEFAULT 0.00,
   `criado_em` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `emprestimos`
+--
+
+INSERT INTO `emprestimos` (`id`, `livro_id`, `usuario_id`, `data_emprestimo`, `data_prevista_devolucao`, `data_devolucao`, `status`, `observacao`, `renovacoes`, `reservado_por`, `data_reserva`, `ultima_prorrogacao`, `dias_atraso`, `multa`, `criado_em`) VALUES
+(1, 19, 43, '2025-07-26', '2025-08-02', '2025-07-26', 'devolvido', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 02:12:51'),
+(2, 14, 43, '2025-07-26', '2025-08-02', '2025-07-26', 'devolvido', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 02:13:00'),
+(3, 18, 43, '2025-07-26', '2025-08-02', NULL, 'emprestado', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 02:14:23'),
+(4, 17, 43, '2025-07-27', '2025-08-03', NULL, 'emprestado', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 03:03:59'),
+(5, 15, 29, '2025-07-27', '2025-08-03', NULL, 'emprestado', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 03:09:14'),
+(6, 23, 30, '2025-07-27', '2025-08-03', '2025-07-27', 'devolvido', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 04:18:54'),
+(7, 13, 30, '2025-07-27', '2025-08-03', NULL, 'emprestado', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 06:18:24'),
+(8, 16, 30, '2025-07-27', '2025-08-03', NULL, 'emprestado', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 06:31:58'),
+(9, 12, 30, '2025-07-27', '2025-08-03', NULL, 'emprestado', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 06:32:06'),
+(10, 25, 30, '2025-07-27', '2025-08-03', NULL, 'emprestado', NULL, 0, NULL, NULL, NULL, 0, 0.00, '2025-07-27 07:24:13');
 
 -- --------------------------------------------------------
 
@@ -227,7 +242,8 @@ INSERT INTO `livros` (`id`, `qr_code`, `codigo_barras`, `prateleira`, `titulo`, 
 (21, NULL, '9788540205413', NULL, 'Dom Casmurro', '', '', 2016, '9788540205413', '8540205416', NULL, 'disponivel', 'físico', 'PDF', NULL, 'en', 1, 1, NULL, 'http://books.google.com/books/content?id=I-fUDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', NULL, NULL, NULL, '', NULL, 0, '2025-07-24 12:00:25', NULL, NULL, NULL, '', 1, '', '2025-07-24 15:00:25', 'Manual', 0, 'Machado de Assis, Edições Câmara', 'Edições Câmara', 194, 'Fiction', 'Google Books'),
 (22, NULL, '', NULL, 'O Príncipe', '', '', 2019, '9788552100560', '', NULL, 'disponivel', 'físico', 'PDF', NULL, 'pt-BR', 1, 1, NULL, 'http://books.google.com/books/content?id=cKebDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', NULL, NULL, NULL, 'Nesta obra, que é um clássico sobre pensamento político, o grande escritor Maquiavel mostra como funciona a ciência política.', NULL, 0, '2025-07-24 12:00:25', NULL, NULL, NULL, '', 1, '', '2025-07-24 15:00:25', 'Manual', 0, 'Nicolau Maquiavel', 'EDIPRO', 116, 'Philosophy', 'Google Books'),
 (23, NULL, '9788523220020', NULL, 'Estado e capital na China', '', '', 2018, '9788523220020', '852322002X', NULL, 'disponivel', 'digital', '', NULL, '', 1, 1, NULL, 'http://books.google.com/books/content?id=6NzaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'url', '', NULL, 'A obra trata das reformas econômicas que ocorreram no período compreendido entre dezembro de 1978 até o presente, ou seja, na era que se iniciou após o falecimento de Mao Zedong, ocorrida em 1976. O objetivo central deste livro é discutir se as transformações ocorridas voltam-se para o socialismo ou para o capitalismo. Ademais, é abordada a ascensão da China como a nova superpotência no mundo.', NULL, 0, '2025-07-25 14:45:27', 24, 25, 26, 'LIV-316573', 1, '', '2025-07-25 17:45:27', 'Google Books', 0, NULL, NULL, NULL, NULL, 'importado'),
-(24, NULL, '9788564823297', NULL, 'Dom Casmurro', '', '', 2013, '9788564823297', '8564823292', NULL, 'disponivel', 'digital', 'PDF', NULL, '', 1, 1, NULL, 'http://books.google.com/books/content?id=TuJPa52BlKoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'url', '', NULL, 'Um dos principais clássicos de nossa literatura ganha versão em quadrinhos, numa fiel adaptação produzida por dois autores de destaque das HQs brasileiras.', NULL, 0, '2025-07-26 18:07:45', 27, 28, 29, 'LIV-983347', 1, 'de Machado de Assis', '2025-07-26 21:07:45', 'Google Books', 0, NULL, NULL, NULL, NULL, 'importado');
+(24, NULL, '9788564823297', NULL, 'Dom Casmurro', '', '', 2013, '9788564823297', '8564823292', NULL, 'disponivel', 'digital', 'PDF', NULL, '', 1, 1, NULL, 'http://books.google.com/books/content?id=TuJPa52BlKoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'url', '', NULL, 'Um dos principais clássicos de nossa literatura ganha versão em quadrinhos, numa fiel adaptação produzida por dois autores de destaque das HQs brasileiras.', NULL, 0, '2025-07-26 18:07:45', 27, 28, 29, 'LIV-983347', 1, 'de Machado de Assis', '2025-07-26 21:07:45', 'Google Books', 0, NULL, NULL, NULL, NULL, 'importado'),
+(25, NULL, '9788527507066', NULL, 'Escatologia do Novo Testamento', '', '', 2010, '9788527507066', '8527507064', NULL, 'disponivel', 'digital', 'PDF', NULL, '', 1, 1, NULL, 'http://books.google.com/books/content?id=ks3VDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'url', '', NULL, 'Crises econômicas, conflitos no Oriente Médio, terrorismo, violência e insegurança urbanas. Vivemos em uma época de incógnitas em relação a um futuro que parece fugir do controle do homem e por isso os cristãos que creem na veracidade da Bíblia querem saber em que pé estão as coisas. Tendo em vista que o Novo Testamento tem muito a dizer sobre o fim, neste livro, a intenção do autor é mostrar o quadro geral dos eventos que encerrarão esta era, pois ele crê firmemente que a finalidade de Deus ao partilhar informações acerca dos últimos tempos foi incentivar seus filhos a se esforçarem em \"apressar\" a vinda do Senhor, e que os crentes não são meros espectadores acompanhando um jogo distante, mas participantes no drama escatológico.', NULL, 0, '2025-07-27 04:22:24', 30, 31, 32, 'LIV-182335', 1, '', '2025-07-27 07:22:24', 'Google Books', 0, NULL, NULL, NULL, NULL, 'importado');
 
 -- --------------------------------------------------------
 
@@ -271,7 +287,9 @@ INSERT INTO `livros_usuarios` (`id`, `usuario_id`, `livro_id`, `lido`, `favorito
 (12, 29, 12, 1, 1, NULL, NULL, '2025-07-19 19:40:49', '2025-07-19 03:03:20', NULL, 'normal', '2025-07-24 02:15:50', NULL),
 (19, 29, 14, 0, 1, NULL, NULL, '2025-07-24 14:38:03', '2025-07-24 14:38:03', 'lido', 'normal', '2025-07-24 14:38:03', NULL),
 (20, 52, 23, 1, 1, NULL, NULL, '2025-07-25 15:12:15', '2025-07-25 15:12:14', 'lido', 'normal', '2025-07-25 15:12:14', NULL),
-(23, 43, 24, 1, 1, NULL, NULL, '2025-07-26 19:29:22', '2025-07-26 19:29:20', 'lido', 'normal', '2025-07-26 19:29:20', NULL);
+(23, 43, 24, 1, 1, NULL, NULL, '2025-07-26 19:29:22', '2025-07-26 19:29:20', 'lido', 'normal', '2025-07-26 19:29:20', NULL),
+(25, 29, 23, 1, 0, NULL, NULL, '2025-07-27 03:57:04', '2025-07-27 03:57:04', 'lido', 'normal', '2025-07-27 03:57:04', NULL),
+(26, 29, 24, 1, 1, NULL, NULL, '2025-07-27 04:07:05', '2025-07-27 04:07:04', 'lido', 'normal', '2025-07-27 04:07:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -313,7 +331,8 @@ INSERT INTO `log_atividade` (`id`, `usuario`, `acao`, `data_atividade`, `ip`, `n
 (7, '30', 'Atualizou os dados do livro ID 3', '2025-07-19 02:12:39', NULL, NULL),
 (8, '30', 'Atualizou os dados do livro ID 3', '2025-07-19 02:16:58', NULL, NULL),
 (9, '30', 'Livro cadastrado: Estado e capital na China (ISBN: 9788523220020)', '2025-07-25 14:45:27', NULL, NULL),
-(10, '30', 'Livro cadastrado: Dom Casmurro (ISBN: 9788564823297)', '2025-07-26 18:07:45', NULL, NULL);
+(10, '30', 'Livro cadastrado: Dom Casmurro (ISBN: 9788564823297)', '2025-07-26 18:07:45', NULL, NULL),
+(11, '30', 'Livro cadastrado: Escatologia do Novo Testamento (ISBN: 9788527507066)', '2025-07-27 04:22:24', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -375,10 +394,8 @@ INSERT INTO `log_login` (`id`, `usuario_id`, `ip`, `navegador`, `data_login`) VA
 (50, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', '2025-07-19 03:04:15'),
 (51, 29, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', '2025-07-19 03:06:29'),
 (52, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', '2025-07-19 03:08:42'),
-(53, 41, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', '2025-07-19 03:10:24'),
 (54, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', '2025-07-19 03:12:53'),
 (55, 29, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', '2025-07-19 03:31:15'),
-(56, 41, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0', '2025-07-19 03:37:32'),
 (57, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', '2025-07-19 04:08:38'),
 (58, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', '2025-07-19 04:09:27'),
 (59, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', '2025-07-19 04:13:59'),
@@ -389,8 +406,6 @@ INSERT INTO `log_login` (`id`, `usuario_id`, `ip`, `navegador`, `data_login`) VA
 (64, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', '2025-07-19 04:33:02'),
 (65, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', '2025-07-19 04:34:17'),
 (66, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', '2025-07-19 17:52:55'),
-(67, 41, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0', '2025-07-19 18:01:11'),
-(68, 41, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0', '2025-07-19 18:04:42'),
 (69, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', '2025-07-19 18:08:04'),
 (70, 30, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', '2025-07-19 18:12:34'),
 (71, 29, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', '2025-07-19 18:12:58'),
@@ -583,7 +598,20 @@ INSERT INTO `log_visualizacoes` (`id`, `usuario_id`, `livro_id`, `data_visualiza
 (114, 43, 24, '2025-07-26 19:29:30', '::1'),
 (115, 29, 24, '2025-07-26 22:22:59', '::1'),
 (116, 29, 24, '2025-07-26 22:27:59', '::1'),
-(117, 29, 23, '2025-07-26 22:28:29', '::1');
+(117, 29, 23, '2025-07-26 22:28:29', '::1'),
+(118, 43, 24, '2025-07-26 23:01:45', '::1'),
+(119, 29, 24, '2025-07-27 03:45:52', '::1'),
+(120, 29, 23, '2025-07-27 03:57:03', '::1'),
+(121, 29, 23, '2025-07-27 03:57:04', '::1'),
+(122, 29, 23, '2025-07-27 03:57:04', '::1'),
+(123, 29, 23, '2025-07-27 03:57:06', '::1'),
+(124, 29, 24, '2025-07-27 04:07:03', '::1'),
+(125, 29, 24, '2025-07-27 04:07:04', '::1'),
+(126, 29, 24, '2025-07-27 04:07:04', '::1'),
+(127, 29, 24, '2025-07-27 04:07:05', '::1'),
+(128, 29, 24, '2025-07-27 04:07:05', '::1'),
+(129, 29, 24, '2025-07-27 04:07:09', '::1'),
+(130, 29, 24, '2025-07-27 04:07:10', '::1');
 
 -- --------------------------------------------------------
 
@@ -671,7 +699,9 @@ INSERT INTO `midias` (`id`, `tipo`, `titulo`, `descricao`, `autor`, `url`, `plat
 (9, 'podcast', 'Projeto Humanos – Caso Evandro (Ep. 01)', 'Episódio introdutório de um dos casos mais famosos do Brasil.', NULL, 'https://open.spotify.com/episode/6d1uIb7TxHQ1wI2D4ls2Fw', 'Spotify', '2020-04-14', '42min 13s', 'https://i.scdn.co/image/ab6765630000ba8a6403d558a9ffbc215180ce15', '2025-07-24 12:17:03', NULL),
 (11, 'video', 'Vídeo do YouTube', '', NULL, 'https://www.youtube.com/watch?v=fOvcmFN5ly4&ab_channel=Gaveta', 'YouTube', NULL, '', 'https://img.youtube.com/vi/fOvcmFN5ly4/hqdefault.jpg', '2025-07-24 12:30:27', NULL),
 (12, 'podcast', 'De braço abertos: Começamos mais um ano Letivo!', 'Podcast Vicentino \"Bem Nosso\" · Episode', NULL, 'https://open.spotify.com/episode/6cRWU6IG8iSxheEhzl4L6l?si=4a76ed07681046c4', 'Spotify', NULL, '', 'https://i.scdn.co/image/ab6765630000ba8aa2efc2cdebe21405d834398d', '2025-07-24 12:38:59', NULL),
-(13, 'audio', 'LISTA DE MUSICAS SEM DIREITOS AUTORAIS PRA VC PODER USAR SEM PROBLEMAS NOS SEUS VIDEOS', 'Listen to LISTA DE MUSICAS SEM DIREITOS AUTORAIS PRA VC PODER USAR SEM PROBLEMAS NOS SEUS VIDEOS by HigorPatinho #np on #SoundCloud', NULL, 'https://on.soundcloud.com/5ZRkaMu6XF8fGbRQKg', 'SoundCloud', NULL, '', 'https://i1.sndcdn.com/artworks-000143910091-a0j82l-t500x500.jpg', '2025-07-24 12:44:37', NULL);
+(13, 'audio', 'LISTA DE MUSICAS SEM DIREITOS AUTORAIS PRA VC PODER USAR SEM PROBLEMAS NOS SEUS VIDEOS', 'Listen to LISTA DE MUSICAS SEM DIREITOS AUTORAIS PRA VC PODER USAR SEM PROBLEMAS NOS SEUS VIDEOS by HigorPatinho #np on #SoundCloud', NULL, 'https://on.soundcloud.com/5ZRkaMu6XF8fGbRQKg', 'SoundCloud', NULL, '', 'https://i1.sndcdn.com/artworks-000143910091-a0j82l-t500x500.jpg', '2025-07-24 12:44:37', NULL),
+(14, 'video', 'EDUARDO CHAMA TRUMP DE CHEFE E ADMITE QUE ESTÃ TRABALHANDO A MANDO DO GOVERNO DOS ESTADOS UNIDOS', 'RENDA EXTRA! NOVA PROFISSÃO: TRABALHAR NO BRASIL E GANHAR EM DÃLAR: https://whatsapp.aescoladenegocios.com.br/l/desmascarando', 'Desmascarando', 'https://www.youtube.com/watch?v=8CxP0fDcP6E&ab_channel=Desmascarando', 'YouTube', '2025-07-27', '8:35', 'https://i.ytimg.com/vi/8CxP0fDcP6E/maxresdefault.jpg', '2025-07-27 14:41:11', ''),
+(15, 'video', 'Review do CAOS: Branca de Neve | Gaveta', 'Com Cambly, vocÃª aprende a cantar em inglÃªs como uma princesa Disney! Tem desconto de 60% OFF com o cupom VIPGAVETA48: https://cambly.biz/vipgaveta48Ã claro ...', 'Gaveta', 'https://www.youtube.com/watch?v=18W19_vALes&ab_channel=Gaveta', 'YouTube', NULL, '', '', '2025-07-27 14:44:37', 'capa_1753638277_68866585a9472.jpg');
 
 -- --------------------------------------------------------
 
@@ -681,11 +711,25 @@ INSERT INTO `midias` (`id`, `tipo`, `titulo`, `descricao`, `autor`, `url`, `plat
 
 CREATE TABLE `notificacoes` (
   `id` int(11) NOT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `mensagem` text DEFAULT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `mensagem` text NOT NULL,
+  `tipo` enum('info','alerta','sucesso','erro') DEFAULT 'info',
   `lida` tinyint(1) DEFAULT 0,
-  `data` datetime DEFAULT current_timestamp()
+  `prioridade` tinyint(1) DEFAULT 0,
+  `origem` varchar(100) DEFAULT NULL,
+  `data` datetime DEFAULT current_timestamp(),
+  `lida_em` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `notificacoes`
+--
+
+INSERT INTO `notificacoes` (`id`, `usuario_id`, `titulo`, `mensagem`, `tipo`, `lida`, `prioridade`, `origem`, `data`, `lida_em`) VALUES
+(16, 29, '📚 Novo Livro Chegou!', 'Adicionamos \"Código Limpo\" ao acervo.', 'sucesso', 0, 1, 'biblioteca', '2025-07-27 04:20:44', NULL),
+(17, 29, '⚠️ Devolução Pendente', 'Você tem um livro a devolver até sexta-feira.', 'alerta', 0, 1, 'sistema', '2025-07-27 04:20:44', NULL),
+(18, 29, '🎉 Cadastro Concluído', 'Seja bem-vindo à Biblioteca CNI, Marcelo!', 'info', 0, 0, 'admin', '2025-07-27 04:20:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -700,6 +744,14 @@ CREATE TABLE `reservas` (
   `data_reserva` datetime DEFAULT current_timestamp(),
   `status` enum('pendente','confirmada','cancelada') DEFAULT 'pendente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `reservas`
+--
+
+INSERT INTO `reservas` (`id`, `usuario_id`, `livro_id`, `data_reserva`, `status`) VALUES
+(4, 29, 23, '2025-07-27 03:36:36', ''),
+(5, 29, 17, '2025-07-27 03:40:06', '');
 
 -- --------------------------------------------------------
 
@@ -758,7 +810,10 @@ INSERT INTO `tags` (`id`, `nome`, `tipo`, `created_at`, `updated_at`) VALUES
 (26, 'Political Science', 'categoria', '2025-07-25 17:45:27', '2025-07-25 17:45:27'),
 (27, 'Machado de Assis', 'autor', '2025-07-26 21:07:45', '2025-07-26 21:07:45'),
 (28, 'Distribuidora Autentica LTDA', 'editora', '2025-07-26 21:07:45', '2025-07-26 21:07:45'),
-(29, 'Comics & Graphic Novels', 'categoria', '2025-07-26 21:07:45', '2025-07-26 21:07:45');
+(29, 'Comics & Graphic Novels', 'categoria', '2025-07-26 21:07:45', '2025-07-26 21:07:45'),
+(30, 'Russell Shedd', 'autor', '2025-07-27 07:22:24', '2025-07-27 07:22:24'),
+(31, 'Vida Nova', 'editora', '2025-07-27 07:22:24', '2025-07-27 07:22:24'),
+(32, 'Religion', 'categoria', '2025-07-27 07:22:24', '2025-07-27 07:22:24');
 
 -- --------------------------------------------------------
 
@@ -796,30 +851,21 @@ CREATE TABLE `usuarios` (
   `ativo` tinyint(1) DEFAULT 1,
   `criado_em` datetime DEFAULT current_timestamp(),
   `foto` varchar(255) DEFAULT NULL,
-  `data_criacao` datetime DEFAULT current_timestamp()
+  `data_criacao` datetime DEFAULT current_timestamp(),
+  `visibilidade` enum('publico','privado') NOT NULL DEFAULT 'privado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `tipo`, `imagem_perfil`, `data_nascimento`, `genero`, `cep`, `endereco`, `cidade`, `estado`, `ativo`, `criado_em`, `foto`, `data_criacao`) VALUES
-(29, 'Bottura', 'marcelo@marcelo.com', '$2y$10$08fu1yJgdQfEq8Lzyk02ZODfBw3hRjF4YfFynod79593ZmMuXH0Y6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-06-11 23:26:27', 'perfil_29_1753197337.jpg', '2025-07-22 11:43:32'),
-(30, 'Marcelo Botura', 'mbsfoz@gmail.com', '$2y$10$amjwDKCg.5xH3rkke.ncAe8myQAx0I8mQaVjHrSMwBWUzk8XQu45i', 'master', '', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-06-11 23:27:30', NULL, '2025-07-22 11:43:32'),
-(41, 'Marcos', 'marcos@marcos.com', '$2y$10$IiHOZrR8hu14xGlOeKuG2udwpuRSQWiCjwntnyLUwxmtRBsJSUwo6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 03:09:10', NULL, '2025-07-22 11:43:32'),
-(42, 'marcelo', 'marcelo@admin.com', '$2y$10$ctFxFjwo0VKgM0AtmA7HRuSmkScpcWNDpq5aHgoss6vAZWiwLGZL6', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 17:32:08', NULL, '2025-07-22 11:43:32'),
-(43, 'José Batista', 'josefyfoz@gmail.com', '$2y$10$uaRrhyW1VdNs5yjmcScT4uKF1iiGsbADipAi/Lj9hXx4YFCxSg9O6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:34:39', 'perfil_43_1753580553.png', '2025-07-22 11:43:32'),
-(44, 'pedrinho', 'pedrinho@pedrinho.com', '$2y$10$O/qJdCYTYgYOFnr7WKONFOxnHltRrjTuEJxIFudXvcHP8LRXMiUoO', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:41:36', NULL, '2025-07-22 11:43:32'),
-(45, 'Emanoela Tatiane Souza', 'emanoelasouza@gmail.com', '$2y$10$EKWc9ccBYWViEvRq1LYhUuAxh98tmZJ2TF.sX6pinyQcy54Z4v6AC', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:42:29', NULL, '2025-07-22 11:43:32'),
-(46, 'Marcelo Souza', 'm_botura@gmail.com', '$2y$10$qMC.w9oz/LZlqUgs7yFUs.cDLeQNbOmd6usTyPz9CUzMj2KPAoC3y', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 01:44:02', NULL, '2025-07-22 11:43:32'),
-(47, 'Pedro', 'pedro@pedro.com', '$2y$10$C0Nmj9PEs6gmyznvRryBpODYKUROl8pTaSyzJXBT5An.TNg79voOO', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 23:22:44', NULL, '2025-07-22 11:43:32'),
-(48, 'ola', 'ola@ola.com', '$2y$10$zE4AWIcEgqI.C6yIE.PG2O9JBYYyDOqw934pPaobXz0d6p7mxt8GG', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-21 23:24:40', NULL, '2025-07-22 11:43:32'),
-(49, 'Jéssica Fernandes', 'jessifernandes0@gmail.com', '$2y$10$14HL4jqehFv4lcA16ZfWluNmIUvy.Rt/OtFbVZxwlBEDNb1kdkYTu', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-22 12:59:22', 'perfil_49_1753199996.png', '2025-07-22 12:59:22'),
-(50, 'Usuário Teste', 'teste@example.com', '$2y$10$l2/tYWThqpuvd2a8Os24geAA7fuueKMgHOX4l3LB9X7NKJkWq2NrS', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-25 13:47:08', NULL, '2025-07-25 13:47:08'),
-(52, 'Paulinho do Cavaco', 'paulo@paulo.com', '$2y$10$vP3emTsb5q.MG27zAljT6OO8MDf9.6yk.AI4Mj5i7mwQVvO4wDMLG', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-25 15:09:21', 'perfil_52_1753467100.png', '2025-07-25 15:09:21'),
-(53, 'marcelo', 'mmmm@mmmmmm.com', '$2y$10$CYeLSBcnigzeAOmqhz5x8uLNClZkPEXQ/q.IK.41.2hCJ3XwhDAqS', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-25 15:42:58', NULL, '2025-07-25 15:42:58'),
-(54, 'Oiee', 'oies@oies.com', '$2y$10$H/aqKeSqhpq6LivU6PaU.ODx9DTu3C0U5ZoUWU1lpQCfa7w2gh7P2', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-26 19:11:30', NULL, '2025-07-26 19:11:30'),
-(55, 'Administrador Master', 'master@sgbccni.com.br', '$2y$10$AYfCC8U0JgQN92/pYZ6jlu0jk72GD4OLTR5HbmYk2ks/JZz17HURq', 'master', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-26 21:59:35', NULL, '2025-07-26 21:59:35');
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `tipo`, `imagem_perfil`, `data_nascimento`, `genero`, `cep`, `endereco`, `cidade`, `estado`, `ativo`, `criado_em`, `foto`, `data_criacao`, `visibilidade`) VALUES
+(29, 'Bottura', 'marcelo@marcelo.com', '$2y$10$08fu1yJgdQfEq8Lzyk02ZODfBw3hRjF4YfFynod79593ZmMuXH0Y6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-06-11 23:26:27', 'perfil_29_1753197337.jpg', '2025-07-22 11:43:32', 'publico'),
+(30, 'Marcelo Botura', 'mbsfoz@gmail.com', '$2y$10$amjwDKCg.5xH3rkke.ncAe8myQAx0I8mQaVjHrSMwBWUzk8XQu45i', 'master', '', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-06-11 23:27:30', NULL, '2025-07-22 11:43:32', 'publico'),
+(43, 'José Batista', 'josefyfoz@gmail.com', '$2y$10$uaRrhyW1VdNs5yjmcScT4uKF1iiGsbADipAi/Lj9hXx4YFCxSg9O6', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-19 22:34:39', 'perfil_43_1753580553.png', '2025-07-22 11:43:32', 'publico'),
+(49, 'Jéssica Fernandes', 'jessifernandes0@gmail.com', '$2y$10$14HL4jqehFv4lcA16ZfWluNmIUvy.Rt/OtFbVZxwlBEDNb1kdkYTu', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-22 12:59:22', 'perfil_49_1753199996.png', '2025-07-22 12:59:22', 'privado'),
+(52, 'Paulinho do Cavaco', 'paulo@paulo.com', '$2y$10$vP3emTsb5q.MG27zAljT6OO8MDf9.6yk.AI4Mj5i7mwQVvO4wDMLG', 'usuario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-25 15:09:21', 'perfil_52_1753467100.png', '2025-07-25 15:09:21', 'publico'),
+(55, 'Administrador Master', 'marcelo@admin.com', '$2y$10$AYfCC8U0JgQN92/pYZ6jlu0jk72GD4OLTR5HbmYk2ks/JZz17HURq', 'master', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-07-26 21:59:35', NULL, '2025-07-26 21:59:35', 'publico');
 
 --
 -- Índices para tabelas despejadas
@@ -970,7 +1016,7 @@ ALTER TABLE `midias`
 --
 ALTER TABLE `notificacoes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Índices para tabela `reservas`
@@ -978,7 +1024,8 @@ ALTER TABLE `notificacoes`
 ALTER TABLE `reservas`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `usuario_id` (`usuario_id`,`livro_id`),
-  ADD KEY `livro_id` (`livro_id`);
+  ADD UNIQUE KEY `idx_usuario_livro` (`usuario_id`,`livro_id`),
+  ADD KEY `fk_livro` (`livro_id`);
 
 --
 -- Índices para tabela `sugestoes`
@@ -1042,7 +1089,7 @@ ALTER TABLE `contatos`
 -- AUTO_INCREMENT de tabela `emprestimos`
 --
 ALTER TABLE `emprestimos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `episodios`
@@ -1066,7 +1113,7 @@ ALTER TABLE `listas`
 -- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `livros_tags`
@@ -1078,13 +1125,13 @@ ALTER TABLE `livros_tags`
 -- AUTO_INCREMENT de tabela `livros_usuarios`
 --
 ALTER TABLE `livros_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `log_atividade`
 --
 ALTER TABLE `log_atividade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `log_login`
@@ -1108,7 +1155,7 @@ ALTER TABLE `log_usuarios`
 -- AUTO_INCREMENT de tabela `log_visualizacoes`
 --
 ALTER TABLE `log_visualizacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT de tabela `mensagens`
@@ -1126,19 +1173,19 @@ ALTER TABLE `mensagens_contato`
 -- AUTO_INCREMENT de tabela `midias`
 --
 ALTER TABLE `midias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `notificacoes`
 --
 ALTER TABLE `notificacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `sugestoes`
@@ -1150,7 +1197,7 @@ ALTER TABLE `sugestoes`
 -- AUTO_INCREMENT de tabela `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de tabela `tokens_recuperacao`
@@ -1162,7 +1209,7 @@ ALTER TABLE `tokens_recuperacao`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- Restrições para despejos de tabelas
@@ -1236,12 +1283,14 @@ ALTER TABLE `log_login`
 -- Limitadores para a tabela `notificacoes`
 --
 ALTER TABLE `notificacoes`
-  ADD CONSTRAINT `notificacoes_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `notificacoes_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `reservas`
 --
 ALTER TABLE `reservas`
+  ADD CONSTRAINT `fk_livro` FOREIGN KEY (`livro_id`) REFERENCES `livros` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`livro_id`) REFERENCES `livros` (`id`);
 

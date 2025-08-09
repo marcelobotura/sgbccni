@@ -1,8 +1,7 @@
 <?php
-define('BASE_PATH', dirname(__DIR__) . '/backend');
-require_once BASE_PATH . '/config/config.php';
-require_once BASE_PATH . '/includes/session.php';
-require_once BASE_PATH . '/includes/db.php';
+require_once __DIR__ . '/../backend/config/config.php';
+require_once __DIR__ . '/../backend/includes/session.php';
+require_once __DIR__ . '/../backend/includes/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" data-tema="<?= htmlspecialchars($_COOKIE['modo_tema'] ?? 'claro') ?>">

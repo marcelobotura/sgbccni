@@ -1,27 +1,28 @@
 # Ativa o mecanismo de reescrita
 RewriteEngine On
 
-# Define a base da URL (ajuste conforme seu ambiente)
-RewriteBase /sgbccni/public_html/
+# Se sua URL é http://localhost/sgbccni/ use:
+RewriteBase /sgbccni/
+# (Se o projeto estiver na raiz do host, use só "/")
 
-# 🔁 Remove .php da URL
+# 🔁 Remover .php da URL (ex.: /login → /login.php)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.+)$ $1.php [L]
 
-# 🔒 Redirecionamento amigável para logout
-RewriteRule ^logout$ ../backend/controllers/auth/logout.php [L]
+# 🔒 Logout amigável SEM expor o backend na web
+# Crie public_html/logout.php (código abaixo)
+RewriteRule ^logout$ /sgbccni/logout.php [L]
 
-# 💡 Segurança opcional: bloquear acesso direto a arquivos sensíveis
+# 💡 Bloqueio de arquivos sensíveis (Apache 2.4+)
 <FilesMatch "\.(env|sql|bak|ini|log|sh|md|yml|json)$">
-  Order allow,deny
-  Deny from all
+  Require all denied
 </FilesMatch>
 
 # 🚫 Evita listagem de diretórios
 Options -Indexes
 
-# ✅ Redireciona URLs não encontradas para index.php (roteamento amigável)
+# ✅ Fallback: envia rotas inexistentes para index.php (front controller)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
